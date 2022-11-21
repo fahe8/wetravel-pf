@@ -1,1 +1,1 @@
-// Este es otro cambio
+const { Sequelize } = require('sequelize');
