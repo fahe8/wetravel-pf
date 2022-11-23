@@ -34,8 +34,12 @@ let capsEntries = entries.map((entry) => [
 ]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-const {} = sequelize.models;
+const { hotel, user, administrator } = sequelize.models;
 
+hotel.manyToOne(user, { through: "hotel-user" });
+hotel.manyToOne(administrator, { through: "hotel-adm" });
+user.belongsToMany(hotel, { through: "user-hotel" });
+administrator.belongsToMany(hotel, { through: "admi-hotel" });
 module.exports = {
   ...sequelize.models,
   conn: sequelize,
