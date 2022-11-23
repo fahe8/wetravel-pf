@@ -5,7 +5,7 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define("hotel", {
     id: {
-      type: DataTypes.UUID,
+      type: DataTypes.INTEGER,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true
     },
@@ -14,7 +14,7 @@ module.exports = (sequelize) => {
       allowNull: false
     },
     description: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false
     },
     stars: {
@@ -26,11 +26,11 @@ module.exports = (sequelize) => {
       allowNull: false
     },
     services: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
+      type: DataTypes.ARRAY(DataTypes.TEXT),
       allowNull: false
     },
     photos: {
-      type: DataTypes.STRING,
+      type: DataTypes.ARRAY(DataTypes.TEXT),
       allowNull: false
     },
     continent: {
@@ -56,7 +56,7 @@ module.exports = (sequelize) => {
       allowNull: false
     },
     room_properties: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
+      type: DataTypes.ARRAY(DataTypes.TEXT),
       allowNull: false
     },
     room_size: {
@@ -68,7 +68,7 @@ module.exports = (sequelize) => {
       allowNull: false
     },
     room_photos: {
-      type: DataTypes.STRING,
+      type: DataTypes.ARRAY(DataTypes.TEXT),
       allowNull: false
     }
   }, {timestamps: false});
