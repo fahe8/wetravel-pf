@@ -20,6 +20,7 @@ code {
 :root {
   --primary-bg-color: #a3c7d6;
   --primary-bg-opacity-color: #a3c7d692;
+  --search-border-color: #c4c4c4;
   --second-bg-color: #ffffff;
   --primary-text-color: #000000;
   --second-text-color: #ffffff;
