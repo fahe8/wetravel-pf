@@ -33,9 +33,13 @@ let capsEntries = entries.map((entry) => [
   entry[0][0].toUpperCase() + entry[0].slice(1),
   entry[1],
 ]);
+
 sequelize.models = Object.fromEntries(capsEntries);
 
-const {} = sequelize.models;
+const { Hotel, User } = sequelize.models;
+
+Hotel.belongsToMany(User, {through: "user-hotels"});
+User.belongsToMany(Hotel, {through: "user-hotels"});
 
 module.exports = {
   ...sequelize.models,
