@@ -25,7 +25,7 @@ const getHotels = async () => {
     const dbInfo = await Hotel.findAll({
         include: [{
             model: User,
-            attributes: ["userId", "name"],
+            attributes: ["name"],
             through: {
                 attributes: []
                 }
