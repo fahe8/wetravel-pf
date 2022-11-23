@@ -7,8 +7,8 @@ import NavBar from "./components/navBar/NavBar";
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
-        <NavBar></NavBar>
+      <div className="App min-h-screen h-screen">
+      <NavBar></NavBar>
         <Switch>
           <Route exact path="/home" component={Home} />
           <Route exact path="/" component={LandingPage} />
