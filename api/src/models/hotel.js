@@ -5,71 +5,71 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define("hotel", {
     id: {
-      type: DataTypes.UUID,
+      type: DataTypes.INTEGER,
       defaultValue: DataTypes.UUIDV4,
-      allowNull: false,
+      primaryKey: true
     },
-
     name: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
-
     description: {
-      type: DataTypes.STRING,
-      allowNull: false,
+      type: DataTypes.TEXT,
+      allowNull: false
     },
-
-    price: {
-      type: DataTypes.NUMBER,
-    },
-
-    services: {
-      type: DataTypes.STRING,
-    },
-
-    photos: {
-      public_id: {
-        type: DataTypes.STRING,
-        allowNull: true,
-      },
-      url: {
-        type: DataTypes.STRING,
-        allowNull: true,
-      },
-    },
-
     stars: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
-
+    price: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    services: {
+      type: DataTypes.ARRAY(DataTypes.TEXT),
+      allowNull: false
+    },
+    photos: {
+      type: DataTypes.ARRAY(DataTypes.TEXT),
+      allowNull: false
+    },
     continent: {
       type: DataTypes.STRING,
+      allowNull: false
     },
-
     location: {
       type: DataTypes.STRING,
+      allowNull: false
     },
-
+    city: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     review: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        isNumeric: true,
-        isInt: true,
-        min: 1,
-        max: 5,
-      },
     },
-
-    comnents: {
+    comments: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
+    },
+    room_name: {
       type: DataTypes.STRING,
+      allowNull: false
     },
-
-    room: {
+    room_properties: {
+      type: DataTypes.ARRAY(DataTypes.TEXT),
+      allowNull: false
+    },
+    room_size: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false
     },
-  });
-};
+    room_description: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    room_photos: {
+      type: DataTypes.ARRAY(DataTypes.TEXT),
+      allowNull: false
+    }
+  }, {timestamps: false});
+}
