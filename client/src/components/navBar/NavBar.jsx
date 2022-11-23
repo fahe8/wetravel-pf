@@ -1,6 +1,7 @@
 import React from "react";
 import Search from "../search/Search";
 const NavBar = () => {
+
   return (
     <header className=" h-20 bg-[color:var(--second-bg-color)] flex justify-between text-center shadow-lg">
       <figure className=" w-40 h-20 bg-cyan-700">
