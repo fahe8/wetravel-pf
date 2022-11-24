@@ -5,8 +5,8 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define("hotel", {
     id: {
-      type: DataTypes.INTEGER,
-      defaultValue: DataTypes.INTEGER,
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
       primaryKey: true
     },
     name: {
