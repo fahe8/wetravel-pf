@@ -70,6 +70,11 @@ module.exports = (sequelize) => {
     room_photos: {
       type: DataTypes.ARRAY(DataTypes.TEXT),
       allowNull: false
+    },
+    createdInDb: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true,
     }
   }, {timestamps: false});
 }
