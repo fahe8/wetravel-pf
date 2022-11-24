@@ -1,6 +1,9 @@
 import { React, useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import SearchPanel from "../searchPanel/SearchPanel";
+import format from 'date-fns/format'
+import { addDays } from 'date-fns'
+
 
 const Search = () => {
   let location = useLocation();
@@ -11,12 +14,25 @@ const Search = () => {
     active: false,
   });
 
+  //Calendar State
+  const [range, setRange] = useState([
+    {
+      startDate: new Date(),
+      endDate: addDays(new Date(), 7),
+      key: 'selection'
+    }
+  ])
+
+  // open close
+
   useEffect(() => {
     if (location.pathname === "/") {
       setstate(true);
     }
   }, []);
 
+
+  //Open and Close panel search
   const handleClick = (event) => {
     setPanelSelect({ selected: event.currentTarget.id, active: true });
     if (panelSelect.selected === event.currentTarget.id) {
@@ -24,8 +40,7 @@ const Search = () => {
     }
   };
   
-
-
+  //Close panel search click outside
   useEffect(() => {
     let closePanelSearch = (e) => {
       console.log(ref.current);
@@ -77,7 +92,12 @@ const Search = () => {
               <p className=" font-medium text-3xl">Check-in/Check-out</p>
             </div>{" "}
             {panelSelect.active && (
-              <p className=" text-2xl mt-4">28 nov- 3 dic</p>
+                    <input
+                    value={`${format(range[0].startDate, "MM/dd/yyyy")} to ${format(range[0].endDate, "MM/dd/yyyy")}`}
+                    readOnly
+                    className="inputBox"
+                    
+                  />
             )}
           </button>
 
@@ -100,7 +120,7 @@ const Search = () => {
           </button>
         </div>
         <div className={` absolute w-[100%] mx-auto top-[90%] ease-in-out duration-300 ${panelSelect.active? "h-[400px] translate-y-[-50%]": "h-[0px]"}`}>
-         {panelSelect.active && <SearchPanel selected = {panelSelect.selected}/>}
+         {panelSelect.active && <SearchPanel selected = {panelSelect.selected} range={range} setRange={setRange}/>}
         </div>
       </div>
     );

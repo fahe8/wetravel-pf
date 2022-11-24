@@ -1,5 +1,4 @@
 import React from "react";
-import NavBar from "../navBar/NavBar";
 import { Link } from "react-router-dom";
 import Search from "../search/Search";
 function LandingPage() {

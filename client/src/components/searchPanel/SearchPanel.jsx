@@ -1,6 +1,7 @@
 import React from "react";
+import RangeCalendar from "../calendar/RangeCalendar";
 
-const SearchPanel = ({ selected, active }) => {
+const SearchPanel = ({ selected, active, range, setRange}) => {
   if (selected === "location") {
     return (
         // <div className=" h-[100%] w-[100%] pt-5">dfd</div>
@@ -48,7 +49,10 @@ const SearchPanel = ({ selected, active }) => {
     return (
       <div className={`${active ? "":"translate-y-[5%] "}  ease-in-out duration-300 transform  h-[400px] w-[100%] mx-auto bg-[color:var(--second-bg-color)] shadow-lg rounded-[30px] relative `}>
         <h1 className=" text-4xl pb-2">Calendar</h1>
-        <div className=" h-auto flex justify-between"></div>
+        <div className=" h-auto flex justify-between">
+
+<RangeCalendar range={range} setRange={setRange}></RangeCalendar>
+        </div>
       </div>
     );
   }
@@ -56,7 +60,8 @@ const SearchPanel = ({ selected, active }) => {
   if (selected === "guest") {
     return (
       <div className={`${active ? "":"translate-y-[5%] "}  ease-in-out duration-300 transform  h-[400px] w-[100%] mx-auto bg-[color:var(--second-bg-color)] shadow-lg rounded-[30px] relative `}>        <h1 className=" text-4xl pb-2">Guest</h1>
-        <div className=" h-auto flex justify-between"></div>
+        <div className=" h-auto flex justify-between">
+        </div>
       </div>
     );
   }
