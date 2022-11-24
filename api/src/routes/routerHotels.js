@@ -34,7 +34,7 @@ const getHotels = async () => {
             }
         });
         const hotels = await Hotel.bulkCreate(apiInfo);
-        console.log(hotels);
+        // console.log(hotels);
         return hotels;
     }
     if(dataDb.length){
@@ -51,6 +51,14 @@ routerHotels.get("/", async (req, res) => {
             const hotelName = hotels.find(el => el.name.toLowerCase().includes(name.toLowerCase()));
             hotelName ? res.status(200).send(hotelName) : res.status(404).send("No Hotel with that name");
         };
+        if (req.query.stars) {
+            // console.log('FILTRO:', req.query.stars);
+            // let filterStars = hotels.filter(el => console.log('EL.STARS:',typeof el.stars));
+            let filterStars = hotels.filter(el => el.stars === req.query.stars);
+            // let filterStars2 = hotels.filter(el => console.log('QUERY:',el.stars === req.query.stars));
+            console.log('FILTRO:', filterStars.length);
+            return res.json(filterStars);
+        }
 
         if(hotels.length && !name){
             res.status(200).send(hotels);
