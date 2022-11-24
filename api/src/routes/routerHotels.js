@@ -34,6 +34,7 @@ const getHotels = async () => {
             }
         });
         const hotels = await Hotel.bulkCreate(apiInfo);
+        console.log(hotels);
         return hotels;
     }
     if(dataDb.length){
