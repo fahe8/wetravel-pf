@@ -4,11 +4,11 @@ const { DataTypes } = require("sequelize");
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define("hotel", {
-    // id: {
-    //   type: DataTypes.INTEGER,
-    //   defaultValue: DataTypes.INTEGER,
-    //   primaryKey: true
-    // },
+    id: {
+      type: DataTypes.INTEGER,
+      defaultValue: DataTypes.INTEGER,
+      primaryKey: true
+    },
     name: {
       type: DataTypes.STRING,
       allowNull: false
@@ -54,9 +54,5 @@ module.exports = (sequelize) => {
     room: {
       type: DataTypes.JSONB,
     },
-    createdInDb: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: true,
-    }
   }, {timestamps: false});
 }
