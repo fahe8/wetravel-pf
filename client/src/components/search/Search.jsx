@@ -7,7 +7,7 @@ const Search = () => {
   let ref = useRef();
   const [state, setstate] = useState(false);
   const [panelSelect, setPanelSelect] = useState({
-    selected: null,
+    selected: '',
     active: false,
   });
 
@@ -18,24 +18,34 @@ const Search = () => {
   }, []);
 
   const handleClick = (event) => {
-    console.log(event.target);
     setPanelSelect({ selected: event.currentTarget.id, active: true });
     if (panelSelect.selected === event.currentTarget.id) {
-      setPanelSelect({ selected: null, active: false });
+      setPanelSelect({ selected: null, active:false});
     }
   };
+  
 
-  const handleClickCloseModal = (event) => {
-    if (!ref.current.contains(event.target)) {
-      setPanelSelect({ selected: null, active: false });
+
+  useEffect(() => {
+    let closePanelSearch = (e) => {
+      console.log(ref.current);
+      if(!ref.current.contains(e.target)){
+        setPanelSelect({ selected: null, active: false });
+      }
     }
-  };
-console.log(panelSelect.active)
+    document.addEventListener("mousedown", closePanelSearch)
+
+    return() => {
+      document.removeEventListener("mousedown", closePanelSearch)
+    }
+  }, []);
+
+
   if (state) {
     return (
-      <div className={ `${panelSelect.active && "translate-y-[-60%] w-[1300px]"} ease-in-out duration-300 w-screen px-10 absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] `} ref={ref} onClick={handleClickCloseModal}>
+      <div className={ ` w-[70%] absolute bottom-0 left-[50%] translate-x-[-50%] ${panelSelect.active && "translate-y-[50%]"}`}  ref={ref} >
         <div
-          className={`${panelSelect && ""} w-full h-[130px] grid grid-cols-3 grid-rows-1 bg-[color:var(--primary-bg-opacity-color)] rounded-full shadow-md border border-[color:var(--search-border-color)] cursor-pointer`}
+          className={`${panelSelect.active && "translate-y-[-150%]"} ease-in-out duration-300 transform w-full h-[130px] grid grid-cols-3 grid-rows-1 bg-[color:var(--primary-bg-opacity-color)] rounded-full shadow-md border border-[color:var(--search-border-color)] cursor-pointer`}
         >
           <button
             className={`${
@@ -89,14 +99,13 @@ console.log(panelSelect.active)
             )}
           </button>
         </div>
-        <div className={`h-auto w-[80%] mx-auto`}>
-          {panelSelect.active && (
-            <SearchPanel selected={panelSelect.selected}></SearchPanel>
-          )}
+        <div className={` absolute w-[100%] mx-auto top-[90%] ease-in-out duration-300 ${panelSelect.active? "h-[400px] translate-y-[-50%]": "h-[0px]"}`}>
+         {panelSelect.active && <SearchPanel selected = {panelSelect.selected}/>}
         </div>
       </div>
     );
   }
+
 
   return (
     <div className=" w-full h-full bg-[color:var(--primary-bg-opacity-color)] rounded-full shadow-md border border-[color:var(--search-border-color)] cursor-pointer">

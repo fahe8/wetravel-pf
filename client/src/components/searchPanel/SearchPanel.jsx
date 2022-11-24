@@ -1,9 +1,10 @@
 import React from "react";
 
-const SearchPanel = ({ selected }) => {
+const SearchPanel = ({ selected, active }) => {
   if (selected === "location") {
     return (
-      <div className=" h-[400px] w-[100%] mx-auto bg-[color:var(--second-bg-color)] shadow-lg rounded-[30px] relative">
+        // <div className=" h-[100%] w-[100%] pt-5">dfd</div>
+        <div className={`${active ? "":"translate-y-[5%] "}  ease-in-out duration-300 transform  h-[400px] w-[100%] mx-auto bg-[color:var(--second-bg-color)] shadow-lg rounded-[30px] relative `}>
         <h1 className=" text-4xl pb-2">Location</h1>
         <div className=" h-auto flex justify-between">
           <div className="w-2/5 text-2xl">
@@ -38,12 +39,14 @@ const SearchPanel = ({ selected }) => {
         </div>
         {/* <div className=" absolute w-screen h-screen bg-black top-[0%] z-[-1]"></div> */}
       </div>
+
+
     );
   }
 
   if (selected === "calendar") {
     return (
-      <div className=" h-auto w-[95%] mx-auto bg-[color:var(--second-bg-color)] shadow-lg rounded-[30px]">
+      <div className={`${active ? "":"translate-y-[5%] "}  ease-in-out duration-300 transform  h-[400px] w-[100%] mx-auto bg-[color:var(--second-bg-color)] shadow-lg rounded-[30px] relative `}>
         <h1 className=" text-4xl pb-2">Calendar</h1>
         <div className=" h-auto flex justify-between"></div>
       </div>
@@ -52,12 +55,11 @@ const SearchPanel = ({ selected }) => {
 
   if (selected === "guest") {
     return (
-      <div className=" h-auto w-[95%] mx-auto bg-[color:var(--second-bg-color)] shadow-lg rounded-[30px]">
-        <h1 className=" text-4xl pb-2">Guest</h1>
+      <div className={`${active ? "":"translate-y-[5%] "}  ease-in-out duration-300 transform  h-[400px] w-[100%] mx-auto bg-[color:var(--second-bg-color)] shadow-lg rounded-[30px] relative `}>        <h1 className=" text-4xl pb-2">Guest</h1>
         <div className=" h-auto flex justify-between"></div>
       </div>
     );
   }
 };
-
+     
 export default SearchPanel;
