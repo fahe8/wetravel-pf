@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import NavBar from "../navBar/NavBar";
 import Search from "../search/Search";
 function LandingPage() {
   return (
-    <section className="h-[100%]   overflow-hidden grid grid-rows-2 ">
+    <section className="h-[100%]   overflow-hidden grid">
+      <NavBar/>
       <div className="relative px-20">
         <Search></Search>
       </div>

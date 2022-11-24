@@ -21,6 +21,7 @@ console.log (estadoHoteles) //me muestra todos los hoteles por consola
         {estadoHoteles.length > 0 ? estadoHoteles.map(ht => 
         //gracias al map, este se va parar en cada uno de los hoteles mapeados y lo va renderizar
           <Card
+            id={ht.id}
             key={ht.id}
             photos={ht.photos}
             stars={ht.stars}
