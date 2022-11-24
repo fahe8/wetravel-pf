@@ -78,7 +78,7 @@ routerHotels.get("/", async (req, res) => {
         if (continent) {
             try{
                 let filtercontinent = hotels.filter(el => el.continent.toLowerCase().includes(continent.toLowerCase()));
-                console.log('FILTRO:', filtercontinent.length);
+                // console.log('FILTRO:', filtercontinent.length);
                 if(!filtercontinent.length){
                     return res.status(400).send("No match  with that continent")
                 }
@@ -91,7 +91,7 @@ routerHotels.get("/", async (req, res) => {
         if (location) {
             try{
                 let filterLocation = hotels.filter(el => el.location.toLowerCase().includes(location.toLowerCase()));
-                console.log('FILTRO:', filterLocation.length);
+                // console.log('FILTRO:', filterLocation.length);
                 if(!filterLocation.length){
                     return res.status(400).send("No match  with that location")
                 }
@@ -104,7 +104,7 @@ routerHotels.get("/", async (req, res) => {
         if (city) {
             try{
                 let filterCity = hotels.filter(el => el.city.toLowerCase().includes(city.toLowerCase()));
-                console.log('FILTRO:', filterCity.length);
+                // console.log('FILTRO:', filterCity.length);
                 if(!filterCity.length){
                     return res.status(400).send("No match  with that city")
                 }
