@@ -57,7 +57,7 @@ routerHotels.get("/", async (req, res) => {
             // let filterStars = hotels.filter(el => console.log('EL.STARS:',typeof el.stars));
             let filterStars = hotels.filter(el => el.stars === stars);
             // let filterStars2 = hotels.filter(el => console.log('QUERY:',el.stars === req.query.stars));
-            console.log('FILTRO:', filterStars.length);
+            // console.log('FILTRO:', filterStars.length);
             if(!filterStars.length){
                 return res.status(400).send("No match  with that star")
             }
@@ -69,7 +69,7 @@ routerHotels.get("/", async (req, res) => {
         if (continent) {
             try{
                 let filtercontinent = hotels.filter(el => el.continent.toLowerCase().includes(continent.toLowerCase()));
-                console.log('FILTRO:', filtercontinent.length);
+                // console.log('FILTRO:', filtercontinent.length);
                 if(!filtercontinent.length){
                     return res.status(400).send("No match  with that continent")
                 }
@@ -82,7 +82,7 @@ routerHotels.get("/", async (req, res) => {
         if (location) {
             try{
                 let filterLocation = hotels.filter(el => el.location.toLowerCase().includes(location.toLowerCase()));
-                console.log('FILTRO:', filterLocation.length);
+                // console.log('FILTRO:', filterLocation.length);
                 if(!filterLocation.length){
                     return res.status(400).send("No match  with that location")
                 }
@@ -95,7 +95,7 @@ routerHotels.get("/", async (req, res) => {
         if (city) {
             try{
                 let filterCity = hotels.filter(el => el.city.toLowerCase().includes(city.toLowerCase()));
-                console.log('FILTRO:', filterCity.length);
+                // console.log('FILTRO:', filterCity.length);
                 if(!filterCity.length){
                     return res.status(400).send("No match  with that city")
                 }
