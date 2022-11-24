@@ -11,7 +11,8 @@ module.exports = (sequelize) => {
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      unique: true
     },
     description: {
       type: DataTypes.TEXT,
@@ -54,9 +55,5 @@ module.exports = (sequelize) => {
     room: {
       type: DataTypes.JSONB,
     },
-    createdInDb: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: true,
-    }
   }, {timestamps: false});
 }
