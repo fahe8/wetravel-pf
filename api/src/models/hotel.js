@@ -4,17 +4,17 @@ const { DataTypes } = require("sequelize");
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define("hotel", {
-    id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
-      primaryKey: true
-    },
+    // id: {
+    //   type: DataTypes.INTEGER,
+    //   defaultValue: DataTypes.INTEGER,
+    //   primaryKey: true
+    // },
     name: {
       type: DataTypes.STRING,
       allowNull: false
     },
     description: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false
     },
     stars: {
@@ -30,7 +30,7 @@ module.exports = (sequelize) => {
       allowNull: false
     },
     photos: {
-      type: DataTypes.STRING,
+      type: DataTypes.ARRAY(DataTypes.TEXT),
       allowNull: false
     },
     continent: {
@@ -51,25 +51,12 @@ module.exports = (sequelize) => {
     comments: {
       type: DataTypes.ARRAY(DataTypes.STRING),
     },
-    room_name: {
-      type: DataTypes.STRING,
-      allowNull: false
+    room: {
+      type: DataTypes.JSONB,
     },
-    room_properties: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
-      allowNull: false
-    },
-    room_size: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    room_description: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    room_photos: {
-      type: DataTypes.STRING,
-      allowNull: false
+    createdInDb: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
     }
   }, {timestamps: false});
 }

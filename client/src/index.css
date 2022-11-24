@@ -18,8 +18,10 @@ code {
 }
 
 :root {
+  min-height: 100vh;
   --primary-bg-color: #a3c7d6;
   --primary-bg-opacity-color: #a3c7d692;
+  --border-color: #6b6c6d;
   --second-bg-color: #ffffff;
   --primary-text-color: #000000;
   --second-text-color: #ffffff;
