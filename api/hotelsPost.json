@@ -29,7 +29,7 @@
         "photos": ["https://cf.bstatic.com/xdata/images/hotel/max1024x768/144732587.jpg?k=6324b70bc3a6a27c87f5daa3dd84ef5b13d867eeba86e2924c4b32f5b4ac04f7&o=&hp=1", "https://cf.bstatic.com/xdata/images/hotel/max1024x768/201547215.jpg?k=91f99473d497b909887feb0999b90c5a9f4ca673aeae852746cd9d58d7203ef3&o=&hp=1", "https://cf.bstatic.com/xdata/images/hotel/max1024x768/167373571.jpg?k=4a851dcf40b379c43cc6e469f41f330105b10d4f64cdf1d77c60a323412bd401&o=&hp=1"],
         "continent": "America",
         "location": "Paraguay",
-        "city": "Asunción",
+        "city": "Asuncion",
         "review": "",
         "comments": [],
         "room": {
