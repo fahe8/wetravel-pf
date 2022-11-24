@@ -22,6 +22,7 @@ console.log (estadoHoteles) //me muestra todos los hoteles por consola
         //gracias al map, este se va parar en cada uno de los hoteles mapeados y lo va renderizar
           <Card
             key={ht.id}
+            id ={ht.id}
             photos={ht.photos}
             stars={ht.stars}
             location={ht.location}
@@ -29,6 +30,7 @@ console.log (estadoHoteles) //me muestra todos los hoteles por consola
             price={ht.price}
             size={ht.size}
             name={ht.name}
+            properties ={ht.room.properties}
           />
         ) : 
         <h1>Mensaje de alerta que no hay hoteles</h1>

@@ -3,7 +3,7 @@ import NavBar from '../navBar/NavBar'
 function LandingPage() {
   return (
     <div>
-        <NavBar></NavBar>
+        <NavBar/>
         
     </div>
   )

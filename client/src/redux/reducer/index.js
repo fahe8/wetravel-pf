@@ -1,5 +1,6 @@
 const initialState = { //inicializar el estado; un objeto con varios estados dentro
     hotels: [], //nos devuelve todos los hoteles en un array
+    detail: [],
 }
 
 
@@ -10,6 +11,11 @@ function rootReducer(state = initialState, action) { //function reducer; tiene 2
             return {
                 ...state, //una copia del estado
                 hotels: action.payload // almacenar en este objeto lo que llega del backend
+            }
+        case 'GET_DETAIL':
+            return {
+                ...state,
+                detail: action.payload,
             }
         default:
             return state
