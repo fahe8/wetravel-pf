@@ -42,23 +42,24 @@
         "user": ""
     },
     {
-        "name": "",
-        "description": "",
-        "stars": "",
-        "price": "",
-        "services": [""],
-        "photos": [""],
-        "continent": "",
-        "location": "",
-        "city": "",
+        "name": "Lisboa Pessoa Hotel",
+        "description": "El Lisboa Pessoa Hotel, inspirado en la vida y obra de Fernando Pessoa, está ubicado en el centro de Lisboa, a 200 metros del barrio de Chiado. Este hotel alberga un restaurante con vistas panorámicas y cuenta con centro de fitness y spa, instalaciones para reuniones y biblioteca. Hay wifi gratis. Se facilita estacionamiento privado por un adicional. El Lisboa Pessoa Hotel ofrece una gran variedad de habitaciones. Hay habitaciones comunicadas, con terraza o con vistas impresionantes a Lisboa. Todas las habitaciones disponen de caja fuerte, aire acondicionado y TV de pantalla plana con canales por cable. El baño incluye ducha a ras de suelo y artículos de aseo gratuitos. Hay recepción 24 horas. Este hotel ofrece wifi gratis. El restaurante Mensagem proporciona un ambiente íntimo gracias a sus 8 espacios con ventana privada. Además, tiene 2 terrazas con vistas a la capital portuguesa. El chef Manuel Ferreira elabora platos inspirados en la tradición portuguesa, todos ellos con ingredientes seleccionados con mimo. El Lisboa Pessoa Hotel se encuentra a 200 metros de la plaza de Rossio y a 300 metros del teatro nacional Doña María II. El aeropuerto Humberto Delgado queda a 6 km.",
+        "stars": "4",
+        "price": "$27.362",
+        "services": ["1 pileta", "Spa", "Habitaciones para no fumadores", "Traslados", "Gimnasio bueno", "Restaurante", "Servicio a la habitación", "Tetera/cafetera en todas las habitaciones", "Bar", "Desayuno fantastico"],
+        "photos": ["https://cf.bstatic.com/xdata/images/hotel/max1024x768/107833568.jpg?k=7a5bce0cae8bff1a156d8c3003731d1715e97961dda0c465a8d30ab0f6124d8b&o=&hp=1", "https://cf.bstatic.com/xdata/images/hotel/max1024x768/249855923.jpg?k=82c9699c048df6440fd7e5a94e14b00f757545a9e956268adf25bca17d653c66&o=&hp=1", "https://cf.bstatic.com/xdata/images/hotel/max1024x768/250973849.jpg?k=3cb15384d95bfe0725c0de4c351461fba99b0071427b45bdc891d1503c77447d&o=&hp=1"],
+        "continent": "Europa",
+        "location": "Portugal",
+        "city": "Lisboa",
         "review": "",
         "comments": [],
         "room": {
-            "name": "",
-            "properties": [""],
-            "size": "",
-            "description": "",
-            "photos": [""]
-        }
+            "name": "Habitación Doble Estándar",
+            "properties": ["15 m²", "Aire acondicionado", "TV de pantalla plana", "Insonorización", "Minibar", "Wifi gratis"],
+            "size": "15 m²",
+            "description": "Habitación con aire acondicionado, TV de pantalla plana, nevera pequeña y baño privado con artículos de aseo gratuitos y ducha a ras de suelo.",
+            "photos": ["https://cf.bstatic.com/xdata/images/hotel/max1024x768/249854521.jpg?k=24c14f2254cea57e1df180e663618cd6bca4d35a19bb38a4a8e0356787f1c38b&o=", "https://cf.bstatic.com/xdata/images/hotel/max1024x768/360310887.jpg?k=57e39c03a5dc5a324c17aa9b448f337773fa103218c7f1c6055dcc38245d8cb8&o="]
+        },
+        "user": ""
     }
 ]

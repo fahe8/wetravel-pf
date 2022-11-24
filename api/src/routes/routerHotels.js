@@ -66,7 +66,7 @@ routerHotels.get("/", async (req, res) => {
         if (price) {
             try {
                 let filterPrice = hotels.filter(el => el.price === price);
-                console.log('FILTRO price:', filterPrice.length);
+                // console.log('FILTRO price:', filterPrice.length);
                 if (!filterPrice.length) {
                     return res.status(400).send('No match with that price');
                 }
