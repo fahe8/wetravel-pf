@@ -1,8 +1,18 @@
+const initialState = { //inicializar el estado; un objeto con varios estados dentro
+    hotels: [], //nos devuelve todos los hoteles en un array
+}
 
 
-
-function rootReducer (state, action) {
+function rootReducer(state = initialState, action) { //function reducer; tiene 2 parámetros (estado inicial, action)
     
-
+    switch (action.type) { // evalúa el tipo de acción // actions type
+        case 'GET_HOTELS': // en el caso de obtener los hoteles necesitamos que se llene el estado que nos devuelve los personajes nuestro payload
+            return {
+                ...state, //una copia del estado
+                hotels: action.payload // almacenar en este objeto lo que llega del backend
+            }
+        default:
+            return state
+    }
 }
 export default rootReducer;
