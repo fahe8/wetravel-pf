@@ -43,7 +43,7 @@ const getHotels = async () => {
 };
 
 routerHotels.get("/", async (req, res) => {
-    const { name } = req.query;
+    const { name,continent,stars,location, city } = req.query;
     try {
         const hotels = await getHotels();
 
@@ -51,10 +51,58 @@ routerHotels.get("/", async (req, res) => {
             const hotelName = hotels.find(el => el.name.toLowerCase().includes(name.toLowerCase()));
             hotelName ? res.status(200).send(hotelName) : res.status(404).send("No Hotel with that name");
         };
-        if(req.query.stars) {
-            const filterStars = hotels.filter(el => el.stars === req.query.stars);
-            if(!filterStars.length) res.status(404).send("Enter stars 1 to 5");
-            return res.send(filterStars);   
+        if (stars) {
+            try{
+            // console.log('FILTRO:', req.query.stars);
+            // let filterStars = hotels.filter(el => console.log('EL.STARS:',typeof el.stars));
+            let filterStars = hotels.filter(el => el.stars === stars);
+            // let filterStars2 = hotels.filter(el => console.log('QUERY:',el.stars === req.query.stars));
+            console.log('FILTRO:', filterStars.length);
+            if(!filterStars.length){
+                return res.status(400).send("No match  with that star")
+            }
+            return res.send(filterStars);
+        } catch(error){
+            res.status(400).send(error.message)
+        }
+        }
+        if (continent) {
+            try{
+                let filtercontinent = hotels.filter(el => el.continent.toLowerCase().includes(continent.toLowerCase()));
+                console.log('FILTRO:', filtercontinent.length);
+                if(!filtercontinent.length){
+                    return res.status(400).send("No match  with that continent")
+                }
+                return res.send(filtercontinent);
+            } catch(error){
+                res.status(400).send(error.message)
+            }
+        }
+
+        if (location) {
+            try{
+                let filterLocation = hotels.filter(el => el.location.toLowerCase().includes(location.toLowerCase()));
+                console.log('FILTRO:', filterLocation.length);
+                if(!filterLocation.length){
+                    return res.status(400).send("No match  with that location")
+                }
+                return res.send(filterLocation);
+            } catch(error){
+                res.status(400).send(error.message)
+            }
+        }
+
+        if (city) {
+            try{
+                let filterCity = hotels.filter(el => el.city.toLowerCase().includes(city.toLowerCase()));
+                console.log('FILTRO:', filterCity.length);
+                if(!filterCity.length){
+                    return res.status(400).send("No match  with that city")
+                }
+                return res.send(filterCity);
+            } catch(error){
+                res.status(400).send(error.message)
+            }
         }
 
         if(hotels.length && !name){
