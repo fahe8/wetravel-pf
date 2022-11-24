@@ -35,9 +35,7 @@ const Search = () => {
   //Open and Close panel search
   const handleClick = (event) => {
     setPanelSelect({ selected: event.currentTarget.id, active: true });
-    if (panelSelect.selected === event.currentTarget.id) {
-      setPanelSelect({ selected: null, active:false});
-    }
+    
   };
   
   //Close panel search click outside
@@ -95,7 +93,7 @@ const Search = () => {
                     <input
                     value={`${format(range[0].startDate, "MM/dd/yyyy")} to ${format(range[0].endDate, "MM/dd/yyyy")}`}
                     readOnly
-                    className="inputBox"
+                    className=" outline-none w-[100%] text-center"
                     
                   />
             )}

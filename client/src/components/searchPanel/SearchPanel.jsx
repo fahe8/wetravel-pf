@@ -48,8 +48,7 @@ const SearchPanel = ({ selected, active, range, setRange}) => {
   if (selected === "calendar") {
     return (
       <div className={`${active ? "":"translate-y-[5%] "}  ease-in-out duration-300 transform  h-[400px] w-[100%] mx-auto bg-[color:var(--second-bg-color)] shadow-lg rounded-[30px] relative `}>
-        <h1 className=" text-4xl pb-2">Calendar</h1>
-        <div className=" h-auto flex justify-between">
+        <div className=" h-auto ">
 
 <RangeCalendar range={range} setRange={setRange}></RangeCalendar>
         </div>
