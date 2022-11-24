@@ -43,7 +43,7 @@ const getHotels = async () => {
 };
 
 routerHotels.get("/", async (req, res) => {
-    const { name,continent,stars,location, city } = req.query;
+    const { name,continent,stars,location, city, price } = req.query;
     try {
         const hotels = await getHotels();
 
@@ -53,11 +53,8 @@ routerHotels.get("/", async (req, res) => {
         };
         if (stars) {
             try{
-            // console.log('FILTRO:', req.query.stars);
-            // let filterStars = hotels.filter(el => console.log('EL.STARS:',typeof el.stars));
             let filterStars = hotels.filter(el => el.stars === stars);
-            // let filterStars2 = hotels.filter(el => console.log('QUERY:',el.stars === req.query.stars));
-            // console.log('FILTRO:', filterStars.length);
+            console.log('FILTRO:', filterStars.length);
             if(!filterStars.length){
                 return res.status(400).send("No match  with that star")
             }
@@ -65,6 +62,18 @@ routerHotels.get("/", async (req, res) => {
         } catch(error){
             res.status(400).send(error.message)
         }
+        }
+        if (price) {
+            try {
+                let filterPrice = hotels.filter(el => el.price === price);
+                console.log('FILTRO price:', filterPrice.length);
+                if (!filterPrice.length) {
+                    return res.status(400).send('No match with that price');
+                }
+                return res.json(filterPrice);
+            } catch (error) {
+                res.status(400).send(error.message)
+            }
         }
         if (continent) {
             try{
