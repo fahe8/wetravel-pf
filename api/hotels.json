@@ -6,11 +6,10 @@
         "stars": "5",
         "price": "$40.482",
         "services": ["Habitaciones para no fumadores", "Wifi gratis", "Gimnasio", "Restaurante", "Recepción 24 horas", "Ascensor"],
-        "photos": {
-            "main1": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/288108455.jpg?k=7b9f4cf246fe508db3370e978858c5edcccfae86d06651ea9c55d5859c99acc4&o=&hp=1",
-            "main2": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/238360157.jpg?k=960903f2b23159ea267efe4277ecec64ab6c56cc6386c9d6039fbe0f9791a90c&o=&hp=1",
-            "main3": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/238353640.jpg?k=ecd6b8eda7e4c16be9ca733a4534a7e0a69c6380ee4fa57b090c3c189d5a892c&o=&hp=1"
-        },
+        "photos": ["https://cf.bstatic.com/xdata/images/hotel/max1024x768/288108455.jpg?k=7b9f4cf246fe508db3370e978858c5edcccfae86d06651ea9c55d5859c99acc4&o=&hp=1",
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/238360157.jpg?k=960903f2b23159ea267efe4277ecec64ab6c56cc6386c9d6039fbe0f9791a90c&o=&hp=1",
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/238353640.jpg?k=ecd6b8eda7e4c16be9ca733a4534a7e0a69c6380ee4fa57b090c3c189d5a892c&o=&hp=1"
+        ],
         "continent": "Asia",
         "location": "Japón",
         "city": "Tokio",
@@ -21,10 +20,9 @@
             "properties": ["26 m²", "Aire acondicionado", "Baño en suite", "TV de pantalla plana", "Wifi gratis"],
             "size": "26 m²",
             "description": "2 camas individuales. Camas cómodas, puntaje de 9 según 381 comentarios. This twin room features a electric kettle, flat-screen TV and air conditioning.",
-            "photos": {
-                "bedroom1": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/288110284.jpg?k=563c54dd7fcf6736312b75895c383c9754fa843b80b3ab7dcd31c290aadef67e&o=",
-                "bedroom2": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/288108425.jpg?k=fde16783a2468a6577f6248b623b5216d1efcf33af9d8c8d96248a09ec7a5daa&o="
-            }
+            "photos": ["https://cf.bstatic.com/xdata/images/hotel/max1024x768/288110284.jpg?k=563c54dd7fcf6736312b75895c383c9754fa843b80b3ab7dcd31c290aadef67e&o=",
+                 "https://cf.bstatic.com/xdata/images/hotel/max1024x768/288108425.jpg?k=fde16783a2468a6577f6248b623b5216d1efcf33af9d8c8d96248a09ec7a5daa&o="
+            ]
         }
     },
     {
@@ -34,11 +32,10 @@
         "stars": "4",
         "price": "$21.065",
         "services": ["Habitaciones para no fumadores", "Gimnasio", "Servicio a la habitación", "Estacionamiento gratuito", "Wifi en toda la propiedad", "Buen desayuno"],
-        "photos": {
-            "main1": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/28089740.jpg?k=48585907747be35ce49f334c9895fba2a0356f27d78592265ad8662169a11a73&o=&hp=1",
-            "main2": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/152288736.jpg?k=c216a5a4bf19a1a076613a85a36c89af8f3370f63b74cadf6bc3a9c52426ec8e&o=&hp=1",
-            "main3": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/151689857.jpg?k=97834f4bf7e0431b44eaef16e3d8685110681a8a8ef316cf866d8f0fe551b739&o=&hp=1"
-        },
+        "photos": [ "https://cf.bstatic.com/xdata/images/hotel/max1024x768/28089740.jpg?k=48585907747be35ce49f334c9895fba2a0356f27d78592265ad8662169a11a73&o=&hp=1",
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/152288736.jpg?k=c216a5a4bf19a1a076613a85a36c89af8f3370f63b74cadf6bc3a9c52426ec8e&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/151689857.jpg?k=97834f4bf7e0431b44eaef16e3d8685110681a8a8ef316cf866d8f0fe551b739&o=&hp=1"
+        ],
         "continent": "Asia",
         "location": "Corea del Sur",
         "city": "Seúl",
@@ -49,10 +46,10 @@
             "properties": ["35 m²", "Vista a la montaña", "Vista a un punto turístico", "Vista a la ciudad", "Aire acondicionado", "Baño privado", "TV de pantalla plana", "Wifi gratis"],
             "size": "35 m²",
             "description": "This double room features a bathrobe, electric kettle and seating area. This room type cannot accommodate an extra bed.",
-            "photos": {
-                "bedroom1": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/152281468.jpg?k=0ef2ff282fa19d735c2e4cab429ddbbe627ae77ce1ad438eb8faa74729d58d5f&o=",
-                "bedroom2": "https://www.booking.com/hotel/kr/president.es-ar.html?aid=357008&label=gog235jc-1FCAMosQFCBGFzaWFILFgDaAyIAQGYASy4ARfIAQzYAQHoAQH4AQKIAgGoAgO4Aojb85sGwAIB0gIkOGE5OTIzNmEtYWEzMS00YjE0LTgxNjUtZGY5NWQ5YmI5Mzdm2AIF4AIB&sid=f73471eabe2aff38f22934e9db8f2a33&all_sr_blocks=71699807_190335226_2_2_0&checkin=2022-11-23&checkout=2022-11-24&dist=0&group_adults=2&group_children=0&hapos=2&highlighted_blocks=71699807_190335226_2_2_0&hpos=2&matching_block_id=71699807_190335226_2_2_0&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=distance_from_search&sr_pri_blocks=71699807_190335226_2_2_0__17489682&srepoch=1669136753&srpvid=d34f7837d95b02b9&type=total&ucfs=1&activeTab=main#room_71699807"
-            }
+            "photos": [
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/152281468.jpg?k=0ef2ff282fa19d735c2e4cab429ddbbe627ae77ce1ad438eb8faa74729d58d5f&o=",
+            "https://www.booking.com/hotel/kr/president.es-ar.html?aid=357008&label=gog235jc-1FCAMosQFCBGFzaWFILFgDaAyIAQGYASy4ARfIAQzYAQHoAQH4AQKIAgGoAgO4Aojb85sGwAIB0gIkOGE5OTIzNmEtYWEzMS00YjE0LTgxNjUtZGY5NWQ5YmI5Mzdm2AIF4AIB&sid=f73471eabe2aff38f22934e9db8f2a33&all_sr_blocks=71699807_190335226_2_2_0&checkin=2022-11-23&checkout=2022-11-24&dist=0&group_adults=2&group_children=0&hapos=2&highlighted_blocks=71699807_190335226_2_2_0&hpos=2&matching_block_id=71699807_190335226_2_2_0&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=distance_from_search&sr_pri_blocks=71699807_190335226_2_2_0__17489682&srepoch=1669136753&srpvid=d34f7837d95b02b9&type=total&ucfs=1&activeTab=main#room_71699807"
+        ]
         }
     },
     {
@@ -62,11 +59,10 @@
         "stars": "3",
         "price": "$4.844",
         "services": ["Servicio a la habitación", "Habitaciones para no fumadores", "Habitaciones familiares", "Wifi gratis", "Recepción 24 horas", "Buen desayuno"],
-        "photos": {
-            "main1": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/178955979.jpg?k=641e1c92e6ca1547a4027353233457f8f54381d080900692ed4f7b0c421b2d04&o=&hp=1",
-            "main2": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/178955969.jpg?k=b5a295a162ca38d4f45f70457601dbad33edc225a506fce598f0015279cade6d&o=&hp=1",
-            "main3": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/178955999.jpg?k=c7ab5b2b6a1021ae86ce97b1f0dad57e5d24966cb46814c342986fa8194ea864&o=&hp=1"
-        },
+        "photos": [ "https://cf.bstatic.com/xdata/images/hotel/max1024x768/178955979.jpg?k=641e1c92e6ca1547a4027353233457f8f54381d080900692ed4f7b0c421b2d04&o=&hp=1",
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/178955969.jpg?k=b5a295a162ca38d4f45f70457601dbad33edc225a506fce598f0015279cade6d&o=&hp=1",
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/178955999.jpg?k=c7ab5b2b6a1021ae86ce97b1f0dad57e5d24966cb46814c342986fa8194ea864&o=&hp=1"
+        ],
         "continent": "Asia",
         "location": "India",
         "city": "Bombay",
@@ -77,10 +73,10 @@
             "properties": ["17 m²", "Vista a la ciudad", "Aire acondicionado", "Baño en suite", "TV de pantalla plana", "Wifi gratis"],
             "size": "17 m²",
             "description": "This double room has a cable TV, seating area and air conditioning.",
-            "photos": {
-                "bedroom1": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/178955974.jpg?k=4057fa7b5d1ff5348a3a13d096a873ae7ca7e02a0f7804e8ed59eb6203b87e51&o=",
-                "bedroom2": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/178956002.jpg?k=bd4bf84e0227f811be96bd655349c963d501f36d9831a0a1a07d9f60bb2bd86a&o="
-            }
+            "photos": [
+                 "https://cf.bstatic.com/xdata/images/hotel/max1024x768/178955974.jpg?k=4057fa7b5d1ff5348a3a13d096a873ae7ca7e02a0f7804e8ed59eb6203b87e51&o=",
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/178956002.jpg?k=bd4bf84e0227f811be96bd655349c963d501f36d9831a0a1a07d9f60bb2bd86a&o="
+             ]
         }
     },
     {
@@ -90,11 +86,11 @@
         "stars": "2",
         "price": "$3.379",
         "services": ["Habitaciones para no fumadores", "Servicio a la habitación", "Wifi gratis", "Habitaciones familiares", "Recepción 24 horas"],
-        "photos": {
-            "main1": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/227885403.jpg?k=b0513426c577e9fa54065b85e57a196ed56bcfd7bbfcc1242bc7a561fd1da6f4&o=&hp=1",
-            "main2": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/227872045.jpg?k=6820d74df92f1c5f95ae951def0dae82637fa6b1bce7437e170c1dff3adc516a&o=&hp=1",
-            "main3": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/227885347.jpg?k=2aeee122e3622e75443a4a6337871436f14a357091daf1afa5c710072c938f5f&o=&hp=1"
-        },
+        "photos": [
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/227885403.jpg?k=b0513426c577e9fa54065b85e57a196ed56bcfd7bbfcc1242bc7a561fd1da6f4&o=&hp=1",
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/227872045.jpg?k=6820d74df92f1c5f95ae951def0dae82637fa6b1bce7437e170c1dff3adc516a&o=&hp=1",
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/227885347.jpg?k=2aeee122e3622e75443a4a6337871436f14a357091daf1afa5c710072c938f5f&o=&hp=1"
+        ],
         "continent": "Asia",
         "location": "China",
         "city": "Shanghai",
@@ -105,10 +101,10 @@
             "properties": ["15 m²", "Aire acondicionado", "Baño en suite", "TV de pantalla plana", "Terraza", "Wifi gratis"],
             "size": "15 m²",
             "description": "This double room has air conditioning, cable TV and electric kettle.",
-            "photos": {
-                "bedroom1": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/227762093.jpg?k=7804e1a1455f496b3c13c1ebb36ed51af6a08404db7a94b6890980deef5230f9&o=",
-                "bedroom2": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/197033113.jpg?k=26396af7f58bca3f333f45575d4f9c60c3fa3cd5769f9d968b41074058757d19&o="
-            }
+            "photos": [
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/227762093.jpg?k=7804e1a1455f496b3c13c1ebb36ed51af6a08404db7a94b6890980deef5230f9&o=",
+                 "https://cf.bstatic.com/xdata/images/hotel/max1024x768/197033113.jpg?k=26396af7f58bca3f333f45575d4f9c60c3fa3cd5769f9d968b41074058757d19&o="
+            ]
         }
     },
     {
@@ -118,11 +114,11 @@
         "stars": "1",
         "price": "$6.428",
         "services": ["Habitaciones para no fumadores", "Restaurante", "Servicio a la habitación", "Estacionamiento gratuito", "Wifi en toda la propiedad", "Adaptado para personas con movilidad reducida", "Desayuno"],
-        "photos": {
-            "main1": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/358594355.jpg?k=d90d990ea275dfce31a0c819fb1c7387ded2e18b7c21aa8ae48994e3f7ace192&o=&hp=1",
-            "main2": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/126092588.jpg?k=7125d4e1f2b0b65b732bec40a1685fe2341f9929f640bce9c9f74c91cfb7ce13&o=&hp=1",
-            "main3": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/174183099.jpg?k=94bdfc34a07b842fd9ce5d940cd1c742a83de384084722c60a7321acf8682065&o=&hp=1"
-        },
+        "photos": [
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/358594355.jpg?k=d90d990ea275dfce31a0c819fb1c7387ded2e18b7c21aa8ae48994e3f7ace192&o=&hp=1",
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/126092588.jpg?k=7125d4e1f2b0b65b732bec40a1685fe2341f9929f640bce9c9f74c91cfb7ce13&o=&hp=1",
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/174183099.jpg?k=94bdfc34a07b842fd9ce5d940cd1c742a83de384084722c60a7321acf8682065&o=&hp=1"
+        ],
         "continent": "Asia",
         "location": "Emiratos Arabes Unidos",
         "city": "Dubai",
@@ -133,10 +129,10 @@
             "properties": ["16 m²", "Aire acondicionado", "Baño en suite", "TV de pantalla plana", "Wifi gratis"],
             "size": "16 m²",
             "description": "This simply furnished, air-conditioned room offers a flat-screen TV, a safety deposit box and a wardrobe. The bathroom is fitted with a shower and free toiletries. This room has an internal window overlooking the elevator shaft. Bed linens, house keeping service and WiFi are provided free of charge. Complimentary mineral water is available upon check-in.",
-            "photos": {
-                "bedroom1": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/126089462.jpg?k=a8e7330a2270b2dc18d6f7040c51f21599fd19b7e3475a4802165a5a2e82ce45&o=",
-                "bedroom2": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/126089345.jpg?k=0b978403acba503f0b7803af62306687b67b88d0ca46b77e2265638a3cd5d845&o="
-            }
+            "photos": [
+                 "https://cf.bstatic.com/xdata/images/hotel/max1024x768/126089462.jpg?k=a8e7330a2270b2dc18d6f7040c51f21599fd19b7e3475a4802165a5a2e82ce45&o=",
+                 "https://cf.bstatic.com/xdata/images/hotel/max1024x768/126089345.jpg?k=0b978403acba503f0b7803af62306687b67b88d0ca46b77e2265638a3cd5d845&o="
+            ]
         }
     },
     {
@@ -146,11 +142,11 @@
         "stars": "5",
         "price": "$24.924",
         "services": ["1 pileta", "Traslados", "Gimnasio", "Servicio a la habitación", "Habitaciones para no fumadores", "Adaptado para personas con movilidad reducida", "Restaurante", "Tetera/cafetera en todas las habitaciones", "Buen desayuno"],
-        "photos": {
-            "main1": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/329065613.jpg?k=efd65d59cd4358729462f6de3678a0f38594218c57737ce3784b7b6e24d4c630&o=&hp=1",
-            "main2": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/232809902.jpg?k=ca87a966fa881f339008b1e6778d5ac2e31c4c2cfa0bf277ffb8889bd98335ef&o=&hp=1",
-            "main3": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/329065618.jpg?k=e134a0caf2c891286d8aa6fd1c0bf54ee66765c024352df25ed7ba858c4ccf85&o=&hp=1"
-        },
+        "photos": [
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/329065613.jpg?k=efd65d59cd4358729462f6de3678a0f38594218c57737ce3784b7b6e24d4c630&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/232809902.jpg?k=ca87a966fa881f339008b1e6778d5ac2e31c4c2cfa0bf277ffb8889bd98335ef&o=&hp=1",
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/329065618.jpg?k=e134a0caf2c891286d8aa6fd1c0bf54ee66765c024352df25ed7ba858c4ccf85&o=&hp=1"
+        ],
         "continent": "Asia",
         "location": "Arabia Saudita",
         "city": "Riad",
@@ -161,10 +157,10 @@
             "properties": ["30 m²", "Aire acondicionado", "Baño en suite", "TV de pantalla plana", "Insonorización", "Cafetera", "Minibar"],
             "size": "30 m²",
             "description": "1 cama doble grande. Camas cómodas.",
-            "photos": {
-                "bedroom1": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/37081896.jpg?k=7eaeb5233ea0fa1df853c6eb8a8349e950370b58687e4d7a95a8af691e793991&o=",
-                "bedroom2": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/159524147.jpg?k=3bf7b2f8f37ffdd2c241aab3e685c388180f8f63a760cf86d545f88d370c0319&o="
-            }
+            "photos": [
+                 "https://cf.bstatic.com/xdata/images/hotel/max1024x768/37081896.jpg?k=7eaeb5233ea0fa1df853c6eb8a8349e950370b58687e4d7a95a8af691e793991&o=",
+                 "https://cf.bstatic.com/xdata/images/hotel/max1024x768/159524147.jpg?k=3bf7b2f8f37ffdd2c241aab3e685c388180f8f63a760cf86d545f88d370c0319&o="
+            ]
         }
     },
     {
@@ -174,11 +170,11 @@
         "stars": "4",
         "price": "$80.652",
         "services": ["Gimnasio", "Spa", "Estacionamiento gratuito", "Habitaciones para no fumadores", "Habitaciones familiares", "Tetera/cafetera en todas las habitaciones"],
-        "photos": {
-            "main1": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/240474336.jpg?k=3c4e9a46259f00840c2a95d98d3629bb9d4c63fc8d1400943c193233fc1ef5a0&o=&hp=1",
-            "main2": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/240474316.jpg?k=71ca0d119efd2d9f4f07af8b33636259fd9072b6480e70cff3d0544c47507171&o=&hp=1",
-            "main3": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/240474313.jpg?k=fd031b1ffa06313d68c4407bcb4a8179bc6f0f2df2d24962d4d9e8c23f7f33f3&o=&hp=1"
-        },
+        "photos": [
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/240474336.jpg?k=3c4e9a46259f00840c2a95d98d3629bb9d4c63fc8d1400943c193233fc1ef5a0&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/240474316.jpg?k=71ca0d119efd2d9f4f07af8b33636259fd9072b6480e70cff3d0544c47507171&o=&hp=1",
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/240474313.jpg?k=fd031b1ffa06313d68c4407bcb4a8179bc6f0f2df2d24962d4d9e8c23f7f33f3&o=&hp=1"
+        ],
         "continent": "Asia",
         "location": "Catar",
         "city": "Doha",
@@ -189,10 +185,10 @@
             "properties": ["30 m²", "Vista al mar", "Vista al jardin", "Vista a la ciudad", "Aire acondicionado", "Baño privado", "TV de pantalla plana", "Insonorización", "Cafetera", "Minibar", "Wifi gratis"],
             "size": "30 m²",
             "description": "1 cama doble extragrande. This double room has a electric kettle, air conditioning and flat-screen TV.",
-            "photos": {
-                "bedroom1": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/229307210.jpg?k=22c2f74ab02e060a636f75075c1cd325205f1495ffff52bdb774ab687dfd79b9&o=",
-                "bedroom2": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/229307000.jpg?k=69c40a1124127acd26f997447a0bb48f1194017324872bbadd962ff3fed0d156&o="
-            }
+            "photos": [
+                 "https://cf.bstatic.com/xdata/images/hotel/max1024x768/229307210.jpg?k=22c2f74ab02e060a636f75075c1cd325205f1495ffff52bdb774ab687dfd79b9&o=",
+                 "https://cf.bstatic.com/xdata/images/hotel/max1024x768/229307000.jpg?k=69c40a1124127acd26f997447a0bb48f1194017324872bbadd962ff3fed0d156&o="
+            ]
         }
     },
     {
@@ -202,11 +198,11 @@
         "stars": "3",
         "price": "$8.204",
         "services": ["1 pileta", "Habitaciones para no fumadores", "Estacionamiento gratuito", "Wifi en toda la propiedad", "Adaptado para personas con movilidad reducida", "Wifi gratis"],
-        "photos": {
-            "main1": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/174196194.jpg?k=ac3740f16e50a18813ac7322d329d4e8b5c82df6907fcba2818dc4bd12382b2d&o=&hp=1",
-            "main2": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/325847664.jpg?k=0d1d13191563452e03db41d3822399a39d934b2d2ba475371fc89439e9541dd8&o=&hp=1",
-            "main3": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/44928887.jpg?k=5b8614ad622f9215aa67630f55201e8ec83b152bd7601a75530aad2240154b42&o=&hp=1"
-        },
+        "photos": [
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/174196194.jpg?k=ac3740f16e50a18813ac7322d329d4e8b5c82df6907fcba2818dc4bd12382b2d&o=&hp=1",
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/325847664.jpg?k=0d1d13191563452e03db41d3822399a39d934b2d2ba475371fc89439e9541dd8&o=&hp=1",
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/44928887.jpg?k=5b8614ad622f9215aa67630f55201e8ec83b152bd7601a75530aad2240154b42&o=&hp=1"
+        ],
         "continent": "Asia",
         "location": "Emiratos Arabes Unidos",
         "city": "Abu Dabi",
@@ -217,10 +213,10 @@
             "properties": ["Departamento entero", "35 m²", "Cocina privada", "Baño en suite", "Vista a la ciudad", "Pileta en el último piso", "Aire acondicionado", "TV de pantalla plana", "Insonorización", "Cafetera", "Wifi gratis"],
             "size": "35 m²",
             "description": "1 cama doble grande. This apartment features air conditioning, kitchenware and tea/coffee maker. Please not that this studio cannot accommodate an extra bed.",
-            "photos": {
-                "bedroom1": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/174199857.jpg?k=be639c64668ec3ffa2198a65589878c9c4b635518911103de0a07c9d0a6bd3ab&o=",
-                "bedroom2": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/30657047.jpg?k=12a23f8d5c3c712e3ceb07c004195ff81261ffe75b19f6481fe7660f9dd77dd2&o="
-            }
+            "photos": [
+                 "https://cf.bstatic.com/xdata/images/hotel/max1024x768/174199857.jpg?k=be639c64668ec3ffa2198a65589878c9c4b635518911103de0a07c9d0a6bd3ab&o=",
+                 "https://cf.bstatic.com/xdata/images/hotel/max1024x768/30657047.jpg?k=12a23f8d5c3c712e3ceb07c004195ff81261ffe75b19f6481fe7660f9dd77dd2&o="
+            ]
         }
     },
     {
@@ -230,11 +226,11 @@
         "stars": "3",
         "price": "$7.640",
         "services": ["Restaurante", "Servicio a la habitación", "Estacionamiento gratuito", "Habitaciones para no fumadores", "Wifi gratis", "Bar", "Buen desayuno"],
-        "photos": {
-            "main1": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/33732359.jpg?k=04194741e5ecb3b8aa56df40c2fe08fd096702295125fa9efd81bc3a27b16ee0&o=&hp=1",
-            "main2": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/116063825.jpg?k=a445e5764d30977c0cc64297e65bc2a66506ca82444976bcb462698018d46b31&o=&hp=1",
-            "main3": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/12651665.jpg?k=a0fff111e01da0d87c40aac47d77239a51449da584d5610031d24cb87a6c04a3&o=&hp=1"
-        },
+        "photos": [
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/33732359.jpg?k=04194741e5ecb3b8aa56df40c2fe08fd096702295125fa9efd81bc3a27b16ee0&o=&hp=1",
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/116063825.jpg?k=a445e5764d30977c0cc64297e65bc2a66506ca82444976bcb462698018d46b31&o=&hp=1",
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/12651665.jpg?k=a0fff111e01da0d87c40aac47d77239a51449da584d5610031d24cb87a6c04a3&o=&hp=1"
+        ],
         "continent": "América",
         "location": "México",
         "city": "Ciudad de México",
@@ -245,10 +241,10 @@
             "properties": ["16 m²", "Baño en suite", "TV de pantalla plana", "Wifi gratis"],
             "size": "16 m²",
             "description": "These rooms feature 1 double bed, a seating area and a ceiling fan. Cable TV and a telephone line are also available. The private bathroom offers toiletries and may either have a shower or a bath.",
-            "photos": {
-                "bedroom1": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/204966372.jpg?k=df8790ff5d1e6fb80b0ff4816b7ee8cd76db932e7419a8a10140799dee4a0121&o=",
-                "bedroom2": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/12651660.jpg?k=d2fc3423b00f4b45f668d54d4f21d3e63e31a5889d3c9fda03974b0ced52016f&o="
-            }
+            "photos": [
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/204966372.jpg?k=df8790ff5d1e6fb80b0ff4816b7ee8cd76db932e7419a8a10140799dee4a0121&o=",
+                 "https://cf.bstatic.com/xdata/images/hotel/max1024x768/12651660.jpg?k=d2fc3423b00f4b45f668d54d4f21d3e63e31a5889d3c9fda03974b0ced52016f&o="
+            ]
         }
     },
     {
@@ -258,11 +254,11 @@
         "stars": "4",
         "price": "$20.890",
         "services": ["1 pileta", "Gimnasio bueno", "Servicio a la habitación", "Adaptado para personas con movilidad reducida", "Wifi en toda la propiedad", "Restaurante", "Estacionamiento privado", "Bar", "Buen desayuno"],
-        "photos": {
-            "main1": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/286216484.jpg?k=e727ad182f175407c9c86bf1a394f9f7d20a833f519d27324214583900d0c3fb&o=&hp=1",
-            "main2": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/286216526.jpg?k=8e88a5a3604c4cbd4cba30a1ec6d2de34b91e94cfa8e68accb2c9efc78277827&o=&hp=1",
-            "main3": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/286289924.jpg?k=aab7f8016079e1b62ab9de052b8f4cf6b60063aa393ec99f41cba73860dbd7b4&o=&hp=1"
-        },
+        "photos": [
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/286216484.jpg?k=e727ad182f175407c9c86bf1a394f9f7d20a833f519d27324214583900d0c3fb&o=&hp=1",
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/286216526.jpg?k=8e88a5a3604c4cbd4cba30a1ec6d2de34b91e94cfa8e68accb2c9efc78277827&o=&hp=1",
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/286289924.jpg?k=aab7f8016079e1b62ab9de052b8f4cf6b60063aa393ec99f41cba73860dbd7b4&o=&hp=1"
+        ],
         "continent": "América",
         "location": "Brasil",
         "city": "Sao Paulo",
@@ -273,10 +269,10 @@
             "properties": ["30 m²", "Vista a la ciudad", "Bañera", "Aire acondicionado", "Baño en suite", "TV de pantalla plana", "Minibar", "Wifi gratis"],
             "size": "30 m²",
             "description": "This air-conditioned room features a queen size bed,a sofa, a flat-screen TV with satellite channels, a work desk, a telephone and a safe. The private bathroom includes a shower, free toiletries and a hairdryer.",
-            "photos": {
-                "bedroom1": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/354492331.jpg?k=ee1bee52bdb110c66275415577a298affcee958f3fd8d8b8bcd659933a7a7779&o=",
-                "bedroom2": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/286219454.jpg?k=29a7e36399ce9099b6f2eaf36adecc83895a159a293bb226a2fd09a4cee9dc44&o="
-            }
+            "photos": [
+                 "https://cf.bstatic.com/xdata/images/hotel/max1024x768/354492331.jpg?k=ee1bee52bdb110c66275415577a298affcee958f3fd8d8b8bcd659933a7a7779&o=",
+                 "https://cf.bstatic.com/xdata/images/hotel/max1024x768/286219454.jpg?k=29a7e36399ce9099b6f2eaf36adecc83895a159a293bb226a2fd09a4cee9dc44&o="
+            ]
         }
     },
     {
@@ -286,11 +282,11 @@
         "stars": "5",
         "price": "$54.380",
         "services": ["Habitaciones para no fumadores", "Gimnasio", "Adaptado para personas con movilidad reducida", "Wifi en toda la propiedad", "Estacionamiento privado", "Wifi gratis", "Bar", "Buen desayuno"],
-        "photos": {
-            "main1": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/99760688.jpg?k=c032cc0dbf582aaf8f8997817453dbc466590de897f60ec47f2b14a950009031&o=&hp=1",
-            "main2": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/104780338.jpg?k=e147b01a7f1527a20a934b166ee7205126696e5a5dc36a144b3b9da34473c89c&o=&hp=1",
-            "main3": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/129499502.jpg?k=353bf2fca04bee144d0ed47a5e12d8ff5549b2ce9433a2a768265b56ce8d54cb&o=&hp=1"
-        },
+        "photos": [
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/99760688.jpg?k=c032cc0dbf582aaf8f8997817453dbc466590de897f60ec47f2b14a950009031&o=&hp=1",
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/104780338.jpg?k=e147b01a7f1527a20a934b166ee7205126696e5a5dc36a144b3b9da34473c89c&o=&hp=1",
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/129499502.jpg?k=353bf2fca04bee144d0ed47a5e12d8ff5549b2ce9433a2a768265b56ce8d54cb&o=&hp=1"
+        ],
         "continent": "América",
         "location": "Estados Unidos",
         "city": "Nueva York",
@@ -301,10 +297,10 @@
             "properties": ["26 m²", "Aire acondicionado", "Baño privado", "TV de pantalla plana", "Cafetera", "Wifi gratis"],
             "size": "26 m²",
             "description": "A flat-screen cable TV and a desk are included in this room.",
-            "photos": {
-                "bedroom1": "https://cf.bstatic.com/images/hotel/max1024x768/104/104776532.jpg",
-                "bedroom2": "https://cf.bstatic.com/images/hotel/max1024x768/104/104780341.jpg"
-            }
+            "photos": [
+                 "https://cf.bstatic.com/images/hotel/max1024x768/104/104776532.jpg",
+                 "https://cf.bstatic.com/images/hotel/max1024x768/104/104780341.jpg"
+            ]
         }
     },
     {
@@ -314,11 +310,11 @@
         "stars": "3",
         "price": "$12.744",
         "services": ["Habitaciones para no fumadores", "Traslados", "Spa", "Adaptado para personas con movilidad reducida", "Wifi gratis", "Wifi en toda la propiedad"],
-        "photos": {
-            "main1": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/47862957.jpg?k=22acc17be44c9315a5b71f909116b8372fa54d97f0e94e6258b81d6542a7cadd&o=&hp=1",
-            "main2": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/13540103.jpg?k=cfd5db0a8b0d49a28ccbec566fe7d0fc9aa3f64cc5f6c31c1338ca9c89c79621&o=&hp=1",
-            "main3": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/282715580.jpg?k=6ac5593ac11252f57b375cac029dbb41c383d763aa117703891aa4e5e2d73e3d&o=&hp=1"
-        },
+        "photos": [
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/47862957.jpg?k=22acc17be44c9315a5b71f909116b8372fa54d97f0e94e6258b81d6542a7cadd&o=&hp=1",
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/13540103.jpg?k=cfd5db0a8b0d49a28ccbec566fe7d0fc9aa3f64cc5f6c31c1338ca9c89c79621&o=&hp=1",
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/282715580.jpg?k=6ac5593ac11252f57b375cac029dbb41c383d763aa117703891aa4e5e2d73e3d&o=&hp=1"
+        ],
         "continent": "América",
         "location": "Argentina",
         "city": "Buenos Aires",
@@ -329,10 +325,10 @@
             "properties": ["16 m²", "Aire acondicionado", "Baño en suite", "TV de pantalla plana", "Insonorización", "Minibar", "Wifi gratis"],
             "size": "16 m²",
             "description": "Features air conditioning, heating, minibar, cable TV and private bathroom with toiletries.",
-            "photos": {
-                "bedroom1": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/13943596.jpg?k=a97c878fa68ea34ea171cf719061daa6189f921584b532faddf75fd99833d4dc&o=",
-                "bedroom2": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/13943396.jpg?k=8c8694aab7316d5b40e1282793014b88cdf9dd24a82296032f24d54225e15bf2&o="
-            }
+            "photos": [
+                 "https://cf.bstatic.com/xdata/images/hotel/max1024x768/13943596.jpg?k=a97c878fa68ea34ea171cf719061daa6189f921584b532faddf75fd99833d4dc&o=",
+                 "https://cf.bstatic.com/xdata/images/hotel/max1024x768/13943396.jpg?k=8c8694aab7316d5b40e1282793014b88cdf9dd24a82296032f24d54225e15bf2&o="
+            ]
         }
     },
     {
@@ -342,11 +338,11 @@
         "stars": "2",
         "price": "$5.434",
         "services": ["Traslados", "Habitaciones para no fumadores", "Wifi en toda la propiedad", "Wifi gratis", "Habitaciones familiares", "Buen desayuno"],
-        "photos": {
-            "main1": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/79111524.jpg?k=cfe1de460f4c69e172a7ae8db2ee69b0396af071b0c203bc5e871ea277b5bbb6&o=&hp=1",
-            "main2": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/44878674.jpg?k=5d6aa9b00bbbe75e08b19330fdfa5655ae4e1c9aa4e14d507feec672f4adf5de&o=&hp=1",
-            "main3": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/79111641.jpg?k=13026851ca5a4229f1d52b73f42b4cf44113fe0bf7f3799f38d61fad46ea67c9&o=&hp=1"
-        },
+        "photos": [
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/79111524.jpg?k=cfe1de460f4c69e172a7ae8db2ee69b0396af071b0c203bc5e871ea277b5bbb6&o=&hp=1",
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/44878674.jpg?k=5d6aa9b00bbbe75e08b19330fdfa5655ae4e1c9aa4e14d507feec672f4adf5de&o=&hp=1",
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/79111641.jpg?k=13026851ca5a4229f1d52b73f42b4cf44113fe0bf7f3799f38d61fad46ea67c9&o=&hp=1"
+        ],
         "continent": "América",
         "location": "Perú",
         "city": "Lima",
@@ -357,10 +353,10 @@
             "properties": ["20 m²", "Balcón", "Wifi gratis"],
             "size": "20 m²",
             "description": "This room has 2 single beds and a fan. It has a shared bathroom outside of the room with 24 hour hot water. Daily maid service, WiFi, towels and linen are provided. Additionally guests may use the shared TV room and lockers.",
-            "photos": {
-                "bedroom1": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/79112132.jpg?k=8f178065eb0b50db1ee3e33b5f636ccc35efc8d779272183ad7ba48bdbeddef4&o=",
-                "bedroom2": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/31526374.jpg?k=e0028ccac7fe19999212b5e3286f5d8eda16a7d60141df3042fd51814a9aa53a&o="
-            }
+            "photos": [
+                 "https://cf.bstatic.com/xdata/images/hotel/max1024x768/79112132.jpg?k=8f178065eb0b50db1ee3e33b5f636ccc35efc8d779272183ad7ba48bdbeddef4&o=",
+                 "https://cf.bstatic.com/xdata/images/hotel/max1024x768/31526374.jpg?k=e0028ccac7fe19999212b5e3286f5d8eda16a7d60141df3042fd51814a9aa53a&o="
+            ]
         }
     },
     {
@@ -370,11 +366,11 @@
         "stars": "3",
         "price": "$10.296",
         "services": ["Traslados", "Servicio a la habitación", "Adaptado para personas con movilidad reducida", "Restaurante", "Wifi en toda la propiedad", "Wifi gratis", "Bar", "Desayuno fabuloso"],
-        "photos": {
-            "main1": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/282778673.jpg?k=f181dd092454ce5a0725b7db0f041ff4f3efc99c350c1b4ce4383fc20911b8e2&o=&hp=1",
-            "main2": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/4557335.jpg?k=c81b463c79c5db681535b4ae9131367eef15f133ad7a5fc72dcaad84a7f1437a&o=&hp=1",
-            "main3": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/282778878.jpg?k=3c6820f0906991cddf5cbfeb015545a54e254cd7153cf8d0b0c386d9a3c397e2&o=&hp=1"
-        },
+        "photos": [
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/282778673.jpg?k=f181dd092454ce5a0725b7db0f041ff4f3efc99c350c1b4ce4383fc20911b8e2&o=&hp=1",
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/4557335.jpg?k=c81b463c79c5db681535b4ae9131367eef15f133ad7a5fc72dcaad84a7f1437a&o=&hp=1",
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/282778878.jpg?k=3c6820f0906991cddf5cbfeb015545a54e254cd7153cf8d0b0c386d9a3c397e2&o=&hp=1"
+        ],
         "continent": "América",
         "location": "Colombia",
         "city": "Bogotá",
@@ -385,10 +381,10 @@
             "properties": ["20 m²", "Baño en suite", "TV de pantalla plana", "Insonorización", "Wifi gratis"],
             "size": "20 m²",
             "description": "Rooms are 20 square metres.",
-            "photos": {
-                "bedroom1": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/34951872.jpg?k=9da43fa30380436aed6329fbbfd8feb4a4387fc5d1c8390b4399f3ed63aa7fc8&o=",
-                "bedroom2": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/84083208.jpg?k=e186efdf7ebd704f4d91f54304e7cc943f0bb8ae01f4d4755802ec4bdd56e613&o="
-            }
+            "photos": [
+                 "https://cf.bstatic.com/xdata/images/hotel/max1024x768/34951872.jpg?k=9da43fa30380436aed6329fbbfd8feb4a4387fc5d1c8390b4399f3ed63aa7fc8&o=",
+                 "https://cf.bstatic.com/xdata/images/hotel/max1024x768/84083208.jpg?k=e186efdf7ebd704f4d91f54304e7cc943f0bb8ae01f4d4755802ec4bdd56e613&o="
+            ]
         }
     },
     {
@@ -398,11 +394,11 @@
         "stars": "4",
         "price": "$16.007",
         "services": ["Traslados", "Gimnasio", "Habitaciones para no fumadores", "Servicio a la habitación", "Wifi en toda la propiedad", "Restaurante", "Bar", "Desayuno"],
-        "photos": {
-            "main1": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/141856869.jpg?k=064468c10f0a3f7e9ff3ff60e9abca0ccf947a0142aa64b5d9e63c0e644313b2&o=&hp=1",
-            "main2": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/19517613.jpg?k=812a61d80257e53b11e9406f4b22da43613123752bd850f1faee05e90d626aff&o=&hp=1",
-            "main3": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/15355299.jpg?k=92cdcc1edcf6d4900089a85ec9ff2fdeebf86980b014529eda403f03fd4ba317&o=&hp=1"
-        },
+        "photos": [
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/141856869.jpg?k=064468c10f0a3f7e9ff3ff60e9abca0ccf947a0142aa64b5d9e63c0e644313b2&o=&hp=1",
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/19517613.jpg?k=812a61d80257e53b11e9406f4b22da43613123752bd850f1faee05e90d626aff&o=&hp=1",
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/15355299.jpg?k=92cdcc1edcf6d4900089a85ec9ff2fdeebf86980b014529eda403f03fd4ba317&o=&hp=1"
+        ],
         "continent": "América",
         "location": "Chile",
         "city": "Santiago de Chile",
@@ -413,10 +409,10 @@
             "properties": ["22 m²", "Vista a la ciudad", "Aire acondicionado", "Baño en suite", "TV de pantalla plana", "Wifi gratis"],
             "size": "22 m²",
             "description": "This twin room has a tile/marble floor, air conditioning and flat-screen TV.",
-            "photos": {
-                "bedroom1": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/331440229.jpg?k=82f114557dcf9145eba831230548b0a8958c499404af7bdfd1e3f84449e20713&o=",
-                "bedroom2": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/284085340.jpg?k=3f48986f9fb9f9b068a29e0bb9f4f14da47c61e75f92735654b21e65bac53754&o=&hp=1"
-            }
+            "photos": [
+                 "https://cf.bstatic.com/xdata/images/hotel/max1024x768/331440229.jpg?k=82f114557dcf9145eba831230548b0a8958c499404af7bdfd1e3f84449e20713&o=",
+                 "https://cf.bstatic.com/xdata/images/hotel/max1024x768/284085340.jpg?k=3f48986f9fb9f9b068a29e0bb9f4f14da47c61e75f92735654b21e65bac53754&o=&hp=1"
+            ]
         }
     },
     {
@@ -426,11 +422,11 @@
         "stars": "1",
         "price": "$4.846",
         "services": ["Servicio a la habitación", "Wifi gratis", "Estacionamiento gratuito", "Habitaciones familiares", "Habitaciones para no fumadores", "Bar", "Desayuno"],
-        "photos": {
-            "main1": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/97272537.jpg?k=916e137e2ffce37b6447d501ce21caf418be80f08fc6001bd4ac352e36110729&o=&hp=1",
-            "main2": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/96742812.jpg?k=ef9fc385a9793bb3456c2bf829f0f17f3ea043d51e75a7bbc253a2c2a695a0c8&o=&hp=1",
-            "main3": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/7925179.jpg?k=cca169a728a2aff34e3bae7b1cefee4e3548ede8cc30c59c5accef6be3494d82&o=&hp=1"
-        },
+        "photos": [
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/97272537.jpg?k=916e137e2ffce37b6447d501ce21caf418be80f08fc6001bd4ac352e36110729&o=&hp=1",
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/96742812.jpg?k=ef9fc385a9793bb3456c2bf829f0f17f3ea043d51e75a7bbc253a2c2a695a0c8&o=&hp=1",
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/7925179.jpg?k=cca169a728a2aff34e3bae7b1cefee4e3548ede8cc30c59c5accef6be3494d82&o=&hp=1"
+        ],
         "continent": "América",
         "location": "Panamá",
         "city": "Panamá",
@@ -441,10 +437,10 @@
             "properties": ["15 m²", "Vista", "Aire acondicionado", "Baño privado", "TV de pantalla plana", "Wifi gratis"],
             "size": "15 m²",
             "description": "Rooms come with 2 double beds. Each has a telephone and cable TV. There is a private bathroom with a bath tub or shower.",
-            "photos": {
-                "bedroom1": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/97270539.jpg?k=bc62af7d14a279d75fc7ff43ff1fb097dfd1a42817108e34c2df2fba0d124a53&o=",
-                "bedroom2": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/96833771.jpg?k=45f0b2f286bc3cb680c016a8706e4acf0fd033bf7f9cd1640732262eaff35e25&o="
-            }
+            "photos": [
+                 "https://cf.bstatic.com/xdata/images/hotel/max1024x768/97270539.jpg?k=bc62af7d14a279d75fc7ff43ff1fb097dfd1a42817108e34c2df2fba0d124a53&o=",
+                 "https://cf.bstatic.com/xdata/images/hotel/max1024x768/96833771.jpg?k=45f0b2f286bc3cb680c016a8706e4acf0fd033bf7f9cd1640732262eaff35e25&o="
+            ]
         }
     },
     {
@@ -454,11 +450,11 @@
         "stars": "4",
         "price": "$26.889",
         "services": ["Traslados", "Habitaciones para no fumadores", "Adaptado para personas con movilidad reducida", "Restaurante", "Wifi en toda la propiedad", "Wifi gratis", "Tetera/cafetera en todas las habitaciones", "Bar", "Buen desayuno"],
-        "photos": {
-            "main1": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/269115382.jpg?k=60d0a9c218434992ae401805f06d2ad01fd8da4b3752cf3c2f68876febfed3b4&o=&hp=1",
-            "main2": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/269886012.jpg?k=43aad4d73086485aae2d3a5206745510102138d0c568d122e65771cee667b268&o=&hp=1",
-            "main3": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/269886007.jpg?k=aea21edf74cf107c89532903060e7e96d97746a54e662d90396e6735d071861d&o=&hp=1"
-        },
+        "photos": [
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/269115382.jpg?k=60d0a9c218434992ae401805f06d2ad01fd8da4b3752cf3c2f68876febfed3b4&o=&hp=1",
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/269886012.jpg?k=43aad4d73086485aae2d3a5206745510102138d0c568d122e65771cee667b268&o=&hp=1",
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/269886007.jpg?k=aea21edf74cf107c89532903060e7e96d97746a54e662d90396e6735d071861d&o=&hp=1"
+        ],
         "continent": "Oceanía",
         "location": "Australia",
         "city": "Sidney",
@@ -469,10 +465,10 @@
             "properties": ["19 m²", "Vista a la ciudad", "Aire acondicionado", "Baño en suite", "TV de pantalla plana", "Insonorización", "Wifi gratis"],
             "size": "19 m²",
             "description": "This double room has a sofa, tea/coffee maker and seating area.",
-            "photos": {
-                "bedroom1": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/269766574.jpg?k=f754e90ea6b4420833bc249d26687d6c1031027afcce77b0629e748ee8d510de&o=",
-                "bedroom2": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/269766578.jpg?k=06bf4ee75a0f5e9c399f81345bdda7a122b613c247f36adf9253ef4cec6d4f26&o="
-            }
+            "photos": [
+                 "https://cf.bstatic.com/xdata/images/hotel/max1024x768/269766574.jpg?k=f754e90ea6b4420833bc249d26687d6c1031027afcce77b0629e748ee8d510de&o=",
+                 "https://cf.bstatic.com/xdata/images/hotel/max1024x768/269766578.jpg?k=06bf4ee75a0f5e9c399f81345bdda7a122b613c247f36adf9253ef4cec6d4f26&o="
+            ]
         }
     },
     {
@@ -482,11 +478,11 @@
         "stars": "4",
         "price": "$14.162",
         "services": ["Habitaciones para no fumadores", "Adaptado para personas con movilidad reducida", "Spa", "Servicio a la habitación", "Wifi en toda la propiedad", "Wifi gratis", "Tetera/cafetera en todas las habitaciones", "Bar"],
-        "photos": {
-            "main1": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/246399451.jpg?k=8e66d7de3c4f6a12e628bc10b5d76a89e8e20c84a97476ed0b0b9a6413281c96&o=&hp=1",
-            "main2": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/246399497.jpg?k=108dbcf3298a43b9cf38eddc8cf2cab0a4fc738938c9501a393fa8101f194328&o=&hp=1",
-            "main3": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/97538144.jpg?k=0022b0829e09c8a5ca9596da76feb7acd4e66647daabb1f2c83d0445a5bd083e&o=&hp=1"
-        },
+        "photos": [
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/246399451.jpg?k=8e66d7de3c4f6a12e628bc10b5d76a89e8e20c84a97476ed0b0b9a6413281c96&o=&hp=1",
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/246399497.jpg?k=108dbcf3298a43b9cf38eddc8cf2cab0a4fc738938c9501a393fa8101f194328&o=&hp=1",
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/97538144.jpg?k=0022b0829e09c8a5ca9596da76feb7acd4e66647daabb1f2c83d0445a5bd083e&o=&hp=1"
+        ],
         "continent": "Oceanía",
         "location": "Australia",
         "city": "Melbourne",
@@ -497,10 +493,10 @@
             "properties": ["18 m²", "Aire acondicionado", "Baño en suite", "TV de pantalla plana", "Minibar", "Wifi gratis"],
             "size": "18 m²",
             "description": "The cosy Standard Twin Room contains an ensuite bathroom, LCD flat-screen TV, hair dryer, tea/coffee making facilities, full length windows and mini fridge.",
-            "photos": {
-                "bedroom1": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/246399472.jpg?k=7b0e43aeb45a299c4a9ea7b9883c66a03c259e5d29836ac4c87ed27a0d62897c&o=",
-                "bedroom2": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/246399455.jpg?k=3e1edf076855e3dd1ca31d7154af443e0c31867984574d7d2ec59e2ad4dda634&o="
-            }
+            "photos": [
+                 "https://cf.bstatic.com/xdata/images/hotel/max1024x768/246399472.jpg?k=7b0e43aeb45a299c4a9ea7b9883c66a03c259e5d29836ac4c87ed27a0d62897c&o=",
+                 "https://cf.bstatic.com/xdata/images/hotel/max1024x768/246399455.jpg?k=3e1edf076855e3dd1ca31d7154af443e0c31867984574d7d2ec59e2ad4dda634&o="
+            ]
         }
     },
     {
@@ -510,11 +506,11 @@
         "stars": "3",
         "price": "$24.317",
         "services": ["Habitaciones para no fumadores", "Gimnasio", "Estacionamiento", "Wifi gratis", "Recepción 24 horas", "Tetera/cafetera en todas las habitaciones", "Muy buen desayuno"],
-        "photos": {
-            "main1": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/55640167.jpg?k=d9539cac87e238cbd59231b744966752083545ec0117edbe0ab8c10c093d4024&o=&hp=1",
-            "main2": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/55640166.jpg?k=d20debc6efa150ea50b86a6274641d83a40a6fd3d94203c876d5ab356d33ce64&o=&hp=1",
-            "main3": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/55640164.jpg?k=ca4ddacc2306e88659e8f5d6ae785322e8e2edcd62775dc17b01be8b2acec612&o=&hp=1"
-        },
+        "photos": [
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/55640167.jpg?k=d9539cac87e238cbd59231b744966752083545ec0117edbe0ab8c10c093d4024&o=&hp=1",
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/55640166.jpg?k=d20debc6efa150ea50b86a6274641d83a40a6fd3d94203c876d5ab356d33ce64&o=&hp=1",
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/55640164.jpg?k=ca4ddacc2306e88659e8f5d6ae785322e8e2edcd62775dc17b01be8b2acec612&o=&hp=1"
+        ],
         "continent": "Oceanía",
         "location": "Nueva Zelanda",
         "city": "Wellington",
@@ -525,10 +521,10 @@
             "properties": ["22 m²", "Baño en suite", "TV de pantalla plana", "Wifi gratis"],
             "size": "22 m²",
             "description": "Stylish and comfortable room that includes an en suite bathroom, work desk and satellite TV.",
-            "photos": {
-                "bedroom1": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/81267899.jpg?k=4dd89006d3b833554f4bf296a67f5845a11c49bb1cf0f375cdba4ae9ff92ca67&o=",
-                "bedroom2": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/81267950.jpg?k=d0be523664a6bd260df32ebf2b42018801078a6ac6e32446cf920db28dd37d89&o="
-            }
+            "photos": [
+                 "https://cf.bstatic.com/xdata/images/hotel/max1024x768/81267899.jpg?k=4dd89006d3b833554f4bf296a67f5845a11c49bb1cf0f375cdba4ae9ff92ca67&o=",
+                 "https://cf.bstatic.com/xdata/images/hotel/max1024x768/81267950.jpg?k=d0be523664a6bd260df32ebf2b42018801078a6ac6e32446cf920db28dd37d89&o="
+            ]
         }
     },
     {
@@ -538,11 +534,11 @@
         "stars": "3",
         "price": "$10.113",
         "services": ["Traslados", "Wifi gratis", "Habitaciones familiares", "Estacionamiento gratuito", "Ubicado frente a la playa"],
-        "photos": {
-            "main1": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/175637228.jpg?k=0bd65a1f034765e7e4ce3216934f48d28da9e0d2a5d525012c9da5497f631792&o=&hp=1",
-            "main2": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/202454931.jpg?k=cba0ff0ba34215400a53ed580bad44bc6d6a3571ca1a1da89c8d2285e652b45a&o=&hp=1",
-            "main3": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/203688893.jpg?k=e5cf0702e92318cdf8c90937f581d8372cdc921bfe0703d17506bfdb0e68a2bb&o=&hp=1"
-        },
+        "photos": [
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/175637228.jpg?k=0bd65a1f034765e7e4ce3216934f48d28da9e0d2a5d525012c9da5497f631792&o=&hp=1",
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/202454931.jpg?k=cba0ff0ba34215400a53ed580bad44bc6d6a3571ca1a1da89c8d2285e652b45a&o=&hp=1",
+             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/203688893.jpg?k=e5cf0702e92318cdf8c90937f581d8372cdc921bfe0703d17506bfdb0e68a2bb&o=&hp=1"
+        ],
         "continent": "Oceanía",
         "location": "Fiji",
         "city": "Suva",
@@ -553,10 +549,10 @@
             "properties": ["25 m²", "Villa entera", "Vista al mar", "Vista al lago", "Vista al jardin", "Vista a la montaña", "Vista a un punto turístico", "Vista al río", "Vista a un patio interno", "Patio", "Insonorización", "Wifi gratis"],
             "size": "25 m²",
             "description": "This villa features a dining area, soundproofing and electric kettle.",
-            "photos": {
-                "bedroom1": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/235060549.jpg?k=c6c8b83d42ccdc3f82bfd478a3d15616d295be4b99f9b6cbbdf1ef6f5ba95a06&o=",
-                "bedroom2": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/368938594.jpg?k=37330af8d063b35a259e4b91ad2156c1be63e34d91f35faa32e9d06f01b9a028&o="
-            }
+            "photos": [
+                 "https://cf.bstatic.com/xdata/images/hotel/max1024x768/235060549.jpg?k=c6c8b83d42ccdc3f82bfd478a3d15616d295be4b99f9b6cbbdf1ef6f5ba95a06&o=",
+                 "https://cf.bstatic.com/xdata/images/hotel/max1024x768/368938594.jpg?k=37330af8d063b35a259e4b91ad2156c1be63e34d91f35faa32e9d06f01b9a028&o="
+            ]
         }
     },
     {
@@ -566,11 +562,11 @@
         "stars":"5",
         "price":"$99.340",
         "services":["2 piscinas","Spa y centro de bienestar","Traslado aeropuerto","Gimnasio","Adaptado personas de movilidad reducida","Servicio de habitaciones"," Restaurante","Tetera/cafetera en todas las habitaciones","Bar","Muy buen desayuno","Situado frente a la playa"],
-        "photos":{
-            "main1":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/12433956.jpg?k=a98a839c26e2fb095b8ccd9fe8f8b67e27e037149974b294034eb08574ac03a5&o=&hp=1",
-            "main2":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/347819487.jpg?k=7ce06b8dc2648dc0b19941b7181ee61b2827456101e23ad84566f59e2caeb5fa&o=&hp=1",
-            "main3":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/78515964.jpg?k=74726b00af4cb4b739bdc130635da90e2521b27de84ce3a3955d6517380b3cd1&o=&hp=1"
-        },
+        "photos":[
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/12433956.jpg?k=a98a839c26e2fb095b8ccd9fe8f8b67e27e037149974b294034eb08574ac03a5&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/347819487.jpg?k=7ce06b8dc2648dc0b19941b7181ee61b2827456101e23ad84566f59e2caeb5fa&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/78515964.jpg?k=74726b00af4cb4b739bdc130635da90e2521b27de84ce3a3955d6517380b3cd1&o=&hp=1"
+        ],
         "continent":"Europe",
         "location":"España",
         "city": "Alcalá",
@@ -581,10 +577,10 @@
             "properties":["49 m²","Balcón","Vistas al mar","Vistas al jardín","Vistas a la montaña","Vistas a la ciudad","Piscina con vistas","Aire acondicionado","Bañera de hidromasaje","Baño en la habitación","TV de pantalla plana","Insonorización","Terraza","Cafetera","Minibar","WiFi gratis"],
             "size":"49 m²",
             "description":"This spacious room has a balcony with a hot tub and partial views of the ocean. The bathroom offers a hydromassage shower and oversized bathtub, bathrobes and slippers.This room has VIP toiletries, a pillow menu, Coffee Machine, aromatherapy menu, and ironing service of two items per day. A DVD player is available on request. 1 free bottle of mineral water is provided per person per day. Guests have access to the following services: - separate reception area; - private concierge service; - VIP lounge with TV room, newspapers and magazines, as well as free coffee and tea. It also includes 1-hour of open bar per day.",
-            "photos":{
-                "bedroom1":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/170644293.jpg?k=45c26c37135a7a83ae78ec6547292be0b5f6461d3c5be05f8fa335217e812660&o=",
-                "bedroom2":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/347814665.jpg?k=9184208147e6a39980c56a497681a80f6a179600238f2fef9b6c8f9a5ecaa0bc&o="
-            }        
+            "photos":[
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/170644293.jpg?k=45c26c37135a7a83ae78ec6547292be0b5f6461d3c5be05f8fa335217e812660&o=",
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/347814665.jpg?k=9184208147e6a39980c56a497681a80f6a179600238f2fef9b6c8f9a5ecaa0bc&o="
+            ]        
         }
     },
     {
@@ -594,11 +590,11 @@
         "stars":"5",
         "price":"$103.601",
         "services":["Traslado aeropuerto","WiFi gratis"," Habitaciones familiares","Tetera/cafetera en todas las habitaciones"," Bar","Desayuno"],
-        "photos":{
-            "main1":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/124184922.jpg?k=96155d814ba2793387aa441499237f3b657f9b81b33f90beeee77872b01adc0e&o=&hp=1",
-            "main2":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/153938383.jpg?k=194fdcc7d67adb47a0f85dffb1814645d28c4330ed50b5d48ac3ee99d51bf2d3&o=&hp=1",
-            "main3":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/124195697.jpg?k=6c9e58a8134b93f8f6eabb1d2a66d91efd84de3bc456290b3137c78e9161b9f9&o=&hp=1"
-        },
+        "photos":[
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/124184922.jpg?k=96155d814ba2793387aa441499237f3b657f9b81b33f90beeee77872b01adc0e&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/153938383.jpg?k=194fdcc7d67adb47a0f85dffb1814645d28c4330ed50b5d48ac3ee99d51bf2d3&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/124195697.jpg?k=6c9e58a8134b93f8f6eabb1d2a66d91efd84de3bc456290b3137c78e9161b9f9&o=&hp=1"
+        ],
         "continent":"Europe",
         "location":"Italia",
         "city": "Ugento",
@@ -609,10 +605,10 @@
             "properties":["Vistas a un patio interior","Aire acondicionado","Baño en la habitación","TV de pantalla plana","Insonorización","Cafetera","Minibar","WiFi gratis","1 cama doble grande"],
             "size":"",
             "description":"",
-            "photos":{
-                "bedroom1":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/154326806.jpg?k=a431bed2aa58ebcd73dbddcce4a018dc651be23beb5a82c834a09b6423f27a81&o=",
-                "bedroom2":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/154326812.jpg?k=f135a458ac2628834456472938bc060b56c0067ad80313e5ef88af149b3d6a82&o="
-            }     
+            "photos":[
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/154326806.jpg?k=a431bed2aa58ebcd73dbddcce4a018dc651be23beb5a82c834a09b6423f27a81&o=",
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/154326812.jpg?k=f135a458ac2628834456472938bc060b56c0067ad80313e5ef88af149b3d6a82&o="
+            ]     
         }
     },
     {
@@ -622,11 +618,11 @@
         "stars":"3",
         "price":"$13.367",
         "services":[" Habitaciones sin humo"," WiFi gratis"," Habitaciones familiares"],
-        "photos":{
-            "main1":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/393677561.jpg?k=02a712ce0a2ffa20ce08f6c30c979acb1d4f539df5a03e15f976de3c8e918f6b&o=&hp=1",
-            "main2":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/393677740.jpg?k=8b6d6e92887610cb4ca02c190c996e0cf45bd3be64ed11685d9c7fc45dacad82&o=&hp=1",
-            "main3":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/393677718.jpg?k=f4adee5c7bbbc7f60b26b07b00a720a4116691d3f7de0b7d7b2caad12ace83ba&o=&hp=1"
-        },
+        "photos":[
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/393677561.jpg?k=02a712ce0a2ffa20ce08f6c30c979acb1d4f539df5a03e15f976de3c8e918f6b&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/393677740.jpg?k=8b6d6e92887610cb4ca02c190c996e0cf45bd3be64ed11685d9c7fc45dacad82&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/393677718.jpg?k=f4adee5c7bbbc7f60b26b07b00a720a4116691d3f7de0b7d7b2caad12ace83ba&o=&hp=1"
+        ],
         "continent":"Europe",
         "location":"Alemania",
         "city": "Gütersloh",
@@ -637,10 +633,10 @@
             "properties":["30 m²","Vistas a la ciudad","Bañera","Baño en la habitación","TV de pantalla plana","WiFi gratis"],
             "size":"30 m²",
             "description":"",
-            "photos":{
-                "bedroom1":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/393677669.jpg?k=d01b66eb32972a4113f1331b4373700e61a56a7d2822b5dda71364d26f1dbf49&o=",
-                "bedroom2":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/393677662.jpg?k=9c9d821434a4f0f047419cc04fcb8000506b00d48527ead272a0cab2ba285dae&o="
-            }
+            "photos":[
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/393677669.jpg?k=d01b66eb32972a4113f1331b4373700e61a56a7d2822b5dda71364d26f1dbf49&o=",
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/393677662.jpg?k=9c9d821434a4f0f047419cc04fcb8000506b00d48527ead272a0cab2ba285dae&o="
+            ]
         }
     },
     {
@@ -650,11 +646,11 @@
         "stars":"3",
         "price":"$37.012",
         "services":[" Habitaciones sin humo"," WiFi en todo el alojamiento","Parking"," WiFi gratis"," Recepción 24 horas"," Muy buen desayuno"],
-        "photos":{
-            "main1":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/43393140.jpg?k=6a7d76152ce48e54cb581871f4d4e3ff7aaded068487b05fc83cbc90f9ff6601&o=&hp=1",
-            "main2":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/325676111.jpg?k=b5e836e8b8dc495614e7f344a0b81810d7121a5d275e73ae583978786b54ac23&o=&hp=1",
-            "main3":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/321660623.jpg?k=0cad2563a4ef1354660f81ab032ee19fcc43a5dde19e1dea7c617db718a1932f&o=&hp=1"
-        },
+        "photos":[
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/43393140.jpg?k=6a7d76152ce48e54cb581871f4d4e3ff7aaded068487b05fc83cbc90f9ff6601&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/325676111.jpg?k=b5e836e8b8dc495614e7f344a0b81810d7121a5d275e73ae583978786b54ac23&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/321660623.jpg?k=0cad2563a4ef1354660f81ab032ee19fcc43a5dde19e1dea7c617db718a1932f&o=&hp=1"
+        ],
         "continent":"Europe",
         "location":"Francia",
         "city": "París",
@@ -665,10 +661,10 @@
             "properties":["Vistas a la ciudad","Vistas a un patio interior","Aire acondicionado","Baño en la habitación","TV de pantalla plana","Insonorización","WiFi gratis"],
             "size":"14 m²",
             "description":"",
-            "photos":{
-                "bedroom1":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/340496578.jpg?k=3488007f5d6947c30fe07ad892c5dcc1d5dcb48a2876182429ea8f522a17fe6f&o=",
-                "bedroom2":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/325676087.jpg?k=725ea99b125d97c5279ad9c35d360893d90226097764eca1a80ecb1e42a9da82&o="
-            }
+            "photos":[
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/340496578.jpg?k=3488007f5d6947c30fe07ad892c5dcc1d5dcb48a2876182429ea8f522a17fe6f&o=",
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/325676087.jpg?k=725ea99b125d97c5279ad9c35d360893d90226097764eca1a80ecb1e42a9da82&o="
+            ]
     
         }
     },
@@ -679,11 +675,11 @@
         "stars":"4",
         "price":"$24.672",
         "services":["Traslado aeropuerto","Parking","Admite mascotas","Habitaciones familiares","WiFi gratis","Tetera/cafetera en todas las habitaciones","Bar"," Desayuno fabuloso" ],
-        "photos":{
-            "main1":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/362289866.jpg?k=5fe6db7b9fb4c417aec117cd48930c5e112146cc01782113023b96f9975837f7&o=&hp=1",
-            "main2":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/66764708.jpg?k=d60411f1ef348d7a54d4865e38d9d9f73a80e3104439dd4f0b0d83486f52529b&o=&hp=1",
-            "main3":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/119296879.jpg?k=a0135b4aa385262975d85d40317cf6da6c8e21c8201f8da6cde04ca2f27b875b&o=&hp=1"
-        },
+        "photos":[
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/362289866.jpg?k=5fe6db7b9fb4c417aec117cd48930c5e112146cc01782113023b96f9975837f7&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/66764708.jpg?k=d60411f1ef348d7a54d4865e38d9d9f73a80e3104439dd4f0b0d83486f52529b&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/119296879.jpg?k=a0135b4aa385262975d85d40317cf6da6c8e21c8201f8da6cde04ca2f27b875b&o=&hp=1"
+        ],
         "continent":"Europe",
         "location":"Suiza",
         "city":"Samedan",
@@ -694,10 +690,10 @@
             "properties":["25 m²","Baño en la habitación","TV de pantalla plana","WiFi gratis"],
             "size":"25 m²",
             "description":"These rooms are decorated in Engadin style. They feature a flat-screen satellite TV, a safe, and a private bathroom. Some have a whirlpool tub.",
-            "photos":{
-                "bedroom1":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/66764940.jpg?k=25a0de7812b0bce56f098471557b066313cf44b33cece6407f77e0fee80a3b21&o=",
-                "bedroom2":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/330454748.jpg?k=a77317ccc612ba9340ed579c880cb5ec0e4ef24c4821406ff3db027b0ae54a16&o="
-            }
+            "photos":[
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/66764940.jpg?k=25a0de7812b0bce56f098471557b066313cf44b33cece6407f77e0fee80a3b21&o=",
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/330454748.jpg?k=a77317ccc612ba9340ed579c880cb5ec0e4ef24c4821406ff3db027b0ae54a16&o="
+            ]
     
         } 
     },
@@ -708,11 +704,11 @@
         "stars":"4",
         "price":"$41.738",
         "services":[" Habitaciones sin humo","Restaurante"," Servicio de habitaciones"," Adaptado personas de movilidad reducida"," WiFi en todo el alojamiento"," WiFi gratis"," Bar"," Buen desayuno" ],
-        "photos":{
-            "main1":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/53160335.jpg?k=478485b0eca5831ddbbcf8eb42066daecba48ffdd7b014c3d263f172cd7d8ab7&o=&hp=1",
-            "main2":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/53160385.jpg?k=0829e97f398cd42344c378e81501fc5baf105c25b54feba1e7998ded368b6b9e&o=&hp=1",
-            "main3":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/252372653.jpg?k=1921c4c4d023252f896b4ae9508a9620c1fb1c9dd4d9495a3fd221603b6fef12&o=&hp=1"
-        },
+        "photos":[
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/53160335.jpg?k=478485b0eca5831ddbbcf8eb42066daecba48ffdd7b014c3d263f172cd7d8ab7&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/53160385.jpg?k=0829e97f398cd42344c378e81501fc5baf105c25b54feba1e7998ded368b6b9e&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/252372653.jpg?k=1921c4c4d023252f896b4ae9508a9620c1fb1c9dd4d9495a3fd221603b6fef12&o=&hp=1"
+        ],
         "continent":"Europe",
         "location":"Portugal",
         "city":"Lisboa",
@@ -723,10 +719,10 @@
             "properties":["20 m²","Aire acondicionado","Baño en la habitación","TV de pantalla plana","Insonorización","Cafetera","Minibar","WiFi gratis"],
             "size":"20 m²",
             "description":"Habitación con 2 camas individuales, aire acondicionado, TV de pantalla plana y minibar.",
-            "photos":{
-                "bedroom1":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/53160192.jpg?k=c3204cd3478dcfda4472ea92263ae7c2f980a373ac916858e8bb0b277bbf9338&o=",
-                "bedroom2":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/53160201.jpg?k=35cf905faa44b9a6ccdf5a5a22a5cc485021e4aa0a5b10ac06312d8dce7b6351&o="
-            }
+            "photos":[
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/53160192.jpg?k=c3204cd3478dcfda4472ea92263ae7c2f980a373ac916858e8bb0b277bbf9338&o=",
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/53160201.jpg?k=35cf905faa44b9a6ccdf5a5a22a5cc485021e4aa0a5b10ac06312d8dce7b6351&o="
+            ]
     
         }
     },
@@ -737,11 +733,11 @@
         "stars":"3",
         "price":"$10.953",
         "services":["Habitaciones sin humo"," Traslado aeropuerto"," Adaptado personas de movilidad reducida","Restaurante"," WiFi en todo el alojamiento"," WiFi gratis","Bar"," Muy buen desayuno"],
-        "photos":{
-            "main1":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/214640558.jpg?k=1848d74444326fb8f67fbaa433fda4e9766d70ffb14ee84447dbb8316d6b0806&o=&hp=1",
-            "main2":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/214641694.jpg?k=979d1d1df2bf1792544e14636b1f44d6d57ea26a21171cffffcae339335fd125&o=&hp=1",
-            "main3":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/97931546.jpg?k=c14bbefcbe8307a15eb45024e086016672cb4329bfa4b8e87108a175518bc82c&o=&hp=1"
-        },
+        "photos":[
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/214640558.jpg?k=1848d74444326fb8f67fbaa433fda4e9766d70ffb14ee84447dbb8316d6b0806&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/214641694.jpg?k=979d1d1df2bf1792544e14636b1f44d6d57ea26a21171cffffcae339335fd125&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/97931546.jpg?k=c14bbefcbe8307a15eb45024e086016672cb4329bfa4b8e87108a175518bc82c&o=&hp=1"
+        ],
         "continent":"Europe",
         "location":"España",
         "city":"Barcelona",
@@ -752,10 +748,10 @@
             "properties":["15 m²","Balcón","Vistas","Aire acondicionado","Baño en la habitación","TV de pantalla plana","WiFi gratis"],
             "size":"15 m²",
             "description":"This twin/double room features a balcony, air conditioning and flat-screen TV.",
-            "photos":{
-                "bedroom1":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/214640082.jpg?k=efa4f022a651be5bb939191696033cb03c873b352ef056dfcf9856bde82356fc&o=",
-                "bedroom2":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/273600868.jpg?k=8d2e5a91956bcc25eb3f0a66160bebfca6d56c4a5ef43934255e036a25670816&o="
-            }
+            "photos":[
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/214640082.jpg?k=efa4f022a651be5bb939191696033cb03c873b352ef056dfcf9856bde82356fc&o=",
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/273600868.jpg?k=8d2e5a91956bcc25eb3f0a66160bebfca6d56c4a5ef43934255e036a25670816&o="
+            ]
     
         }
     },
@@ -766,11 +762,11 @@
         "stars":"5",
         "price":"$46.788",
         "services":[" Habitaciones sin humo"," Traslado aeropuerto"," Restaurante"," Servicio de habitaciones"," Adaptado personas de movilidad reducida","Gimnasio","Bar"],
-        "photos":{
-            "main1":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/36559997.jpg?k=ae87373517a3f4fccec7a7bf6bd0db56011614dc1dbd2face123f2ce269a7e1e&o=&hp=1",
-            "main2":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/36559987.jpg?k=9cd98939430b09f4b36b4266d4777e508b5d0685e9a94fdd792067258ebbd550&o=&hp=1",
-            "main3":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/36560013.jpg?k=9d5eca5eb7b83c161d89eee3deb9b2723f81996eb431e143172b6c7c572edced&o=&hp=1"
-        },
+        "photos":[
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/36559997.jpg?k=ae87373517a3f4fccec7a7bf6bd0db56011614dc1dbd2face123f2ce269a7e1e&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/36559987.jpg?k=9cd98939430b09f4b36b4266d4777e508b5d0685e9a94fdd792067258ebbd550&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/36560013.jpg?k=9d5eca5eb7b83c161d89eee3deb9b2723f81996eb431e143172b6c7c572edced&o=&hp=1"
+        ],
         "continent":"Europe",
         "location":"Italia",
         "city":"Roma",
@@ -781,10 +777,10 @@
             "properties":["14 m²","Aire acondicionado","Baño privado","Minibar","WiFi gratis"],
             "size":"14 m²",
             "description":"With free wired internet, this air-conditioned room features a satellite flat-screen TV, minibar and private bathroom with bathrobes, a hairdryer and slippers.",
-            "photos":{
-                "bedroom1":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/236697868.jpg?k=a33b840c1819fcbb527d11a4397f2c6a0125214912df2823f1773419789704f1&o=",
-                "bedroom2":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/40182155.jpg?k=cfd6dbf9e4fd39273fff000d0580efaee84a855a594bf4dd16fa5d6f5f72d039&o="
-            }
+            "photos":[
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/236697868.jpg?k=a33b840c1819fcbb527d11a4397f2c6a0125214912df2823f1773419789704f1&o=",
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/40182155.jpg?k=cfd6dbf9e4fd39273fff000d0580efaee84a855a594bf4dd16fa5d6f5f72d039&o="
+            ]
         }
     },
     {
@@ -794,11 +790,11 @@
         "stars":"4",
         "price":"$24.039",
         "services":["Restaurante"," Parking gratis"," WiFi gratis"," Tetera/cafetera en todas las habitaciones","Bar"," Muy buen desayuno"],
-        "photos":{
-            "main1":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/262916616.jpg?k=d8c23e4180d8517c7aab3f50a8106756ee0f4c8bdceb216388bd28dab102a60c&o=&hp=1",
-            "main2":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/161119462.jpg?k=66893e5d011668800882e44d8b19fa34e172c93903de94b26972dfd49a327621&o=&hp=1",
-            "main3":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/262916708.jpg?k=de0003284538ff2c3d174ac017dab38c67b6583036ca6cd9fa381f63b27d32ea&o=&hp=1"
-        },
+        "photos":[
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/262916616.jpg?k=d8c23e4180d8517c7aab3f50a8106756ee0f4c8bdceb216388bd28dab102a60c&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/161119462.jpg?k=66893e5d011668800882e44d8b19fa34e172c93903de94b26972dfd49a327621&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/262916708.jpg?k=de0003284538ff2c3d174ac017dab38c67b6583036ca6cd9fa381f63b27d32ea&o=&hp=1"
+        ],
         "continent":"Europe",
         "location":"Reino Unido",
         "city":"Maentwrog",
@@ -809,10 +805,10 @@
             "properties":["Habitación","Bañera","WiFi gratis"],
             "size":"",
             "description":"This twin room has a tea/coffee maker.",
-            "photos":{
-                "bedroom1":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/342565514.jpg?k=384ddb33575519f858ca1b1c8197804e4dea2aa4c664a88099087d8abae6d66c&o=",
-                "bedroom2":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/342565582.jpg?k=86b51e3b7482248c7dec936fa46a07d4519307fb9d7887629a647526070c4fd0&o="
-            }
+            "photos":[
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/342565514.jpg?k=384ddb33575519f858ca1b1c8197804e4dea2aa4c664a88099087d8abae6d66c&o=",
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/342565582.jpg?k=86b51e3b7482248c7dec936fa46a07d4519307fb9d7887629a647526070c4fd0&o="
+            ]
         }
     },
     {
@@ -822,11 +818,11 @@
         "stars":"3",
         "price":"$19.885",
         "services":["Habitaciones sin humo"," Adaptado personas de movilidad reducida"," WiFi gratis"," Admite mascotas"," Recepción 24 horas","Bar"," Muy buen desayuno"],
-        "photos":{
-            "main1":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/295781919.jpg?k=222a7252ecce11eeb69783ebd62e8a3f2c566a83ed46dd1f8256f749a8b50f1f&o=&hp=1",
-            "main2":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/295781963.jpg?k=3931c275a4117fdc0cc7b9ffd08276f4c1ed771bc9ca4b44033c5584552d58dc&o=&hp=1",
-            "main3":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/295781905.jpg?k=9fafba7f7164457f9dd1ac8e7eb8f494dcef58f077b9ac407d97df3335c8f6c7&o=&hp=1"
-        },
+        "photos":[
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/295781919.jpg?k=222a7252ecce11eeb69783ebd62e8a3f2c566a83ed46dd1f8256f749a8b50f1f&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/295781963.jpg?k=3931c275a4117fdc0cc7b9ffd08276f4c1ed771bc9ca4b44033c5584552d58dc&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/295781905.jpg?k=9fafba7f7164457f9dd1ac8e7eb8f494dcef58f077b9ac407d97df3335c8f6c7&o=&hp=1"
+        ],
         "continent":"Europe",
         "location":"Belgica",
         "city":"Bruselas",
@@ -837,10 +833,10 @@
             "properties":["16 m²","Aire acondicionado","Baño en la habitación","TV de pantalla plana","WiFi gratis"],
             "size":"16 m²",
             "description":"This double room features a flat-screen TV and air conditioning.",
-            "photos":{
-            "bedroom1":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/295782236.jpg?k=ec21cd957fc32f83f239d7d0bc439cd401340ec4a373941f1520ba6e44b19bd2&o=",
-            "bedroom2":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/295782100.jpg?k=36a20de41b46c61aeacf3e6ffbb98c3a583731414bf8e681baaa6fc9866287cf&o="
-            }
+            "photos":[
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/295782236.jpg?k=ec21cd957fc32f83f239d7d0bc439cd401340ec4a373941f1520ba6e44b19bd2&o=",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/295782100.jpg?k=36a20de41b46c61aeacf3e6ffbb98c3a583731414bf8e681baaa6fc9866287cf&o="
+            ]
         }
     }, 
     {
@@ -850,11 +846,11 @@
         "stars":"5",
         "price":"$17.719",
         "services":[" Traslado aeropuerto"," WiFi en todo el alojamiento"," Parking gratis"," WiFi gratis"," Habitaciones familiares"," Tetera/cafetera en todas las habitaciones","Bar"," Desayuno excepcional"],
-        "photos":{
-            "main1":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/102779069.jpg?k=078e421d21402d21329d7eab70068642661a89f00429a9008adb1636a3f01f07&o=&hp=1",
-            "main2":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/342729522.jpg?k=f8f2a186b5705d16022dfd4646721d3e996de97e0ffc2f228bf073682be20a7a&o=&hp=1",
-            "main3":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/290258796.jpg?k=6f14ac509c240472149787f5916400d94ec4224689e1f088d89ad7faed6e8ced&o=&hp=1"
-        },
+        "photos":[
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/102779069.jpg?k=078e421d21402d21329d7eab70068642661a89f00429a9008adb1636a3f01f07&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/342729522.jpg?k=f8f2a186b5705d16022dfd4646721d3e996de97e0ffc2f228bf073682be20a7a&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/290258796.jpg?k=6f14ac509c240472149787f5916400d94ec4224689e1f088d89ad7faed6e8ced&o=&hp=1"
+        ],
         "continent":"Africa",
         "location":"SouthAfrica",
         "city":"Johannesburgo",
@@ -865,10 +861,10 @@
             "properties":["30 m²","Aire acondicionado","Patio","Baño privado","TV de pantalla plana","Cafetera","Minibar","WiFi gratis"],
             "size":"30 m²",
             "description":"This double room has a private entrance and own courtyard with access to main garden.",
-            "photos":{
-                "bedroom1":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/292507944.jpg?k=97a66ebb8ed2ee1d8f472628c6f663da7a3293e3b20ff397f05796a030840bd7&o=",
-                "bedroom2":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/289850606.jpg?k=b8e9fcb1d7e1aebad1eb3f1ffd81d3087e9e6b1b285298dab1a30fb36712ab7e&o="
-            }
+            "photos":[
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/292507944.jpg?k=97a66ebb8ed2ee1d8f472628c6f663da7a3293e3b20ff397f05796a030840bd7&o=",
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/289850606.jpg?k=b8e9fcb1d7e1aebad1eb3f1ffd81d3087e9e6b1b285298dab1a30fb36712ab7e&o="
+            ]
         }
     },
     {
@@ -878,11 +874,11 @@
         "stars":"5",
         "price":"$38.754",
         "services":["1 piscina"," Traslado aeropuerto"," Centro de fitness bueno"," Spa y centro de bienestar","Restaurante"," Habitaciones sin humo"," Servicio de habitaciones","Bar"," Desayuno fabuloso"],
-        "photos":{
-            "main1":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/342980112.jpg?k=e6be6ff1b99a74127bc30a32ae5dcb4043d8d88d04b34f73e4af66b0edf2615f&o=&hp=1",
-            "main2":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/232850982.jpg?k=5f4eecb180dd316b328ce271e13b2110b180922d4a84dd0c88e5c106a8216bc2&o=&hp=1",
-            "main3":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/232850885.jpg?k=099e02a1da596a7ac236fe0d5cfa3f79366dcd35d522a75c7f7c2f98dd76e77d&o=&hp=1"
-        },
+        "photos":[
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/342980112.jpg?k=e6be6ff1b99a74127bc30a32ae5dcb4043d8d88d04b34f73e4af66b0edf2615f&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/232850982.jpg?k=5f4eecb180dd316b328ce271e13b2110b180922d4a84dd0c88e5c106a8216bc2&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/232850885.jpg?k=099e02a1da596a7ac236fe0d5cfa3f79366dcd35d522a75c7f7c2f98dd76e77d&o=&hp=1"
+        ],
         "continent":"Africa",
         "location":"Kenia",
         "city":"Nairobi",
@@ -893,10 +889,10 @@
             "properties":["32 m²","Balcón","Vistas al jardín","Aire acondicionado","Patio","Baño en la habitación","TV de pantalla plana","Insonorización","Minibar","WiFi gratis"],
             "size":"32 m²",
             "description":"This double room has a balcony, soundproofing and minibar.",
-            "photos":{
-                "bedroom1":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/232850988.jpg?k=a029dedafa69bbb5615b686071527bcd6aea0a258593feb3ad07c594e64c0456&o=",
-                "bedroom2":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/219215800.jpg?k=f7456530182197175b22c6c36905fad07a8b744f63857a4f9416b1ac700669d6&o="
-            }
+            "photos":[
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/232850988.jpg?k=a029dedafa69bbb5615b686071527bcd6aea0a258593feb3ad07c594e64c0456&o=",
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/219215800.jpg?k=f7456530182197175b22c6c36905fad07a8b744f63857a4f9416b1ac700669d6&o="
+            ]
         }
     },
     {
@@ -906,11 +902,11 @@
         "stars":"4",
         "price":"$51.237",
         "services":["Servicio de habitaciones","Gimnasio"," WiFi gratis"," Parking gratis","Restaurante"," Tetera/cafetera en todas las habitaciones","Bar"," Buen desayuno"],
-        "photos":{
-            "main1":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/208421825.jpg?k=72ea4ee7540d64dc0cc2f7af81ea35711cde5e1d5caddb2fff7c1c235ded8c39&o=&hp=1",
-            "main2":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/16864683.jpg?k=148ed348a3dddb8bf9aa5f1f0bf8e9557d7d697e3caefa71198c16893f6dd506&o=&hp=1",
-            "main3":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/208428335.jpg?k=3f4a643df7bd2393cb67aa4d35746eba51ff9d7df74230c21612fa09e0ade0d9&o=&hp=1"
-        },
+        "photos":[
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/208421825.jpg?k=72ea4ee7540d64dc0cc2f7af81ea35711cde5e1d5caddb2fff7c1c235ded8c39&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/16864683.jpg?k=148ed348a3dddb8bf9aa5f1f0bf8e9557d7d697e3caefa71198c16893f6dd506&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/208428335.jpg?k=3f4a643df7bd2393cb67aa4d35746eba51ff9d7df74230c21612fa09e0ade0d9&o=&hp=1"
+        ],
         "continent":"Africa",
         "location":"Angola",
         "city":"Luanda",
@@ -921,10 +917,10 @@
             "properties":["20 m²","Vistas al mar","Vistas a la ciudad","Vistas a un patio interior","Aire acondicionado","Baño privado","TV de pantalla plana","Insonorización","Minibar","WiFi gratis"],
             "size":"20 m²",
             "description":"Spacious room with views of Luanda Bay and the Isle of Luanda. The room is air conditioned and carpeted. The unit is fitted with a desk and safe. The room also has a sitting area and a flat screen TV with cable channels. The unit also has a minibar.The room is complete with a private bathroom and the property provides free toiletries",
-            "photos":{
-                "bedroom1":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/174250977.jpg?k=59e425387bf3012e9c97ef3a359a2b841db531582d05be724ab68b80dc68604c&o=",
-                "bedroom2":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/174248828.jpg?k=0dd9c7aaf07e3314f6f463dad89c2b4eec15873623822ce1ad5d2176d39b225b&o="
-            }
+            "photos":[
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/174250977.jpg?k=59e425387bf3012e9c97ef3a359a2b841db531582d05be724ab68b80dc68604c&o=",
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/174248828.jpg?k=0dd9c7aaf07e3314f6f463dad89c2b4eec15873623822ce1ad5d2176d39b225b&o="
+            ]
         }
     },
     {
@@ -934,11 +930,11 @@
         "stars":"4",
         "price":"$17.832",
         "services":["1 piscina"," Traslado aeropuerto"," Servicio de habitaciones"," Parking gratis"," WiFi gratis"," WiFi en todo el alojamiento","Bar"," Buen desayuno"],
-        "photos":{
-            "main1":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/396384894.jpg?k=20e3ceb562fa9f03cf2c127a67565763ec0b84d0b8c9746b234b529fe52507c6&o=&hp=1",
-            "main2":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/350253474.jpg?k=0a8264d25df38cebff163a8c2073493286fda34f70afff28237b7c893b72fc3a&o=&hp=1",
-            "main3":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/350253607.jpg?k=4b107f16f1b69333817546993a2d63231ef692890576809ea272fb0ed476ed3d&o=&hp=1"
-        },
+        "photos":[
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/396384894.jpg?k=20e3ceb562fa9f03cf2c127a67565763ec0b84d0b8c9746b234b529fe52507c6&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/350253474.jpg?k=0a8264d25df38cebff163a8c2073493286fda34f70afff28237b7c893b72fc3a&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/350253607.jpg?k=4b107f16f1b69333817546993a2d63231ef692890576809ea272fb0ed476ed3d&o=&hp=1"
+        ],
         "continent":"Africa",
         "location":"Senegal",
         "city":"Dakar",
@@ -949,10 +945,10 @@
             "properties":["30 m²","Aire acondicionado","TV de pantalla plana","WiFi gratis"],
             "size":"30 m²",
             "description":"This double room features air conditioning and electric kettle.",
-            "photos":{
-                "bedroom1":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/350257770.jpg?k=f9735ddea2ceaef10d8544a766af51520f04487015c2ed7ffb1a3d692e7e1f17&o=",
-                "bedroom2":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/386599245.jpg?k=0b3411654ccfb058d9b28e76b04ea39910aa859f48facad40f2d70f07ccdff21&o="
-            }
+            "photos":[
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/350257770.jpg?k=f9735ddea2ceaef10d8544a766af51520f04487015c2ed7ffb1a3d692e7e1f17&o=",
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/386599245.jpg?k=0b3411654ccfb058d9b28e76b04ea39910aa859f48facad40f2d70f07ccdff21&o="
+            ]
         }
     },
     {
@@ -962,11 +958,11 @@
         "stars":"3",
         "price":"$15.544",
         "services":["WiFi gratis"," Parking gratis"],
-        "photos":{
-            "main1":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/341615523.jpg?k=3d55c4b249926beb32858641f60824e7e4d8e3feb8a7832c79b9255b61353e47&o=&hp=1",
-            "main2":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/273256954.jpg?k=938d0a79c7005b9cae977de268e5b73a823249cfb9491db3397302165c7edbec&o=&hp=1",
-            "main3":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/273256699.jpg?k=1d80fe1b9c903ac357f973b9864cae67d4933ed41a2c58c61596efb58f8033b3&o=&hp=1"
-        },
+        "photos":[
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/341615523.jpg?k=3d55c4b249926beb32858641f60824e7e4d8e3feb8a7832c79b9255b61353e47&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/273256954.jpg?k=938d0a79c7005b9cae977de268e5b73a823249cfb9491db3397302165c7edbec&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/273256699.jpg?k=1d80fe1b9c903ac357f973b9864cae67d4933ed41a2c58c61596efb58f8033b3&o=&hp=1"
+        ],
         "continent":"Africa",
         "location":"Suazilandia",
         "city":"Mbabane",
@@ -977,10 +973,10 @@
             "properties":["Villa entera","260 m²","Cocina privada","Balcón","Vistas al jardín","Vistas a la montaña","Patio","TV de pantalla plana","Barbacoa"],
             "size":"260 m²",
             "description":"This villa has a balcony, barbecue and stovetop.",
-            "photos":{
-                "bedroom1":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/163029101.jpg?k=c0f61bb52b4be334c7478fdc5db9438525ceb608195e0381b851df05cfe4d546&o=",
-                "bedroom2":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/163027272.jpg?k=0acc46d34b092a6554ba66fba798e76b4359c410b2ff3b14cce63287795f3399&o="
-            }
+            "photos":[
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/163029101.jpg?k=c0f61bb52b4be334c7478fdc5db9438525ceb608195e0381b851df05cfe4d546&o=",
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/163027272.jpg?k=0acc46d34b092a6554ba66fba798e76b4359c410b2ff3b14cce63287795f3399&o="
+            ]
         }
     },
     {
@@ -990,11 +986,11 @@
         "stars":"3",
         "price":"$18.087",
         "services":["1 piscina"," Traslado aeropuerto"," Centro de fitness fabuloso"," Servicio de habitaciones"," Parking gratis"," WiFi gratis"," Habitaciones familiares"," Tetera/cafetera en todas las habitaciones","Bar"," Muy buen desayuno"],
-        "photos":{
-            "main1":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/11430757.jpg?k=a6b692b18a28ce49d3628d2569f870e1d9547108a8fcd63df4264f0857e0f464&o=&hp=1",
-            "main2":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/11430639.jpg?k=e8aef754bd0aa9ee891e82ddce6b7b3a3913521744d5ce996f209474b4962039&o=&hp=1",
-            "main3":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/19160957.jpg?k=e5bc9384fb18ad9abe28d9f52ead87a13f09e87b5434363d2d6202142c7ad26b&o=&hp=1"
-        },
+        "photos":[
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/11430757.jpg?k=a6b692b18a28ce49d3628d2569f870e1d9547108a8fcd63df4264f0857e0f464&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/11430639.jpg?k=e8aef754bd0aa9ee891e82ddce6b7b3a3913521744d5ce996f209474b4962039&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/19160957.jpg?k=e5bc9384fb18ad9abe28d9f52ead87a13f09e87b5434363d2d6202142c7ad26b&o=&hp=1"
+        ],
         "continent":"Africa",
         "location":"Sudafrica",
         "city":"White River",
@@ -1005,10 +1001,10 @@
             "properties":["18 m²","Balcón","Vistas al jardín","Vistas a la piscina","Aire acondicionado","Baño en la habitación","TV de pantalla plana","Terraza","Minibar","WiFi gratis"],
             "size":"18 m²",
             "description":"This air-conditioned room comes with a patio. It features a flat-screen satellite TV, a tea and coffee maker and free Wi-Fi.Each has a private bathroom with a shower and toilet.",
-            "photos":{
-                "bedroom1":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/9636467.jpg?k=e14378add0944083539182522660d49cfacd1058aaf9431d4af6870b601edec3&o=",
-                "bedroom2":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/7470061.jpg?k=66fe01f104f2258018fba52abc6145618e3f13f6ef51d4b4f0c7bc9a0a15a782&o="
-            }
+            "photos":[
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/9636467.jpg?k=e14378add0944083539182522660d49cfacd1058aaf9431d4af6870b601edec3&o=",
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/7470061.jpg?k=66fe01f104f2258018fba52abc6145618e3f13f6ef51d4b4f0c7bc9a0a15a782&o="
+            ]
         }
     },
     {
@@ -1018,11 +1014,11 @@
         "stars":"5",
         "price":"$73.754",
         "services":[" 1 piscina"," Traslado aeropuerto","Gimnasio","Spa y centro de bienestar","Restaurante"," Habitaciones sin humo"," Servicio de habitaciones"," Bar"," Muy buen desayuno"],
-        "photos":{
-            "main1":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/383065328.jpg?k=5186cf8c2fe94069666f65fc597c4371f1498e8169fbf6bd0f0bd5af22d4cdf3&o=&hp=1",
-            "main2":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/389713745.jpg?k=56cd4847b18806bfef94102bae0627c4323c8164dcb8b714a02c9629e6ce520f&o=&hp=1",
-            "main3":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/53286428.jpg?k=808d8fd1abe176909600ae860803647143291e7331731edab6909b5277acd9c4&o=&hp=1"
-        },
+        "photos":[
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/383065328.jpg?k=5186cf8c2fe94069666f65fc597c4371f1498e8169fbf6bd0f0bd5af22d4cdf3&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/389713745.jpg?k=56cd4847b18806bfef94102bae0627c4323c8164dcb8b714a02c9629e6ce520f&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/53286428.jpg?k=808d8fd1abe176909600ae860803647143291e7331731edab6909b5277acd9c4&o=&hp=1"
+        ],
         "continent":"Africa",
         "location":"Kenia",
         "city":"Nairobi",
@@ -1033,10 +1029,10 @@
             "properties":["30 m²","Bañera","Aire acondicionado","WiFi gratis"],
             "size":"30 m²",
             "description":"These spacious rooms come with a 40-inch LED smart TV with a DVD player and a work desk. The private bathroom has a rain shower, and some of these rooms feature a bathtub.Tribe offers a complimentary minibar and free Wi-Fi in all rooms.",
-            "photos":{
-                "bedroom1":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/389714541.jpg?k=188e6c19750775cf0a2c6988a6fdced0043c143142c2d13928b8f89f69ca3f14&o=",
-                "bedroom2":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/356441803.jpg?k=fd4e13a4f93b23c25c134bf33b59feda944324c1c5523c23963ccf9f7369f8f7&o="
-            }
+            "photos":[
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/389714541.jpg?k=188e6c19750775cf0a2c6988a6fdced0043c143142c2d13928b8f89f69ca3f14&o=",
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/356441803.jpg?k=fd4e13a4f93b23c25c134bf33b59feda944324c1c5523c23963ccf9f7369f8f7&o="
+            ]
         }
     },
     {
@@ -1046,11 +1042,11 @@
         "stars":"3",
         "price":"$37.574",
         "services":["1 piscina"," Servicio de habitaciones"," WiFi gratis"," WiFi en todo el alojamiento"," Admite mascotas"," Adaptado personas de movilidad reducida"," Parking gratis"," Tetera/cafetera en todas las habitaciones"," Bar"," Buen desayuno"],
-        "photos":{
-            "main1":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/251611763.jpg?k=55239ad7caf59f8a0b8e66ab8029a51a2fdf81caee5f717a08923a7119c56a9c&o=&hp=1",
-            "main2":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/251611768.jpg?k=bf3a53640760ab5563fe906f8c2a83b9ff9d577a06bc57eafd74b265feb2a5c2&o=&hp=1",
-            "main3":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/251611768.jpg?k=bf3a53640760ab5563fe906f8c2a83b9ff9d577a06bc57eafd74b265feb2a5c2&o=&hp=1"
-        },
+        "photos":[
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/251611763.jpg?k=55239ad7caf59f8a0b8e66ab8029a51a2fdf81caee5f717a08923a7119c56a9c&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/251611768.jpg?k=bf3a53640760ab5563fe906f8c2a83b9ff9d577a06bc57eafd74b265feb2a5c2&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/251611768.jpg?k=bf3a53640760ab5563fe906f8c2a83b9ff9d577a06bc57eafd74b265feb2a5c2&o=&hp=1"
+        ],
         "continent":"Africa",
         "location":"Costa de Marfil",
         "city":"Abiyán",
@@ -1061,10 +1057,10 @@
             "properties":["25 m²","Vistas al jardín","Vistas a la piscina","Vistas a un lugar de interés","Vistas a la ciudad","Aire acondicionado","TV de pantalla ","Insonorización","Minibar","WiFi gratis"],
             "size":"25 m²",
             "description":"This large air-conditioned room features a seating area with satellite TV. The private bathroom is fitted with bath.",
-            "photos":{
-                "bedroom1":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/66316811.jpg?k=bf6c103138bb030bc5d891c91b7db3250f6628dfc6a1fdb638347ab8281e5f9e&o=",
-                "bedroom2":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/66316905.jpg?k=51d9b9c3dc8a892b18d661f9784f5c9af83fa4c133bffdc1f4d38e0d88dac70d&o="
-            }
+            "photos":[
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/66316811.jpg?k=bf6c103138bb030bc5d891c91b7db3250f6628dfc6a1fdb638347ab8281e5f9e&o=",
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/66316905.jpg?k=51d9b9c3dc8a892b18d661f9784f5c9af83fa4c133bffdc1f4d38e0d88dac70d&o="
+        ]
         }
     },
     {
@@ -1074,11 +1070,11 @@
         "stars":"5",
         "price":"$30.650",
         "services":["1 piscina"," Habitaciones sin humo"," Centro de fitness muy bueno"," WiFi en todo el alojamiento"," Parking privado"," WiFi gratis","Parking"," Tetera/cafetera en todas las habitaciones"],
-        "photos":{
-            "main1":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/327245245.jpg?k=84cad3b511514cc4a7a71620b001d8bc8ddb23972ce98bd669be98b7d45d0364&o=&hp=1",
-            "main2":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/327243681.jpg?k=120386a45c69009eab006bfcf87308a7d8eb5153a6d5881f3facfa811d9eeca9&o=&hp=1",
-            "main3":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/327244018.jpg?k=f8603c666b497db7c57be3038d0da0d6a77828165d858c32f88118b565ea7da5&o=&hp=1"
-        },
+        "photos":[
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/327245245.jpg?k=84cad3b511514cc4a7a71620b001d8bc8ddb23972ce98bd669be98b7d45d0364&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/327243681.jpg?k=120386a45c69009eab006bfcf87308a7d8eb5153a6d5881f3facfa811d9eeca9&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/327244018.jpg?k=f8603c666b497db7c57be3038d0da0d6a77828165d858c32f88118b565ea7da5&o=&hp=1"
+        ],
         "continent":"Oceania",
         "location":"Australia",
         "city":"Sydney",
@@ -1089,10 +1085,10 @@
             "properties":["Cocina privada","Baño privado","Aire acondicionado","Lavavajillas","TV de pantalla plana","Cafetera","WiFi gratis"],
             "size":"35 m²",
             "description":"This double room has a seating area, washing machine and kitchenware.",
-            "photos":{
-                "bedroom1":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/327240232.jpg?k=ebfca40ed13d3d1c9f9a59704f51f8a4fcda34bea491214e2fbbf037d5279916&o=",
-                "bedroom2":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/327240235.jpg?k=4933a5374edd75e7cdd83c888e94383de452aacd93a42275c5fcdff6640d06f6&o="
-            }
+            "photos":[
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/327240232.jpg?k=ebfca40ed13d3d1c9f9a59704f51f8a4fcda34bea491214e2fbbf037d5279916&o=",
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/327240235.jpg?k=4933a5374edd75e7cdd83c888e94383de452aacd93a42275c5fcdff6640d06f6&o="
+            ]
         }
     },
     {
@@ -1102,11 +1098,11 @@
         "stars":"5",
         "price":"$35.493",
         "services":["1 piscina"," Habitaciones sin humo"," Centro de fitness bueno"," Adaptado personas de movilidad reducida"," Servicio de habitaciones","Restaurante"," Spa y centro de bienestar","Bar"," Muy buen desayuno"],
-        "photos":{
-            "main1":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/154282734.jpg?k=b7cd988ad7bbf244955c7dddde734224284e371e17806859d44bcf897b31523c&o=&hp=1",
-            "main2":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/154283017.jpg?k=aac9fce64386d617d27c99820e4ab8d94d26f89e5432ead8ff8757722a2c8b82&o=&hp=1",
-            "main3":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/154283010.jpg?k=1e47da87af1269953d6a6ed6a8a9d98078be371ff5b1c0b411ed6eb0278bf3c0&o=&hp=1"
-        },
+        "photos":[
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/154282734.jpg?k=b7cd988ad7bbf244955c7dddde734224284e371e17806859d44bcf897b31523c&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/154283017.jpg?k=aac9fce64386d617d27c99820e4ab8d94d26f89e5432ead8ff8757722a2c8b82&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/154283010.jpg?k=1e47da87af1269953d6a6ed6a8a9d98078be371ff5b1c0b411ed6eb0278bf3c0&o=&hp=1"
+        ],
         "continent":"Oceania",
         "location":"Australia",
         "city":"Melburne",
@@ -1117,10 +1113,10 @@
             "properties":["Bañera","33 m²","Aire acondicionado","Baño privado","TV de pantalla plana","Minibar","WiFi gratis"],
             "size":"33 m²",
             "description":"This modern guestroom features a luxurious king size bed facing floor-to-ceiling views of Melbourne’s skyline. The contemporary residential room design offers a modern living area. Enjoy the stunning Italian marble bathroom with separate deep soaking bath tub and shower.",
-            "photos":{
-                "bedroom1":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/7531284.jpg?k=6a7ea8879f8edc9e53a5f50d3ec2b8feb9c1f1590507b75bf1e6e1da4d333681&o=",
-                "bedroom2":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/7531340.jpg?k=edf42ce52192f11a7fc4c86643bf9b1c734a83bd8c1a30c244193168ca46edd5&o="
-            }
+            "photos":[
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/7531284.jpg?k=6a7ea8879f8edc9e53a5f50d3ec2b8feb9c1f1590507b75bf1e6e1da4d333681&o=",
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/7531340.jpg?k=edf42ce52192f11a7fc4c86643bf9b1c734a83bd8c1a30c244193168ca46edd5&o="
+            ]
         }
     },
     {
@@ -1130,11 +1126,11 @@
         "stars":"3",
         "price":"$26.108",
         "services":["1 piscina"," Traslado aeropuerto","Habitaciones familiares"," WiFi gratis"," Situado frente a la playa"," Parking gratis"," Tetera/cafetera en todas las habitaciones"," Muy buen desayuno "],
-        "photos":{
-            "main1":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/88902119.jpg?k=1860d9715845cf8cfd7df45f64daf85ceb55f333bd2ce326e93bb6fd75bcc2ec&o=&hp=1",
-            "main2":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/187200701.jpg?k=cf8ba6a305710e73b2ccca0ea30670e6824f91325d9f144bd2fd03dea372b6fd&o=&hp=1",
-            "main3":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/156354089.jpg?k=e868e82de572146d83040382970d52ac1e90c322741d5e5552cb30e59524d052&o=&hp=1"
-        },
+        "photos":[
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/88902119.jpg?k=1860d9715845cf8cfd7df45f64daf85ceb55f333bd2ce326e93bb6fd75bcc2ec&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/187200701.jpg?k=cf8ba6a305710e73b2ccca0ea30670e6824f91325d9f144bd2fd03dea372b6fd&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/156354089.jpg?k=e868e82de572146d83040382970d52ac1e90c322741d5e5552cb30e59524d052&o=&hp=1"
+        ],
         "continent":"Oceania",
         "location":"Palau",
         "city":"Koror",
@@ -1145,10 +1141,10 @@
             "properties":["Habitación","43 m²","Vistas al mar","Vistas a la piscina","Vistas a la montaña","Piscina con vistas","Aire acondicionado","Baño privado","TV de pantalla plana","Terraza"],
             "size":"43 m²",
             "description":"Like our Ocean View Executive Suite rooms, this spacious room has romance written all over its setting. Privacy and comfort is ensured for a memorable and wonderful experience. Access your private space for a drink , you will be surrounded by comfort no matter where you lounge.",
-            "photos":{
-                "bedroom1":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/200328325.jpg?k=e96bc254cc99f5f171c71f8c68e5a9d2a629d459709410175c733bec77026064&o=",
-                "bedroom2":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/200328336.jpg?k=cb8f4e29b1c48960d8dc06ef9c318ae945335854fadb7a7bae9148817797170f&o="
-            }
+            "photos":[
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/200328325.jpg?k=e96bc254cc99f5f171c71f8c68e5a9d2a629d459709410175c733bec77026064&o=",
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/200328336.jpg?k=cb8f4e29b1c48960d8dc06ef9c318ae945335854fadb7a7bae9148817797170f&o="
+            ]
         }
     },
     {
@@ -1158,11 +1154,11 @@
         "stars":"5",
         "price":"$40.774",
         "services":["1 piscina"," Traslado aeropuerto","Restaurante"," Spa y centro de bienestar"," Situado frente a la playa"," Habitaciones sin humo"," Servicio de habitaciones","Bar","Desayuno"],
-        "photos":{
-            "main1":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/93363036.jpg?k=1f235101860bd602953b6d5c2e9308ae449ba5d3452d2befca169023ae541f81&o=&hp=1",
-            "main2":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/354920501.jpg?k=7efa47c760d55a2b79b0aad70f9df275435ec409abd2fc5374c754bc80bc7b02&o=&hp=1",
-            "main3":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/93363397.jpg?k=ad398399990a557237466c3858e16a81f072440072aa838c61c85bc9eb3f0b46&o=&hp=1"
-        },
+        "photos":[
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/93363036.jpg?k=1f235101860bd602953b6d5c2e9308ae449ba5d3452d2befca169023ae541f81&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/354920501.jpg?k=7efa47c760d55a2b79b0aad70f9df275435ec409abd2fc5374c754bc80bc7b02&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/93363397.jpg?k=ad398399990a557237466c3858e16a81f072440072aa838c61c85bc9eb3f0b46&o=&hp=1"
+        ],
         "continent":"Oceania",
         "location":"Vanuatu",
         "city":"Port Vila",
@@ -1173,10 +1169,10 @@
             "properties":["Estudio entero","42m²"],
             "size":"42m²",
             "description":"Este estudio tiene 1 cama extragrande, TV de pantalla plana y zona de cocina con microondas, hervidor de agua, tostadora, fogones y minibar. Hay secador de pelo, utensilios de planchado, aire acondicionado y mesa de comedor. El balcón tiene muebles de exterior y vistas al jardín.",
-            "photos":{
-                "bedroom1":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/122444874.jpg?k=9c7c6f48700d08fce0b808b128aa72ab9cb078cb0cab9aa6721e36d3dc040a0e&o=",
-                "bedroom2":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/93363015.jpg?k=1d761468a50aa64ae2fbb3bdbc941aed2b3d26a8f761fdee4874f703b74e13b8&o="
-            }        
+            "photos":[
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/122444874.jpg?k=9c7c6f48700d08fce0b808b128aa72ab9cb078cb0cab9aa6721e36d3dc040a0e&o=",
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/93363015.jpg?k=1d761468a50aa64ae2fbb3bdbc941aed2b3d26a8f761fdee4874f703b74e13b8&o="
+            ]        
         }
     } 
 ]
