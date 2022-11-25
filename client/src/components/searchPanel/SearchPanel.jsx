@@ -1,7 +1,7 @@
 import {React} from "react";
 import RangeCalendar from "../calendar/RangeCalendar";
 
-const SearchPanel = ({ selected, active, range, setRange}) => {
+const SearchPanel = ({ selected, active, range, setRange, setInputText}) => {
 
   
   if (selected === "location") {
@@ -18,23 +18,23 @@ const SearchPanel = ({ selected, active, range, setRange}) => {
           <div className=" w-3/5 h-full pb-5 text-2xl ">
             <h2 className="text-3xl font-medium">Continent</h2>
             <div className=" w-full h-full grid grid-rows-2 grid-cols-3 gap-2 pt-3">
-              <div>
+              <div className="w-full h-full" id="america" onClick={e => setInputText({text:e.currentTarget.id, from: "continent"})}>
                 <p>America</p>
                 <div className="w-[100px] h-[100px] border hover:border-[color:var(--primary-text-color)] cursor-pointer mx-auto bg-[url('/src/assets/img/america.png')] bg-center bg-cover bg-no-repeat rounded-[10px]"></div>
               </div>
-              <div>
+              <div className="w-full h-full" id="europa" onClick={e => setInputText({text:e.currentTarget.id, from: "continent"})}>
                 <p>Europa</p>
                 <div className="w-[100px] h-[100px] border hover:border-[color:var(--primary-text-color)] cursor-pointer mx-auto bg-[url('/src/assets/img/europa.png')] bg-center bg-cover bg-no-repeat rounded-[10px]"></div>
               </div>
-              <div>
+              <div className="w-full h-full" id="asia" onClick={e => setInputText({text:e.currentTarget.id, from: "continent"})}>
                 <p>Asia</p>
                 <div className="w-[100px] h-[100px] border hover:border-[color:var(--primary-text-color)] cursor-pointer mx-auto bg-[url('/src/assets/img/asia.png')] bg-center bg-cover bg-no-repeat rounded-[10px]"></div>
               </div>
-              <div>
+              <div className="w-full h-full" id="africa" onClick={e => setInputText({text:e.currentTarget.id, from: "continent"})}>
                 <p>Africa</p>
                 <div className="w-[100px] h-[100px] border hover:border-[color:var(--primary-text-color)] cursor-pointer mx-auto bg-[url('/src/assets/img/africa.png')] bg-center bg-cover bg-no-repeat rounded-[10px]"></div>
               </div>
-              <div>
+              <div className="w-full h-full" id="australia" onClick={e => setInputText({text:e.currentTarget.id, from: "continent"})}>
                 <p>Australia</p>
                 <div className="w-[100px] h-[100px] border hover:border-[color:var(--primary-text-color)] cursor-pointer mx-auto bg-[url('/src/assets/img/australia.png')] bg-center bg-cover bg-no-repeat rounded-[10px]"></div>
               </div>

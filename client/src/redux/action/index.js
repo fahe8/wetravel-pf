@@ -27,10 +27,10 @@ export function getDetail(id){
     
 }
 
-export function getSearchHotels(name) {
-    console.log(name)
+export function getSearchHotels(search, from) {
+    console.log(search)
     return async function (dispatch) {
-        const json = await axios.get(`http://localhost:3001/hotels?name=${name}`);
+        const json = await axios.get(`http://localhost:3001/hotels?${from === 'location'?`location=${search}`: `continent=${search}`}`);
         return dispatch({
             type: GET_SEARCH_HOTELS,
             payload: json.data

@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import { useSelector } from "react-redux";
 
-const InputSearch = ({inputTextt, setInputTextt}) => {
+const InputSearch = ({inputText, setInputText}) => {
   let hotels = useSelector((state) => state.hotels);
 
   const [filteredData, setFilteredData] = useState([]);
@@ -9,7 +9,7 @@ const InputSearch = ({inputTextt, setInputTextt}) => {
 
   const handleFilter = (event) => {
     let searchLocation = event.target.value;
-    setInputTextt(searchLocation);
+    setInputText({text:searchLocation, from: "location"});
     const newFilter = hotels.filter((value) => {
       return value.location
         .normalize("NFD")
@@ -26,17 +26,17 @@ const InputSearch = ({inputTextt, setInputTextt}) => {
   };
 
   const locationSelected = (event) => {
-    setInputTextt(event.currentTarget.id)
+    setInputText({text:event.currentTarget.id, from: "location"})
     setFilteredData([])
   }
 
   return (
-    <div className="relative  z-[1000] h-auto ">
+    <div className="relative  z-[1000] h-auto w-full ">
       <input
-        className=" outline-none border-[color:var(--primary-text-color)] border rounded-[10px] pl-4"
+        className=" w-full outline-none border-[color:var(--primary-text-color)] drop-shadow-md rounded-[10px] pl-4"
         type="text"
         placeholder="Search..."
-        value={inputTextt}
+        value={inputText.text}
         onChange={handleFilter}
       />{" "}
       {filteredData.length !== 0 && (
