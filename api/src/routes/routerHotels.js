@@ -34,7 +34,7 @@ const getHotels = async () => {
             }
         });
         const hotels = await Hotel.bulkCreate(apiInfo);
-        console.log(hotels);
+        // console.log(hotels);
         return hotels;
     }
     if(dataDb.length){
@@ -43,7 +43,7 @@ const getHotels = async () => {
 };
 
 routerHotels.get("/", async (req, res) => {
-    const { name } = req.query;
+    const { name,continent,stars,location, city, price } = req.query;
     try {
         const hotels = await getHotels();
 
@@ -51,6 +51,68 @@ routerHotels.get("/", async (req, res) => {
             const hotelName = hotels.find(el => el.name.toLowerCase().includes(name.toLowerCase()));
             hotelName ? res.status(200).send(hotelName) : res.status(404).send("No Hotel with that name");
         };
+        if (stars) {
+            try{
+            let filterStars = hotels.filter(el => el.stars === stars);
+            console.log('FILTRO:', filterStars.length);
+            if(!filterStars.length){
+                return res.status(400).send("No match  with that star")
+            }
+            return res.send(filterStars);
+        } catch(error){
+            res.status(400).send(error.message)
+        }
+        }
+        if (price) {
+            try {
+                let filterPrice = hotels.filter(el => el.price === price);
+                // console.log('FILTRO price:', filterPrice.length);
+                if (!filterPrice.length) {
+                    return res.status(400).send('No match with that price');
+                }
+                return res.json(filterPrice);
+            } catch (error) {
+                res.status(400).send(error.message)
+            }
+        }
+        if (continent) {
+            try{
+                let filtercontinent = hotels.filter(el => el.continent.toLowerCase().includes(continent.toLowerCase()));
+                // console.log('FILTRO:', filtercontinent.length);
+                if(!filtercontinent.length){
+                    return res.status(400).send("No match  with that continent")
+                }
+                return res.send(filtercontinent);
+            } catch(error){
+                res.status(400).send(error.message)
+            }
+        }
+
+        if (location) {
+            try{
+                let filterLocation = hotels.filter(el => el.location.toLowerCase().includes(location.toLowerCase()));
+                // console.log('FILTRO:', filterLocation.length);
+                if(!filterLocation.length){
+                    return res.status(400).send("No match  with that location")
+                }
+                return res.send(filterLocation);
+            } catch(error){
+                res.status(400).send(error.message)
+            }
+        }
+
+        if (city) {
+            try{
+                let filterCity = hotels.filter(el => el.city.toLowerCase().includes(city.toLowerCase()));
+                // console.log('FILTRO:', filterCity.length);
+                if(!filterCity.length){
+                    return res.status(400).send("No match  with that city")
+                }
+                return res.send(filterCity);
+            } catch(error){
+                res.status(400).send(error.message)
+            }
+        }
 
         if(hotels.length && !name){
             res.status(200).send(hotels);
