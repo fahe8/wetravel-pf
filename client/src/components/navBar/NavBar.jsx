@@ -2,7 +2,7 @@ import { React, useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Search from "../search/Search";
 import logo from "../../assets/img/copia.png";
-import Login from "../log-in/Log-in";
+
 const NavBar = () => {
   let location = useLocation();
 
@@ -25,7 +25,7 @@ const NavBar = () => {
       <nav className=" w-65 flex justify-between items-center text-xl gap-5">
         <p>About Us</p>
         <div className=" h-10 flex justify-between items-center gap-5  hover:bg-cyan-800 cursor-pointer p-7 rounded-full border-2 border-black">
-        <Link to='/login'><Login/></Link>
+        <Link to='/login'>Iniciar sesion</Link>
           
 
           <span className=" bg-[url('/src/assets/icons/user.svg')] bg-center bg-cover bg-no-repeat w-10 h-10"></span>
