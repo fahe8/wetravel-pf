@@ -4,10 +4,9 @@ const {Router} = require("express");
 const routerUsers = Router();
 
 routerUsers.post('/', async (req, res) => {
-  const { name } = req.body;
-
+  const { name, email, email_verified } = req.body;
   try {
-    let newUser = await User.create({ name });
+    let newUser = await User.create({ name, email, email_verified });
 
     // let hotelDb = await Hotel.findAll({
     //   where: {
