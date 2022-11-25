@@ -21,7 +21,8 @@ function rootReducer(state = initialState, action) { //function reducer; tiene 2
         case GET_DETAIL:
             return {
                 ...state,
-                detail : action.payload
+                detail : action.payload,
+                loading: false
             }
 
         case GET_SEARCH_HOTELS:
