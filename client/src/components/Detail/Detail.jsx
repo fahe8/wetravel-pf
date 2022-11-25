@@ -42,9 +42,6 @@ const Detail = (props) => {
                         <div>
                             <h2>What does the place affter</h2>
                             <hr />
-                            <h3>{selectedHotel.room.properties.map((el) => {
-                                return <p>{el}</p>
-                            })}</h3>
                         </div>
                         <div>
                             <p> {selectedHotel.comments}</p>
