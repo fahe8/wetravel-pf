@@ -26,11 +26,13 @@ function Card({
           <AiFillHeart />
         </div>
           <div>
+            <h2>{name}</h2>
+            <p>Estrellas: {stars}</p>
             <Stars />
             <h3>
               {location}, {city}
             </h3>
-            <h3>{price}</h3>
+            <h3>Precio: {price}</h3>
             <h3>{size}</h3>
             <br />
           </div>
