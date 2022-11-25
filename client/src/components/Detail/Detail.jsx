@@ -11,6 +11,8 @@ const Detail = (props) => {
     const { match: { params: { id } } } = props;
     const dispatch = useDispatch()
     const selectedHotel = useSelector((state) => state.detail)
+    const loading = useSelector((state) => state.loading);
+    console.log("LOADING:", loading);
 
     useEffect(() => {
         dispatch(getDetail(id));
@@ -24,13 +26,14 @@ const Detail = (props) => {
     return (
         <div>
             <NavBar />
-            <Link to={'/home'} >
-                <button>Volver</button>
-            </Link>
             <div>
-                {
-                    !selectedHotel ? <Loading /> : 
+                {loading ? ( 
+                    <Loading />
+                    ) : ( 
                     <div>
+                        <Link to={'/home'} >
+                            <button>Volver</button>
+                        </Link>
                         <div>
                             <img src={selectedHotel.photos} alt="hotel" />
                             {/* Carrusel de imágenes */}
@@ -57,7 +60,7 @@ const Detail = (props) => {
                             </div>
                         </div>
                     </div>
-                }
+                )}
                 
             </div>
 
