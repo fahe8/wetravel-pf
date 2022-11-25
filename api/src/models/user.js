@@ -8,6 +8,14 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    email:{
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    email_verified:{
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    }
   }, {
     timestamps: false,
   });

@@ -45,7 +45,7 @@ const Filters = () => {
         <div className={` w-screen h-screen  fixed  left-0 top-0 z-30   ease-in-out duration-300  ${
               modalFilter
                 ? " bg-[color:var(--bg-opacity-modal)] z-50 "
-                :  "bg-transparen -z-10"
+                :  "bg-transparent -z-10"
             }`}>
           <div
             className={` w-screen  fixed  left-0 z-30   ease-in-out duration-300 ${
