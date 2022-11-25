@@ -5,6 +5,7 @@ export const GET_DETAIL = 'GET_DETAIL'
 export const GET_HOTELS = 'GET_HOTELS'
 // 1 depachar los hoteles
 export const GET_SEARCH_HOTELS = 'GET_SEARCH_HOTELS'
+export const POST_HOTEL = 'POST_HOTEL'
 
 export function getHotels() {
     return async function (dispatch) {
@@ -37,3 +38,14 @@ export function getSearchHotels(search, from) {
         }) //segunda función que recibe dispatch y despacha una acción / el tipo y el payload: devuelve el backend
     }
 }
+
+export function postHotel(payload){
+    return async function(dispatch){
+        const response = await axios.post('http://localhost:3001/hotels', payload);
+        return dispatch({
+            type: POST_HOTEL,
+            payload: response
+        })
+    }
+}
+
