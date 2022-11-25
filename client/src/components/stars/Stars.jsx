@@ -1,10 +1,13 @@
 import React from 'react'
 import { AiOutlineStar, AiFillStar } from 'react-icons/ai'
 
-const Stars = () => {
+const Stars = (props) => {
+  
   return (
-    <div>
-      <h1>puntaje</h1>
+    <div className='inline-grid grid-cols-5 text-yellow-500'>
+      {[... new Array(5)].map((star, index) => {
+        return index < props.stars ? <AiFillStar/> : <AiOutlineStar/>
+      })}     
     </div>
   )
 }
