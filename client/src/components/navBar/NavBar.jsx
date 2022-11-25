@@ -26,7 +26,9 @@ const NavBar = () => {
         {!state && <Search></Search>}
       </div>
       <nav className=" w-65 flex justify-between items-center text-xl gap-5">
-        <p>About Us</p>
+        <Link to="/about">
+          <p>About Us</p>
+        </Link>
         <div className=" h-10 flex justify-between items-center gap-5  hover:bg-cyan-800 cursor-pointer p-7 rounded-full border-2 border-black">
 
         { user?
