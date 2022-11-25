@@ -13,6 +13,7 @@ const Search = () => {
   let dispatch = useDispatch();
   let ref = useRef();
   const [inputText, setInputText] = useState({ text: "", from: "" });
+  const [count, setCount] = useState(0);
   const [state, setstate] = useState(false);
   const [panelSelect, setPanelSelect] = useState({
     selected: "",
@@ -27,8 +28,14 @@ const Search = () => {
       key: "selection",
     },
   ]);
+  
+  let dataSearch = {
+    location: inputText,
+    date: range,
+    guest: count
+  }
 
-  // open close
+
 
   useEffect(() => {
     if (history.location.pathname === "/") {
@@ -96,13 +103,11 @@ const Search = () => {
             </div>{" "}
             {panelSelect.active && (
               <div className=" w-[70%] h-[25px] mx-auto ">
-              
-              <InputSearch
-                inputText={inputText}
-                setInputText={setInputText}
-              ></InputSearch>
-              
-            </div>
+                <InputSearch
+                  inputText={inputText}
+                  setInputText={setInputText}
+                ></InputSearch>
+              </div>
             )}
           </button>
 
@@ -145,18 +150,20 @@ const Search = () => {
               <p className=" font-medium text-3xl">Guests</p>
             </div>{" "}
             {panelSelect.active && (
-              <p className=" text-2xl mt-4">1 adult, 2 children</p>
+              <p className=" text-2xl mt-4">{count} {count> 1? "Huespedes": "Huesped"}</p>
             )}
           </button>
 
           <button
-            className="h-[100%] w-[60px] rounded-r-full hover:bg-[color:var(--second-bg-color)] "
-            onClick={getSearch}
-          >
-            <div className="h-[50px] w-[50px] bg-[url('/src/assets/icons/search.svg')] bg-center bg-cover bg-no-repeat">
+          className="h-[100%] rounded-r-full hover:bg-[color:var(--second-bg-color)] flex items-center justify-center "
+          onClick={getSearch}
+        >
+          <div className=" h-[40px] w-[50px] drop-shadow-md rounded-full flex justify-center items-center bg-red-400">
+            <div className="h-[25px] w-[25px] bg-[url('/src/assets/icons/search.svg')] bg-center bg-cover bg-no-repeat">
               {" "}
             </div>
-          </button>
+          </div>
+        </button>
         </div>
         <div
           className={` absolute -z-10 w-[100%] mx-auto top-[90%] ease-in-out duration-300 ${
@@ -177,36 +184,7 @@ const Search = () => {
   }
 
   return (
-    // <div className=" w-full h-full bg-[color:var(--primary-bg-opacity-color)] rounded-full shadow-md border border-[color:var(--search-border-color)] cursor-pointer">
-    //   <div className="h-full py-1 grid grid-cols-3">
-    //     <div className=" h-full border-r border-black">
-    //       {" "}
-    //       <div>
-    //         <span></span> <p className=" font-medium">Destination place</p>
-    //       </div>{" "}
-    //       <p>bogota,Colombia</p>
-    //     </div>
-
-    //     <div className=" h-full border-r border-black">
-    //       {" "}
-    //       <div>
-    //         <span></span>{" "}
-    //         <p className=" text-[90%] font-medium">Check-in/Check-out</p>
-    //       </div>{" "}
-    //       <p>28 nov- 3 dic</p>
-    //     </div>
-
-    //     <div>
-    //       {" "}
-    //       <div>
-    //         <span></span> <p className=" font-medium">Guests</p>
-    //       </div>{" "}
-    //       <p>1 adult, 2 children</p>
-    //     </div>
-
-    //     <span></span>
-    //   </div>
-    // </div>
+    
     <div className="w-full h-full relative" ref={ref}>
       <div
         className={` ease-in-out duration-300 transform w-full h-full grid grid-cols-new4 grid-rows-1 bg-[color:var(--primary-bg-opacity-color)] rounded-full shadow-md border border-[color:var(--search-border-color)] cursor-pointer `}
@@ -226,12 +204,10 @@ const Search = () => {
           </div>{" "}
           {panelSelect.active && (
             <div className=" w-[70%] mx-auto">
-              
               <InputSearch
                 inputText={inputText}
                 setInputText={setInputText}
               ></InputSearch>
-              
             </div>
           )}
         </button>
@@ -275,22 +251,24 @@ const Search = () => {
             <p className="h-[20px] font-medium text-sm">Guests</p>
           </div>{" "}
           {panelSelect.active && (
-            <p className=" text-xs ">1 adult, 2 children</p>
+            <p className=" text-xs ">{count} {count> 1? "Huespedes": "Huesped"} </p>
           )}
         </button>
 
         <button
-          className="h-[100%] w-[60px] rounded-r-full hover:bg-[color:var(--second-bg-color)] "
+          className="h-[100%] rounded-r-full hover:bg-[color:var(--second-bg-color)] flex items-center justify-center "
           onClick={getSearch}
         >
-          <div className="h-[50px] w-[50px] bg-[url('/src/assets/icons/search.svg')] bg-center bg-cover bg-no-repeat">
-            {" "}
+          <div className=" h-[40px] w-[50px] drop-shadow-md rounded-full flex justify-center items-center bg-red-400">
+            <div className="h-[25px] w-[25px] bg-[url('/src/assets/icons/search.svg')] bg-center bg-cover bg-no-repeat">
+              {" "}
+            </div>
           </div>
         </button>
       </div>
       <div
-        className={` absolute  min-w-full top-[800%] left-[50%] translate-x-[-50%] ease-in-out duration-300 ${
-          panelSelect.active ? "h-[400px] translate-y-[-100%]" : "h-[0px]"
+        className={`-z-10 min-w-auto w-full ease-in-out duration-300 absolute top-[800%]${
+          panelSelect.active ? " translate-y-[-100%]" : "h-[0px]"
         }`}
       >
         {panelSelect.active && (
@@ -299,6 +277,8 @@ const Search = () => {
             range={range}
             setRange={setRange}
             setInputText={setInputText}
+            count={count}
+            setCount={setCount}
           />
         )}
       </div>

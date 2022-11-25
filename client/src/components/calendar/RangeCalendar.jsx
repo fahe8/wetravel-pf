@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { DateRangePicker } from 'react-date-range'
+import { DateRange } from 'react-date-range'
 
 import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css'
@@ -23,21 +23,18 @@ const RangeCalendar = ({range, setRange}) => {
 
 
   return (
-    <div className="calendarWrap">
-
-      <div>
-        
-          <DateRangePicker
+    <div className="w-auto">
+   
+          <DateRange 
             onChange={item => setRange([item.selection])}
             editableDateInputs={true}
             moveRangeOnFirstSelection={false}
             ranges={range}
             months={2}
             direction="horizontal"
-            className="calendarElement"
+            className="w-100px"
           />
         
-      </div>
 
     </div>
   )

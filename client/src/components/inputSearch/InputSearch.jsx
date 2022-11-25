@@ -2,7 +2,9 @@ import { React, useState } from "react";
 import { useSelector } from "react-redux";
 
 const InputSearch = ({inputText, setInputText}) => {
-  let hotels = useSelector((state) => state.hotels);
+  let hotels = useSelector((state) => state.copyHotels);
+
+  console.log(hotels)
 
   const [filteredData, setFilteredData] = useState([]);
 
