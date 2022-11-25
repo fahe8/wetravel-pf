@@ -41,7 +41,6 @@ const Detail = (props) => {
             <div>
               <div>
                 <img src={selectedHotel.photos} alt="hotel" />
-                {/* Carrusel de imágenes */}
               </div>
               <div>
                 <h2>{selectedHotel.name}</h2>
