@@ -58,7 +58,7 @@ const Search = () => {
         inputText.from
       )
     );
-    state && history.push("/home");
+     history.push("/home")
   };
 
   //Close panel search click outside
@@ -176,6 +176,8 @@ const Search = () => {
               range={range}
               setRange={setRange}
               setInputText={setInputText}
+              count={count}
+              setCount={setCount}
             />
           )}
         </div>

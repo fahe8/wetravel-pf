@@ -1,11 +1,16 @@
-import React from 'react'
+import React from "react";
 
 const Filters = () => {
   return (
-    <div>
-      <h1> Filters Logic</h1>
+    <div className="h-[80px] flex justify-end">
+      <div className="h-full">
+        <button>
+        <span></span>
+        <p>Filters</p>
+        </button>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Filters
+export default Filters;

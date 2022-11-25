@@ -15,7 +15,7 @@ const NavBar = () => {
   }, []);
 
   return (
-    <header className=" h-20 bg-[color:var(--second-bg-color)] flex justify-between text-center shadow-lg sticky top-0">
+    <header className=" h-20 bg-[color:var(--second-bg-color)] flex justify-between text-center shadow-lg sticky top-0 z-10">
       <figure className=" w-20 h-20 bg-cyan-700">
         <img src={logo} alt="logo-wetravel" className="w-full h-full " />
       </figure>
