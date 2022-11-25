@@ -14,6 +14,7 @@ const Detail = (props) => {
         dispatch(getDetail(id));
     }, [dispatch, id])
 
+    console.log(selectedHotel)
 
     return (
         <div>

@@ -3,7 +3,7 @@ import {GET_HOTELS,GET_DETAIL} from '../action/index'
 
 const initialState = { //inicializar el estado; un objeto con varios estados dentro
     hotels: [], //nos devuelve todos los hoteles en un array
-    detail: []
+    detail: {}
 }
 
 
