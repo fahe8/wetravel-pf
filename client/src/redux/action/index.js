@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-
+export const POST_USER = "POST_USER"
 export const GET_DETAIL = 'GET_DETAIL'
 export const GET_HOTELS = 'GET_HOTELS'
 // 1 depachar los hoteles
@@ -59,3 +59,9 @@ export function postHotel(payload){
     }
 }
 
+export function postUser(payload){
+    return async function(){
+        const response = await axios.post("http://localhost:3001/users", payload)
+        return response;
+    }
+}

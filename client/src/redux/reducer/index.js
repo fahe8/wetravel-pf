@@ -1,4 +1,4 @@
-import {GET_HOTELS,GET_DETAIL, GET_SEARCH_HOTELS, POST_HOTEL, LOADING} from '../action/index'
+import {GET_HOTELS,GET_DETAIL, GET_SEARCH_HOTELS, POST_HOTEL, LOADING, POST_USER} from '../action/index'
 
 
 const initialState = { //inicializar el estado; un objeto con varios estados dentro
@@ -40,6 +40,10 @@ function rootReducer(state = initialState, action) { //function reducer; tiene 2
             return {
                 ...state,
                 loading: true,
+            }
+        case POST_USER:
+            return{
+                ...state
             }
 
         default:
