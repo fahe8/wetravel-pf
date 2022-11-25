@@ -31,7 +31,7 @@ console.log (estadoHoteles) //me muestra todos los hoteles por consola
             location={ht.location}
             city={ht.city}
             price={ht.price}
-            size={ht.size}
+            size={ht.room.size}
             name={ht.name}
           />
         ) : 

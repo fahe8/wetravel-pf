@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { AiFillHeart } from "react-icons/ai";
+import { AiFillHeart, AiTwotoneHome } from "react-icons/ai";
 import Stars from "../stars/Stars";
 //import Carousel from '../carousel/Carousel';
 
@@ -26,13 +26,22 @@ function Card({
           <AiFillHeart />
         </div>
           <div>
-            <Stars />
-            <h3>
-              {location}, {city}
-            </h3>
-            <h3>{price}</h3>
-            <h3>{size}</h3>
-            <br />
+            <div >  
+              <Stars stars={stars} />
+            </div>
+            <hr/>
+            <div className="text-left">
+              <h3>{name}</h3>
+              <br/>
+              <h3>{location}, {city}</h3>
+              <h3>{price} night</h3>
+              <br/>
+              <div>
+                <h3><AiTwotoneHome /> {size}</h3>
+              </div>
+              <br />
+            </div>
+            
           </div>
         </Link>
       </div>
