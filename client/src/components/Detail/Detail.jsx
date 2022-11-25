@@ -1,7 +1,9 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { getDetail } from '../../redux/action/index'
+import { Loading } from '../Loading/Loading'
 import NavBar from '../navBar/NavBar'
 
 
@@ -12,6 +14,9 @@ const Detail = (props) => {
 
     useEffect(() => {
         dispatch(getDetail(id));
+        return () => {
+            dispatch(getDetail(''));
+        }
     }, [dispatch, id])
 
     console.log(selectedHotel)
@@ -19,9 +24,13 @@ const Detail = (props) => {
     return (
         <div>
             <NavBar />
+            <Link to={'/home'} >
+                <button>Volver</button>
+            </Link>
             <div>
-
-                <div>
+                {
+                    !selectedHotel ? <Loading /> : 
+                    <div>
                     <div>
                         <img src={selectedHotel.photos} alt="hotel" />
                         {/* Carrusel de imágenes */}
@@ -49,6 +58,7 @@ const Detail = (props) => {
 
                     </div>
                 </div>
+                }
 
             </div>
 
