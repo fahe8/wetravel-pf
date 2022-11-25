@@ -10,8 +10,10 @@ function Login() {
   return (<>
     {
       user ?
-        (<img src={user.picture} alt={user.name}/>)
-        (<button className='w-[100px] h-[50px] border border-black mx-auto bg-[#00B4FF]' onClick={() => logout({ returnTo: window.location.origin })}>Log-out</button>)
+      <>
+        <img src={user.picture} alt={user.name}/>
+        <button className='w-[100px] h-[50px] border border-black mx-auto bg-[#00B4FF]' onClick={() => logout({ returnTo: window.location.origin })}>Log-out</button>
+      </>
         
         :(<button className="w-[100px] h-[50px] border border-black mx-auto bg-[#00B4FF] " onClick={() => loginWithRedirect() }>Log-in</button>)
   

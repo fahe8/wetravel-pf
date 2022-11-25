@@ -7,7 +7,7 @@ import {useAuth0} from "@auth0/auth0-react"
 
 const NavBar = () => {
   let location = useLocation();
-  const {user} = useAuth0()
+  const {user, loginWithRedirect} = useAuth0()
   const [state, setstate] = useState(false);
 
 
@@ -28,16 +28,24 @@ const NavBar = () => {
       <nav className=" w-65 flex justify-between items-center text-xl gap-5">
         <p>About Us</p>
         <div className=" h-10 flex justify-between items-center gap-5  hover:bg-cyan-800 cursor-pointer p-7 rounded-full border-2 border-black">
-        <Link to='/login'> 
+
         { user?
-          <p>{user?.name}</p>
-          : (<p>Iniciar sesion</p>  
+        <>
+        <Link to='/login'> 
+         <p>{user?.name}</p>
+         </Link>
+        </>
+          : (<p onClick={() => loginWithRedirect() }>Iniciar sesion</p>  
           )
         }
-        </Link>
+        
         { user?
-          <img src={user.picture} alt="icon" className="bg-center bg-cover bg-no-repeat w-10 h-10 rounded-full" />
-         :(<span className=" bg-[url('/src/assets/icons/user.svg')] bg-center bg-cover bg-no-repeat w-10 h-10"></span>)
+        <>
+          <Link to='/login'> 
+            <img src={user.picture} alt="icon" className="bg-center bg-cover bg-no-repeat w-10 h-10 rounded-full" />
+          </Link>
+        </>
+         :(<span  className=" bg-[url('/src/assets/icons/user.svg')] bg-center bg-cover bg-no-repeat w-10 h-10"></span>)
         }
         </div>
       </nav>
