@@ -6,7 +6,7 @@ import Profile from '../profile/profile';
 function Login() {
   
   const {loginWithRedirect, logout, user} = useAuth0()
-
+  console.log(user)
   return (<>
     {
       user ?
