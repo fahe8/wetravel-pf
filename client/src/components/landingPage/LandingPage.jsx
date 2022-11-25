@@ -1,8 +1,14 @@
-import React from "react";
+import {React, useEffect} from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import NavBar from "../navBar/NavBar";
 import Search from "../search/Search";
+import {getHotels} from "../../redux/action/index.js"
 function LandingPage() {
+  let dispatch = useDispatch()
+  useEffect(() => {
+   dispatch(getHotels())
+  }, []);
   return (
     <section className="h-[100%]   overflow-hidden grid">
       <NavBar/>

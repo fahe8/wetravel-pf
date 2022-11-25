@@ -1,18 +1,26 @@
 import { React, useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import SearchPanel from "../searchPanel/SearchPanel";
+import InputSearch from "../inputSearch/InputSearch"
 import format from 'date-fns/format'
 import { addDays } from 'date-fns'
+import { useDispatch } from "react-redux";
+import {getSearchHotels} from "../../redux/action/index"
+
 
 
 const Search = () => {
   let location = useLocation();
+  let dispatch = useDispatch()
   let ref = useRef();
+  const [inputText, setInputText] = useState("");
   const [state, setstate] = useState(false);
   const [panelSelect, setPanelSelect] = useState({
     selected: '',
     active: false,
   });
+
+
 
   //Calendar State
   const [range, setRange] = useState([
@@ -37,11 +45,16 @@ const Search = () => {
     setPanelSelect({ selected: event.currentTarget.id, active: true });
     
   };
-  
+
+  const getSearch = () => {
+    dispatch(getSearchHotels(inputText))
+    
+  }
+
+
   //Close panel search click outside
   useEffect(() => {
     let closePanelSearch = (e) => {
-      console.log(ref.current);
       if(!ref.current.contains(e.target)){
         setPanelSelect({ selected: null, active: false });
       }
@@ -56,15 +69,15 @@ const Search = () => {
 
   if (state) {
     return (
-      <div className={ ` w-[70%] absolute bottom-0 left-[50%] translate-x-[-50%] ${panelSelect.active && "translate-y-[50%]"}`}  ref={ref} >
+      <div className={ ` w-[70%] absolute bottom-0 left-[50%] translate-x-[-50%] ${panelSelect.active && "translate-y-[0%]"}`}  ref={ref} >
         <div
-          className={`${panelSelect.active && "translate-y-[-150%]"} ease-in-out duration-300 transform w-full h-[130px] grid grid-cols-3 grid-rows-1 bg-[color:var(--primary-bg-opacity-color)] rounded-full shadow-md border border-[color:var(--search-border-color)] cursor-pointer`}
+          className={`${panelSelect.active && "translate-y-[-150%]"} ease-in-out duration-300 transform w-[95%] h-[130px] grid grid-cols-new4 grid-rows-1 bg-[color:var(--primary-bg-opacity-color)] rounded-full shadow-md border border-[color:var(--search-border-color)] cursor-pointer `}
         >
           <button
             className={`${
               panelSelect.selected === "location" &&
               "bg-[color:var(--second-bg-color)]"
-            } h-full border-r border-black py-2 rounded-l-full cursor-pointer hover:bg-[color:var(--second-bg-color)]`}
+            } h-full border-r border-black py-2 rounded-l-full cursor-pointer hover:bg-[color:var(--second-bg-color)] relative z-10`}
             id="location"
             onClick={handleClick}
           >
@@ -73,7 +86,7 @@ const Search = () => {
               <span className=" bg-[url('/src/assets/icons/location.svg')] bg-center bg-cover bg-no-repeat w-10 h-10"></span>{" "}
               <p className=" font-medium text-3xl">Destination place</p>
             </div>{" "}
-            {panelSelect.active && <p>Bogota,Colombia</p>}
+            {panelSelect.active && <InputSearch inputTextt={inputText} setInputTextt={setInputText}></InputSearch>  }
           </button>
 
           <button
@@ -93,7 +106,7 @@ const Search = () => {
                     <input
                     value={`${format(range[0].startDate, "MM/dd/yyyy")} to ${format(range[0].endDate, "MM/dd/yyyy")}`}
                     readOnly
-                    className=" outline-none w-[100%] text-center"
+                    className=" outline-none w-[100%] text-center bg-transparent"
                     
                   />
             )}
@@ -103,7 +116,7 @@ const Search = () => {
             className={`${
               panelSelect.selected === "guest" &&
               "bg-[color:var(--second-bg-color)]"
-            } py-2  hover:bg-[color:var(--second-bg-color)] rounded-r-full`}
+            } py-2  hover:bg-[color:var(--second-bg-color)] border-r border-black`}
             id="guest"
             onClick={handleClick}
           >
@@ -116,8 +129,12 @@ const Search = () => {
               <p className=" text-2xl mt-4">1 adult, 2 children</p>
             )}
           </button>
+
+          <button className="h-[100%] w-[60px] rounded-r-full hover:bg-[color:var(--second-bg-color)] " onClick={getSearch}>
+            <div className="h-[50px] w-[50px] bg-[url('/src/assets/icons/search.svg')] bg-center bg-cover bg-no-repeat">{" "}</div>
+          </button>
         </div>
-        <div className={` absolute w-[100%] mx-auto top-[90%] ease-in-out duration-300 ${panelSelect.active? "h-[400px] translate-y-[-50%]": "h-[0px]"}`}>
+        <div className={` absolute -z-10 w-[100%] mx-auto top-[90%] ease-in-out duration-300 ${panelSelect.active? "h-[400px] translate-y-[-50%]": "h-[0px]"}`}>
          {panelSelect.active && <SearchPanel selected = {panelSelect.selected} range={range} setRange={setRange}/>}
         </div>
       </div>

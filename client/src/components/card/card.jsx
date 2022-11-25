@@ -17,7 +17,7 @@ function Card({ // recibir los datos que se ven en la card por propiedades
     <div>
     <img src={photos} alt={name}/>
     </div>
-    <Link to ={`/home/${id}`}>
+    <Link to ={`home/${id}`}>
       <div>
       <h3>{stars}</h3>
       <h3>{location}, {city}</h3>        
