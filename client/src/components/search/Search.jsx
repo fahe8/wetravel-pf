@@ -90,7 +90,7 @@ const Search = () => {
             className={`${
               panelSelect.selected === "location" &&
               "bg-[color:var(--second-bg-color)]"
-            } h-full border-r border-black py-2 rounded-l-full cursor-pointer hover:bg-[color:var(--second-bg-color)] relative z-10`}
+            } h-full border-r border-black py-2 rounded-l-full cursor-pointer hover:bg-[color:var(--second-bg-color-hover)] relative z-10`}
             id="location"
             onClick={handleClick}
           >
@@ -111,7 +111,7 @@ const Search = () => {
             className={`${
               panelSelect.selected === "calendar" &&
               "bg-[color:var(--second-bg-color)] "
-            } h-full border-r border-black py-2 hover:bg-[color:var(--second-bg-color)]`}
+            } h-full border-r border-black py-2 hover:bg-[color:var(--second-bg-color-hover)]`}
             id="calendar"
             onClick={handleClick}
           >
@@ -134,7 +134,7 @@ const Search = () => {
             className={`${
               panelSelect.selected === "guest" &&
               "bg-[color:var(--second-bg-color)]"
-            } py-2  hover:bg-[color:var(--second-bg-color)] border-r border-black`}
+            } py-2  hover:bg-[color:var(--second-bg-color-hover)] border-r border-black`}
             id="guest"
             onClick={handleClick}
           >
@@ -149,7 +149,7 @@ const Search = () => {
           </button>
 
           <button
-            className="h-[100%] rounded-r-full hover:bg-[color:var(--second-bg-color)] flex items-center justify-center "
+            className="h-[100%] rounded-r-full hover:bg-[color:var(--second-bg-color-hover)] flex items-center justify-center "
             onClick={getSearch}
           >
             <div className=" h-[40px] w-[50px] drop-shadow-md rounded-full flex justify-center items-center bg-red-400">
@@ -188,7 +188,7 @@ const Search = () => {
           className={`${
             panelSelect.selected === "location" &&
             "bg-[color:var(--second-bg-color)]"
-          } h-full border-r border-black py-2 rounded-l-full cursor-pointer hover:bg-[color:var(--second-bg-color)] `}
+          } h-full border-r border-black py-2 rounded-l-full cursor-pointer hover:bg-[color:var(--second-bg-color-hover)] `}
           id="location"
           onClick={handleClick}
         >
@@ -209,7 +209,7 @@ const Search = () => {
           className={`${
             panelSelect.selected === "calendar" &&
             "bg-[color:var(--second-bg-color)] "
-          } h-full border-r border-black py-2 hover:bg-[color:var(--second-bg-color)]`}
+          } h-full border-r border-black py-2 hover:bg-[color:var(--second-bg-color-hover)]`}
           id="calendar"
           onClick={handleClick}
         >
@@ -232,7 +232,7 @@ const Search = () => {
           className={`${
             panelSelect.selected === "guest" &&
             "bg-[color:var(--second-bg-color)]"
-          } py-2  hover:bg-[color:var(--second-bg-color)] border-r border-black`}
+          } py-2  hover:bg-[color:var(--second-bg-color-hover)] border-r border-black`}
           id="guest"
           onClick={handleClick}
         >
@@ -247,7 +247,7 @@ const Search = () => {
         </button>
 
         <button
-          className="h-[100%] rounded-r-full hover:bg-[color:var(--second-bg-color)] flex items-center justify-center "
+          className="h-[100%] rounded-r-full hover:bg-[color:var(--second-bg-color-hover)] flex items-center justify-center "
           onClick={getSearch}
         >
           <div className=" h-[40px] w-[50px] drop-shadow-md rounded-full flex justify-center items-center bg-red-400">
