@@ -5,6 +5,7 @@ import LandingPage from "./components/landingPage/LandingPage";
 import Login from "./components/log-in/Log-in";
 import Detail from "./components/Detail/Detail";
 import About from "./components/about/about.jsx";
+import Create from "./components/create/Create";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/login" component={Login} />
           <Route path="/home/:id" component={Detail}></Route>
+          <Route exact path="/createhotel" component={Create}></Route>
           <Route exact path="/about" component={About}/>
         </Switch>
       </div>

@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import Search from "../search/Search";
 import logo from "../../assets/img/copia.png";
 import {useAuth0} from "@auth0/auth0-react"
+import Create from "../create/Create";
 
 
 const NavBar = () => {
@@ -28,6 +29,9 @@ const NavBar = () => {
       <nav className=" w-65 flex justify-between items-center text-xl gap-5">
         <Link to="/about">
           <p>About Us</p>
+        </Link>
+        <Link to="/createhotel">
+          <button>Create New Hotel</button>
         </Link>
         <div className=" h-10 flex justify-between items-center gap-5  hover:bg-cyan-800 cursor-pointer p-7 rounded-full border-2 border-black">
 
