@@ -117,7 +117,9 @@ const ModalFilter = ({ refOne, setModalFilter, modalFilter }) => {
 
         <div className=" w-full pt-5">
           <h2>{"Calificación"}</h2>
-          <div></div>
+          <div>
+            <p></p>
+          </div>
         </div>
       </div>
     </div>
