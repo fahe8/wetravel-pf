@@ -9,6 +9,8 @@ import Stars from "../stars/Stars";
 import icon from "../../assets/icons/user.svg";
 import Carousel from "react-bootstrap/Carousel";
 
+
+
 const Detail = (props) => {
   const {
     match: {
