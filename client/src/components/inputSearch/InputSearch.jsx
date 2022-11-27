@@ -31,7 +31,8 @@ const InputSearch = ({inputText, setInputText}) => {
     setInputText({text:event.currentTarget.id, from: "location"})
     setFilteredData([])
   }
-
+  
+  
   return (
     <div className="relative  z-[1000] h-auto w-full ">
       <input
