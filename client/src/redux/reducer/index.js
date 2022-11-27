@@ -4,7 +4,8 @@ import {GET_HOTELS,GET_DETAIL, GET_SEARCH_HOTELS, POST_HOTEL, LOADING, POST_USER
 const initialState = { //inicializar el estado; un objeto con varios estados dentro
     hotels: [], //nos devuelve todos los hoteles en un array
     detail: {},
-    services:[],
+    service: [],
+    hotelFilter: [],
     copyHotels: [],
     loading: false
 }
@@ -17,7 +18,8 @@ function rootReducer(state = initialState, action) { //function reducer; tiene 2
             return {
                 ...state, //una copia del estado
                 hotels: action.payload, // almacenar en este objeto lo que llega del backend
-                copyHotels: action.payload 
+                copyHotels: action.payload, 
+                hotelFilter: action.payload
             }
         case GET_DETAIL:
             return {
@@ -49,7 +51,7 @@ function rootReducer(state = initialState, action) { //function reducer; tiene 2
         case GET_SERVICES:
             return {
                 ...state,
-                services: action.payload
+                service: action.payload
             }
 
         default:

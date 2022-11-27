@@ -14,7 +14,7 @@ const Detail = (props) => {
     const dispatch = useDispatch()
     const selectedHotel = useSelector((state) => state.detail)
     const loading = useSelector((state) => state.loading);
-    console.log("LOADING:", loading);
+    //console.log("LOADING:", loading);
 
     useEffect(() => {
         dispatch(getDetail(id));
@@ -23,7 +23,7 @@ const Detail = (props) => {
         }
     }, [dispatch, id])
 
-    console.log(selectedHotel)
+    //console.log(selectedHotel)
 
     return (
         <div className='bg-white'>
