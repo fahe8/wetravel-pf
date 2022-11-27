@@ -33,9 +33,7 @@ const Detail = (props) => {
                     <Loading />
                     ) : (
                     <div>
-                        <Link to={'/home'} >
-                            <button>Volver</button>
-                        </Link>
+                        
                         <div>
                             <img src={selectedHotel.photos} alt="hotel" />
                             {/* Carrusel de imágenes */}
@@ -47,7 +45,7 @@ const Detail = (props) => {
                                         <h2 className='text-left font-medium'>{selectedHotel.name}</h2>
                                         <h3 className='text-2xl text-center m-4' >
                                             <Stars stars={selectedHotel.stars} />
-                                            {selectedHotel.stars}
+                                           
                                         </h3>
                                     </div>
                                     <div className=' text-xl text-left m-4'>
@@ -57,7 +55,7 @@ const Detail = (props) => {
                                     <hr/>
                                     <div className=' text-left m-4'>
                                         <h2 className='font-medium text-2xl'>Description: </h2>
-                                        <p className='text-xl m-3 '>{selectedHotel.description}</p>
+                                        <p className='text-xl text-justify m-3 '>{selectedHotel.description}</p>
                                     </div>
                                     <hr/>
                                     <div className=' text-xl text-left m-4'>
@@ -128,7 +126,27 @@ const Detail = (props) => {
                             <div>
                                 <p> {selectedHotel.comments}</p>
                             </div>
-                        </div>
+                            </div>
+                            <hr/>
+                            <div>
+                                <div >
+                                    <h1 className='font-medium text-2xl pt-5'>
+                                        Reviews
+                                    </h1>
+                                </div>
+                                <div className='pt-5 '>
+                                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda, veniam ullam dolorem reiciendis labore tempora enim nam sit ipsa omnis maxime veritatis, asperiores autem. Ad aliquam sit iste maxime rerum.</p>
+                                </div>
+                            </div>
+                            <hr/>
+                            <div className='pt-5 '>
+                                <Link to={'/home'} >
+                                    <button className='mr-2 mb-2 text-lg font-medium text-gray-900  bg-[color:var(--primary-bg-opacity-color)] rounded-full border border-black-800 p-5'>All hotels</button>
+                                </Link>
+                            </div>
+                            
+                        
+                            
                     </div>
                 )}
 
