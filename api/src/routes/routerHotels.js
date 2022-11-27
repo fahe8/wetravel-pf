@@ -66,52 +66,84 @@ const getHotels = async () => {
 };
 
 routerHotels.get("/", async (req, res) => {
-  const {
-    name,
-    continent,
-    location,
-    city,
-    stars,
-    priceMin,
-    priceMax,
-    servicies,
-  } = req.query;
+  const { search, stars, priceMin, priceMax, servicies } = req.query;
 
   try {
     const hotels = await getHotels();
 
-    if (name && hotels.length) {
-      const hotelName = hotels.find((el) =>
-        el.name.toLowerCase().includes(name.toLowerCase())
+    let resultadoDeBusqueda = [];
+    if (search && hotels.length) {
+      let hotelName = hotels.filter((el) =>
+        el.name
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase()
+          .includes(search.toLowerCase())
       );
-      hotelName
-        ? res.status(200).send(hotelName)
-        : res.status(404).send("No Hotel with that name");
+      console.log(hotelName);
+      let filterLocation = hotels.filter((el) =>
+        el.location
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase()
+          .includes(search.toLowerCase())
+      );
+      console.log(filterLocation);
+      let filterCity = hotels.filter((el) =>
+        el.city
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase()
+          .includes(search.toLowerCase())
+      );
+      console.log(filterCity);
+
+      let filtercontinent = hotels.filter((el) =>
+        el.continent
+          
+          .toLowerCase()
+          .includes(search.toLowerCase())
+      );
+
+
+      const arr = [...new Set([...hotelName, ...filterCity, ...filterLocation, ...filtercontinent])];
+      resultadoDeBusqueda = arr;
     }
 
     if (stars || priceMin || priceMax || servicies) {
-      let filtrado = [];
       if (priceMax && priceMin) {
-        let pri = hotels.filter((el) => {
-          return (
-            el.price.split("$")[1].split(".").join("") <= Number(priceMax) &&
-            el.price.split("$")[1].split(".").join("") >= Number(priceMin)
-          );
-        });
-        filtrado = pri;
-      }
-
-      if (stars) {
-        if (filtrado.length > 0) {
-          let filterStars = filtrado.filter((el) => el.stars === stars);
-          filtrado = filterStars;
+        if (resultadoDeBusqueda.length > 0) {
+          let pri = resultadoDeBusqueda.filter((el) => {
+            return (
+              el.price.split("$")[1].split(".").join("") <= Number(priceMax) &&
+              el.price.split("$")[1].split(".").join("") >= Number(priceMin)
+            );
+          });
+          resultadoDeBusqueda = pri;
         } else {
-          let filterStars = hotels.filter((el) => el.stars === stars);
-          filtrado = filterStars;
+          let pri = hotels.filter((el) => {
+            return (
+              el.price.split("$")[1].split(".").join("") <= Number(priceMax) &&
+              el.price.split("$")[1].split(".").join("") >= Number(priceMin)
+            );
+          });
+          resultadoDeBusqueda = pri;
         }
       }
 
-      return res.send(filtrado);
+      if (stars) {
+        if (resultadoDeBusqueda.length > 0) {
+          let filterStars = resultadoDeBusqueda.filter(
+            (el) => el.stars === stars
+          );
+          resultadoDeBusqueda = filterStars;
+        } else {
+          let filterStars = hotels.filter((el) => el.stars === stars);
+          resultadoDeBusqueda = filterStars;
+        }
+      }
+
+      return res.send(resultadoDeBusqueda);
 
       // if (servicies.includes(",")) {
 
@@ -143,53 +175,11 @@ routerHotels.get("/", async (req, res) => {
       //   });
     }
 
-    if (continent) {
-      try {
-        let filtercontinent = hotels.filter((el) =>
-          el.continent.toLowerCase().includes(continent.toLowerCase())
-        );
-        // console.log('FILTRO:', filtercontinent.length);
-        if (!filtercontinent.length) {
-          return res.status(400).send("No match  with that continent");
-        }
-        return res.send(filtercontinent);
-      } catch (error) {
-        res.status(400).send(error.message);
-      }
-    }
+    if(resultadoDeBusqueda.length) {
+      return res.send(resultadoDeBusqueda)
 
-    if (location) {
-      try {
-        let filterLocation = hotels.filter((el) =>
-          el.location.toLowerCase().includes(location.toLowerCase())
-        );
-        // console.log('FILTRO:', filterLocation.length);
-        if (!filterLocation.length) {
-          return res.status(400).send("No match  with that location");
-        }
-        return res.send(filterLocation);
-      } catch (error) {
-        res.status(400).send(error.message);
-      }
-    }
-
-    if (city) {
-      try {
-        let filterCity = hotels.filter((el) =>
-          el.city.toLowerCase().includes(city.toLowerCase())
-        );
-        // console.log('FILTRO:', filterCity.length);
-        if (!filterCity.length) {
-          return res.status(400).send("No match  with that city");
-        }
-        return res.send(filterCity);
-      } catch (error) {
-        res.status(400).send(error.message);
-      }
-    }
-
-    if (hotels.length && !name) {
-      res.status(200).send(hotels);
+    } else {
+      return res.send(hotels)
     }
   } catch (error) {
     res.status(400).send(error.message);

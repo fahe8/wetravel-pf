@@ -12,7 +12,9 @@ const Search = () => {
 
   let dispatch = useDispatch();
   let ref = useRef();
-  const [inputText, setInputText] = useState({ text: "", from: "" });
+  let ref2 = useRef();
+
+  const [inputText, setInputText] = useState("");
   const [count, setCount] = useState(0);
   const [state, setstate] = useState(false);
   const [panelSelect, setPanelSelect] = useState({
@@ -41,7 +43,7 @@ const Search = () => {
     }
   }, []);
 
-  //Open and Close panel search
+  //Open panel search
   const handleClick = (event) => {
     setPanelSelect({ selected: event.currentTarget.id, active: true });
   };
@@ -49,11 +51,10 @@ const Search = () => {
   const getSearch = () => {
     dispatch(
       getSearchHotels(
-        inputText.text
+        inputText
           .normalize("NFD")
           .replace(/[\u0300-\u036f]/g, "")
-          .toLowerCase(),
-        inputText.from
+          .toLowerCase()
       )
     );
     history.push("/home");
@@ -62,7 +63,7 @@ const Search = () => {
   //Close panel search click outside
   useEffect(() => {
     let closePanelSearch = (e) => {
-      if (!ref.current.contains(e.target)) {
+      if (!ref.current.contains(e.target) &&  !ref2.current.contains(e.target)) {
         setPanelSelect({ selected: null, active: false });
       }
     };
@@ -79,7 +80,7 @@ const Search = () => {
         className={` w-[70%] absolute bottom-0 left-[50%] translate-x-[-50%]  ${
           panelSelect.active && "translate-y-[0%]"
         }`}
-        ref={ref}
+       ref={ref2} 
       >
         <div
           className={`${
@@ -163,7 +164,7 @@ const Search = () => {
           className={` absolute -z-10 w-[100%] mx-auto top-[90%] ease-in-out duration-300 ${
             panelSelect.active ? "h-[400px] translate-y-[-50%]" : "h-[0px]"
           }`}
-        >
+          ref={ref}>
           {panelSelect.active && (
             <SearchPanel
               selected={panelSelect.selected}
@@ -172,6 +173,7 @@ const Search = () => {
               setInputText={setInputText}
               count={count}
               setCount={setCount}
+              ref={ref}
             />
           )}
         </div>
@@ -180,7 +182,7 @@ const Search = () => {
   }
 
   return (
-    <div className="w-full h-full relative " ref={ref}>
+    <div className="w-full h-full relative " ref={ref2}>
       <div
         className={` ease-in-out duration-300 transform w-full h-full grid grid-cols-new4 grid-rows-1 bg-[color:var(--second-bg-color)] rounded-full shadow-md border border-[color:var(--search-border-color)] cursor-pointer `}
       >
@@ -258,9 +260,10 @@ const Search = () => {
         </button>
       </div>
       <div
-        className={`-z-10 min-w-auto w-full ease-in-out duration-300 absolute top-[800%]${
-          panelSelect.active ? " translate-y-[-100%]" : "h-[0px]"
+        className={`z-10  w-[100%] ease-in-out duration-300 absolute top-[800%]${
+          panelSelect.active ? " translate-y-[-80%]" : "h-[0px]"
         }`}
+        ref={ref}
       >
         {panelSelect.active && (
           <SearchPanel

@@ -39,14 +39,16 @@ export const loading = () => {
   };
 };
 
-export function getSearchHotels(search, from) {
+export function getSearchHotels(search='', filters={stars: '', priceMin:'', priceMax:''}) {
  // console.log(search);
   return async function (dispatch) {
-    const json = await axios.get(
-      `http://localhost:3001/hotels?${
-        from === "location" ? `location=${search}` : `continent=${search}`
-      }`
-    );
+    const {stars,  priceMin, priceMax} = filters
+       const json = await axios.get(
+        `http://localhost:3001/hotels?search=${search}&stars=${stars}&priceMin=${priceMin}&priceMax=${priceMax}`
+      );
+
+
+
     return dispatch({
       type: GET_SEARCH_HOTELS,
       payload: json.data,
