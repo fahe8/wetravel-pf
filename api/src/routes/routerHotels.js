@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+const { Hotel, User } = require("../db");
+=======
 const { Hotel, User, Service } = require("../db");
+>>>>>>> 7da0cd46d63fa909279c7e2621c839bcda6e1e57
 const { Router } = require("express");
 const routerHotels = Router();
 const apiData = require("../../hotels.json");
@@ -14,6 +18,8 @@ const getHotels = async () => {
           attributes: [],
         },
       },
+<<<<<<< HEAD
+=======
       {
         model: Service,
         attributes: ["name"],
@@ -21,10 +27,16 @@ const getHotels = async () => {
           attributes: [],
         },
       },
+>>>>>>> 7da0cd46d63fa909279c7e2621c839bcda6e1e57
     ],
   });
 
   if (!dataDb.length) {
+<<<<<<< HEAD
+    const apiInfo = apiData.map((el) => {
+      return {
+        id: el.id,
+=======
     const servicesRepeat = apiData
       .map((data) => data.services)
       .join()
@@ -39,14 +51,30 @@ const getHotels = async () => {
     );
     apiData.map(async (el) => {
       const addHotelDb = await Hotel.create({
+>>>>>>> 7da0cd46d63fa909279c7e2621c839bcda6e1e57
         name: el.name,
         description: el.description,
         stars: el.stars,
         price: el.price,
+<<<<<<< HEAD
+        services: el.services.map((ele) => ele),
+=======
+>>>>>>> 7da0cd46d63fa909279c7e2621c839bcda6e1e57
         photos: el.photos.map((ele) => ele),
         continent: el.continent,
         location: el.location,
         city: el.city,
+<<<<<<< HEAD
+
+        review: el.review,
+        comments: el.comments,
+        room: el.room,
+      };
+    });
+    const hotels = await Hotel.bulkCreate(apiInfo);
+    // console.log(hotels);
+    return hotels;
+=======
         review: el.review,
         comments: el.comments,
         room: el.room,
@@ -59,6 +87,7 @@ const getHotels = async () => {
       });
       addHotelDb.addService(relacion);
     });
+>>>>>>> 7da0cd46d63fa909279c7e2621c839bcda6e1e57
   }
   if (dataDb.length) {
     return dataDb;
@@ -66,6 +95,12 @@ const getHotels = async () => {
 };
 
 routerHotels.get("/", async (req, res) => {
+<<<<<<< HEAD
+  const { name, continent, stars, location, city, price } = req.query;
+  try {
+    const hotels = await getHotels();
+
+=======
   const {
     name,
     continent,
@@ -80,6 +115,7 @@ routerHotels.get("/", async (req, res) => {
   try {
     const hotels = await getHotels();
 
+>>>>>>> 7da0cd46d63fa909279c7e2621c839bcda6e1e57
     if (name && hotels.length) {
       const hotelName = hotels.find((el) =>
         el.name.toLowerCase().includes(name.toLowerCase())
@@ -88,6 +124,32 @@ routerHotels.get("/", async (req, res) => {
         ? res.status(200).send(hotelName)
         : res.status(404).send("No Hotel with that name");
     }
+<<<<<<< HEAD
+    if (stars) {
+      try {
+        let filterStars = hotels.filter((el) => el.stars === stars);
+        console.log("FILTRO:", filterStars.length);
+        if (!filterStars.length) {
+          return res.status(400).send("No match  with that star");
+        }
+        return res.send(filterStars);
+      } catch (error) {
+        res.status(400).send(error.message);
+      }
+    }
+    if (price) {
+      try {
+        let filterPrice = hotels.filter((el) => el.price === price);
+        // console.log('FILTRO price:', filterPrice.length);
+        if (!filterPrice.length) {
+          return res.status(400).send("No match with that price");
+        }
+        return res.json(filterPrice);
+      } catch (error) {
+        res.status(400).send(error.message);
+      }
+    }
+=======
 
     if (stars || priceMin || priceMax || servicies) {
 
@@ -152,6 +214,7 @@ routerHotels.get("/", async (req, res) => {
       
     }
 
+>>>>>>> 7da0cd46d63fa909279c7e2621c839bcda6e1e57
     if (continent) {
       try {
         let filtercontinent = hotels.filter((el) =>
@@ -242,6 +305,10 @@ routerHotels.post("/", async (req, res) => {
       description,
       stars,
       price,
+<<<<<<< HEAD
+      services,
+=======
+>>>>>>> 7da0cd46d63fa909279c7e2621c839bcda6e1e57
       photos,
       continent,
       location,
@@ -254,12 +321,17 @@ routerHotels.post("/", async (req, res) => {
     let userDb = await User.findAll({
       where: { name: user },
     });
+<<<<<<< HEAD
+
+    newHotel.addUser(userDb);
+=======
     let servicesDb = await Service.findAll({
       where: { name: services },
     });
 
     newHotel.addUser(userDb);
     newHotel.addService(servicesDb);
+>>>>>>> 7da0cd46d63fa909279c7e2621c839bcda6e1e57
     res.status(200).send(newHotel);
   } catch (error) {
     res.status(400).send(error.message);
