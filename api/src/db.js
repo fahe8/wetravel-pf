@@ -36,10 +36,12 @@ let capsEntries = entries.map((entry) => [
 
 sequelize.models = Object.fromEntries(capsEntries);
 
-const { Hotel, User } = sequelize.models;
+const { Hotel, User, Service } = sequelize.models;
 
 Hotel.belongsToMany(User, {through: "user-hotels"});
 User.belongsToMany(Hotel, {through: "user-hotels"});
+Hotel.belongsToMany(Service, {through: "service-hotels"});
+Service.belongsToMany(Hotel, {through: "service-hotels"});
 
 module.exports = {
   ...sequelize.models,
