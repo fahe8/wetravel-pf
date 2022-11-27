@@ -93,8 +93,8 @@ const Detail = (props) => {
                           </h2>
                           <div className="grid grid-cols-2">
                             {selectedHotel.services.map((service) => (
-                              <p key={service.name} className="m-4 ">
-                                {service.name}
+                              <p key={service} className="m-4 ">
+                                {service}
                               </p>
                             ))}
                           </div>
