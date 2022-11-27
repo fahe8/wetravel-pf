@@ -13,55 +13,34 @@ const getHotels = async () => {
         through: {
           attributes: [],
         },
-      },
-      {
-        model: Service,
-        attributes: ["name"],
-        through: {
-          attributes: [],
-        },
-      },
+      }
     ],
   });
 
-  if (!dataDb.length) {
-    const servicesRepeat = apiData
-      .map((data) => data.services)
-      .join()
-      .split(",");
-    const servicesNoRepeat = [...new Set(servicesRepeat)];
-    servicesNoRepeat.map((service) =>
-      Service.findOrCreate({
-        where: {
-          name: service,
-        },
-      })
-    );
-    apiData.map(async (el) => {
-      const addHotelDb = await Hotel.create({
-        name: el.name,
-        description: el.description,
-        stars: el.stars,
-        price: el.price,
-        photos: el.photos.map((ele) => ele),
-        continent: el.continent,
-        location: el.location,
-        city: el.city,
-        review: el.review,
-        comments: el.comments,
-        room: el.room,
+    if(!dataDb.length){
+      const apiInfo = apiData.map(el => {
+          return {
+              id: el.id,
+              name: el.name,
+              description: el.description,
+              stars: el.stars,
+              price: el.price,
+              services: el.services.map(ele => ele),
+              photos: el.photos.map(ele => ele),
+              continent: el.continent,
+              location: el.location,
+              city: el.city,
+              review: el.review,
+              comments: el.comments,
+              room: el.room
+          }
       });
-
-      const relacion = await Service.findAll({
-        where: {
-          name: el.services,
-        },
-      });
-      addHotelDb.addService(relacion);
-    });
+      const hotels = await Hotel.bulkCreate(apiInfo);
+      // console.log(hotels);
+      return hotels;
   }
-  if (dataDb.length) {
-    return dataDb;
+  if(dataDb.length){
+      return dataDb;
   }
 };
 
@@ -145,34 +124,7 @@ routerHotels.get("/", async (req, res) => {
 
       return res.send(resultadoDeBusqueda);
 
-      // if (servicies.includes(",")) {
-
-      //   const serviciesSearch = servicies.split(",");
-
-      //   await Hotel.findAll({
-      //     where: {price: {[Op.between]: [priceMin, priceMax]}, stars: stars },
-      //     include: {
-      //       model: Service,
-      //       attributes: ["name"],
-      //       where: {name: serviciesSearch},
-      //       through: {
-      //         attributes: [],
-      //       },
-      //     },
-      //   });
-      // }
-
-      // await Hotel.findAll({
-      //     where: {price: {[Op.between]: [priceMin, priceMax]}, stars: stars },
-      //     include: {
-      //       model: Service,
-      //       attributes: ["name"],
-      //       where: {name: servicies},
-      //       through: {
-      //         attributes: [],
-      //       },
-      //     },
-      //   });
+      
     }
 
     if(resultadoDeBusqueda.length) {
@@ -221,6 +173,7 @@ routerHotels.post("/", async (req, res) => {
     let newHotel = await Hotel.create({
       name,
       description,
+      services,
       stars,
       price,
       photos,
@@ -235,9 +188,7 @@ routerHotels.post("/", async (req, res) => {
     let userDb = await User.findAll({
       where: { name: user },
     });
-    let servicesDb = await Service.findAll({
-      where: { name: services },
-    });
+
 
     newHotel.addUser(userDb);
     newHotel.addService(servicesDb);
