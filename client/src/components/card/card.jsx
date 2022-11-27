@@ -16,9 +16,9 @@ function Card({
   name,
 }) {
   return (
-    <div className="bg-white hover:bg-gray-200 shadow-xl hover:shadow-none cursor-pointer w-80 rounded-3xl flex flex-col items-center justify-center transition-all duration-500 ease-in-out">
-      <div className="relative mt-2 mx-2">
-        <Link to={`/home/${id}`}>
+    <div className="bg-white hover:bg-gray-200 shadow-xl hover:shadow-none cursor-pointer w-80 rounded-3xl flex flex-col items-center justify-center transition-all duration-500 ease-in-out px-2">
+      <div className="relative mt-2 mx-2 w-full">
+        
         <div className="h-56 rounded-2xl overflow-hidden">
           <img src={photos} alt={name} className="object-cover w-full h-full" />
         </div>
@@ -30,6 +30,7 @@ function Card({
               <Stars stars={stars} />
             </div>
             <hr/>
+            <Link to={`/home/${id}`}>
             <div className="text-left">
               <h3>{name}</h3>
               <br/>
@@ -41,9 +42,9 @@ function Card({
               </div>
               <br />
             </div>
+            </Link>
             
           </div>
-        </Link>
       </div>
     </div>
   );
