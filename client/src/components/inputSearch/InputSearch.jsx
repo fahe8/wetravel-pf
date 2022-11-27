@@ -31,7 +31,8 @@ const InputSearch = ({inputText, setInputText}) => {
     setInputText({text:event.currentTarget.id, from: "location"})
     setFilteredData([])
   }
-
+  
+  
   return (
     <div className="relative  z-[1000] h-auto w-full ">
       <input
@@ -42,7 +43,7 @@ const InputSearch = ({inputText, setInputText}) => {
         onChange={handleFilter}
       />{" "}
       {filteredData.length !== 0 && (
-        <div className="bg-white absolute z-10 right-[0] w-[90%] h-[200px] mt-[5px] overflow-hidden overflow-y-auto object-none drop-shadow-md rounded-[10px]">
+        <div className="bg-white absolute z-30 right-[0] w-[90%] h-[200px] mt-[5px] overflow-hidden overflow-y-auto object-none drop-shadow-md rounded-[10px]">
           {filteredData?.map((hotel, idx) => (
             <div
               key={idx}
