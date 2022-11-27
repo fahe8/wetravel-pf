@@ -26,10 +26,6 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    services: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
-      allowNull: false
-    },
     photos: {
       type: DataTypes.ARRAY(DataTypes.TEXT),
       allowNull: false
