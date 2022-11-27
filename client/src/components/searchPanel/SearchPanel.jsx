@@ -30,7 +30,7 @@ setCount(counterAdult.counter + counterChild.counter + counterBaby.counter + cou
       <div
         className={`${
           active ? "" : "translate-y-[5%] "
-        } ease-in-out duration-300 transform  h-[400px] w-[auto] mx-auto bg-[color:var(--second-bg-color)] shadow-lg rounded-[30px] relative`}
+        } ease-in-out duration-300 transform  h-[400px] w-[800px] mx-auto bg-[color:var(--second-bg-color)] shadow-lg rounded-[30px] relative`}
       >
         <h1 className=" text-4xl pb-2">Location</h1>
         <div className=" h-auto flex justify-between">
@@ -44,7 +44,7 @@ setCount(counterAdult.counter + counterChild.counter + counterBaby.counter + cou
                 className="w-full h-full"
                 id="america"
                 onClick={(e) =>
-                  setInputText({ text: e.currentTarget.id, from: "continent" })
+                  setInputText( e.currentTarget.id)
                 }
               >
                 <p>America</p>
@@ -54,7 +54,7 @@ setCount(counterAdult.counter + counterChild.counter + counterBaby.counter + cou
                 className="w-full h-full"
                 id="europa"
                 onClick={(e) =>
-                  setInputText({ text: e.currentTarget.id, from: "continent" })
+                  setInputText(e.currentTarget.id)
                 }
               >
                 <p>Europa</p>
@@ -64,7 +64,7 @@ setCount(counterAdult.counter + counterChild.counter + counterBaby.counter + cou
                 className="w-full h-full"
                 id="asia"
                 onClick={(e) =>
-                  setInputText({ text: e.currentTarget.id, from: "continent" })
+                  setInputText(e.currentTarget.id)
                 }
               >
                 <p>Asia</p>
@@ -74,7 +74,7 @@ setCount(counterAdult.counter + counterChild.counter + counterBaby.counter + cou
                 className="w-full h-full"
                 id="africa"
                 onClick={(e) =>
-                  setInputText({ text: e.currentTarget.id, from: "continent" })
+                  setInputText(e.currentTarget.id)
                 }
               >
                 <p>Africa</p>
@@ -84,7 +84,7 @@ setCount(counterAdult.counter + counterChild.counter + counterBaby.counter + cou
                 className="w-full h-full"
                 id="australia"
                 onClick={(e) =>
-                  setInputText({ text: e.currentTarget.id, from: "continent" })
+                  setInputText(e.currentTarget.id)
                 }
               >
                 <p>Australia</p>
@@ -118,12 +118,12 @@ setCount(counterAdult.counter + counterChild.counter + counterBaby.counter + cou
       <div
         className={`${
           active ? "" : "translate-y-[5%] "
-        }  ease-in-out duration-300 transform  h-[400px] w-[400px] mx-auto bg-[color:var(--second-bg-color)] shadow-lg rounded-[30px]  relative `}
+        }  ease-in-out duration-300 transform h-[400px] w-[400px] mx-auto bg-[color:var(--second-bg-color)] shadow-lg rounded-[30px]  relative `}
       >
         {" "}
         <h1 className=" text-4xl pb-2 ">Guest</h1>
         <div className="pr-5">
-        <div className="flex py-5">
+        <div className="flex py-2">
           <h2 className=" w-[300px] text-left pl-10">Adultos</h2>
           <div className=" flex items-center">
           <div> <button className="w-[40px] h-[40px] bg-slate-400 rounded-full" onClick={counterAdult.increase}>+</button></div>
@@ -131,7 +131,7 @@ setCount(counterAdult.counter + counterChild.counter + counterBaby.counter + cou
             <div> <button className="w-[40px] h-[40px] bg-slate-400 rounded-full" disabled={counterAdult.counter === 0} onClick={counterAdult.decrement}>-</button></div>
           </div>
         </div>
-        <div className="flex  py-5">
+        <div className="flex  py-2">
           <h2 className=" w-[300px] text-left pl-10">Niños</h2>
           <div className=" flex items-center">
           <div> <button className="w-[40px] h-[40px] bg-slate-400 rounded-full" onClick={counterChild.increase}>+</button></div>
@@ -139,7 +139,7 @@ setCount(counterAdult.counter + counterChild.counter + counterBaby.counter + cou
           <div> <button className="w-[40px] h-[40px] bg-slate-400 rounded-full" disabled={counterChild.counter === 0} onClick={counterChild.decrement}>-</button></div>
           </div>
         </div>
-        <div className="flex  py-5">
+        <div className="flex  py-2">
           <h2 className=" w-[300px] text-left pl-10">Bebes</h2>
           <div className=" flex items-center">
           <div><button className="w-[40px] h-[40px] bg-slate-400 rounded-full" onClick={counterBaby.increase}>+</button></div>
@@ -147,7 +147,7 @@ setCount(counterAdult.counter + counterChild.counter + counterBaby.counter + cou
            <div> <button className="w-[40px] h-[40px] bg-slate-400 rounded-full" disabled={counterBaby.counter === 0} onClick={counterBaby.decrement}>-</button></div>
           </div>
         </div>
-        <div className="flex  py-5">
+        <div className="flex  py-2">
           <h2 className=" w-[300px] text-left pl-10">Mascotas</h2>
           <div className=" flex items-center">
           <div> <button className="w-[40px] h-[40px] bg-slate-400 rounded-full" onClick={counterPet.increase}>+</button></div>
