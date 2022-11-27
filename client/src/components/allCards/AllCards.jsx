@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux"
 import Card from '../card/card'
 import { getHotels } from '../../redux/action'
+import InfiniteScroll from "react-infinite-scroll-component";
 
 
 
