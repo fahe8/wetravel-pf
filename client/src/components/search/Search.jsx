@@ -197,7 +197,7 @@ const Search = () => {
             <span className=" bg-[url('/src/assets/icons/location.svg')] bg-center bg-cover bg-no-repeat  w-5 h-5"></span>{" "}
             <p className=" h-[20px] font-medium text-sm">Destination place</p>
           </div>{" "}
-          <div className=" w-[70%] mx-auto h-20px overflow-hidden">
+          <div className=" w-[70%] mx-auto h-20px ">
             <InputSearch
               inputText={inputText}
               setInputText={setInputText}
