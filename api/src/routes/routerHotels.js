@@ -242,7 +242,6 @@ routerHotels.post("/", async (req, res) => {
       description,
       stars,
       price,
-      services,
       photos,
       continent,
       location,
@@ -255,8 +254,12 @@ routerHotels.post("/", async (req, res) => {
     let userDb = await User.findAll({
       where: { name: user },
     });
+    let servicesDb = await Service.findAll({
+      where: { name: services },
+    });
 
     newHotel.addUser(userDb);
+    newHotel.addService(servicesDb);
     res.status(200).send(newHotel);
   } catch (error) {
     res.status(400).send(error.message);
