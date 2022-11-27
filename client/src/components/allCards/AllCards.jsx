@@ -9,7 +9,7 @@ import { getHotels } from '../../redux/action'
 const AllCards = () => { //función que pide la información y la renderiza
   let estadoHoteles = useSelector(state => state.hotels) //state.hotels = hace referencia a uno de los estados de reducer
   const dispatch = useDispatch() 
-console.log (estadoHoteles) //me muestra todos los hoteles por consola
+//console.log (estadoHoteles) //me muestra todos los hoteles por consola
 //Simular algo antes, durante y después que se renderice --> dentro del useEffect despachar la acción que se necesite
   useEffect(() => {
     if (estadoHoteles.length === 0) {

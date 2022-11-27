@@ -12,6 +12,7 @@ export const LOADING = "LOADING";
 export function getHotels() {
   return async function (dispatch) {
     const json = await axios.get("http://localhost:3001/hotels");
+    console.log(json)
     return dispatch({
       type: GET_HOTELS,
       payload: json.data,
@@ -39,7 +40,7 @@ export const loading = () => {
 };
 
 export function getSearchHotels(search, from) {
-  console.log(search);
+ // console.log(search);
   return async function (dispatch) {
     const json = await axios.get(
       `http://localhost:3001/hotels?${
@@ -73,6 +74,7 @@ export function postUser(payload) {
 export function getServices() {
   return async function (dispatch) {
     const json = await axios.get("http://localhost:3001/services");
+    console.log(json) //pendiente porque no me está trayendo nada
     return dispatch({
       type: GET_SERVICES,
       payload: json.data,
