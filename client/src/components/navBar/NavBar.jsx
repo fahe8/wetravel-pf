@@ -17,7 +17,9 @@ const NavBar = () => {
   return (
     <header className=" h-20 bg-[color:var(--second-bg-color)] flex justify-between text-center shadow-lg">
       <figure className=" w-20 h-20 bg-cyan-700">
+        <Link to="/home">
         <img src={logo} alt="logo-wetravel" className="w-full h-full " />
+        </Link>
       </figure>
       <div className=" w-1/2 h-20  bg-white py-3 px-20">
         {!state && <Search></Search>}
