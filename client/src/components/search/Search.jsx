@@ -76,7 +76,7 @@ const Search = () => {
   if (state) {
     return (
       <div
-        className={` w-[70%] absolute bottom-0 left-[50%] translate-x-[-50%] ${
+        className={` w-[70%] absolute bottom-0 left-[50%] translate-x-[-50%]  ${
           panelSelect.active && "translate-y-[0%]"
         }`}
         ref={ref}
@@ -84,7 +84,7 @@ const Search = () => {
         <div
           className={`${
             panelSelect.active && "translate-y-[-150%]"
-          }  mx-auto ease-in-out duration-300 transform w-[95%] h-[130px] grid grid-cols-new4 grid-rows-1 bg-[color:var(--primary-bg-opacity-color)] rounded-full shadow-md border border-[color:var(--search-border-color)] cursor-pointer `}
+          }  mx-auto ease-in-out duration-300 transform w-[95%] h-[130px] grid grid-cols-new4 grid-rows-1 bg-[color:var(--second-bg-color)] rounded-full shadow-md border border-[color:var(--search-border-color)] cursor-pointer `}
         >
           <button
             className={`${
@@ -180,9 +180,9 @@ const Search = () => {
   }
 
   return (
-    <div className="w-full h-full relative" ref={ref}>
+    <div className="w-full h-full relative " ref={ref}>
       <div
-        className={` ease-in-out duration-300 transform w-full h-full grid grid-cols-new4 grid-rows-1 bg-[color:var(--primary-bg-opacity-color)] rounded-full shadow-md border border-[color:var(--search-border-color)] cursor-pointer `}
+        className={` ease-in-out duration-300 transform w-full h-full grid grid-cols-new4 grid-rows-1 bg-[color:var(--second-bg-color)] rounded-full shadow-md border border-[color:var(--search-border-color)] cursor-pointer `}
       >
         <button
           className={`${
@@ -197,7 +197,7 @@ const Search = () => {
             <span className=" bg-[url('/src/assets/icons/location.svg')] bg-center bg-cover bg-no-repeat  w-5 h-5"></span>{" "}
             <p className=" h-[20px] font-medium text-sm">Destination place</p>
           </div>{" "}
-          <div className=" w-[70%] mx-auto">
+          <div className=" w-[70%] mx-auto h-20px overflow-hidden">
             <InputSearch
               inputText={inputText}
               setInputText={setInputText}
