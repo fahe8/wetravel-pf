@@ -387,8 +387,8 @@ const Create = () => {
                   )}
                   {service.map((serv) => {
                     return (
-                      <option key={serv.name} value={serv.name}>
-                        {serv.name}{" "}
+                      <option key={serv} value={serv}>
+                        {serv}{" "}
                       </option>
                     );
                   })}
