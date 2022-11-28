@@ -1,7 +1,48 @@
-import { React, useState, useEffect, useRef } from "react";
+import React, {  useState, useEffect, useRef } from "react";
+import { useDispatch } from "react-redux";
+import { useLocation } from "react-router-dom";
+import {getSearchHotels} from "../../redux/action/index"
+import { useHistory } from "react-router-dom";
+
+
+function useQuery() {
+  const { search } = useLocation();
+
+  return React.useMemo(() => new URLSearchParams(search), [search]);
+}
 
 const Filters = () => {
+  let query = useQuery()
+  let parameterSearch = query.get('search')
+
+  let history = useHistory()
+  const dispatch = useDispatch()
+
   const [modalFilter, setModalFilter] = useState(false);
+
+  const initialFilters={stars:'',priceMin:0, priceMax:100000000}
+
+  const [filters, setFilters] = useState(initialFilters);
+
+
+
+  const handleChange = (e)=>{
+      setFilters({...filters, [e.target.name]: e.target.value})
+  }
+
+  const handleStar = (e) => {
+    setFilters({...filters, stars: e.target.id})
+
+  }
+
+  const restartFilters = () => {
+    setFilters(initialFilters)
+  }
+
+const DoFilters = () => {
+  dispatch(getSearchHotels(parameterSearch, filters))
+  history.push(`home?search=${query}&stars=${filters.stars}&priceMin=${filters.priceMin}&priceMax=${filters.priceMax}`);
+}
 
   const pressButtonFilter = () => {
     setModalFilter(true);
@@ -32,6 +73,8 @@ const Filters = () => {
       setModalFilter(false);
     }
   };
+
+
   return (
     <div className="h-[80px] px-5 bg-white">
       <div className="h-full  flex justify-end items-center ">
@@ -59,6 +102,11 @@ const Filters = () => {
                 refOne={refOne}
                 setModalFilter={setModalFilter}
                 modalFilter={modalFilter}
+                filters= {filters}
+                handleChange={handleChange}
+                DoFilters={DoFilters}
+                handleStar= {handleStar}
+                restartFilters={restartFilters}
               />
             )}
           </div>
@@ -68,7 +116,7 @@ const Filters = () => {
   );
 };
 
-const ModalFilter = ({ refOne, setModalFilter, modalFilter }) => {
+const ModalFilter = ({ refOne, setModalFilter,handleStar,filters, handleChange, DoFilters , restartFilters}) => {
   return (
     <div className="  w-screen h-screen  fixed top-0 left-0 z-30 flex justify-center items-center">
       <div className="w-[600px] h-[600px] bg-white rounded-3xl " ref={refOne}>
@@ -90,9 +138,12 @@ const ModalFilter = ({ refOne, setModalFilter, modalFilter }) => {
                 <div className=" flex pl-2 gap-1">
                   <p>{"$"}</p>
                   <input
-                    type="text"
+                    type="number"
+                    step="0.01"
                     className=" outline-none w-[100%]"
-                    value={0}
+                    name={"priceMin"}
+                    value={filters.priceMin}
+                    onChange={handleChange}
                   />
                 </div>
               </label>
@@ -105,9 +156,11 @@ const ModalFilter = ({ refOne, setModalFilter, modalFilter }) => {
                 <div className=" flex pl-2 gap-1">
                   <p>{"$"}</p>
                   <input
-                    type="text"
+                    type="number"
                     className=" outline-none w-[100%]"
-                    value={0}
+                    name={"priceMax"}
+                    value={filters.priceMax}
+                    onChange={handleChange}
                   />
                 </div>
               </label>
@@ -116,10 +169,20 @@ const ModalFilter = ({ refOne, setModalFilter, modalFilter }) => {
         </div>
 
         <div className=" w-full pt-5">
-          <h2>{"Calificación"}</h2>
-          <div>
-            <p></p>
+          <h2>{"Calificación por estrellas"}</h2>
+          <div className="flex justify-around items-center my-3 mb-5">
+          <button className=" w-[70px] h-full rounded-3xl border " id={''} onClick={handleStar}>{"Por defecto"}</button>
+          <button className=" w-[50px] h-full rounded-3xl border " id={'1'} onClick={handleStar}>{"1"}</button>
+          <button className=" w-[50px] h-full rounded-3xl border " id={'2'} onClick={handleStar} >{"2"}</button>
+          <button className=" w-[50px] h-full rounded-3xl border " id={'3'} onClick={handleStar}>{"3"}</button>
+          <button className=" w-[50px] h-full rounded-3xl border " id={'4'} onClick={handleStar}>{"4"}</button>
+          <button className=" w-[50px] h-full rounded-3xl border " id={'5'} onClick={handleStar}>{"5"}</button>
           </div>
+        </div>
+
+        <div className="w-full h-[60px] relative">
+          <p className=" absolute w-auto h-auto  border-b-2 font-bold border-black top-[50%] left-5 cursor-pointer px-2 " onClick={restartFilters}>{"Reiniciar filtros"}</p>
+          <button className=" w-[100px] h-full rounded-3xl border " onClick={DoFilters}>{"Filtrar"}</button>
         </div>
       </div>
     </div>

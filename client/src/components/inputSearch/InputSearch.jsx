@@ -31,7 +31,6 @@ const InputSearch = ({inputText, setInputText}) => {
     setInputText(event.currentTarget.id)
     setFilteredData([])
   }
-console.log(filteredData)
 
   return (
     <div className="relative  z-[1000] h-auto w-full ">

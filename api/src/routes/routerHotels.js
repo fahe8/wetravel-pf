@@ -191,7 +191,6 @@ routerHotels.post("/", async (req, res) => {
 
 
     newHotel.addUser(userDb);
-    newHotel.addService(servicesDb);
     res.status(200).send(newHotel);
   } catch (error) {
     res.status(400).send(error.message);
