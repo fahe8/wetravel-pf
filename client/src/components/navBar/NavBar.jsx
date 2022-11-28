@@ -18,12 +18,16 @@ const NavBar = () => {
     }
   }, []);
 
+  const handleReload = () =>{
+    window.location.reload();
+  }
+
   return (
     <header className=" h-20 bg-[color:var(--second-bg-color)] flex justify-between text-center shadow-lg sticky top-0 z-10">
       <Link to={"/home"}>
       <figure className=" w-20 h-20 bg-cyan-700">
         <Link to="/home">
-        <img src={logo} alt="logo-wetravel" className="w-full h-full " />
+        <img src={logo} alt="logo-wetravel" className="w-full h-full " onClick={handleReload}/>
         </Link>
       </figure>
       </Link>
