@@ -99,7 +99,7 @@ const Detail = (props) => {
                         <div>
                           <h2 className="font-medium">
                             {" "}
-                            What does the place affter
+                            What does the place offer
                           </h2>
                           <div className="grid grid-cols-2">
                             {selectedHotel.services.map((service) => (
