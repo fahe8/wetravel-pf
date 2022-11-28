@@ -41,7 +41,7 @@ const Filters = () => {
 
 const DoFilters = () => {
   dispatch(getSearchHotels(parameterSearch, filters))
-  history.push(`home?search=${query}&stars=${filters.stars}&priceMin=${filters.priceMin}&priceMax=${filters.priceMax}`);
+  history.push(`home?${query}&stars=${filters.stars}&priceMin=${filters.priceMin}&priceMax=${filters.priceMax}`);
 }
 
   const pressButtonFilter = () => {
