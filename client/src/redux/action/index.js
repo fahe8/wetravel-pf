@@ -4,11 +4,14 @@ export const POST_USER = "POST_USER";
 export const GET_DETAIL = "GET_DETAIL";
 export const GET_HOTELS = "GET_HOTELS";
 export const GET_SERVICES = "GET_SERVICES";
-// 1 depachar los hoteles
 export const GET_SEARCH_HOTELS = "GET_SEARCH_HOTELS";
 export const POST_HOTEL = "POST_HOTEL";
 export const LOADING = "LOADING";
+export const DELETE_HOTEL = "DELETE_HOTEL"
 
+
+
+// 1 depachar los hoteles
 export function getHotels() {
   return async function (dispatch) {
     const json = await axios.get("http://localhost:3001/hotels");
@@ -83,4 +86,19 @@ export function getServices() {
       payload: json.data,
     }); //segunda función que recibe dispatch y despacha una acción / el tipo y el payload: devuelve el backend
   };
+}
+
+//------->delete dog
+
+export const deleteHotel = (id) => {
+  return async function (dispatch) {
+    try {
+      await axios.delete(`http://localhost:3001/hotels/delete/${id}`);
+      return dispatch({
+        type: DELETE_HOTEL,
+      })
+    } catch (error) {
+      return error
+    }
+  }
 }

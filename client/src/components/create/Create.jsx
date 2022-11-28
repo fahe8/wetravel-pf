@@ -516,7 +516,6 @@ const Create = () => {
                       <button name={serv} onClick={handleDelete}>
                         X
                       </button>
-                      <p>{serv}</p>
                     </div>
                   ))}
                 </div>

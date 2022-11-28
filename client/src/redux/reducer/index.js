@@ -1,4 +1,4 @@
-import {GET_HOTELS,GET_DETAIL, GET_SEARCH_HOTELS, POST_HOTEL, LOADING, POST_USER, GET_SERVICES} from '../action/index'
+import {GET_HOTELS,GET_DETAIL, GET_SEARCH_HOTELS, POST_HOTEL, LOADING, POST_USER, GET_SERVICES, DELETE_HOTEL} from '../action/index'
 
 
 const initialState = { //inicializar el estado; un objeto con varios estados dentro
@@ -52,6 +52,11 @@ function rootReducer(state = initialState, action) { //function reducer; tiene 2
             return {
                 ...state,
                 service: action.payload
+            }
+        
+        case DELETE_HOTEL:
+            return {
+                ...state
             }
 
         default:
