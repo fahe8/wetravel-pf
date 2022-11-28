@@ -3,6 +3,7 @@ require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
+const user = require("./models/user");
 const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 
 const sequelize = new Sequelize(
@@ -36,10 +37,14 @@ let capsEntries = entries.map((entry) => [
 
 sequelize.models = Object.fromEntries(capsEntries);
 
-const { Hotel, User, Service } = sequelize.models;
+const { Hotel, User, Reserves } = sequelize.models;
 
 Hotel.belongsToMany(User, {through: "user-hotels"});
 User.belongsToMany(Hotel, {through: "user-hotels"});
+User.hasMany(Reserves);
+Reserves.belongsTo(User,{through:"reserve-user"}) 
+
+
 
 
 module.exports = {

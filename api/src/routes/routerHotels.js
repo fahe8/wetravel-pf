@@ -1,4 +1,4 @@
-const { Hotel, User, Service } = require("../db");
+const { Hotel, User } = require("../db");
 const { Router } = require("express");
 const routerHotels = Router();
 const apiData = require("../../hotels.json");
