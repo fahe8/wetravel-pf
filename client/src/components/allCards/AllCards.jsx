@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux"
 import Card from '../card/card'
 import { getHotels } from '../../redux/action'
+import InfiniteScroll from "react-infinite-scroll-component";
 
 
 
@@ -31,7 +32,7 @@ const AllCards = () => { //función que pide la información y la renderiza
             location={ht.location}
             city={ht.city}
             price={ht.price}
-            size={ht.room.size}
+            // size={ht.room.size== null?ht.room.size:"No Data"}
             name={ht.name}
           />
         ) : 

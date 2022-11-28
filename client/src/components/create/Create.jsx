@@ -116,7 +116,7 @@ const Create = () => {
     name: "",
     description: "",
     stars: "",
-    price: "",
+    price: "$",
     services: [],
     photos: [],
     continent: "",
@@ -139,9 +139,15 @@ const Create = () => {
   }, [dispatch]);
 
   const handleChange = (e) => {
+    e.target.name === "photos" ?
     setInput({
       ...input,
-      [e.target.name]: e.target.value,
+      [e.target.name]: [e.target.value],
+
+    }):
+    setInput({
+      ...input,
+    [e.target.name]: e.target.value,
     });
     setErrors(
       validate({
@@ -241,26 +247,27 @@ const Create = () => {
 //     }));
 //   }
 
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     dispatch(postHotel(input));
-//     alert("New Hotel created succesfully!");
-//     setInput({
-//       name: "",
-//       description: "",
-//       stars: "",
-//       price: "",
-//       services: [],
-//       photos: [],
-//       continent: "",
-//       location: "",
-//       city: "",
-//       review: "",
-//       comments: [],
-//       user: ""
-//     });
-//     history.push("/home");
-//   }
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   dispatch(postHotel(input));
+  //   alert("New Hotel created succesfully!");
+  //   setInput({
+  //     name: "",
+  //     description: "",
+  //     stars: "",
+  //     price: "",
+  //     services: [],
+  //     photos: [],
+  //     continent: "",
+  //     location: "",
+  //     city: "",
+  //     review: "",
+  //     comments: [],
+  //     user: ""
+  //   });
+  //   history.push("/home");
+  // }
+  console.log("error:",errors,"input",input)
 
   return (
     <div>
@@ -289,6 +296,7 @@ const Create = () => {
                   type="text"
                   value={input.name}
                   name="name"
+                  autoComplete="off"
                   placeholder='Hotel Name...'
                   onChange={e => handleChange(e)}
                 />  
@@ -301,6 +309,7 @@ const Create = () => {
                   type="text"
                   value={input.user}
                   name="user"
+                  autoComplete="off"
                   placeholder='Enter user..'
                   onChange={e => handleChange(e)} />
             </div>
@@ -312,6 +321,7 @@ const Create = () => {
                   type="text"
                   value={input.stars}
                   name="stars"
+                  autoComplete="off"
                   placeholder='Enter stars..'
                   onChange={e => handleChange(e)}
                 />
@@ -328,6 +338,7 @@ const Create = () => {
                   type="number"
                   value={input.price}
                   name="price"
+                  autoComplete="off"
                   placeholder='$' onChange={e => handleChange(e)} />
                 
                 {errors.price && (<p>{errors.price}</p>)}
@@ -342,6 +353,7 @@ const Create = () => {
                   type="text"
                   value={input.continent}
                   name="continent"
+                  autoComplete="off"
                   placeholder='Enter continent..'
                   onChange={e => handleChange(e)} />
             </div> 
@@ -352,6 +364,7 @@ const Create = () => {
                   type="text"
                   value={input.location}
                   name="location"
+                  autoComplete="off"
                   placeholder='Enter location..'
                   onChange={e => handleChange(e)} />
             </div>
@@ -360,6 +373,7 @@ const Create = () => {
                 <input className='bg-transparent border-b border-gray w-11/12'
                   type="text" value={input.city}
                   name="city"
+                  autoComplete="off"
                   placeholder='Enter city..'
                   onChange={e => handleChange(e)} />
             </div>
@@ -370,6 +384,7 @@ const Create = () => {
                   type="text"
                   value={input.description}
                   name="description"
+                  autoComplete="off"
                   placeholder='Add description..'
                   onChange={e => handleChange(e)} />
                 {errors.description && (<p>{errors.description}</p>)}
@@ -379,6 +394,7 @@ const Create = () => {
                 <select
                   className='bg-transparent border-b border-gray w-full'
                   id="tempsInput"
+                  autoComplete="off"
                   onChange={handleSelect}>
                   {!input.services.length ? (
                     <option>Select services</option>
@@ -400,41 +416,44 @@ const Create = () => {
                   className='bg-transparent border-b border-gray w-full'
                   id='photoInput'
                   type="text"
+                  autoComplete="off"
                   value={input.photos}
                   name="photos"
                   placeholder='Url photos..'
                   onChange={e => handleChange(e)} />
-                {errors.url && <p>{errors.url} </p>}
+                {/* {errors.url && <p>{errors.url} </p>} */}
               </div>
             
-              <div className='col-span-3 p-2.5'>
+              {/* <div className='col-span-3 p-2.5'>
                 <input
                   className='bg-transparent border-b border-gray w-full'
                   type="text" value={input.review}
                   name="review"
+                  autoComplete="off"
                   placeholder='Enter review..'
                   onChange={e => handleChange(e)}
                 />
-              </div>
+              </div> */}
               
 
-            <div className='col-span-3 p-2.5'>
+            {/* <div className='col-span-3 p-2.5'>
                 <input
                   className='bg-transparent border-b border-gray w-full'
                   type="text"
                   value={input.comments}
                   name="comments"
+                  autoComplete="off"
                   placeholder='Enter comments..'
                   onChange={e => handleChange(e)} />
-              </div>
+              </div> */}
 
               {Object.keys(errors).length ? (
                 <div className='text-lg font-medium text-gray-900  bg-[color:var(--primary-bg-opacity-color)] rounded-full border border-black-800 p-2 '>
-                  <button className='cursor-pointer' type="submit" form='form'>Agregar</button>
+                  <button className='cursor-pointer' type="submit" form='form'>Agregara</button>
                 </div>
               ) : (
                   <div className='text-lg font-medium text-gray-900  bg-[color:var(--primary-bg-opacity-color)] rounded-full border border-black-800 p-2 '>
-                    <button className='cursor-pointer'  type="submit" form='form'>Agregar</button>
+                    <button onClick={handleSubmit} className='cursor-pointer'  type="submit" form='form'>Agregar</button>
                   </div>
               )}
             </form>
@@ -452,7 +471,7 @@ const Create = () => {
             <div className='relative mt-2 mx-2' >
               <div className="object-cover w-full h-full">
                 <img className='rounded-2xl' src={input.photos.length ?
-                  input.fotos
+                  input.photos
                 : "https://www.hmplayadelcarmen.com/wp-content/uploads/1739/1694/nggallery/home//02-HM-Playa-del-Carmen-mobile.jpg"} alt="Hotel" />
               </div>
 
