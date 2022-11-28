@@ -1,4 +1,4 @@
-import { React, useState, useEffect, useRef } from "react";
+import React, {  useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import SearchPanel from "../searchPanel/SearchPanel";
 import InputSearch from "../inputSearch/InputSearch";
@@ -7,7 +7,9 @@ import { addDays } from "date-fns";
 import { useDispatch } from "react-redux";
 import { getSearchHotels } from "../../redux/action/index";
 
+
 const Search = () => {
+
   let history = useHistory();
 
   let dispatch = useDispatch();
@@ -31,11 +33,8 @@ const Search = () => {
     },
   ]);
 
-  let dataSearch = {
-    location: inputText,
-    date: range,
-    guest: count,
-  };
+
+
 
   useEffect(() => {
     if (history.location.pathname === "/") {
@@ -57,7 +56,7 @@ const Search = () => {
           .toLowerCase()
       )
     );
-    history.push("/home");
+    history.push("/home?search="+ inputText);
   };
 
   //Close panel search click outside
@@ -182,7 +181,7 @@ const Search = () => {
   }
 
   return (
-    <div className="w-full h-full relative " ref={ref2}>
+    <div className="w-full h-[60px] relative " ref={ref2}>
       <div
         className={` ease-in-out duration-300 transform w-full h-full grid grid-cols-new4 grid-rows-1 bg-[color:var(--second-bg-color)] rounded-full shadow-md border border-[color:var(--search-border-color)] cursor-pointer `}
       >
@@ -260,7 +259,7 @@ const Search = () => {
         </button>
       </div>
       <div
-        className={`z-10  w-[100%] ease-in-out duration-300 absolute top-[800%]${
+        className={`-z-10  w-[100%] ease-in-out duration-300 absolute top-[800%]${
           panelSelect.active ? " translate-y-[-80%]" : "h-[0px]"
         }`}
         ref={ref}
