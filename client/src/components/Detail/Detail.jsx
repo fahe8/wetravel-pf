@@ -1,8 +1,8 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { getDetail } from "../../redux/action/index";
+import { Link, } from "react-router-dom";
+import { getDetail,  } from "../../redux/action/index";
 import { Loading } from "../Loading/Loading";
 import NavBar from "../navBar/NavBar";
 import Stars from "../stars/Stars";
@@ -20,7 +20,17 @@ const Detail = (props) => {
   const dispatch = useDispatch();
   const selectedHotel = useSelector((state) => state.detail);
   const loading = useSelector((state) => state.loading);
+  //const history = useHistory()
   //console.log("LOADING:", loading);
+
+  // const handleDelete = () => {
+  //   dispatch(deleteHotel(id));
+  //   alert("Hotel borrado de nuesta base de datos");
+  //   history.push("/home")
+  // }
+
+
+
 
   useEffect(() => {
     dispatch(getDetail(id));

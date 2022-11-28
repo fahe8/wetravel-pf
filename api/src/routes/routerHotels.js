@@ -197,4 +197,21 @@ routerHotels.post("/", async (req, res) => {
   }
 });
 
+// -------> Router Delete
+
+routerHotels.delete('/delete/:id', async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const hotel = await Hotel.findByPk(id);
+    if (!hotel) {
+      res.status(404).send("El id de el hotel no existe en nuestra base de datos");
+    } else {
+      await hotel.destroy();
+      res.status(200).send ("Hotel eliminado de nuestra base de datos")
+    }
+  } catch (error) {
+    next(error)
+  }
+})
+
 module.exports = routerHotels;
