@@ -49,7 +49,6 @@ routerReserves.get("/:user", async (req, res) => {
             where: { name: userReserve },
           });
       
-      
           newReserve.addUser(userDb);
           res.status(200).send(newReserve);
         } catch (error) {

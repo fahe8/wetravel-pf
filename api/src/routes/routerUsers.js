@@ -30,7 +30,7 @@ routerUsers.get('/', async (req, res) => {
   let allUser = await User.findAll({
     include: {
       model: Hotel,
-      attributes: ['name', 'description', 'stars', 'price', 'services', 'photos', 'continent', 'location', 'city', 'review', 'comments', 'room'],
+      attributes: ['name'],
       through: { attributes: [], }
     }
   });
