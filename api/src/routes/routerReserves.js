@@ -7,11 +7,12 @@ const routerReserves = Router();
 routerReserves.get("/", async (req,res)=> {
     try{
         const dataDb= await Reserves.findAll({
-            includes:[{
+            includes:{
                 model: User,
-                attributes:["name"], 
-                through: {attributes:[]}
-        }]
+                as: "user", 
+                attributes: ["name"]
+          },
+          attributes: ["id", "nameHotel", "nameRoom", "userReserve"]
         })
         dataDb.length? res.send(dataDb): res.status(400).send("No hay ninguna reserva")
     }catch(error){
@@ -45,16 +46,16 @@ routerReserves.get("/:user", async (req, res) => {
             nameHotel,nameRoom,price,check_in,check_out,userReserve
           });
       
-          let userDb = await User.findAll({
-            where: { name: userReserve },
-          });
+          // let userDb = await User.findAll({
+          //   where: { name: userReserve },
+          // });
       
-          newReserve.addUser(userDb);
+          // newReserve.addUser(userDb);
           res.status(200).send(newReserve);
         } catch (error) {
           res.status(400).send(error.message);
         }
-      });
+    });
             
 
 
