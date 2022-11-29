@@ -4,12 +4,12 @@ const {Router} = require("express");
 const routerUsers = Router();
 
 routerUsers.post('/', async (req, res) => {
-  const { name, email, email_verified } = req.body;
+  const { name, email, email_verified, status } = req.body;
   try {
     const search = await User.findOne({where:
       {email: email}})
     if(!search){
-    let newUser = await User.create({ name, email, email_verified });
+    let newUser = await User.create({ name, email, email_verified, status });
     return res.json({ message: `El Usuario: ${name} se registró exitosamente` });
     } else{
     return res.json({ message: `Este mail ya se registro con otro usuario`})
