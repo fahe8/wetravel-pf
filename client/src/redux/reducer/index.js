@@ -1,12 +1,12 @@
-import {GET_HOTELS,GET_DETAIL, GET_SEARCH_HOTELS, POST_HOTEL, LOADING, POST_USER, GET_SERVICES, DELETE_HOTEL} from '../action/index'
+import {GET_HOTELS,GET_DETAIL, GET_SEARCH_HOTELS, POST_HOTEL, LOADING, POST_USER, GET_SERVICES, DELETE_HOTEL, POST_RESERVE} from '../action/index'
 
 
 const initialState = { //inicializar el estado; un objeto con varios estados dentro
     hotels: [], //nos devuelve todos los hoteles en un array
     detail: {},
-    service: [],
     hotelFilter: [],
     copyHotels: [],
+    reserve: [],
     loading: false
 }
 
@@ -44,21 +44,28 @@ function rootReducer(state = initialState, action) { //function reducer; tiene 2
                 ...state,
                 loading: true,
             }
+            case GET_SERVICES:
+                return {
+                    ...state,
+                    service: action.payload
+                }
+                
         case POST_USER:
-            return{
+            return {
                 ...state
             }
-        case GET_SERVICES:
+        
+        case POST_RESERVE:
             return {
                 ...state,
-                service: action.payload
             }
         
         case DELETE_HOTEL:
             return {
                 ...state
             }
-
+        
+    
         default:
             return state
     }
