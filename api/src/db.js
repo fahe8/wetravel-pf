@@ -41,8 +41,9 @@ const { Hotel, User, Reserves } = sequelize.models;
 
 Hotel.belongsToMany(User, {through: "user-hotels"});
 User.belongsToMany(Hotel, {through: "user-hotels"});
-User.hasMany(Reserves);
-Reserves.belongsTo(User,{through:"reserve-user"}) 
+
+User.hasMany(Reserves, { as: "reservas", foreignKey: "userId" });
+Reserves.belongsTo(User, { as: "user" }); 
 
 
 
