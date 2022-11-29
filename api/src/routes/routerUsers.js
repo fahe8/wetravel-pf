@@ -4,23 +4,24 @@ const {Router} = require("express");
 const routerUsers = Router();
 
 routerUsers.post('/', async (req, res) => {
-  const { name, email, email_verified } = req.body;
+  const { name, email, email_verified, status } = req.body;
   try {
     const search = await User.findOne({where:
       {email: email}})
-    if(!search){
-    let newUser = await User.create({ name, email, email_verified });
+      if(!search){
+        let newUser = await User.create({ name, email, email_verified, status });
+        // let hotelDb = await Hotel.findAll({
+        //   where: {
+        //     name: nameHotel,
+        //   }
+        // });
+        // newUser.addHotel(hotelDb);
+
     return res.json({ message: `El Usuario: ${name} se registró exitosamente` });
     } else{
     return res.json({ message: `Este mail ya se registro con otro usuario`})
     }
-    // let hotelDb = await Hotel.findAll({
-    //   where: {
-    //     name: nameHotel,
-    //   }
-    // });
-
-    // newUser.addHotel(hotelDb);
+    
   } catch (error) {
     return res.send(`Error en POST por: (${error})`);
   }

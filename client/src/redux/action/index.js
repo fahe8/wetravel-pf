@@ -71,6 +71,7 @@ export function postHotel(payload) {
 }
 
 export function postUser(payload) {
+  console.log(payload)
   return async function () {
     const response = await axios.post("http://localhost:3001/users", payload);
     return response;
