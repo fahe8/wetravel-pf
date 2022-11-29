@@ -39,7 +39,7 @@ const Detail = (props) => {
     };
   }, [dispatch, id]);
 
-  //console.log(selectedHotel)
+  console.log(selectedHotel.room.name)
 
   return (
     <div>
@@ -102,9 +102,9 @@ const Detail = (props) => {
                             What does the place offer
                           </h2>
                           <div className="grid grid-cols-2">
-                            {selectedHotel.services.map((service) => (
-                              <p key={service.name} className="m-4 ">
-                                {service.name}
+                            {selectedHotel.services.map((service,idx) => (
+                              <p key={idx} className="m-4 ">
+                                {service}
                               </p>
                             ))}
                           </div>
@@ -127,7 +127,7 @@ const Detail = (props) => {
                         <h2>check out:</h2>
                       </div>
                       <div className="col-span-2 border-t border-black pr-3 pb-4 pl-1">
-                        <h2>guest:</h2>
+
                       </div>
                     </div>
 
