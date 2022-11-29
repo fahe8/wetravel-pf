@@ -15,7 +15,7 @@ module.exports = (sequelize) => {
     email_verified:{
       type: DataTypes.BOOLEAN,
     },
-    status: DataTypes.ENUM("host","admin","anfitrion"),
+    status: DataTypes.ENUM("host","admin","guest"),
     allowNull: false
 
   }, {
