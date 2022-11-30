@@ -7,6 +7,7 @@ const initialState = { //inicializar el estado; un objeto con varios estados den
     hotelFilter: [],
     copyHotels: [],
     reserve: [],
+    service: [],
     loading: false
 }
 
