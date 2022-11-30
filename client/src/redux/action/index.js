@@ -9,6 +9,7 @@ export const POST_HOTEL = "POST_HOTEL";
 export const LOADING = "LOADING";
 export const POST_RESERVE = "POST_RESERVE"
 export const DELETE_HOTEL = "DELETE_HOTEL"
+export const PAY_RESERVE = "PAY_RESERVE"
 
 
 
@@ -100,6 +101,20 @@ export function postReserve(payload) {
   };
 }
 
+export const payReserve = (payload) =>{
+  return async function (dispatch){
+    try{
+      const pay = await axios.post("http://localhost:3001/mercadopay", payload)
+      return dispatch({
+        type : PAY_RESERVE,
+        payload : pay
+      })
+    }
+    catch(error){
+      return error
+    };
+  };
+}
 
 
 
