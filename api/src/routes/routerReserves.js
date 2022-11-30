@@ -46,11 +46,11 @@ routerReserves.get("/:user", async (req, res) => {
             nameHotel,nameRoom,price,check_in,check_out,userReserve
           });
       
-          // let userDb = await User.findAll({
-          //   where: { name: userReserve },
-          // });
+          let userDb = await User.findOne({
+            where: { name: userReserve },
+          });
       
-          // newReserve.addUser(userDb);
+          userDb.addReserves(newReserve);
           res.status(200).send(newReserve);
         } catch (error) {
           res.status(400).send(error.message);
