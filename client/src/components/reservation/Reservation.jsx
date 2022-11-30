@@ -5,13 +5,11 @@ import format from "date-fns/format";
 import { addDays } from "date-fns";
 import RangeCalendar from "../calendar/RangeCalendar";
 import { useDispatch } from "react-redux";
-import { postHotel } from "../../redux/action";
+import { postHotel  } from "../../redux/action";
 
 
 const Reservation = ({ selectedHotel }) => {
-
   let dispatch = useDispatch()
-
   const [showCalendar, setShowCalendar] = useState(false);
   const [range, setRange] = useState([
     {
@@ -36,9 +34,10 @@ const Reservation = ({ selectedHotel }) => {
   const infoRoom = () => {
     // nameHotel,nameRoom,price,check_in,check_out,userReserve
     
-    dispatch(postHotel())
+    // dispatch(postHotel())
 
   };
+  
 
 
   useEffect(() => {
@@ -75,10 +74,14 @@ const Reservation = ({ selectedHotel }) => {
             <h2>Rooms:</h2>
             <div onClick={infoRoom} ref={refOne}>
               <DetailRoom
+                id={selectedHotel?.id}
                 name={selectedHotel?.room?.name}
                 description={selectedHotel?.room?.description}
                 size={selectedHotel?.room?.size}
                 photos={selectedHotel?.room?.photos}
+                date={range}
+                nameHotel={selectedHotel?.name}
+                price={selectedHotel?.price}
                 properties={selectedHotel?.room?.properties}
               />
             </div>
