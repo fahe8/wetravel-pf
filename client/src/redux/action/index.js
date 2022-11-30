@@ -7,6 +7,7 @@ export const GET_SERVICES = "GET_SERVICES";
 export const GET_SEARCH_HOTELS = "GET_SEARCH_HOTELS";
 export const POST_HOTEL = "POST_HOTEL";
 export const LOADING = "LOADING";
+export const POST_RESERVE = "POST_RESERVE"
 export const DELETE_HOTEL = "DELETE_HOTEL"
 
 
@@ -88,6 +89,23 @@ export function getServices() {
     }); //segunda función que recibe dispatch y despacha una acción / el tipo y el payload: devuelve el backend
   };
 }
+
+export function postReserve(payload) {
+  return async function (dispatch) {
+    const reserve = await axios.post("http://localhost:3001/reserve", payload)
+    return dispatch({
+      type: POST_HOTEL,
+      payload: reserve,
+    });
+  };
+}
+
+
+
+
+
+
+
 
 //------->delete dog
 
