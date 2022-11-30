@@ -143,6 +143,7 @@ routerHotels.get("/:id", async (req, res) => {
   try {
     const hotels = await getHotels();
     if (id && hotels.length) {
+      console.log(id)
       const hotelId = hotels.find((el) => el.id == id);
       console.log(hotelId.room.name)
       hotelId
