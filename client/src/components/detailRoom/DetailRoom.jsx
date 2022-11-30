@@ -1,8 +1,23 @@
 import React, { useState, useEffect, useRef } from "react";
 import Carousel from "react-bootstrap/Carousel";
+import {payReserve} from "../../redux/action";
+import { useDispatch } from "react-redux";
 
-const DetailRoom = ({ name, size, photos, description, properties }) => {
+
+const DetailRoom = ({ name, size, photos, description, properties, date, id, price, nameHotel }) => {
+  const dispatch = useDispatch()
   const [modalFilter, setModalFilter] = useState(false);
+  const [item, setItem] = useState()
+  const itemLoader = () => {
+    setItem({
+      "id" : id,
+      "title" : nameHotel,
+      "unit_price" : parseFloat(price.split("$")[1].split(".").join("")),
+      "quantity" : 1 || date
+    })
+    console.log(item)
+    
+  }
 
   const pressButtonFilter = () => {
     setModalFilter(true);
@@ -49,7 +64,7 @@ const DetailRoom = ({ name, size, photos, description, properties }) => {
         </button>
         <button
           className="bg-[color:var(--second-bg-color)] py-2 px-3 shadow-[inset_0_-2px_4px_rgba(0,0,0,0.6)]  hover:shadow-[inset_0_4px_4px_rgba(0,0,0,0.25)] rounded-[10px] flex align-middle"
-          onClick={reserve}
+          onClick={itemLoader}
         >
           <p>Reservar</p>
         </button>
