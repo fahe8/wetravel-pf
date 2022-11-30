@@ -82,7 +82,7 @@ export function postUser(payload) {
 export function getServices() {
   return async function (dispatch) {
     const json = await axios.get("http://localhost:3001/services");
-    console.log(json) //pendiente porque no me está trayendo nada
+    // console.log(json) //pendiente porque no me está trayendo nada
     return dispatch({
       type: GET_SERVICES,
       payload: json.data,

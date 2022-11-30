@@ -1,14 +1,13 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, } from "react-router-dom";
-import { getDetail,  } from "../../redux/action/index";
+import { Link } from "react-router-dom";
+import { getDetail } from "../../redux/action/index";
 import { Loading } from "../Loading/Loading";
 import NavBar from "../navBar/NavBar";
 import Stars from "../stars/Stars";
-import icon from "../../assets/icons/user.svg";
 import Carousel from "react-bootstrap/Carousel";
-
+import Reservation from "../reservation/Reservation";
 
 
 const Detail = (props) => {
@@ -29,17 +28,13 @@ const Detail = (props) => {
   //   history.push("/home")
   // }
 
-
-
-
   useEffect(() => {
     dispatch(getDetail(id));
     return () => {
       dispatch(getDetail(""));
     };
   }, [dispatch, id]);
-
-  //console.log(selectedHotel)
+console.log(props)
 
   return (
     <div>
@@ -56,13 +51,17 @@ const Detail = (props) => {
 
               <div className="home-container">
                 <div className="home-container row ">
-                  <Carousel className="carousel mt-4 w-[500px] h-[500px] m-auto ">
+                  <Carousel className="carousel mt-4 w-[800px] h-[500px] m-auto ">
                     {selectedHotel &&
                       selectedHotel.photos?.map((elemento, index) => {
                         return (
                           <Carousel.Item key={index}>
-                            <div className="xd">
-                              <img src={elemento} alt="hotel" />
+                            <div className=" w-[800px] h-[500px]">
+                              <img
+                                className=" w-[800px] h-[500px]"
+                                src={elemento}
+                                alt="hotel"
+                              />
                             </div>
                           </Carousel.Item>
                         );
@@ -102,9 +101,9 @@ const Detail = (props) => {
                             What does the place offer
                           </h2>
                           <div className="grid grid-cols-2">
-                            {selectedHotel.services.map((service) => (
-                              <p key={service.name} className="m-4 ">
-                                {service.name}
+                            {selectedHotel.services.map((service, idx) => (
+                              <p key={idx} className="m-4 ">
+                                {service}
                               </p>
                             ))}
                           </div>
@@ -112,48 +111,7 @@ const Detail = (props) => {
                       )}
                   </div>
                 </div>
-
-                <div className=" grid grid-rows-2 ">
-                  <div className="row-span-1 bg-white shadow-xl  rounded-3xl m-11">
-                    <div className=" text-4xl mt-8">
-                      <h3>{selectedHotel.price} night</h3>
-                    </div>
-
-                    <div className=" grid grid-cols-2 bg-[color:var(--primary-bg-opacity-color)] text-sm text-left mt-8 rounded-2xl mx-4 border border-black">
-                      <div className="border-r border-black pr-3 pb-4 pl-1">
-                        <h2>check in:</h2>
-                      </div>
-                      <div className="pr-3 pb-4 pl-1">
-                        <h2>check out:</h2>
-                      </div>
-                      <div className="col-span-2 border-t border-black pr-3 pb-4 pl-1">
-                        <h2>guest:</h2>
-                      </div>
-                    </div>
-
-                    <div className="m-8">
-                      <button className="py-2.5 px-5 mr-2 mb-2 text-lg font-medium text-gray-900  bg-[color:var(--primary-bg-opacity-color)] rounded-full border border-black-800 ">
-                        Reserve
-                      </button>
-                    </div>
-                  </div>
-
-                  <div className=" bg-white  shadow-xl  rounded-3xl items-center m-11 ">
-                    <div>
-                      <img className="px-16" src={icon} alt="user image" />
-                    </div>
-                    <div className="py-4 text-3xl">
-                      <h1>Name of user</h1>
-                    </div>
-
-                    <div className="text-xl py-5">Join in month XXXX</div>
-                    <div>
-                      <button className="py-2.5 px-5 mr-2 mb-2 text-lg font-medium text-gray-900  bg-[color:var(--primary-bg-opacity-color)] rounded-full border border-black-800 ">
-                        Perfil
-                      </button>
-                    </div>
-                  </div>
-                </div>
+<Reservation selectedHotel={selectedHotel}/>
                 <div>
                   <p> {selectedHotel.comments}</p>
                 </div>
