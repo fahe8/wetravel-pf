@@ -36,7 +36,7 @@ const Reservation = ({ selectedHotel }) => {
   const infoRoom = () => {
     // nameHotel,nameRoom,price,check_in,check_out,userReserve
     
-    dispatch(postHotel())
+    // dispatch(postHotel())
 
   };
 
