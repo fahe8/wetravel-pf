@@ -34,7 +34,7 @@ const Detail = (props) => {
       dispatch(getDetail(""));
     };
   }, [dispatch, id]);
-console.log(props)
+
 
   return (
     <div>
