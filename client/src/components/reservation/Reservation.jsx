@@ -5,6 +5,7 @@ import format from "date-fns/format";
 import { addDays } from "date-fns";
 import RangeCalendar from "../calendar/RangeCalendar";
 import { useDispatch } from "react-redux";
+import { postHotel } from "../../redux/action";
 
 
 const Reservation = ({ selectedHotel }) => {
@@ -34,7 +35,8 @@ const Reservation = ({ selectedHotel }) => {
 
   const infoRoom = () => {
     // nameHotel,nameRoom,price,check_in,check_out,userReserve
-
+    
+    dispatch(postHotel())
 
   };
 

@@ -401,10 +401,10 @@ const Create = () => {
                   ) : (
                       <option disabled={true}>Select Temperament</option>
                   )}
-                  {service.map((serv) => {
+                  {service?.map((serv) => {
                     return (
                       <option key={serv} value={serv}>
-                        {serv}{" "}
+                        {serv}
                       </option>
                     );
                   })}

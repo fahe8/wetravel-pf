@@ -7,6 +7,7 @@ routerServices.get("/", async (req, res) => {
     .map((data) => data.services)
     .join()
     .split(",");
+    console.log(servicesRepeat)
   const servicesNoRepeat = [...new Set(servicesRepeat)];
 
   res.send(servicesNoRepeat);
