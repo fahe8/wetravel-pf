@@ -11,6 +11,9 @@ import { postHotel  } from "../../redux/action";
 const Reservation = ({ selectedHotel }) => {
   let dispatch = useDispatch()
   const [showCalendar, setShowCalendar] = useState(false);
+  const [reservacion, setReservacion] = useState([])
+
+
   const [range, setRange] = useState([
     {
       startDate: new Date(),
@@ -18,6 +21,8 @@ const Reservation = ({ selectedHotel }) => {
       key: "selection",
     },
   ]);
+
+  console.log(format(range[0].startDate, "T"));
   const calendar = () => {
     setShowCalendar(true);
   };
@@ -45,7 +50,7 @@ const Reservation = ({ selectedHotel }) => {
     document.addEventListener("click", hideOnClickOutside, true);
   }, []);
   return (
-    <div className=" grid grid-rows-2 ">
+    <div className=" grid grid-rows-2 " ref={refOne}>
       {showCalendar && (
         <div className="absolute w-auto h-auto left-0">
           <RangeCalendar range={range} setRange={setRange} />
@@ -63,16 +68,16 @@ const Reservation = ({ selectedHotel }) => {
             
           >
             <h2>check in:</h2>
-            <p>{format(range[0].startDate, "dd/MM/yyyy")}</p>
+            <p>{format(range[0].startDate, "yyyy/MM/dd")}</p>
           </div>
           <div className="pr-3 pb-4 pl-1" onClick={calendar}>
             <h2>check out:</h2>
-            <p>{format(range[0].endDate, "dd/MM/yyyy")}</p>
+            <p>{format(range[0].endDate, "yyyy/MM/dd")}</p>
           </div>
 
           <div className="col-span-2 border-t border-black pr-3 pb-4 pl-1">
             <h2>Rooms:</h2>
-            <div onClick={infoRoom} ref={refOne}>
+            <div onClick={infoRoom} >
               <DetailRoom
                 id={selectedHotel?.id}
                 name={selectedHotel?.room?.name}

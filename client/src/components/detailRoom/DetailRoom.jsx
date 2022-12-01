@@ -1,23 +1,37 @@
 import React, { useState, useEffect, useRef } from "react";
 import Carousel from "react-bootstrap/Carousel";
-import {payReserve} from "../../redux/action";
-import { useDispatch } from "react-redux";
+import {payReserve, postReserve, cartReserves} from "../../redux/action";
+import { useDispatch, useSelector } from "react-redux";
+import {useHistory} from "react-router-dom"
+import ScriptMercadoPago from "../scriptMercadoPago/ScriptMercadoPago";
 
 
 const DetailRoom = ({ name, size, photos, description, properties, date, id, price, nameHotel }) => {
   const dispatch = useDispatch()
+  const history = useHistory()
   const [modalFilter, setModalFilter] = useState(false);
-  const [item, setItem] = useState()
-  const itemLoader = () => {
-    setItem({
-      "id" : id,
-      "title" : nameHotel,
-      "unit_price" : parseFloat(price.split("$")[1].split(".").join("")),
-      "quantity" : 1 || date
-    })
-    console.log(item)
-    
+
+    // orderlines = [{idHotel: 3243, quantity;1, check_out:2022-12-4,
+    //     check_in:2022-12-2  },  ]
+    // user: "fabian"
+    // status: "created"
+
+  const initialState = {
+   idHotel: id,
+   quantity: "3",
+   check_in: "2022-10-5",
+   check_out: "2022-10-7",   
   }
+  const [item, setItem] = useState(initialState)
+
+
+const handleReserve = () => {
+  dispatch(cartReserves(item))
+  history.push("/carrito")
+}
+    
+  
+  console.log(item)
 
   const pressButtonFilter = () => {
     setModalFilter(true);
@@ -49,9 +63,7 @@ const DetailRoom = ({ name, size, photos, description, properties, date, id, pri
     }
   };
   
-  const reserve = () => {
 
-  }
   return (
     <div className="h-[100%] my-2 px-1">
       <div className="h-full  flex justify-between items-center  ">
@@ -64,10 +76,11 @@ const DetailRoom = ({ name, size, photos, description, properties, date, id, pri
         </button>
         <button
           className="bg-[color:var(--second-bg-color)] py-2 px-3 shadow-[inset_0_-2px_4px_rgba(0,0,0,0.6)]  hover:shadow-[inset_0_4px_4px_rgba(0,0,0,0.25)] rounded-[10px] flex align-middle"
-          onClick={itemLoader}
+          onClick={handleReserve}
         >
           <p>Reservar</p>
         </button>
+        {/* <ScriptMercadoPago item></ScriptMercadoPago> */}
         <div
           className={` w-screen h-screen  fixed  left-0 top-0 z-30   ease-in-out duration-300  ${
             modalFilter ? " bg-[color:var(--bg-opacity-modal)] z-20 " : "-z-10"

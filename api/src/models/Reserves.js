@@ -25,6 +25,16 @@ module.exports = (sequelize) => {
     userReserve:{
       type: DataTypes.STRING,
       allowNull:false
-    }
+    },
+    paymentRoom: {
+      type: DataTypes.BOOLEAN,
+      default: false,
+      allownull: false
+    },
+    quantity: {
+      type: DataTypes.INTEGER,
+      default: 1,
+      allownull: false
+    },
   }, { timestamps: false });
 };
