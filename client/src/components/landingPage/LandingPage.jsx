@@ -1,17 +1,17 @@
-import {React, useEffect} from "react";
+import { React, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import NavBar from "../navBar/NavBar";
 import Search from "../search/Search";
-import {getHotels} from "../../redux/action/index.js"
+import { getHotels } from "../../redux/action/index.js";
 function LandingPage() {
-  let dispatch = useDispatch()
+  let dispatch = useDispatch();
   useEffect(() => {
-   dispatch(getHotels())
+    dispatch(getHotels());
   }, []);
   return (
     <section className="h-[100%]   overflow-hidden grid">
-      <NavBar/>
+      <NavBar />
       <div className="relative px-20">
         <Search></Search>
       </div>

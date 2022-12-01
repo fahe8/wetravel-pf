@@ -1,15 +1,14 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, } from "react-router-dom";
-import { getDetail,  } from "../../redux/action/index";
+import { Link } from "react-router-dom";
+import { getDetail } from "../../redux/action/index";
 import { Loading } from "../Loading/Loading";
 import NavBar from "../navBar/NavBar";
 import Stars from "../stars/Stars";
 import icon from "../../assets/icons/user.svg";
 import Carousel from "react-bootstrap/Carousel";
-
-
+import PostImagens from "../cloudinary/Cloudinary";
 
 const Detail = (props) => {
   const {
@@ -29,9 +28,6 @@ const Detail = (props) => {
   //   history.push("/home")
   // }
 
-
-
-
   useEffect(() => {
     dispatch(getDetail(id));
     return () => {
@@ -40,6 +36,10 @@ const Detail = (props) => {
   }, [dispatch, id]);
 
   //console.log(selectedHotel)
+  function handleCloudy(e) {
+    dispatch(PostImagens(e.target.files[0]));
+    console.log("targe", e.target.files);
+  }
 
   return (
     <div>
@@ -52,7 +52,9 @@ const Detail = (props) => {
             <div>
               <Link to={"/home"}>
                 <button>Volver</button>
+                {/* <button onClick={(e) => handleCloudy(e)}>cargar imagen</button> */}
               </Link>
+              {/* <button onClick={(e) => handleCloudy(e)}>cargar imagen</button> */}
 
               <div className="home-container">
                 <div className="home-container row ">
@@ -160,6 +162,9 @@ const Detail = (props) => {
               </div>
             </div>
           )}
+          <div>
+            <PostImagens />
+          </div>
         </div>
       </div>
     </div>
