@@ -9,7 +9,8 @@ import {
   DELETE_HOTEL,
   POST_RESERVE,
   PAY_RESERVE,
-  GET_RESERVE
+  GET_REVIEW,
+  GET_RESERVE,
 } from "../action/index";
 
 const initialState = {
@@ -20,6 +21,7 @@ const initialState = {
   copyHotels: [],
   reserve: [],
   service: [],
+  review: [],
   loading: false,
 };
 
@@ -79,16 +81,22 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
       };
+    case GET_REVIEW:
+      return {
+        ...state,
+        review: action.payload,
+      };
+
     case DELETE_HOTEL:
       return {
         ...state,
       };
 
-    case GET_RESERVE: 
-    return {
-      ...state,
-      reserve: action.payload
-    }
+    case GET_RESERVE:
+      return {
+        ...state,
+        reserve: action.payload,
+      };
     default:
       return state;
   }

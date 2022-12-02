@@ -1,33 +1,35 @@
 import React, { useState, useEffect, useRef } from "react";
 import Carousel from "react-bootstrap/Carousel";
-import {payReserve, postReserve, cartReserves} from "../../redux/action";
+import { payReserve, postReserve, cartReserves } from "../../redux/action";
 import { useDispatch, useSelector } from "react-redux";
-import {useHistory} from "react-router-dom"
+import { useHistory } from "react-router-dom";
 import ScriptMercadoPago from "../scriptMercadoPago/ScriptMercadoPago";
 
-
-const DetailRoom = ({ name, size, photos, description, properties, date, id, price, nameHotel , fullInfo}) => {
-  const dispatch = useDispatch()
-  const history = useHistory()
+const DetailRoom = ({
+  name,
+  size,
+  photos,
+  description,
+  properties,
+  date,
+  id,
+  price,
+  nameHotel,
+  fullInfo,
+}) => {
+  const dispatch = useDispatch();
+  const history = useHistory();
   const [modalFilter, setModalFilter] = useState(false);
-
-    // orderlines = [{idHotel: 3243, quantity;1, check_out:2022-12-4,
-    //     check_in:2022-12-2  },  ]
-    // user: "fabian"
-    // status: "created"
-
-  const initialState = {
-   idHotel: id,
-   quantity: "3",
-   check_in: "2022-10-5",
-   check_out: "2022-10-7",   
-  }
-  const [item, setItem] = useState(initialState)
-
-
-
-  
-  console.log(item)
+  const [item, setItem] = useState();
+  const itemLoader = () => {
+    setItem({
+      id: id,
+      title: nameHotel,
+      unit_price: parseFloat(price.split("$")[1].split(".").join("")),
+      quantity: 1 || date,
+    });
+    console.log(item);
+  };
 
   const pressButtonFilter = () => {
     setModalFilter(true);
@@ -58,8 +60,8 @@ const DetailRoom = ({ name, size, photos, description, properties, date, id, pri
       setModalFilter(false);
     }
   };
-  
 
+  const reserve = () => {};
   return (
     <div className="h-[100%] my-2 px-1">
       <div className="h-full  flex justify-between items-center  ">
@@ -99,7 +101,6 @@ const DetailRoom = ({ name, size, photos, description, properties, date, id, pri
                 size={size}
                 photos={photos}
                 properties={properties}
-                
               />
             )}
           </div>
@@ -150,7 +151,7 @@ const Modal = ({
           <div>
             <h2>Descripción</h2>
             <p>{description}</p>
-          </div>´
+          </div>
           <div>
             <h2>Tamaño</h2>
             <p>{size}</p>
@@ -158,7 +159,11 @@ const Modal = ({
 
           <div>
             <h2>Cuenta con:</h2>
-            <div className="grid grid-cols-2">{properties?.map(p => <p>{p}</p>)}</div>
+            <div className="grid grid-cols-2">
+              {properties?.map((p) => (
+                <p>{p}</p>
+              ))}
+            </div>
           </div>
         </div>
       </div>
