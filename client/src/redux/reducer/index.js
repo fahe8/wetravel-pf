@@ -12,16 +12,16 @@ import {
   GET_RESERVE
 } from "../action/index";
 
-
-const initialState = { //inicializar el estado; un objeto con varios estados dentro
-    hotels: [], //nos devuelve todos los hoteles en un array
-    detail: {},
-    hotelFilter: [],
-    copyHotels: [],
-    reserve: [],
-    service: [],
-    loading: false
-}
+const initialState = {
+  //inicializar el estado; un objeto con varios estados dentro
+  hotels: [], //nos devuelve todos los hoteles en un array
+  detail: {},
+  hotelFilter: [],
+  copyHotels: [],
+  reserve: [],
+  service: [],
+  loading: false,
+};
 
 function rootReducer(state = initialState, action) {
   //function reducer; tiene 2 parámetros (estado inicial, action)
@@ -52,6 +52,7 @@ function rootReducer(state = initialState, action) {
     case POST_HOTEL:
       return {
         ...state,
+        hotels: action.payload,
       };
 
     case LOADING:
