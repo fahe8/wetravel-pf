@@ -27,21 +27,21 @@ const ScriptMercadoPago = ({productos, data }) => {
         <div>
 
       <form id='form1'>
-{/* 
-        <h4>Checkout</h4>
+
+        <h4>Carrito</h4>
         <div className={''} >  
         {productos.map((producto, i) => {
             return(
                 <div className={''} key={i}>
                   <ul className={''} >
-                    <li>{producto.title}</li>
-                    <li>{'$' + producto.price}</li> 
-                    <li>{producto.quantity}</li>
+                    <li>{producto.nameHotel}</li>
+                    {/* <li>{'$' + producto.price}</li> 
+                    <li>{producto.quantity}</li> */}
                   </ul>
                 </div>   
             )
-        })} */}
-        {/* </div>    */}
+        })}
+        </div>   
         
       </form>
 
