@@ -6,6 +6,9 @@ import { Link } from 'react-router-dom';
 import { postHotel, getHotels, getServices } from '../../redux/action';
 import { AiFillHeart } from "react-icons/ai";
 import Stars from '../stars/Stars';
+import { Container } from 'reactstrap';
+import Dropzone from 'react-dropzone';
+import axios from 'axios';
 
 
 //------> Funciones de checkeo <-----------
@@ -132,6 +135,53 @@ const Create = () => {
   });
 
   const [input, setInput] = useState(initialState);
+
+    const [loading, setLoading] = useState('');
+    console.log('input.photos:', input.photos)
+    
+    const submitImage = (files) => {
+  
+      const upLoader = files.map((file) => {
+        const data = new FormData();
+        data.append('file', file);
+        data.append('upload_preset', 'up-image');
+        setLoading('true');
+        return axios.post('https://api.cloudinary.com/v1_1/dll9vsr6c/image/upload', data)
+        .then((res) => {
+          let url = res.data.secure_url;
+          let arrayImage = input.photos;
+          arrayImage.push(url);
+          const newObj = {...input, arrayImage}
+          setInput(newObj);
+          console.log('INPUT:', input)
+        }).catch(error => console.log('CLOUDINARY ERROR:', error));
+      });
+      axios.all(upLoader).then(() => {
+        setLoading('false');
+      })
+    }
+
+    const imagePreview = () => {
+      if (loading === 'true') {
+        return <h3>Cargando Imagenes...</h3>
+      }
+      if (loading === 'false') {
+        return (
+          <h3>
+            {
+              input.photos.length <= 0 ? 'No hay imagenes' : input.photos.map((image) => {
+                return (
+                  <div>
+                    <p>Imagen:</p>
+                    <img src={image} alt='img not found' />
+                  </div>
+                );
+              })
+            }
+          </h3>
+        );
+      }
+    }
 
   useEffect(() => {
     dispatch(getServices());
@@ -424,6 +474,28 @@ const Create = () => {
                 {/* {errors.url && <p>{errors.url} </p>} */}
               </div>
             
+              <div  className='col-span-3 p-2.5' >
+                <Container>
+                  <Dropzone 
+                    onDrop={submitImage}
+                    onChange={(e) => setInput(e.target.files[0])}
+                    value={input.photos}
+                  >
+                    {
+                      ({ getRootProps, getInputProps }) => (
+                        <section>
+                          <div {...getRootProps({className: 'dropzone'})} >
+                            <input {...getInputProps()} />
+                            <span>Icono de carpeta</span>
+                            <p>Click here to select the images</p>
+                          </div>
+                        </section>
+                      )
+                    }
+                  </Dropzone>
+                  {imagePreview()}
+                </Container>
+              </div>
               {/* <div className='col-span-3 p-2.5'>
                 <input
                   className='bg-transparent border-b border-gray w-full'
