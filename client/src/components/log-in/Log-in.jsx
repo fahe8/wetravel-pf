@@ -6,7 +6,7 @@ import { postUser } from "../../redux/action";
 function Login() {
   const dispatch = useDispatch();
   const { loginWithRedirect, logout, user } = useAuth0();
-  const [userCondition, setUserCondition] = useState();
+  const [userCondition, setUserCondition] = useState("guest");
 
   function handleGuest(e) {
     e.preventDefault();
