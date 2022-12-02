@@ -62,6 +62,8 @@ routerUsers.get('/', async (req, res) => {
     }
   });
 
+ 
+
   return res.json(allUser);
 });
 

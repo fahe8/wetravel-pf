@@ -4,7 +4,9 @@ import DetailRoom from "../detailRoom/DetailRoom";
 import { addDays, format, differenceInDays } from "date-fns";
 import RangeCalendar from "../calendar/RangeCalendar";
 import { useDispatch } from "react-redux";
-import { postHotel  } from "../../redux/action";
+import { postHotel, cartReserves  } from "../../redux/action";
+import { useAuth0 } from "@auth0/auth0-react";
+
 
 
 const Reservation = ({ selectedHotel, price }) => {
@@ -37,10 +39,19 @@ const Reservation = ({ selectedHotel, price }) => {
     }
   };
 
-  const infoRoom = () => {
-    // nameHotel,nameRoom,price,check_in,check_out,userReserve
+  const fullInfo = () => {
+
+
+    const info = {
+      orderlines: [{idHotel: selectedHotel.id,
+        quantity: difDays,
+        check_out: checkOut,
+        check_in: checkIn}],
+        user: 1
+      }
+      
     
-    // dispatch(postHotel())
+    dispatch(cartReserves(info))
   };
   
 
@@ -92,7 +103,7 @@ const Reservation = ({ selectedHotel, price }) => {
 
           <div className="col-span-2 border-t border-black pr-3 pb-4 pl-1">
             <h2>Rooms:</h2>
-            <div onClick={infoRoom} >
+            <div>
               <DetailRoom
                 id={selectedHotel?.id}
                 name={selectedHotel?.room?.name}
@@ -103,6 +114,7 @@ const Reservation = ({ selectedHotel, price }) => {
                 nameHotel={selectedHotel?.name}
                 price={selectedHotel?.price}
                 properties={selectedHotel?.room?.properties}
+                fullInfo={fullInfo}
               />
             </div>
           </div>

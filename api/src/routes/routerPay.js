@@ -12,7 +12,7 @@ mercadopago.configure({
 
 
 const reservaciones = async (id) => {   return await Reserves.findAll({
-  where: {id: id},
+  where: {userReserve: id},
 })
 
 
@@ -32,8 +32,6 @@ const id_orden = allreservation[0].userid
     unit_price: 100
   }))
 
-
-  console.log("map",items_ml)
 
   let preference = {
     items: items_ml,

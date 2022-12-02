@@ -6,31 +6,32 @@ import ScriptMercadoPago from '../scriptMercadoPago/ScriptMercadoPago';
 
 
 const Cart = () => {
-  const rese = useSelector(state => state.reserve )
     let dispatch = useDispatch()
     let productos = useSelector(state => state.reserve)
     const [datos, setDatos] = useState('')
+    // const reserve = useSelector(state => state.reserve)
+    console.log(datos)
     useEffect(() => {
         
             axios
             .get("http://localhost:3001/mercadopay/1")
             .then((data)=>{
               setDatos(data.data)
-              console.info('Contenido de data:', data)
             })
             .catch(err => console.error(err)) 
 
 
-        // dispatch(getReserves(1))
+        dispatch(getReserves(1))
     }, []);
 
     console.log(datos)
   return (
 <div className="App">
+  {/* {reserve?.map(e => <p>{e.}</p>)} */}
       { !datos
         ? <p>Aguarde un momento....</p> 
         : <ScriptMercadoPago productos={productos} data={datos}/> 
-      //  : ""
+
       }
     </div>
   )
