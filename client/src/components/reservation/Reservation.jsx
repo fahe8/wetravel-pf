@@ -3,35 +3,45 @@ import icon from "../../assets/icons/user.svg";
 import DetailRoom from "../detailRoom/DetailRoom";
 import { addDays, format, differenceInDays } from "date-fns";
 import RangeCalendar from "../calendar/RangeCalendar";
-import { useDispatch } from "react-redux";
-import { postHotel  } from "../../redux/action";
-
+import { useDispatch, useStore } from "react-redux";
+import { postHotel } from "../../redux/action";
+import { Link } from "react-router-dom";
 
 const Reservation = ({ selectedHotel, price }) => {
-  let dispatch = useDispatch()
+  let dispatch = useDispatch();
   const [showCalendar, setShowCalendar] = useState(false);
-  
+
   // manage date
-  const [checkIn, setCheckIn] = useState(format(new Date(), 'yyyy-MM-dd'));
-  const [checkOut, setCheckOut] = useState(format(addDays(new Date(), 1), 'yyyy-MM-dd'));
+  const [checkIn, setCheckIn] = useState(format(new Date(), "yyyy-MM-dd"));
+  const [checkOut, setCheckOut] = useState(
+    format(addDays(new Date(), 1), "yyyy-MM-dd")
+  );
 
   const handleCheckInchange = (e) => {
-    {setCheckIn(e.target.value)}
-  }
+    {
+      setCheckIn(e.target.value);
+    }
+  };
 
   const handleCheckOutChange = (e) => {
-    {setCheckOut(e.target.value)}
-  }
+    {
+      setCheckOut(e.target.value);
+    }
+  };
 
-  const finalPrice = price * differenceInDays(new Date(checkOut), new Date(checkIn)) > 0 ? price * differenceInDays(new Date(checkOut), new Date(checkIn)) : price;
-  
-  const difDays = differenceInDays(new Date(checkOut), new Date(checkIn)) <= 0 ? 1 : differenceInDays(new Date(checkOut), new Date(checkIn));
+  const finalPrice =
+    price * differenceInDays(new Date(checkOut), new Date(checkIn)) > 0
+      ? price * differenceInDays(new Date(checkOut), new Date(checkIn))
+      : price;
 
+  const difDays =
+    differenceInDays(new Date(checkOut), new Date(checkIn)) <= 0
+      ? 1
+      : differenceInDays(new Date(checkOut), new Date(checkIn));
 
-  const refOne= useRef('') 
+  const refOne = useRef("");
 
   const hideOnClickOutside = (e) => {
-
     if (refOne.current && !refOne.current.contains(e.target)) {
       setShowCalendar(false);
     }
@@ -39,11 +49,8 @@ const Reservation = ({ selectedHotel, price }) => {
 
   const infoRoom = () => {
     // nameHotel,nameRoom,price,check_in,check_out,userReserve
-    
     // dispatch(postHotel())
   };
-  
-
 
   useEffect(() => {
     // event listeners
@@ -53,7 +60,7 @@ const Reservation = ({ selectedHotel, price }) => {
     <div className=" grid grid-rows-2 ">
       {showCalendar && (
         <div className="absolute w-auto h-auto left-0">
-          <RangeCalendar/>
+          <RangeCalendar />
         </div>
       )}
       <div className="row-span-1 bg-white shadow-xl  rounded-3xl m-11">
@@ -62,33 +69,30 @@ const Reservation = ({ selectedHotel, price }) => {
         </div>
 
         <div className=" grid grid-cols-2 bg-[color:var(--primary-bg-opacity-color)] text-sm text-left mt-8 rounded-2xl mx-4 border border-black">
-
           <div className="border-r border-black pr-3 pb-4 pl-1">
             <label> Check-In</label>
             <input
               type="date"
               value={checkIn}
-              min={format(new Date(), 'yyyy-MM-dd')}
+              min={format(new Date(), "yyyy-MM-dd")}
               onChange={handleCheckInchange}
             />
           </div>
 
-           <div className="pr-3 pb-4 pl-1">
+          <div className="pr-3 pb-4 pl-1">
             <label>Check-Out</label>
             <input
               type="date"
               value={checkOut}
-              min={format(addDays(new Date(checkIn || null), 2), 'yyyy-MM-dd')}
-              onChange = {handleCheckOutChange}
+              min={format(addDays(new Date(checkIn || null), 2), "yyyy-MM-dd")}
+              onChange={handleCheckOutChange}
             />
-
           </div>
 
-          <p >The price for {difDays} night/s is;
-              <strong>${finalPrice}</strong>
-            </p>
-          
-
+          <p>
+            The price for {difDays} night/s is;
+            <strong>${finalPrice}</strong>
+          </p>
 
           <div className="col-span-2 border-t border-black pr-3 pb-4 pl-1">
             <h2>Rooms:</h2>
@@ -115,6 +119,7 @@ const Reservation = ({ selectedHotel, price }) => {
         </div>
         <div className="py-4 text-3xl">
           <h1>Name of user</h1>
+          <p>{selectedHotel.name}</p>
         </div>
 
         <div className="text-xl py-5">Join in month XXXX</div>

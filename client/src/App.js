@@ -17,7 +17,7 @@ function App() {
           <Route exact path="/login" component={Login} />
           <Route path="/home/:id" component={Detail}></Route>
           <Route exact path="/createhotel" component={Create}></Route>
-          <Route exact path="/about" component={About}/>
+          <Route exact path="/about" component={About} />
         </Switch>
       </div>
     </BrowserRouter>
