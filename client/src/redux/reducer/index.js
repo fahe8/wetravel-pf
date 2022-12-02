@@ -9,6 +9,7 @@ import {
   DELETE_HOTEL,
   POST_RESERVE,
   PAY_RESERVE,
+  GET_RESERVE
 } from "../action/index";
 
 
@@ -83,6 +84,11 @@ function rootReducer(state = initialState, action) {
         ...state,
       };
 
+    case GET_RESERVE: 
+    return {
+      ...state,
+      reserve: action.payload
+    }
     default:
       return state;
   }

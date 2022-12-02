@@ -12,7 +12,7 @@ routerReserves.get("/", async (req,res)=> {
                 as: "user", 
                 attributes: ["name"]
           },
-          attributes: ["id", "nameHotel", "nameRoom", "userReserve"]
+          attributes: ["id", "nameHotel", "nameRoom", "userReserve", "quantity"]
         })
         dataDb.length? res.send(dataDb): res.status(400).send("No hay ninguna reserva")
     }catch(error){
@@ -21,14 +21,20 @@ routerReserves.get("/", async (req,res)=> {
   
 })
 
-routerReserves.get("/:user", async (req, res) => {
-    const { user } = req.params;
+routerReserves.get("/:id", async (req, res) => {
+    const { id } = req.params;
     try {
-      if (user && dataDb.length) {
-        const dataUser = Reserves.find((el) => el.user == user);
-        dataUser
-          ? res.status(200).send(dataUser)
-          : res.status(404).send("this user has no reservation");
+
+      
+      if (id ) {
+        const userReserves =  await Reserves.findAll({
+          where: {userId: id},
+        })
+        // const dataUser = Reserves.find((el) => el.user == user);
+        // dataUser
+        userReserves.length?
+        res.status(200).send(userReserves)
+        : res.status(404).send("this user has no reservation");
       }
     } catch (error) {
       res.status(400).send(error.message);
@@ -39,11 +45,11 @@ routerReserves.get("/:user", async (req, res) => {
 
   routerReserves.post("/", async (req, res) => {
         let {
-            nameHotel,nameRoom,price,check_in,check_out,userReserve
+            nameHotel,nameRoom,price,check_in,check_out,userReserve, quantity
         } = req.body;
         try {
           let newReserve = await Reserves.create({
-            nameHotel,nameRoom,price,check_in,check_out,userReserve
+            nameHotel,nameRoom,price,check_in,check_out,userReserve,quantity
           });
       
           let userDb = await User.findOne({

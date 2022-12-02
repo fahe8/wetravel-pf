@@ -35,6 +35,12 @@ const NavBar = ({ handleGuest, handleHost }) => {
         <Link to="/about">
           <p>About Us</p>
         </Link>
+        <Link to="/createhotel">
+          <button>Create New Hotel</button>
+        </Link>
+        <Link to="/carrito">
+          <button>Carrito</button>
+        </Link>
         <div className=" h-10 flex justify-between items-center gap-5  hover:bg-cyan-800 cursor-pointer p-7 rounded-full border-2 border-black">
           {
             !user ? (
