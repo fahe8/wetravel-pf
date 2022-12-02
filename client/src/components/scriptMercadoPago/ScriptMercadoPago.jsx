@@ -9,7 +9,7 @@ const ScriptMercadoPago = ({productos, data }) => {
         attr_data_preference.value = data.id  //Le asigna como valor el id que devuelve MP
       
         //Agrega atributos al elemento script
-        script.src="https://www.mercadopago.com.co/integrations/v1/web-payment-checkout.js";  
+        script.src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js";  
         script.setAttributeNode(attr_data_preference)  
       
         console.log(data)
