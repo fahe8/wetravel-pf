@@ -7,9 +7,13 @@ import { useDispatch } from "react-redux";
 import { postHotel  } from "../../redux/action";
 
 
-const Reservation = ({ selectedHotel, price }) => {
+const Reservation = ({ selectedHotel }) => {
   let dispatch = useDispatch()
   const [showCalendar, setShowCalendar] = useState(false);
+
+
+  const prices = selectedHotel?.price
+ 
   
   // manage date
   const [checkIn, setCheckIn] = useState(format(new Date(), 'yyyy-MM-dd'));
@@ -23,10 +27,9 @@ const Reservation = ({ selectedHotel, price }) => {
     {setCheckOut(e.target.value)}
   }
 
-  const finalPrice = price * differenceInDays(new Date(checkOut), new Date(checkIn)) > 0 ? price * differenceInDays(new Date(checkOut), new Date(checkIn)) : price;
+  const finalPrice = prices * differenceInDays(new Date(checkOut), new Date(checkIn)) > 0 ? prices * differenceInDays(new Date(checkOut), new Date(checkIn)) : prices;
   
   const difDays = differenceInDays(new Date(checkOut), new Date(checkIn)) <= 0 ? 1 : differenceInDays(new Date(checkOut), new Date(checkIn));
-
 
   const refOne= useRef('') 
 
@@ -58,7 +61,7 @@ const Reservation = ({ selectedHotel, price }) => {
       )}
       <div className="row-span-1 bg-white shadow-xl  rounded-3xl m-11">
         <div className=" text-4xl mt-8">
-          <h3>{selectedHotel.price} Noche</h3>
+          <h3> $ {selectedHotel.price} Noche</h3>
         </div>
 
         <div className=" grid grid-cols-2 bg-[color:var(--primary-bg-opacity-color)] text-sm text-left mt-8 rounded-2xl mx-4 border border-black">
@@ -85,7 +88,7 @@ const Reservation = ({ selectedHotel, price }) => {
           </div>
 
           <p >The price for {difDays} night/s is;
-              <strong>${finalPrice}</strong>
+              <strong> $ {finalPrice}</strong>
             </p>
           
 
@@ -124,6 +127,8 @@ const Reservation = ({ selectedHotel, price }) => {
           </button>
         </div>
       </div>
+      <h1>
+      </h1>
     </div>
   );
 };

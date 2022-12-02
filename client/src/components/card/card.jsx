@@ -35,7 +35,7 @@ function Card({
               <h3>{name}</h3>
               <br/>
               <h3>{location}, {city}</h3>
-              <h3>{price} night</h3>
+              <h3>${price} night</h3>
               <br/>
               <div>
                 <h3><AiTwotoneHome /> {size}</h3>
