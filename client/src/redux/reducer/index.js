@@ -51,6 +51,7 @@ function rootReducer(state = initialState, action) {
     case POST_HOTEL:
       return {
         ...state,
+        hotels: action.payload,
       };
 
     case LOADING:

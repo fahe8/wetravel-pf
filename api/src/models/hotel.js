@@ -31,7 +31,8 @@ module.exports = (sequelize) => {
       allowNull: false
     },
     photos: {
-      type: DataTypes.ARRAY(DataTypes.TEXT)
+      // type: DataTypes.ARRAY(DataTypes.TEXT)
+      type: DataTypes.JSONB,
     },
     continent: {
       type: DataTypes.STRING,
