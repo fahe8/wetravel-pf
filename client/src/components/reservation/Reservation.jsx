@@ -50,7 +50,7 @@ const Reservation = ({ selectedHotel, price }) => {
     document.addEventListener("click", hideOnClickOutside, true);
   }, []);
   return (
-    <div className=" grid grid-rows-2 ">
+    <div className=" grid grid-rows-2 " ref={refOne}>
       {showCalendar && (
         <div className="absolute w-auto h-auto left-0">
           <RangeCalendar/>
@@ -92,7 +92,7 @@ const Reservation = ({ selectedHotel, price }) => {
 
           <div className="col-span-2 border-t border-black pr-3 pb-4 pl-1">
             <h2>Rooms:</h2>
-            <div onClick={infoRoom} ref={refOne}>
+            <div onClick={infoRoom} >
               <DetailRoom
                 id={selectedHotel?.id}
                 name={selectedHotel?.room?.name}

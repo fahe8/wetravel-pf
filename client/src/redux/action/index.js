@@ -10,7 +10,7 @@ export const LOADING = "LOADING";
 export const POST_RESERVE = "POST_RESERVE"
 export const DELETE_HOTEL = "DELETE_HOTEL"
 export const PAY_RESERVE = "PAY_RESERVE"
-
+export const GET_RESERVE = "GET_RESERVE"
 
 
 // 1 depachar los hoteles
@@ -117,6 +117,25 @@ export const payReserve = (payload) =>{
 }
 
 
+// export function getReserves(id) {
+//   return async function (dispatch) {
+//     const json = await axios.get("http://localhost:3001/reserve/"+ id);
+//     // console.log(json) //pendiente porque no me está trayendo nada
+//     return dispatch({
+//       type: GET_RESERVE,
+//       payload: json.data,
+//     }); //segunda función que recibe dispatch y despacha una acción / el tipo y el payload: devuelve el backend
+//   };
+// }
+
+export function cartReserves(reserva) {
+  
+    // console.log(json) //pendiente porque no me está trayendo nada
+    return{
+      type: GET_RESERVE,
+      payload: reserva,
+    }; //segunda función que recibe dispatch y despacha una acción / el tipo y el payload: devuelve el backend
+  };
 
 
 
