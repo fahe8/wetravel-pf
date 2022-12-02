@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch } from "react-redux";
 import { postUser } from "../../redux/action";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 function Login() {
   const dispatch = useDispatch();
@@ -40,17 +40,14 @@ function Login() {
         <>
           <div className="rounded content-center">
             <img className="rounded" src={user.picture} alt={user.name} />
-            <Link to={"/createhotel"}>
-              <button
-                className="bg-black border-2 p-2 text-white rounded focus:bg-[#00B4FF] focus:rounded text-xl"
-                onChange={(e) => handleGuest(e)}
-              >
-                Ser Huesped
-              </button>
-            </Link>
             <button
               className="bg-black border-2 p-2 text-white rounded focus:bg-[#00B4FF] focus:rounded text-xl"
-              // onChange={(e) => handleHost(e)}
+              onClick={(e) => handleGuest(e)}
+            >
+              Ser Huesped
+            </button>
+            <button
+              className="bg-black border-2 p-2 text-white rounded focus:bg-[#00B4FF] focus:rounded text-xl"
               onClick={(e) => handleHost(e)}
             >
               Ser Hospedador

@@ -8,11 +8,11 @@ const NavBar = ({ handleGuest, handleHost }) => {
   let location = useLocation();
   let history = useHistory();
   const { user, loginWithRedirect } = useAuth0();
-  console.log('USER:', user)
+  console.log("USER:", user);
   const [state, setstate] = useState(false);
 
   useEffect(() => {
-    if (location.pathname === "/" ) {
+    if (location.pathname === "/") {
       setstate(true);
     }
   }, []);
@@ -35,69 +35,53 @@ const NavBar = ({ handleGuest, handleHost }) => {
         <Link to="/about">
           <p>About Us</p>
         </Link>
-        <Link to="/createhotel">
-          <button>Create New Hotel</button>
-        </Link>
-        <Link to="/carrito">
-          <button>Carrito</button>
-        </Link>
-        <div className=" h-10 flex justify-between items-center gap-5  hover:bg-cyan-800 cursor-pointer p-7 rounded-full border-2 border-black">
-          {
-            !user ? (
-                <div>
-                  <Link to="/login">
-                    <button onClick={() => loginWithRedirect()} >Iniciar sesion</button>
-                    {/* <span className=" bg-[url('/src/assets/icons/user.svg')] bg-center bg-cover bg-no-repeat w-10 h-10"></span> */}
-                  </Link>
-                </div>
-              ) : (
-                <div className=" w-65 flex justify-between items-center text-xl gap-5">
-                  <Link to="/createhotel">
-                    <button onChange={(e) => handleHost(e)}>Create New Hotel</button>
-                  </Link>
-                  <Link to="/login">
-                    <div className=" w-65 flex justify-between items-center text-xl gap-5">
-                      <p>{user.name}</p>
-                      <img
-                        src={user.picture}
-                        alt="icon"
-                        className="bg-center bg-cover bg-no-repeat w-10 h-10 rounded-full"
-                      />
-                    </div>
-                  </Link>
-                </div>
-              )
-          }
-        </div>
-        
-        {/* <Link to="/createhotel">
-          <button>Create New Hotel</button>
-        </Link> */}
-        {/* <div className=" h-10 flex justify-between items-center gap-5  hover:bg-cyan-800 cursor-pointer p-7 rounded-full border-2 border-black">
-          {user ? (
-            <>
-              <Link to="/login">
-                <p>{user?.name}</p>
-              </Link>
-            </>
-          ) : (
-            <p onClick={() => loginWithRedirect()}>Iniciar sesion</p>
-          )}
 
-          {user ? (
-            <>
+        <div className=" h-10 flex justify-between items-center gap-5  hover:bg-cyan-800 cursor-pointer p-7 rounded-full border-2 border-black">
+          {!user ? (
+            <div>
               <Link to="/login">
-                <img
-                  src={user.picture}
-                  alt="icon"
-                  className="bg-center bg-cover bg-no-repeat w-10 h-10 rounded-full"
-                />
+                <button onClick={() => loginWithRedirect()}>
+                  Iniciar sesion
+                </button>
+                {/* <span className=" bg-[url('/src/assets/icons/user.svg')] bg-center bg-cover bg-no-repeat w-10 h-10"></span> */}
               </Link>
-            </>
+            </div>
+          ) : user === "guest" ? (
+            <div className=" w-65 flex justify-between items-center text-xl gap-5">
+              <Link to="/carrito">
+                <button>Carrito</button>
+              </Link>
+              <Link to="/login">
+                <div className=" w-65 flex justify-between items-center text-xl gap-5">
+                  <p>{user.name}</p>
+                  <img
+                    src={user.picture}
+                    alt="icon"
+                    className="bg-center bg-cover bg-no-repeat w-10 h-10 rounded-full"
+                  />
+                </div>
+              </Link>
+            </div>
           ) : (
-            <span className=" bg-[url('/src/assets/icons/user.svg')] bg-center bg-cover bg-no-repeat w-10 h-10"></span>
+            <div className=" w-65 flex justify-between items-center text-xl gap-5">
+              <Link to="/createhotel">
+                <button onChange={(e) => handleHost(e)}>
+                  Create New Hotel
+                </button>
+              </Link>
+              <Link to="/login">
+                <div className=" w-65 flex justify-between items-center text-xl gap-5">
+                  <p>{user.name}</p>
+                  <img
+                    src={user.picture}
+                    alt="icon"
+                    className="bg-center bg-cover bg-no-repeat w-10 h-10 rounded-full"
+                  />
+                </div>
+              </Link>
+            </div>
           )}
-        </div> */}
+        </div>
       </nav>
     </header>
   );
