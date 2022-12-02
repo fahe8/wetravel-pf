@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 //import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
-import { postHotel, getHotels, getServices } from '../../redux/action';
+import { postHotel, getHotels, getServices, submitImage } from '../../redux/action';
 import { AiFillHeart } from "react-icons/ai";
 import Stars from '../stars/Stars';
 import { Container } from 'reactstrap';
@@ -478,11 +478,14 @@ const Create = () => {
                 <Container>
                   <Dropzone 
                     onDrop={submitImage}
+                    setInput={setInput}
+                    input={input.photos}
                     onChange={(e) => setInput(e.target.files[0])}
                     value={input.photos}
                   >
                     {
                       ({ getRootProps, getInputProps }) => (
+                        <div>
                         <section>
                           <div {...getRootProps({className: 'dropzone'})} >
                             <input {...getInputProps()} />
@@ -490,6 +493,7 @@ const Create = () => {
                             <p>Click here to select the images</p>
                           </div>
                         </section>
+                        </div>
                       )
                     }
                   </Dropzone>
@@ -519,7 +523,7 @@ const Create = () => {
                   onChange={e => handleChange(e)} />
               </div> */}
 
-              {Object.keys(errors).length ? (
+              {/* {Object.keys(errors).length ? (
                 <div className='text-lg font-medium text-gray-900  bg-[color:var(--primary-bg-opacity-color)] rounded-full border border-black-800 p-2 '>
                   <button className='cursor-pointer' type="submit" form='form'>Agregara</button>
                 </div>
@@ -527,7 +531,8 @@ const Create = () => {
                   <div className='text-lg font-medium text-gray-900  bg-[color:var(--primary-bg-opacity-color)] rounded-full border border-black-800 p-2 '>
                     <button onClick={handleSubmit} className='cursor-pointer'  type="submit" form='form'>Agregar</button>
                   </div>
-              )}
+              )} */}
+              <button onClick={handleSubmit} className='cursor-pointer'  type="submit" form='form'>Agregar</button>
             </form>
           </div>
         </div>

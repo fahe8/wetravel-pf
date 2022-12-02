@@ -20,7 +20,6 @@ const Detail = (props) => {
   const selectedHotel = useSelector((state) => state.detail);
   const loading = useSelector((state) => state.loading);
   //const history = useHistory()
-  //console.log("LOADING:", loading);
 
   // const handleDelete = () => {
   //   dispatch(deleteHotel(id));
