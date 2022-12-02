@@ -13,12 +13,12 @@ function Login() {
   function handleGuest(e) {
     e.preventDefault();
     setUserCondition("guest");
-    history.push('/huesped');
+    history.push("/huesped");
   }
   function handleHost(e) {
     e.preventDefault();
     setUserCondition("host");
-    history.push('/anfitrion');
+    history.push("/anfitrion");
   }
 
   useEffect(() => {
@@ -40,13 +40,14 @@ function Login() {
         <>
           <div className="rounded content-center">
             <img className="rounded" src={user.picture} alt={user.name} />
-            <button
-              className="bg-black border-2 p-2 text-white rounded focus:bg-[#00B4FF] focus:rounded text-xl"
-              // onChange={(e) => handleGuest(e)}
-              onClick={(e) => handleGuest(e)}
-            >
-              Ser Huesped
-            </button>
+            <Link to={"/createhotel"}>
+              <button
+                className="bg-black border-2 p-2 text-white rounded focus:bg-[#00B4FF] focus:rounded text-xl"
+                onChange={(e) => handleGuest(e)}
+              >
+                Ser Huesped
+              </button>
+            </Link>
             <button
               className="bg-black border-2 p-2 text-white rounded focus:bg-[#00B4FF] focus:rounded text-xl"
               // onChange={(e) => handleHost(e)}
