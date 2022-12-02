@@ -7,8 +7,10 @@ import { useDispatch } from "react-redux";
 import { postHotel, cartReserves } from "../../redux/action";
 import { useAuth0 } from "@auth0/auth0-react";
 
+
 const Reservation = ({ selectedHotel, price }) => {
-  let dispatch = useDispatch();
+  let dispatch = useDispatch(); 
+   const { user } = useAuth0();
   const prices = selectedHotel?.price
   const [showCalendar, setShowCalendar] = useState(false);
 
@@ -48,9 +50,25 @@ const Reservation = ({ selectedHotel, price }) => {
     }
   };
 
+  console.log(user)
   const fullInfo = () => {
     const info = {
       orderlines: [
+<<<<<<< HEAD
+        {idHotel: selectedHotel.id,
+        quantity: difDays,
+        check_out: checkOut,
+        check_in: checkIn
+      }
+      ],
+        user: user.email
+      }
+      
+    
+    dispatch(cartReserves(info))
+  };
+  
+=======
         {
           idHotel: selectedHotel.id,
           quantity: difDays,
@@ -60,6 +78,7 @@ const Reservation = ({ selectedHotel, price }) => {
       ],
       user: 1,
     };
+>>>>>>> 703637bfe472a6c2ca439d9d5811eb95372a352c
 
     dispatch(cartReserves(info));
   };

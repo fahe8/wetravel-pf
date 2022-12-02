@@ -3,28 +3,21 @@ const { Sequelize, Op } = require('sequelize');
 const server = Router()
 const { Order , Reserves, Hotel } = require('../db');
 
-Op
 
 
 server.post('/', async (req, res, next) => {
     const { user, orderlines } = req.body
-
-
-    // orderlines = [{idHotel: 3243, quantity;1, check_out:2022-12-4,
-    //     check_in:2022-12-2  },  ]
-    // user: "fabian"
-    // status: "created"
-
+    console.log(req.body)
     if(!user && !orderlines) {
         res.status(400)
         .send('Cuidado! Faltan datos para poder crear una orden')
     }
     else {
-       
+       console.log(user)
         const order =  await Order.findOne({
-            where: {userId: user}
+            where: {user_email: user}
          })
-
+         console.log(order)
          !order && res.send("Si el usuario no existe no se puede encontrar una order")
 
 
@@ -48,7 +41,7 @@ server.post('/', async (req, res, next) => {
 
                 return Reserves.create({
                     orderId: orderId,
-                    userId: user,
+                    userId: order.dataValues.id,
                     nameHotel: producto.name,
                     nameRoom: producto.room.name,
                     check_out:elem.check_out,

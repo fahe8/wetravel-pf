@@ -21,6 +21,7 @@ routerUsers.post('/', async (req, res) => {
               status: "created",
               price: 0,
               quantity: 0,
+              user_email: user.dataValues.email,
               userId: user.dataValues.id    
           })
       })
@@ -62,9 +63,9 @@ routerUsers.get('/', async (req, res) => {
     }
   });
 
- 
-
   return res.json(allUser);
 });
+
+
 
 module.exports = routerUsers;

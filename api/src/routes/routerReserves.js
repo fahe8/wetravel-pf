@@ -21,14 +21,14 @@ routerReserves.get("/", async (req,res)=> {
   
 })
 
-routerReserves.get("/:id", async (req, res) => {
-    const { id } = req.params;
+routerReserves.get("/:user", async (req, res) => {
+    const { user } = req.params;
     try {
 
       
-      if (id ) {
+      if (user ) {
         const userReserves =  await Reserves.findAll({
-          where: {userId: id},
+          where: {userReserve: user},
         })
         // const dataUser = Reserves.find((el) => el.user == user);
         // dataUser
