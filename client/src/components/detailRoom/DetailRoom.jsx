@@ -6,7 +6,7 @@ import {useHistory} from "react-router-dom"
 import ScriptMercadoPago from "../scriptMercadoPago/ScriptMercadoPago";
 
 
-const DetailRoom = ({ name, size, photos, description, properties, date, id, price, nameHotel }) => {
+const DetailRoom = ({ name, size, photos, description, properties, date, id, price, nameHotel , fullInfo}) => {
   const dispatch = useDispatch()
   const history = useHistory()
   const [modalFilter, setModalFilter] = useState(false);
@@ -25,11 +25,7 @@ const DetailRoom = ({ name, size, photos, description, properties, date, id, pri
   const [item, setItem] = useState(initialState)
 
 
-const handleReserve = () => {
-  dispatch(cartReserves(item))
-  history.push("/carrito")
-}
-    
+
   
   console.log(item)
 
@@ -76,7 +72,7 @@ const handleReserve = () => {
         </button>
         <button
           className="bg-[color:var(--second-bg-color)] py-2 px-3 shadow-[inset_0_-2px_4px_rgba(0,0,0,0.6)]  hover:shadow-[inset_0_4px_4px_rgba(0,0,0,0.25)] rounded-[10px] flex align-middle"
-          onClick={handleReserve}
+          onClick={fullInfo}
         >
           <p>Reservar</p>
         </button>
@@ -103,6 +99,7 @@ const handleReserve = () => {
                 size={size}
                 photos={photos}
                 properties={properties}
+                
               />
             )}
           </div>

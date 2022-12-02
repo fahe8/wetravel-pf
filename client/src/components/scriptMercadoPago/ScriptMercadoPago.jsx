@@ -9,7 +9,7 @@ const ScriptMercadoPago = ({productos, data }) => {
         attr_data_preference.value = data.id  //Le asigna como valor el id que devuelve MP
       
         //Agrega atributos al elemento script
-        script.src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js";  
+        script.src="https://www.mercadopago.com.co/integrations/v1/web-payment-checkout.js";  
         script.setAttributeNode(attr_data_preference)  
       
         console.log(data)
@@ -27,21 +27,21 @@ const ScriptMercadoPago = ({productos, data }) => {
         <div>
 
       <form id='form1'>
-{/* 
-        <h4>Checkout</h4>
+
+        <h4>Carrito</h4>
         <div className={''} >  
         {productos.map((producto, i) => {
             return(
                 <div className={''} key={i}>
                   <ul className={''} >
-                    <li>{producto.title}</li>
-                    <li>{'$' + producto.price}</li> 
-                    <li>{producto.quantity}</li>
+                    <li>{producto.nameHotel}</li>
+                    {/* <li>{'$' + producto.price}</li> 
+                    <li>{producto.quantity}</li> */}
                   </ul>
                 </div>   
             )
-        })} */}
-        {/* </div>    */}
+        })}
+        </div>   
         
       </form>
 
