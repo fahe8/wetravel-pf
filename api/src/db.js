@@ -36,25 +36,13 @@ let capsEntries = entries.map((entry) => [
 
 sequelize.models = Object.fromEntries(capsEntries);
 
-<<<<<<< HEAD
 const { Hotel, User, Reserves, Review } = sequelize.models;
-=======
-const { Hotel, User, Reserves, Order } = sequelize.models;
->>>>>>> b53711103ef371bfa84a5d4d0854c8ce5925ffdb
 
 Hotel.belongsToMany(User, { through: "user-hotels" });
 User.belongsToMany(Hotel, { through: "user-hotels" });
 
 User.hasMany(Reserves);
-<<<<<<< HEAD
 Reserves.belongsTo(User);
-=======
-Reserves.belongsTo(User); 
-
-Order.hasMany(Reserves)
-User.hasMany(Order)
-Order.belongsTo(User)
->>>>>>> b53711103ef371bfa84a5d4d0854c8ce5925ffdb
 
 Review.belongsToMany(User, { through: "user-review" });
 User.belongsToMany(Review, { through: "user-review" });
