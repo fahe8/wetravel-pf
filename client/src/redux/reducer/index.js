@@ -10,6 +10,7 @@ import {
   POST_RESERVE,
   PAY_RESERVE,
   GET_REVIEW,
+  GET_RESERVE,
 } from "../action/index";
 
 const initialState = {
@@ -91,6 +92,11 @@ function rootReducer(state = initialState, action) {
         ...state,
       };
 
+    case GET_RESERVE:
+      return {
+        ...state,
+        reserve: action.payload,
+      };
     default:
       return state;
   }

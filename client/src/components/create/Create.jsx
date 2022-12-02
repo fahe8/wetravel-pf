@@ -3,7 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 //import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { postHotel, getHotels, getServices } from "../../redux/action";
+import {
+  postHotel,
+  getHotels,
+  getServices,
+  submitImage,
+} from "../../redux/action";
 import { AiFillHeart } from "react-icons/ai";
 import Stars from "../stars/Stars";
 import { Container } from "reactstrap";
@@ -463,41 +468,40 @@ const Create = () => {
                   })}
                 </select>
               </div>
-              <div>
-                <div className="col-span-3 p-2.5">
-                  <input
-                    className="bg-transparent border-b border-gray w-full"
-                    id="photoInput"
-                    type="text"
-                    autoComplete="off"
-                    value={input.photos}
-                    name="photos"
-                    placeholder="Url photos.."
-                    onChange={(e) => handleChange(e)}
-                  />
-                  {/* {errors.url && <p>{errors.url} </p>} */}
-                </div>
 
-                <div className="col-span-3 p-2.5">
-                  <Container>
-                    <Dropzone
-                      onDrop={submitImage}
-                      onChange={(e) => setInput(e.target.files[0])}
-                      value={input.photos}
-                    >
-                      {({ getRootProps, getInputProps }) => (
-                        <section>
-                          <div {...getRootProps({ className: "dropzone" })}>
-                            <input {...getInputProps()} />
-                            <span>Icono de carpeta</span>
-                            <p>Click here to select the images</p>
-                          </div>
-                        </section>
-                      )}
-                    </Dropzone>
-                    {imagePreview()}
-                  </Container>
-                </div>
+              <div className="col-span-3 p-2.5">
+                <input
+                  className="bg-transparent border-b border-gray w-full"
+                  id="photoInput"
+                  type="text"
+                  autoComplete="off"
+                  value={input.photos}
+                  name="photos"
+                  placeholder="Url photos.."
+                  onChange={(e) => handleChange(e)}
+                />
+                {/* {errors.url && <p>{errors.url} </p>} */}
+              </div>
+
+              <div className="col-span-3 p-2.5">
+                <Container>
+                  <Dropzone
+                    onDrop={submitImage}
+                    onChange={(e) => setInput(e.target.files[0])}
+                    value={input.photos}
+                  >
+                    {({ getRootProps, getInputProps }) => (
+                      <section>
+                        <div {...getRootProps({ className: "dropzone" })}>
+                          <input {...getInputProps()} />
+                          <span>Icono de carpeta</span>
+                          <p>Click here to select the images</p>
+                        </div>
+                      </section>
+                    )}
+                  </Dropzone>
+                  {imagePreview()}
+                </Container>
               </div>
               {/* <div className='col-span-3 p-2.5'>
                 <input

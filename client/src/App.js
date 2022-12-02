@@ -6,6 +6,9 @@ import Login from "./components/log-in/Log-in";
 import Detail from "./components/Detail/Detail";
 import About from "./components/about/about.jsx";
 import Create from "./components/create/Create";
+import Hospedador from "./components/ProfileUser/Hospedador";
+import Huesped from "./components/ProfileUser/Huesped";
+import Cart from "./components/cart/Cart";
 
 function App() {
   return (
@@ -18,6 +21,10 @@ function App() {
           <Route path="/home/:id" component={Detail}></Route>
           <Route exact path="/createhotel" component={Create}></Route>
           <Route exact path="/about" component={About} />
+          <Route exact path="/about" component={About} />
+          <Route exact path="/anfitrion" component={Hospedador} />
+          <Route exact path="/huesped" component={Huesped} />
+          <Route exact path="/carrito" component={Cart} />
         </Switch>
       </div>
     </BrowserRouter>

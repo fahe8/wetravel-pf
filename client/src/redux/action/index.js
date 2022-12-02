@@ -11,6 +11,8 @@ export const POST_RESERVE = "POST_RESERVE";
 export const DELETE_HOTEL = "DELETE_HOTEL";
 export const PAY_RESERVE = "PAY_RESERVE";
 export const GET_REVIEW = "GET_REVIEW";
+export const GET_RESERVE = "GET_RESERVE";
+export const POST_ORDER = "POST_ORDER";
 
 // 1 depachar los hoteles
 export function getHotels() {
@@ -124,6 +126,34 @@ export function getReview(payload) {
       payload: json.data,
     }); //segunda función que recibe dispatch y despacha una acción / el tipo y el payload: devuelve el backend
   };
+}
+
+export function getReserves(id) {
+  return async function (dispatch) {
+    const json = await axios.get("http://localhost:3001/reserve/" + id);
+    // console.log(json) //pendiente porque no me está trayendo nada
+    return dispatch({
+      type: GET_RESERVE,
+      payload: json.data,
+    }); //segunda función que recibe dispatch y despacha una acción / el tipo y el payload: devuelve el backend
+  };
+}
+
+export function cartReserves(reserva) {
+  return async function (dispatch) {
+    console.log(reserva);
+    const json = await axios.post("http://localhost:3001/order", reserva);
+    // console.log(json) //pendiente porque no me está trayendo nada
+    //segunda función que recibe dispatch y despacha una acción / el tipo y el payload: devuelve el backend
+    console.log(reserva);
+    console.log(json.data);
+    return dispatch({
+      type: POST_ORDER,
+      payload: json,
+    });
+  };
+  // console.log(json) //pendiente porque no me está trayendo nada
+  //segunda función que recibe dispatch y despacha una acción / el tipo y el payload: devuelve el backend
 }
 
 //------->delete dog

@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import Carousel from "react-bootstrap/Carousel";
-import { payReserve } from "../../redux/action";
-import { useDispatch } from "react-redux";
+import { payReserve, postReserve, cartReserves } from "../../redux/action";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import ScriptMercadoPago from "../scriptMercadoPago/ScriptMercadoPago";
 
 const DetailRoom = ({
   name,
@@ -13,8 +15,10 @@ const DetailRoom = ({
   id,
   price,
   nameHotel,
+  fullInfo,
 }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [modalFilter, setModalFilter] = useState(false);
   const [item, setItem] = useState();
   const itemLoader = () => {
@@ -70,10 +74,11 @@ const DetailRoom = ({
         </button>
         <button
           className="bg-[color:var(--second-bg-color)] py-2 px-3 shadow-[inset_0_-2px_4px_rgba(0,0,0,0.6)]  hover:shadow-[inset_0_4px_4px_rgba(0,0,0,0.25)] rounded-[10px] flex align-middle"
-          onClick={itemLoader}
+          onClick={fullInfo}
         >
           <p>Reservar</p>
         </button>
+        {/* <ScriptMercadoPago item></ScriptMercadoPago> */}
         <div
           className={` w-screen h-screen  fixed  left-0 top-0 z-30   ease-in-out duration-300  ${
             modalFilter ? " bg-[color:var(--bg-opacity-modal)] z-20 " : "-z-10"
