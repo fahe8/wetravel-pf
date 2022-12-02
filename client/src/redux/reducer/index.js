@@ -9,18 +9,21 @@ import {
   DELETE_HOTEL,
   POST_RESERVE,
   PAY_RESERVE,
+  GET_REVIEW,
+  GET_RESERVE,
 } from "../action/index";
 
-
-const initialState = { //inicializar el estado; un objeto con varios estados dentro
-    hotels: [], //nos devuelve todos los hoteles en un array
-    detail: {},
-    hotelFilter: [],
-    copyHotels: [],
-    reserve: [],
-    service: [],
-    loading: false
-}
+const initialState = {
+  //inicializar el estado; un objeto con varios estados dentro
+  hotels: [], //nos devuelve todos los hoteles en un array
+  detail: {},
+  hotelFilter: [],
+  copyHotels: [],
+  reserve: [],
+  service: [],
+  review: [],
+  loading: false,
+};
 
 function rootReducer(state = initialState, action) {
   //function reducer; tiene 2 parámetros (estado inicial, action)
@@ -51,6 +54,7 @@ function rootReducer(state = initialState, action) {
     case POST_HOTEL:
       return {
         ...state,
+        hotels: action.payload,
       };
 
     case LOADING:
@@ -77,11 +81,22 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
       };
+    case GET_REVIEW:
+      return {
+        ...state,
+        review: action.payload,
+      };
+
     case DELETE_HOTEL:
       return {
         ...state,
       };
 
+    case GET_RESERVE:
+      return {
+        ...state,
+        reserve: action.payload,
+      };
     default:
       return state;
   }

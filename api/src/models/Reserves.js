@@ -25,6 +25,11 @@ module.exports = (sequelize) => {
     userReserve:{
       type: DataTypes.STRING,
       allowNull:false
-    }
+    },
+    quantity: {
+      type: DataTypes.INTEGER,
+      default: 1,
+      allownull: false
+    },
   }, { timestamps: false });
 };

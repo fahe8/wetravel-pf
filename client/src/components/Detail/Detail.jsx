@@ -9,7 +9,6 @@ import Stars from "../stars/Stars";
 import Carousel from "react-bootstrap/Carousel";
 import Reservation from "../reservation/Reservation";
 
-
 const Detail = (props) => {
   const {
     match: {
@@ -20,7 +19,6 @@ const Detail = (props) => {
   const selectedHotel = useSelector((state) => state.detail);
   const loading = useSelector((state) => state.loading);
   //const history = useHistory()
-  //console.log("LOADING:", loading);
 
   // const handleDelete = () => {
   //   dispatch(deleteHotel(id));
@@ -34,7 +32,6 @@ const Detail = (props) => {
       dispatch(getDetail(""));
     };
   }, [dispatch, id]);
-
 
   return (
     <div>
@@ -111,7 +108,7 @@ const Detail = (props) => {
                       )}
                   </div>
                 </div>
-<Reservation selectedHotel={selectedHotel}/>
+                <Reservation selectedHotel={selectedHotel} />
                 <div>
                   <p> {selectedHotel.comments}</p>
                 </div>
