@@ -11,20 +11,22 @@ mercadopago.configure({
 });
 
 
-const reservaciones = async (id) => {   return await Reserves.findAll({
-  where: {userReserve: id},
+const reservaciones = async (user) => {   return await Reserves.findAll({
+  where: {userReserve: user},
 })
 
 
 }
 
-routerPay.get("/:id", async (req, res) => {
-  const { id } = req.params;
-const allreservation = await reservaciones(id)
-console.log(allreservation)
+routerPay.get("/:user", async (req, res) => {
+  const { user } = req.params;
+const allreservation = await reservaciones(user)
+// console.log(allreservation)
 
 
-const id_orden = allreservation[0].userid 
+const id_orden = allreservation[0].orderId 
+
+console.log("ID ORDEN",id_orden)
   const items_ml = allreservation.map(i => ({
 
     title: i.nameHotel,
@@ -45,8 +47,8 @@ const id_orden = allreservation[0].userid
       installments: 3  //Cantidad máximo de cuotas
     },
     back_urls: {
-      success: 'http://localhost:3001/mercadopago/pagos',
-      failure: 'http://localhost:3001/mercadopago/pagos',
+      success: 'http://localhost:3000/home',
+      failure: 'http://localhost:3000/carrito',
       pending: 'http://localhost:3001/mercadopago/pagos',
     },
   };
@@ -81,7 +83,7 @@ Order.findByPk(external_reference)
 .then((order) => {
   order.payment_id= payment_id
   order.payment_status= payment_status
-  order.merchant_order_id = merchant_orderid
+  order.merchant_order_id = merchant_order_id
   order.status = "completed"
   console.info('Salvando order')
   order.save()

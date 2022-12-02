@@ -9,7 +9,9 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 
 
+
 const Reservation = ({ selectedHotel, price }) => {
+  const { user } = useAuth0();
   let dispatch = useDispatch()
   const [showCalendar, setShowCalendar] = useState(false);
   
@@ -39,15 +41,19 @@ const Reservation = ({ selectedHotel, price }) => {
     }
   };
 
+  console.log(user)
   const fullInfo = () => {
 
 
     const info = {
-      orderlines: [{idHotel: selectedHotel.id,
+      orderlines: [
+        {idHotel: selectedHotel.id,
         quantity: difDays,
         check_out: checkOut,
-        check_in: checkIn}],
-        user: 1
+        check_in: checkIn
+      }
+      ],
+        user: user.email
       }
       
     
