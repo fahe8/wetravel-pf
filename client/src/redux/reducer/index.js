@@ -11,13 +11,10 @@ import {
   PAY_RESERVE,
   GET_REVIEW,
   GET_RESERVE,
-<<<<<<< HEAD
   UPDATE_USER,
   GET_USER,
-=======
   GET_RESERVE_BY_CART,
   GET_ID_MERCADO_PAGO
->>>>>>> 71369ca8486270387501ae782c4e861f41786ab4
 } from "../action/index";
 
 const initialState = {
@@ -30,11 +27,8 @@ const initialState = {
   reserveByCart:[],
   service: [],
   review: [],
-<<<<<<< HEAD
   users: [],
-=======
   idPay: "",
->>>>>>> 71369ca8486270387501ae782c4e861f41786ab4
   loading: false,
 };
 
