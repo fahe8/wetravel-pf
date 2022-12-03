@@ -181,6 +181,16 @@ export function getIdMercadoPago(user) {
   }
 }
 
+//NO TERMINADA ESTA ACTION
+
+
+export function deleteReserve(id) {
+  return async function(dispatch) {
+    const json = await axios.get("http://localhost:3001/reserve/" + id)
+    console.log(json.data)
+  }
+}
+
 //------->delete dog
 
 export const deleteHotel = (id) => {
