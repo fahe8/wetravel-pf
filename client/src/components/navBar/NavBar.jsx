@@ -56,7 +56,11 @@ const NavBar = () => {
                 {/* </button> */}
               </Link>
             </div>
+<<<<<<< HEAD
           ) : user.name === users.name ? (
+=======
+          ) : user ? (
+>>>>>>> 71369ca8486270387501ae782c4e861f41786ab4
             <div className=" w-65 flex justify-between items-center text-xl gap-5">
               <Link to="/carrito">
                 <button>Carrito</button>
