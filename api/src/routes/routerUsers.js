@@ -17,10 +17,10 @@ routerUsers.post('/', async (req, res) => {
           status
       })
       .then( user => {
+
+
           Order.create({
               status: "created",
-              price: 0,
-              quantity: 0,
               user_email: user.dataValues.email,
               userId: user.dataValues.id    
           })
