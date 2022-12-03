@@ -64,7 +64,24 @@ routerReserves.get("/:user", async (req, res) => {
     });
             
 
+routerReserves.delete("/:id", async (req, res) => {
+  try {
+    const { id } = req.params
+    console.log(id)
+    const reserve = await Reserves.findOne({
+      where: {id}
+    })
+    console.log(reserve)
+    if(!reserve) {
+      res.send("No existe reserva con esta id")
+    }
 
+    await reserve.destroy()
+    res.send("se eliminó la reserva con id:" + id)
+  } catch (error) {
+    console.log(error)
+  }
+})
 
 
   module.exports = routerReserves
