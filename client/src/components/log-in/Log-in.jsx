@@ -8,6 +8,7 @@ function Login() {
   const dispatch = useDispatch();
   const history = useHistory();
   const { loginWithRedirect, logout, user } = useAuth0();
+  console.log('USER LOGIN:', user)
   const [userCondition, setUserCondition] = useState("guest");
 
   function handleGuest(e) {
@@ -36,48 +37,70 @@ function Login() {
 
   return (
     <div>
-      {user ? (
-        <>
+      {!user ? (
           <div className="rounded content-center">
-            <img className="rounded" src={user.picture} alt={user.name} />
+            <div>
+              <h1>Elige como quieres iniciar sesión: </h1>
+            </div>
             <button
               className="bg-black border-2 p-2 text-white rounded focus:bg-[#00B4FF] focus:rounded text-xl"
-              onClick={(e) => handleGuest(e)}
+              // onClick={(e) => handleGuest(e)}
+              onClick={() => loginWithRedirect()}
             >
               Ser Huesped
             </button>
             <button
               className="bg-black border-2 p-2 text-white rounded focus:bg-[#00B4FF] focus:rounded text-xl"
-              onClick={(e) => handleHost(e)}
+              // onClick={(e) => handleHost(e)}
+              onClick={() => loginWithRedirect()}
             >
               Ser Hospedador
             </button>
-            <button
+            {/* <button
+              className="w-[100px] h-[40px] border border-black mx-auto bg-[#00B4FF] rounded"
+              onClick={() => loginWithRedirect()}
+            >
+              Log-in
+            </button> */}
+
+            {/* <button
               className="bg-black border-2 p-2 text-white rounded focus:bg-[#00B4FF] focus:rounded text-xl"
               onClick={() => logout({ returnTo: window.location.origin })}
             >
               Log-out
-            </button>
+            </button> */}
           </div>
-        </>
       ) : (
-        <button
-          className="w-[100px] h-[40px] border border-black mx-auto bg-[#00B4FF] rounded"
-          onClick={() => loginWithRedirect()}
-        >
-          Log-in
-        </button>
+        <div>
+          <h1><strong>Has iniciado sesión como Huesped</strong></h1>
+          <img className="rounded" src={user?.picture} alt={user?.name} />
+          <div>
+            <p><strong>Usuario: </strong>{user?.name}</p>
+          </div>
+          <br />
+          <div>
+            <p><strong>Correo electrónico: </strong>{user?.email}</p>
+          </div>
+          <br />
+          <div>
+            <button onClick={(e) => handleGuest(e)} >Ir a mi perfil como Huesped</button>
+            <br />
+            <button onClick={(e) => handleHost(e)} >Ir a mi perfil como Anfitrión</button>
+          </div>
+          <button
+              className="bg-black border-2 p-2 text-white rounded focus:bg-[#00B4FF] focus:rounded text-xl"
+              onClick={() => logout({ returnTo: window.location.origin })}
+            >
+              Log-out
+          </button>
+        </div>
+        // <button
+        //   className="w-[100px] h-[40px] border border-black mx-auto bg-[#00B4FF] rounded"
+        //   onClick={() => loginWithRedirect()}
+        // >
+        //   Log-in
+        // </button>
       )}
-      <br />
-      <div>
-        <div>
-          <p>{user.name}</p>
-        </div>
-        <br />
-        <div>
-          <p>{user.email}</p>
-        </div>
-      </div>
     </div>
   );
 }

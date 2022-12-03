@@ -11,6 +11,8 @@ import {
   PAY_RESERVE,
   GET_REVIEW,
   GET_RESERVE,
+  UPDATE_USER,
+  GET_USER,
 } from "../action/index";
 
 const initialState = {
@@ -22,6 +24,7 @@ const initialState = {
   reserve: [],
   service: [],
   review: [],
+  users: [],
   loading: false,
 };
 
@@ -67,12 +70,19 @@ function rootReducer(state = initialState, action) {
         ...state,
         service: action.payload,
       };
-
+    case GET_USER:
+      return {
+        ...state,
+        users: action.payload,
+      }
     case POST_USER:
       return {
         ...state,
       };
-
+    case UPDATE_USER:
+      return {
+        ...state,
+      }
     case POST_RESERVE:
       return {
         ...state,

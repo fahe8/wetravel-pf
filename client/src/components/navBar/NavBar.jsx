@@ -3,13 +3,23 @@ import { Link, useHistory, useLocation } from "react-router-dom";
 import Search from "../search/Search";
 import logo from "../../assets/img/copia.png";
 import { useAuth0 } from "@auth0/auth0-react";
+import { useDispatch, useSelector } from "react-redux";
+import { getUser } from "../../redux/action";
 
-const NavBar = ({ handleGuest, handleHost }) => {
+const NavBar = () => {
   let location = useLocation();
   let history = useHistory();
-  const { user, loginWithRedirect } = useAuth0();
+  const dispatch = useDispatch();
+  const { user, loginWithRedirect, logout } = useAuth0();
   console.log("USER:", user);
   const [state, setstate] = useState(false);
+
+  const users = useSelector(state => state.users);
+  console.log('USERS:', users);
+
+  useEffect(() => {
+    dispatch(getUser());
+  }, [dispatch]);
 
   useEffect(() => {
     if (location.pathname === "/") {
@@ -40,13 +50,13 @@ const NavBar = ({ handleGuest, handleHost }) => {
           {!user ? (
             <div>
               <Link to="/login">
-                <button onClick={() => loginWithRedirect()}>
+                {/* <button onClick={() => loginWithRedirect()}> */}
+                {/* <button onClick={() => logout({ returnTo: window.location.origin })}> */}
                   Iniciar sesion
-                </button>
-                {/* <span className=" bg-[url('/src/assets/icons/user.svg')] bg-center bg-cover bg-no-repeat w-10 h-10"></span> */}
+                {/* </button> */}
               </Link>
             </div>
-          ) : user === "guest" ? (
+          ) : user.name === users.name ? (
             <div className=" w-65 flex justify-between items-center text-xl gap-5">
               <Link to="/carrito">
                 <button>Carrito</button>
@@ -65,7 +75,7 @@ const NavBar = ({ handleGuest, handleHost }) => {
           ) : (
             <div className=" w-65 flex justify-between items-center text-xl gap-5">
               <Link to="/createhotel">
-                <button onChange={(e) => handleHost(e)}>
+                <button>
                   Create New Hotel
                 </button>
               </Link>

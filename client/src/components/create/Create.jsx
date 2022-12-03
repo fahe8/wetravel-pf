@@ -167,16 +167,14 @@ const Create = () => {
     if (loading === "false") {
       return (
         <h3>
-          {input.photos.length <= 0
-            ? "No hay imagenes"
-            : input.photos.map((image) => {
-                return (
-                  <div>
-                    <p>Imagen:</p>
-                    <img src={image} alt="img not found" />
-                  </div>
-                );
-              })}
+          {input.photos?.map((image) => {
+            return (
+              <div>
+                <p>Imagen:</p>
+                <img src={image} alt="img not found" />
+              </div>
+            );
+          })}
         </h3>
       );
     }
@@ -469,7 +467,7 @@ const Create = () => {
                 </select>
               </div>
 
-              <div className="col-span-3 p-2.5">
+              {/* <div className="col-span-3 p-2.5">
                 <input
                   className="bg-transparent border-b border-gray w-full"
                   id="photoInput"
@@ -480,8 +478,7 @@ const Create = () => {
                   placeholder="Url photos.."
                   onChange={(e) => handleChange(e)}
                 />
-                {/* {errors.url && <p>{errors.url} </p>} */}
-              </div>
+              </div> */}
 
               <div className="col-span-3 p-2.5">
                 <Container>
@@ -525,7 +522,7 @@ const Create = () => {
                   onChange={e => handleChange(e)} />
               </div> */}
 
-              {Object.keys(errors).length ? (
+              {/* {Object.keys(errors).length ? (
                 <div className="text-lg font-medium text-gray-900  bg-[color:var(--primary-bg-opacity-color)] rounded-full border border-black-800 p-2 ">
                   <button className="cursor-pointer" type="submit" form="form">
                     Agregara
@@ -542,7 +539,15 @@ const Create = () => {
                     Agregar
                   </button>
                 </div>
-              )}
+              )} */}
+              <button
+                    onClick={handleSubmit}
+                    className="cursor-pointer"
+                    type="submit"
+                    form="form"
+                  >
+                    Agregar
+                  </button>
             </form>
           </div>
         </div>
