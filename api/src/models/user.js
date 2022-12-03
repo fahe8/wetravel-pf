@@ -19,7 +19,10 @@ module.exports = (sequelize) => {
     status:{
       type: DataTypes.ENUM("guest","host","admin"),
       allowNull: false,
-    }
+    },
+    photos: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
+    },
 
   }, {
     timestamps: false,

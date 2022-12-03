@@ -4,7 +4,7 @@ const {Router} = require("express");
 const routerUsers = Router();
 
 routerUsers.post('/', async (req, res) => {
-  const { name, email, email_verified, status } = req.body;
+  const { name, email, email_verified, status, photos } = req.body;
   try {
     const search = await User.findOne({where:
       {email: email}})
@@ -14,7 +14,8 @@ routerUsers.post('/', async (req, res) => {
           email,
           name,
           email_verified,
-          status
+          status,
+          photos
       })
       .then( user => {
 
@@ -51,6 +52,20 @@ routerUsers.post('/', async (req, res) => {
     
   }} catch (error) {
     return res.send(`Error en POST por: (${error})`);
+  }
+});
+
+routerUsers.put('/:id', async (req,res) => {
+  let { id } = req.params;
+  let user = req.body;
+
+  try {
+    let updateUser = await User.update(user, {
+      where: { id }
+    });
+    res.json({ change: 'Los datos del Usuario se actualizaron correctamente' });
+  } catch (error) {
+    res.json(`No se puedo actualizar por: (${error})`);
   }
 });
 
