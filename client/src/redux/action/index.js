@@ -145,7 +145,6 @@ export function getReservesByCart(user) {
     const json = await axios.get("http://localhost:3001/order/" + user + "/cart");
 
     // console.log(json) //pendiente porque no me está trayendo nada
-    if(json.data !== 0) {dispatch(getIdMercadoPago(user))}
     return dispatch({
       type: GET_RESERVE_BY_CART,
       payload: json.data,
