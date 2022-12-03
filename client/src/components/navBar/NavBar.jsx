@@ -46,7 +46,7 @@ const NavBar = ({ handleGuest, handleHost }) => {
                 {/* <span className=" bg-[url('/src/assets/icons/user.svg')] bg-center bg-cover bg-no-repeat w-10 h-10"></span> */}
               </Link>
             </div>
-          ) : user === "guest" ? (
+          ) : user ? (
             <div className=" w-65 flex justify-between items-center text-xl gap-5">
               <Link to="/carrito">
                 <button>Carrito</button>

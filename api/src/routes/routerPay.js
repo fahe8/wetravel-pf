@@ -3,35 +3,46 @@ const { Router } = require("express");
 const routerPay = Router();
 const { ACCESS_TOKEN } = process.env;
 const mercadopago = require("mercadopago");
+const { Op } = require("sequelize");
 const {Reserves, Order} = require("../db")
 // Agrega credenciales
-
 mercadopago.configure({
   access_token: `${ACCESS_TOKEN}`,
 });
 
 
-const reservaciones = async (user) => {   return await Reserves.findAll({
-  where: {userReserve: user},
+const reservaciones = async (user) => {   
+//   return await Reserves.findAll({
+//   where: {userReserve: user},
+// })
+
+const reservasbyOrder =  await Order.findOne({
+  where: {
+      [Op.and]: [
+          { user_email:  user }, 
+          { status: 'created'} 
+      ]
+  },
+  include: Reserves
 })
 
+return reservasbyOrder.reserves
 
 }
 
 routerPay.get("/:user", async (req, res) => {
   const { user } = req.params;
 const allreservation = await reservaciones(user)
-// console.log(allreservation)
-
 
 const id_orden = allreservation[0].orderId 
+// const id_orden = 1
 
-console.log("ID ORDEN",id_orden)
+console.log("ESTA ES LA ORDERID",id_orden)
   const items_ml = allreservation.map(i => ({
 
     title: i.nameHotel,
     quantity:i.quantity,
-    unit_price: 100
+    unit_price: Number(i.price)
   }))
 
 
@@ -47,7 +58,7 @@ console.log("ID ORDEN",id_orden)
       installments: 3  //Cantidad máximo de cuotas
     },
     back_urls: {
-      success: 'http://localhost:3000/home',
+      success: `http://localhost:3001/mercadopay/${user}/pagos`,
       failure: 'http://localhost:3000/carrito',
       pending: 'http://localhost:3001/mercadopago/pagos',
     },
@@ -56,10 +67,10 @@ console.log("ID ORDEN",id_orden)
   mercadopago.preferences.create(preference)
 
   .then(function(response){
-    console.info('respondio')
+    // console.info('respondio')
   //Este valor reemplazará el string"<%= global.id %>" en tu HTML
     global.id = response.body.id;
-    console.log(response.body)
+    // console.log(response.body)
     res.json({ id: global.id });
   })
   .catch(function(error){
@@ -70,7 +81,7 @@ console.log("ID ORDEN",id_orden)
 });
 
 //Ruta que recibe la información del pago
-routerPay.get("/pagos", (req, res)=>{
+routerPay.get("/:user/pagos", (req, res)=>{
   console.info("EN LA RUTA PAGOS ", req)
   const payment_id= req.query.payment_id
   const payment_status= req.query.status

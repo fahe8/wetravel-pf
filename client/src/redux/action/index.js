@@ -12,8 +12,9 @@ export const DELETE_HOTEL = "DELETE_HOTEL";
 export const PAY_RESERVE = "PAY_RESERVE";
 export const GET_REVIEW = "GET_REVIEW";
 export const GET_RESERVE = "GET_RESERVE";
+export const GET_RESERVE_BY_CART = "GET_RESERVE_BY_CART"
 export const POST_ORDER = "POST_ORDER";
-
+export const GET_ID_MERCADO_PAGO = "GET_ID_MERCADO_PAGO"
 // 1 depachar los hoteles
 export function getHotels() {
   return async function (dispatch) {
@@ -139,14 +140,27 @@ export function getReserves(id) {
   };
 }
 
+export function getReservesByCart(user) {
+  return async function (dispatch) {
+    const json = await axios.get("http://localhost:3001/order/" + user + "/cart");
+
+    // console.log(json) //pendiente porque no me está trayendo nada
+    if(json.data !== 0) {dispatch(getIdMercadoPago(user))}
+    return dispatch({
+      type: GET_RESERVE_BY_CART,
+      payload: json.data,
+    }); //segunda función que recibe dispatch y despacha una acción / el tipo y el payload: devuelve el backend
+  };
+}
+
+
 export function cartReserves(reserva) {
   return async function (dispatch) {
     console.log(reserva);
     const json = await axios.post("http://localhost:3001/order", reserva);
     // console.log(json) //pendiente porque no me está trayendo nada
     //segunda función que recibe dispatch y despacha una acción / el tipo y el payload: devuelve el backend
-    console.log(reserva);
-    console.log(json.data);
+
     return dispatch({
       type: POST_ORDER,
       payload: json,
@@ -154,6 +168,18 @@ export function cartReserves(reserva) {
   };
   // console.log(json) //pendiente porque no me está trayendo nada
   //segunda función que recibe dispatch y despacha una acción / el tipo y el payload: devuelve el backend
+}
+
+export function getIdMercadoPago(user) {
+  return async function(dispatch) {
+    const json = await axios.get("http://localhost:3001/mercadopay/" + user)
+ 
+    return dispatch({
+      type: GET_ID_MERCADO_PAGO,
+      payload: json.data
+    })
+         
+  }
 }
 
 //------->delete dog
