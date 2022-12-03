@@ -14,13 +14,10 @@ export const GET_REVIEW = "GET_REVIEW";
 export const GET_RESERVE = "GET_RESERVE";
 export const GET_RESERVE_BY_CART = "GET_RESERVE_BY_CART"
 export const POST_ORDER = "POST_ORDER";
-<<<<<<< HEAD
 export const GET_USER = 'GET_USER';
 export const UPDATE_USER = 'UPDATE_USER';
 
-=======
 export const GET_ID_MERCADO_PAGO = "GET_ID_MERCADO_PAGO"
->>>>>>> 71369ca8486270387501ae782c4e861f41786ab4
 // 1 depachar los hoteles
 export function getHotels() {
   return async function (dispatch) {
