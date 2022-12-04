@@ -9,6 +9,7 @@ import Create from "./components/create/Create";
 import Hospedador from "./components/ProfileUser/Hospedador";
 import Huesped from "./components/ProfileUser/Huesped";
 import Cart from "./components/cart/Cart";
+import { CurrentLogin } from "./components/ProfileUser/CurrentLogin";
 
 function App() {
   return (
@@ -21,9 +22,9 @@ function App() {
           <Route path="/home/:id" component={Detail}></Route>
           <Route exact path="/createhotel" component={Create}></Route>
           <Route exact path="/about" component={About} />
-          <Route exact path="/about" component={About} />
           <Route exact path="/anfitrion" component={Hospedador} />
           <Route exact path="/huesped" component={Huesped} />
+          <Route path="/users/:id" component={CurrentLogin} />
           <Route exact path="/carrito" component={Cart} />
         </Switch>
       </div>

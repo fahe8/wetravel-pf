@@ -28,6 +28,7 @@ const initialState = {
   service: [],
   review: [],
   users: [],
+  userId: {},
   idPay: "",
   loading: false,
 };
@@ -86,6 +87,7 @@ function rootReducer(state = initialState, action) {
     case UPDATE_USER:
       return {
         ...state,
+        userId: action.payload,
       }
     case POST_RESERVE:
       return {
