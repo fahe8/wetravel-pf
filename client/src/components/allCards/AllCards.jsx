@@ -3,6 +3,8 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux"
 import Card from '../card/card'
 import { getHotels } from '../../redux/action'
+import { useState, useRef } from 'react'
+import {useLocalStorage} from '../../localStorage/useLocalStorage'
 // import InfiniteScroll from "react-infinite-scroll-component";
 
 
@@ -18,6 +20,28 @@ const AllCards = () => { //función que pide la información y la renderiza
     }
   }, [dispatch])
   
+
+  const [favorites, setFavorites] = useLocalStorage("favorites", [])
+  const storagedArray = useRef(favorites)
+console.log(storagedArray);
+
+
+const handleToggleFavourite = (name) => {
+
+  if (!favorites.includes(name)) {
+    storagedArray.current.push(name);
+    setFavorites(storagedArray.current);
+    console.log('false');
+  } else {
+    console.log('true')
+    const indexFavouritedId = storagedArray.current.indexOf(name);
+    console.log(indexFavouritedId)
+    storagedArray.current.splice(indexFavouritedId, 1);
+    setFavorites(storagedArray.current);
+  }
+};
+
+
   return (
     <div className='bg-gray-100 h-full md:h-screen w-full'>
       <div className='container mx-auto px-0 md:px-4 py-4' >
@@ -34,6 +58,10 @@ const AllCards = () => { //función que pide la información y la renderiza
             price={ht.price}
             // size={ht.room.size== null?ht.room.size:"No Data"}
             name={ht.name}
+            favorites={favorites}
+            setFavorites={setFavorites}
+            storagedArray={storagedArray}
+            handleToggleFavourite={handleToggleFavourite}
           />
         ) : 
         <h1>Mensaje de alerta que no hay hoteles</h1>

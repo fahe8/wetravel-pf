@@ -3,6 +3,7 @@ import { Link, useHistory, useLocation } from "react-router-dom";
 import Search from "../search/Search";
 import logo from "../../assets/img/copia.png";
 import { useAuth0 } from "@auth0/auth0-react";
+import Favourites from "../favourites/Favourites";
 
 const NavBar = ({ handleGuest, handleHost }) => {
   let location = useLocation();
@@ -50,6 +51,9 @@ const NavBar = ({ handleGuest, handleHost }) => {
             <div className=" w-65 flex justify-between items-center text-xl gap-5">
               <Link to="/carrito">
                 <button>Carrito</button>
+              </Link>
+              <Link to="/favourites">
+                <button>Favorito</button>
               </Link>
               <Link to="/login">
                 <div className=" w-65 flex justify-between items-center text-xl gap-5">

@@ -7,20 +7,21 @@ import { useHistory } from "react-router-dom";
 function Login() {
   const dispatch = useDispatch();
   const history = useHistory();
-  const { loginWithRedirect, logout, user } = useAuth0();
+  const { loginWithRedirect, logout, user, isAuthenticated } = useAuth0();
   const [userCondition, setUserCondition] = useState("guest");
-
+console.log(useAuth0())
   function handleGuest(e) {
     e.preventDefault();
     setUserCondition("guest");
-    history.push("/huesped");
+
   }
   function handleHost(e) {
     e.preventDefault();
     setUserCondition("host");
-    history.push("/anfitrion");
+
   }
 
+  console.log(isAuthenticated);
   useEffect(() => {
     if (user) {
       dispatch(

@@ -19,7 +19,6 @@ export const GET_ID_MERCADO_PAGO = "GET_ID_MERCADO_PAGO"
 export function getHotels() {
   return async function (dispatch) {
     const json = await axios.get("http://localhost:3001/hotels");
-    console.log(json);
     return dispatch({
       type: GET_HOTELS,
       payload: json.data,
