@@ -51,7 +51,7 @@ const handleToggleFavourite = (name) => {
           <Card
             id={ht.id}
             key={ht.id}
-            photos={ht.photos}
+            photos={ht.photos[0]} // Se requiere el INDICE para las IMG de claudinary
             stars={ht.stars}
             location={ht.location}
             city={ht.city}

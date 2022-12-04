@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Container } from "reactstrap";
@@ -6,28 +6,23 @@ import Dropzone from "react-dropzone";
 import { useState } from "react";
 import axios from "axios";
 
-const Huesped = () => {
-  const { user } = useAuth0();
-  console.log('USER HUESPED:', user)
+const Huesped = (props) => {
+  let { id } = props.match.params;
+  console.log("ID HUESPED:", id);
+  const { user, logout } = useAuth0();
+  console.log("USER HUESPED:", user);
 
   const initialState = {
     name: "",
-    description: "",
-    stars: "",
-    price: "$",
-    services: [],
+    email: "",
+    email_verified: false,
+    status: "",
     photos: [],
-    continent: "",
-    location: "",
-    city: "",
-    review: "",
-    comments: [],
-    user: "",
   };
 
   const [input, setInput] = useState(initialState);
 
-  const [loading, setLoading] = useState('');
+  const [loading, setLoading] = useState("");
 
   const submitImage = (files) => {
     const upLoader = files.map((file) => {
@@ -59,63 +54,86 @@ const Huesped = () => {
     if (loading === "false") {
       return (
         <h3>
-          {input.photos.length <= 0
-            ? "No hay imagenes"
-            : input.photos.map((image) => {
-                return (
-                  <div>
-                    <p>Imagen:</p>
-                    <img src={image} alt="img not found" />
-                  </div>
-                );
-              })}
+          {input.photos?.map((image) => {
+            return (
+              <div>
+                <p>Imagen:</p>
+                <img src={image} alt="img not found" />
+              </div>
+            );
+          })}
         </h3>
       );
     }
   };
+
   return (
     <div>
       <div>
-        <h1>Mi perfil</h1>
+        <h1>
+          <strong>Mi perfil</strong>
+        </h1>
       </div>
       <div>
-        <img src={user.picture} alt="userImage" />
+        <img src={user?.picture} alt="userImage" />
       </div>
       <div>
-        <h1>{user.name}</h1>
+        <h1>
+          <strong>Usuario: </strong>
+          {user?.name}
+        </h1>
       </div>
       <div>
-        <Container>
-          <Dropzone
-            onDrop={submitImage}
-            setInput={setInput}
-            input={input.photos}
-            onChange={(e) => setInput(e.target.files[0])}
-            value={input.photos}
-          >
-            {({ getRootProps, getInputProps }) => (
-              <div>
-                <section>
-                  <div {...getRootProps({ className: "dropzone" })}>
-                    <input {...getInputProps()} />
-                    <br />
-                    <span>Icono de carpeta</span>
-                    <br />
-                    <br />
-                    <p>Comparte las imagenes de tus experiencias aquí</p>
-                  </div>
-                </section>
-              </div>
-            )}
-          </Dropzone>
-          {imagePreview()}
-        </Container>
+        <div>
+          <Container>
+            <Dropzone
+              onDrop={submitImage}
+              setInput={setInput}
+              input={input.photos}
+              onChange={(e) => setInput(e.target.files[0])}
+              value={input.photos}
+            >
+              {({ getRootProps, getInputProps }) => (
+                <div>
+                  <section>
+                    <div {...getRootProps({ className: "dropzone" })}>
+                      <input {...getInputProps()} />
+                      <br />
+                      <span>Icono de carpeta</span>
+                      <br />
+                      <br />
+                      <p>Comparte las imagenes de tus experiencias aquí</p>
+                      <br />
+                    </div>
+                  </section>
+                </div>
+              )}
+            </Dropzone>
+            {imagePreview()}
+          </Container>
+        </div>
       </div>
       <br />
       <div>
         <Link to="/home">
           <button>Ver los diferentes hoteles disponibles</button>
         </Link>
+      </div>
+      <div>
+        <Link to="/login">
+          <button>Return to login</button>
+        </Link>
+        <br />
+        <br />
+        <Link to={`/users/${id}`}>Actualizar datos</Link>
+        <br />
+        <br />
+        <button
+          className="bg-black border-2 p-2 text-white rounded focus:bg-[#00B4FF] focus:rounded text-xl"
+          onClick={() => logout({ returnTo: window.location.origin })}
+        >
+          Log-out
+        </button>
       </div>
     </div>
   );
