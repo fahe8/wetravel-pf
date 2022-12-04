@@ -1,6 +1,5 @@
-const { User, Hotel } = require("../db");
+const { User, Hotel, Review } = require("../db");
 const { Router } = require("express");
-const Review = require("../models/Review");
 const routerReview = Router();
 
 routerReview.get("/", async (req, res) => {
@@ -20,12 +19,7 @@ routerReview.get("/", async (req, res) => {
 });
 
 routerReview.post("/", async (req, res) => {
-  let {
-    stars,
-    comments,
-    user
-
-  } = req.body;
+  let {stars,comments,user} = req.body;
   try {
     let newReview = await Review.create({
       stars,

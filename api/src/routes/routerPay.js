@@ -2,7 +2,7 @@ require("dotenv").config();
 const { Router } = require("express");
 const routerPay = Router();
 const { ACCESS_TOKEN } = process.env;
-const mercadopago = require("mercadopago");
+// const mercadopago = require("mercadopago");
 const {Reserves, Order} = require("../db")
 // Agrega credenciales
 
