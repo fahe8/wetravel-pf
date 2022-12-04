@@ -11,6 +11,10 @@ import {
   PAY_RESERVE,
   GET_REVIEW,
   GET_RESERVE,
+  UPDATE_USER,
+  GET_USER,
+  GET_RESERVE_BY_CART,
+  GET_ID_MERCADO_PAGO
 } from "../action/index";
 
 const initialState = {
@@ -20,8 +24,12 @@ const initialState = {
   hotelFilter: [],
   copyHotels: [],
   reserve: [],
+  reserveByCart:[],
   service: [],
   review: [],
+  users: [],
+  userId: {},
+  idPay: "",
   loading: false,
 };
 
@@ -67,12 +75,20 @@ function rootReducer(state = initialState, action) {
         ...state,
         service: action.payload,
       };
-
+    case GET_USER:
+      return {
+        ...state,
+        users: action.payload,
+      }
     case POST_USER:
       return {
         ...state,
       };
-
+    case UPDATE_USER:
+      return {
+        ...state,
+        userId: action.payload,
+      }
     case POST_RESERVE:
       return {
         ...state,
@@ -97,6 +113,18 @@ function rootReducer(state = initialState, action) {
         ...state,
         reserve: action.payload,
       };
+
+    case GET_RESERVE_BY_CART:
+      return {
+        ...state,
+        reserveByCart: action.payload
+      }
+
+    case GET_ID_MERCADO_PAGO: 
+    return {
+      ...state, 
+      idPay: action.payload
+    }
     default:
       return state;
   }

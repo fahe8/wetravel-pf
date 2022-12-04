@@ -12,8 +12,13 @@ export const DELETE_HOTEL = "DELETE_HOTEL";
 export const PAY_RESERVE = "PAY_RESERVE";
 export const GET_REVIEW = "GET_REVIEW";
 export const GET_RESERVE = "GET_RESERVE";
+export const GET_RESERVE_BY_CART = "GET_RESERVE_BY_CART"
 export const POST_ORDER = "POST_ORDER";
+export const GET_USER = 'GET_USER';
+export const DETAIL_USER = 'DETAIL_USER';
+export const UPDATE_USER = 'UPDATE_USER';
 
+export const GET_ID_MERCADO_PAGO = "GET_ID_MERCADO_PAGO"
 // 1 depachar los hoteles
 export function getHotels() {
   return async function (dispatch) {
@@ -74,12 +79,59 @@ export function postHotel(payload) {
   };
 }
 
+export function getUser() {
+  return async function (dispatch) {
+    try {
+      const res = await axios('http://localhost:3001/users');
+      // console.log('RES GET USER:', res.data);
+      dispatch({
+        type: GET_USER,
+        payload: res.data,
+      });
+    } catch (error) {
+      console.log(`Error en getUser por: (${error})`);
+    }
+  }
+}
+
+export function getUserById(id) {
+  console.log('getUserById:', id);
+  return async function (dispatch) {
+    try {
+      let res = await axios(`http://localhost:3001/users/${id}`);
+      console.log('RES GET USER BY ID:', res.data);
+      dispatch({
+        type: DETAIL_USER,
+        payload: res.data,
+      });
+    } catch (error) {
+      console.log(`Error en GET USER BY ID por: (${error})`);
+    }
+  }
+}
+
 export function postUser(payload) {
   console.log(payload);
   return async function () {
     const response = await axios.post("http://localhost:3001/users", payload);
     return response;
   };
+}
+
+export function updateUser(id) {
+  // console.log('PUT ID:', id);
+  return async function (dispatch) {
+    try {
+      const response = await axios.put(`http://localhost:3001/users/${id}`, id);
+      console.log('RES PUT:', response);
+      dispatch({
+        type: UPDATE_USER,
+        payload: response.data
+      });
+    } catch (error) {
+      console.log(`No se pudo actualizar la información del Usuario por: (${error})`);
+    }
+  }
 }
 
 export function getServices() {
@@ -139,14 +191,26 @@ export function getReserves(id) {
   };
 }
 
+export function getReservesByCart(user) {
+  return async function (dispatch) {
+    const json = await axios.get("http://localhost:3001/order/" + user + "/cart");
+
+    // console.log(json) //pendiente porque no me está trayendo nada
+    return dispatch({
+      type: GET_RESERVE_BY_CART,
+      payload: json.data,
+    }); //segunda función que recibe dispatch y despacha una acción / el tipo y el payload: devuelve el backend
+  };
+}
+
+
 export function cartReserves(reserva) {
   return async function (dispatch) {
     console.log(reserva);
     const json = await axios.post("http://localhost:3001/order", reserva);
     // console.log(json) //pendiente porque no me está trayendo nada
     //segunda función que recibe dispatch y despacha una acción / el tipo y el payload: devuelve el backend
-    console.log(reserva);
-    console.log(json.data);
+
     return dispatch({
       type: POST_ORDER,
       payload: json,
@@ -154,6 +218,28 @@ export function cartReserves(reserva) {
   };
   // console.log(json) //pendiente porque no me está trayendo nada
   //segunda función que recibe dispatch y despacha una acción / el tipo y el payload: devuelve el backend
+}
+
+export function getIdMercadoPago(user) {
+  return async function(dispatch) {
+    const json = await axios.get("http://localhost:3001/mercadopay/" + user)
+ 
+    return dispatch({
+      type: GET_ID_MERCADO_PAGO,
+      payload: json.data
+    })
+         
+  }
+}
+
+//NO TERMINADA ESTA ACTION
+
+
+export function deleteReserve(id) {
+  return async function(dispatch) {
+    const json = await axios.get("http://localhost:3001/reserve/" + id)
+    console.log(json.data)
+  }
 }
 
 //------->delete dog

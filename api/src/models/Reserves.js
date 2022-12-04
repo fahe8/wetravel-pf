@@ -31,5 +31,11 @@ module.exports = (sequelize) => {
       default: 1,
       allownull: false
     },
+
+    // pay: {
+    //   type:DataTypes.BOOLEAN,
+    //   default: false,
+    //   allowNull:false
+    // }
   }, { timestamps: false });
 };

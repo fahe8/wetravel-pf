@@ -94,16 +94,16 @@ routerHotels.get("/", async (req, res) => {
         if (resultadoDeBusqueda.length > 0) {
           let pri = resultadoDeBusqueda.filter((el) => {
             return (
-              el.price.split("$")[1].split(".").join("") <= Number(priceMax) &&
-              el.price.split("$")[1].split(".").join("") >= Number(priceMin)
+              Number(el.price) <= Number(priceMax) &&
+              Number(el.price) >= Number(priceMin)
             );
           });
           resultadoDeBusqueda = pri;
         } else {
           let pri = hotels.filter((el) => {
             return (
-              el.price.split("$")[1].split(".").join("") <= Number(priceMax) &&
-              el.price.split("$")[1].split(".").join("") >= Number(priceMin)
+              Number(el.price) <= Number(priceMax) &&
+              Number(el.price) >= Number(priceMin)
             );
           });
           resultadoDeBusqueda = pri;

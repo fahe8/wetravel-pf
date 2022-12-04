@@ -1,7 +1,7 @@
 const {Router} = require('express');
 const { Sequelize, Op } = require('sequelize');
 const server = Router()
-const { Order , Reserves, Hotel } = require('../db');
+const { Order , Reserves, Hotel, User } = require('../db');
 
 
 
@@ -14,11 +14,24 @@ server.post('/', async (req, res, next) => {
     }
     else {
        console.log(user)
-        const order =  await Order.findOne({
-            where: {user_email: user}
+        let order =  await Order.findOne({
+            where: {user_email: user, status: "created"}
          })
          console.log(order)
-         !order && res.send("Si el usuario no existe no se puede encontrar una order")
+
+        if(!order) {
+            const userFind = await User.findOne({
+                where: {email: user}
+              })
+
+            order = await Order.create({
+                status: "created",
+                user_email: user,
+                userId: userFind.dataValues.id    
+            })
+        }
+         
+        //  !order && res.send("Si el usuario no existe no se puede encontrar una order")
 
 
          Promise.all(
@@ -41,7 +54,7 @@ server.post('/', async (req, res, next) => {
 
                 return Reserves.create({
                     orderId: orderId,
-                    userId: order.dataValues.id,
+                    userId: order.dataValues.userId,
                     nameHotel: producto.name,
                     nameRoom: producto.room.name,
                     check_out:elem.check_out,
@@ -65,20 +78,19 @@ server.post('/', async (req, res, next) => {
 });
 
 
-server.get('/:idUser/cart', (req, res, next) => {
+server.get('/:user/cart', (req, res, next) => {
+    
     Order.findOne({
         where: {
             [Op.and]: [
-                { userId: req.params.idUser }, 
-                { status: {
-                    [Op.or]: ['cart', 'created']
-                }} 
+                { user_email: req.params.user }, 
+                { status: 'created'} 
             ]
         },
-        include: Order_detail
+        include: Reserves
     })   
     .then(function(detail) {
-        res.send(detail.order_details)
+        res.send(detail.reserves)
     }).catch(error => {
         res.sendStatus(400)
     })
@@ -102,6 +114,7 @@ server.get('/detalle/:id', (req, res, next) => {
     .catch(next)
 });
 
+server.delete('/:user/cart')
 
 
 module.exports = server;

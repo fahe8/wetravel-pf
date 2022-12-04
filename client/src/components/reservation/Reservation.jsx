@@ -51,7 +51,7 @@ const Reservation = ({ selectedHotel, price }) => {
     }
   };
 
-  console.log(user)
+  // console.log(user)
   const fullInfo = () => {
     const info = {
       orderlines: [
