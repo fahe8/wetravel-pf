@@ -33,10 +33,12 @@ const ScriptMercadoPago = ({productos, data }) => {
         {productos.map((producto, i) => {
             return(
                 <div className={''} key={i}>
-                  <ul className={''} >
+                <ul className={''} >
+                
                     <li>{producto.nameHotel}</li>
-                    {/* <li>{'$' + producto.price}</li> 
-                    <li>{producto.quantity}</li> */}
+                    <li>{'$' + producto.price}</li> 
+                  <li>{producto.quantity}</li> 
+                  <hr/>
                   </ul>
                 </div>   
             )

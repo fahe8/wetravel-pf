@@ -9,6 +9,8 @@ import Create from "./components/create/Create";
 import Hospedador from "./components/ProfileUser/Hospedador";
 import Huesped from "./components/ProfileUser/Huesped";
 import Cart from "./components/cart/Cart";
+import { Footer } from "./components/footer/Footer";
+
 
 function App() {
   return (
@@ -25,7 +27,9 @@ function App() {
           <Route exact path="/anfitrion" component={Hospedador} />
           <Route exact path="/huesped" component={Huesped} />
           <Route exact path="/carrito" component={Cart} />
+          
         </Switch>
+        <Footer/>
       </div>
     </BrowserRouter>
   );

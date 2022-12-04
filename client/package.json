@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@auth0/auth0-react": "^1.12.0",
+    "@emailjs/browser": "^3.10.0",
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^13.1.1",
@@ -11,6 +12,7 @@
     "bootstrap": "^5.2.3",
     "cloudinary-react": "^1.8.1",
     "date-fns": "^2.29.3",
+    "emailjs-com": "^3.2.0",
     "react": "^17.0.2",
     "react-bootstrap": "^2.6.0",
     "react-date-range": "^1.4.0",
@@ -21,6 +23,7 @@
     "react-redux": "^7.2.6",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^5.0.1",
+    "react-toastify": "^9.1.1",
     "reactstrap": "^9.1.5",
     "redux": "^4.2.0",
     "redux-devtools-extension": "^2.13.9",

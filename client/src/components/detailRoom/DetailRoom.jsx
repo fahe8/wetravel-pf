@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Carousel from "react-bootstrap/Carousel";
-import { payReserve, postReserve, cartReserves } from "../../redux/action";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import ScriptMercadoPago from "../scriptMercadoPago/ScriptMercadoPago";
 
 const DetailRoom = ({
   name,
@@ -11,9 +9,9 @@ const DetailRoom = ({
   photos,
   description,
   properties,
-  date,
+  difDays,
   id,
-  price,
+  finalPrice,
   nameHotel,
   fullInfo,
 }) => {
@@ -25,8 +23,8 @@ const DetailRoom = ({
     setItem({
       id: id,
       title: nameHotel,
-      unit_price: parseFloat(price.split("$")[1].split(".").join("")),
-      quantity: 1 || date,
+      unit_price: finalPrice,
+      quantity: 1 || difDays,
     });
     console.log(item);
   };
