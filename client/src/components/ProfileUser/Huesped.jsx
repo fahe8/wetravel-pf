@@ -102,7 +102,7 @@ const Huesped = (props) => {
                       <span>Icono de carpeta</span>
                       <br />
                       <br />
-                      <p>Comparte las imagenes de tus experiencias aquí</p>
+                      <p>Se esta trabajando para que los usuarios puedan compartir sus experiencias!!</p>
                       <br />
                     </div>
                   </section>

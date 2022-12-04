@@ -100,9 +100,9 @@ const validate = (input) => {
     errors.max = "No puede agregar más de 5";
   }
 
-  if (input.photos && !regexUrl.test(photos)) {
-    errors.url = "Inserte unicamente url que terminen en: jpeg, jpg o png";
-  }
+  // if (input.photos && !regexUrl.test(photos)) {
+  //   errors.url = "Inserte unicamente url que terminen en: jpeg, jpg o png";
+  // } //* Esta campo ya no es un input y no se puede validar
 
   return errors;
 };
@@ -135,7 +135,7 @@ const Create = () => {
   const [input, setInput] = useState(initialState);
 
   const [loading, setLoading] = useState("");
-  console.log("input.photos:", input.photos);
+  // console.log("input.photos:", input.photos);
 
   const submitImage = (files) => {
     const upLoader = files.map((file) => {
@@ -522,7 +522,7 @@ const Create = () => {
                   onChange={e => handleChange(e)} />
               </div> */}
 
-              {/* {Object.keys(errors).length ? (
+              {Object.keys(errors).length ? (
                 <div className="text-lg font-medium text-gray-900  bg-[color:var(--primary-bg-opacity-color)] rounded-full border border-black-800 p-2 ">
                   <button className="cursor-pointer" type="submit" form="form">
                     Agregara
@@ -539,15 +539,15 @@ const Create = () => {
                     Agregar
                   </button>
                 </div>
-              )} */}
-              <button
+              )}
+              {/* <button
                     onClick={handleSubmit}
                     className="cursor-pointer"
                     type="submit"
                     form="form"
                   >
                     Agregar
-                  </button>
+                  </button> */}
             </form>
           </div>
         </div>
