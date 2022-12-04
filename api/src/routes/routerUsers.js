@@ -81,6 +81,14 @@ routerUsers.get('/', async (req, res) => {
   return res.json(allUser);
 });
 
-
+routerUsers.get('/:id', async (req, res) => {
+  let { id } = req.params;
+  try {
+    let getById = await User.findByPk(id);
+    return res.json(getById);
+  } catch (error) {
+    res.json(`No se pudo obtener el ID por: (${error})`);
+  }
+})
 
 module.exports = routerUsers;

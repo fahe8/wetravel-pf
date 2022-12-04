@@ -15,6 +15,7 @@ export const GET_RESERVE = "GET_RESERVE";
 export const GET_RESERVE_BY_CART = "GET_RESERVE_BY_CART"
 export const POST_ORDER = "POST_ORDER";
 export const GET_USER = 'GET_USER';
+export const DETAIL_USER = 'DETAIL_USER';
 export const UPDATE_USER = 'UPDATE_USER';
 
 export const GET_ID_MERCADO_PAGO = "GET_ID_MERCADO_PAGO"
@@ -93,6 +94,22 @@ export function getUser() {
   }
 }
 
+export function getUserById(id) {
+  console.log('getUserById:', id);
+  return async function (dispatch) {
+    try {
+      let res = await axios(`http://localhost:3001/users/${id}`);
+      console.log('RES GET USER BY ID:', res.data);
+      dispatch({
+        type: DETAIL_USER,
+        payload: res.data,
+      });
+    } catch (error) {
+      console.log(`Error en GET USER BY ID por: (${error})`);
+    }
+  }
+}
+
 export function postUser(payload) {
   console.log(payload);
   return async function () {
@@ -102,14 +119,14 @@ export function postUser(payload) {
 }
 
 export function updateUser(id) {
-  console.log('PUT ID:', id);
+  // console.log('PUT ID:', id);
   return async function (dispatch) {
     try {
-      const response = await axios.put(`http://localhost:3001/users/${id}`);
+      const response = await axios.put(`http://localhost:3001/users/${id}`, id);
       console.log('RES PUT:', response);
       dispatch({
         type: UPDATE_USER,
-        payload: response
+        payload: response.data
       });
     } catch (error) {
       console.log(`No se pudo actualizar la información del Usuario por: (${error})`);

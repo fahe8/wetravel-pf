@@ -5,11 +5,10 @@ import { Container } from "reactstrap";
 import Dropzone from "react-dropzone";
 import { useState } from "react";
 import axios from "axios";
-import { postUser } from "../../redux/action";
-import { useDispatch } from "react-redux";
 
-const Huesped = () => {
-  const dispatch = useDispatch();
+const Huesped = (props) => {
+  let { id } = props.match.params;
+  console.log("ID HUESPED:", id);
   const { user, logout } = useAuth0();
   console.log("USER HUESPED:", user);
 
@@ -68,32 +67,6 @@ const Huesped = () => {
     }
   };
 
-  const handleChange = (e) => {
-    e.target.name === "photos"
-      ? setInput({
-          ...input,
-          [e.target.name]: [e.target.value],
-        })
-      : setInput({
-          ...input,
-          [e.target.name]: e.target.value,
-        });
-  };
-
-  const handleSubmit = (e) => {
-    if (!input.photos.length) {
-      e.preventDefault();
-      alert("No has subido ninguna imagen!!!");
-    } else {
-      e.preventDefault();
-      dispatch(postUser(input));
-      console.log(input);
-      alert("Felicidades has agregado nuevas imagenes a tu perfil!!");
-      setInput(initialState);
-      // history.push("/home");
-    }
-  };
-
   return (
     <div>
       <div>
@@ -111,44 +84,34 @@ const Huesped = () => {
         </h1>
       </div>
       <div>
-        <form>
-          <div>
-            <Container>
-              <Dropzone
-                onDrop={submitImage}
-                setInput={setInput}
-                input={input.photos}
-                onChange={(e) => setInput(e.target.files[0])}
-                value={input.photos}
-              >
-                {({ getRootProps, getInputProps }) => (
-                  <div>
-                    <section>
-                      <div {...getRootProps({ className: "dropzone" })}>
-                        <input {...getInputProps()} />
-                        <br />
-                        <span>Icono de carpeta</span>
-                        <br />
-                        <br />
-                        <p>Comparte las imagenes de tus experiencias aquí</p>
-                        <br />
-                      </div>
-                    </section>
-                  </div>
-                )}
-              </Dropzone>
-              {imagePreview()}
-            </Container>
-          </div>
-          <button
-            onClick={handleSubmit}
-            className="cursor-pointer"
-            type="submit"
-            form="form"
-          >
-            Subir imagenes
-          </button>
-        </form>
+        <div>
+          <Container>
+            <Dropzone
+              onDrop={submitImage}
+              setInput={setInput}
+              input={input.photos}
+              onChange={(e) => setInput(e.target.files[0])}
+              value={input.photos}
+            >
+              {({ getRootProps, getInputProps }) => (
+                <div>
+                  <section>
+                    <div {...getRootProps({ className: "dropzone" })}>
+                      <input {...getInputProps()} />
+                      <br />
+                      <span>Icono de carpeta</span>
+                      <br />
+                      <br />
+                      <p>Comparte las imagenes de tus experiencias aquí</p>
+                      <br />
+                    </div>
+                  </section>
+                </div>
+              )}
+            </Dropzone>
+            {imagePreview()}
+          </Container>
+        </div>
       </div>
       <br />
       <div>
@@ -161,22 +124,16 @@ const Huesped = () => {
           <button>Return to login</button>
         </Link>
         <br />
-        <button>Actualizar datos</button>
+        <br />
+        <Link to={`/users/${id}`}>Actualizar datos</Link>
+        <br />
+        <br />
         <button
           className="bg-black border-2 p-2 text-white rounded focus:bg-[#00B4FF] focus:rounded text-xl"
           onClick={() => logout({ returnTo: window.location.origin })}
         >
           Log-out
         </button>
-        {
-          input.photos?.map(el => {
-            return (
-              <div>
-                <img src={el} alt='img not found' />
-              </div>
-            );
-          })
-        }
       </div>
     </div>
   );
