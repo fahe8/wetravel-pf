@@ -7,11 +7,12 @@ import { useAuth0 } from "@auth0/auth0-react";
 import NavBar from "../navBar/NavBar";
 import { Footer } from "../footer/Footer";
 import { deleteReserve } from "../../redux/action/";
+import { useHistory } from "react-router-dom";
 
 
 const Cart = () => {
   const { user } = useAuth0();
-
+let history = useHistory()
   let dispatch = useDispatch();
   let productos = useSelector((state) => state.reserveByCart);
   const [activePay, setActivePay] = React.useState(false);
@@ -34,7 +35,7 @@ const Cart = () => {
     if(user?.email) {
       dispatch(getReservesByCart(user?.email));
     }
-  }, [user, productos]);
+  }, [user]);
 
   return (
     <div>
@@ -47,9 +48,7 @@ const Cart = () => {
           <h1> Hola Viajero, Bienvenido al Carrito de compras</h1>
         </div>
         <div className="bg-slate-100 p-6 m-10 rounded-3xl shadow-md" >  
-
-        </div>   
-    {productos?.map((producto, i) => {
+        {productos?.map((producto, i) => {
             return(
               <div className="grid grid-cols-6" key={i}>
                 <div className='p-4'>
@@ -71,7 +70,7 @@ const Cart = () => {
                 <div className='p-4'>
                   <button
                     className="bg-red-400 text-white text-xl p-1 rounded-xl"
-                    onClick={() => dispatch(deleteReserve(producto.id))}
+                    onClick={() => {dispatch(deleteReserve(producto.id)); history.go(0)} }
                     >
                     Delete Reserve</button>
                 </div>
@@ -79,8 +78,10 @@ const Cart = () => {
           )
           
         })}
+        </div>   
 
-      {productos.length!==0 && <button onClick={getPay}>PROCEDER</button>}
+
+      {(productos.length!==0 && !activePay) && <button  className="bg-blue-400 text-white text-xl p-1 rounded-xl" onClick={getPay}>PROCEDER</button>}
       {(activePay && datos) && <ScriptMercadoPago data={datos}/>}
 
       </div>
