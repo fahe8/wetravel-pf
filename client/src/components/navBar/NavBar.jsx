@@ -50,7 +50,7 @@ const NavBar = () => {
   return (
     
     <header className=" h-20 flex justify-between text-center back">
-      <div className=" w-20 h-20 " onClick={handleReload}>
+      <div className="cursor-pointer w-20 h-20 " onClick={handleReload}>
 
         <img src={logo} alt="logo-wetravel" className="w-full h-full " />
       </div>
