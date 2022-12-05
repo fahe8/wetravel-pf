@@ -1,0 +1,5 @@
+.land {
+    background: linear-gradient(rgba(30, 33, 43, 0.151), rgba(60, 63, 73, 0.151)), url(../../assets//img/landing-photo.jpg) ; 
+  background-attachment: fixed;
+  background-size: cover;
+}

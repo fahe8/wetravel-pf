@@ -133,7 +133,7 @@ const Reservation = ({ selectedHotel, price }) => {
         </div>
       </div>
 
-      <div className=" bg-white  shadow-xl  rounded-3xl items-center m-11 ">
+      {/* <div className=" bg-white  shadow-xl  rounded-3xl items-center m-11 ">
         <div>
           <img className="px-16" src={icon} alt="userImage" />
         </div>
@@ -148,7 +148,7 @@ const Reservation = ({ selectedHotel, price }) => {
             Perfil
           </button>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

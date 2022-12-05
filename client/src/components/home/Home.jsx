@@ -5,16 +5,18 @@ import Filters from "../filters/Filters";
 
 
 
+
 function Home() {
 
 
   return (
-    <div>
+    <div className="bg-gray-100">
       <NavBar />
       <div>
         <Filters></Filters>
         <AllCards/>
       </div>
+     
     </div>
   );
 }

@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import {getSearchHotels} from "../../redux/action/index"
 import { useHistory } from "react-router-dom";
+import Search from "../search/Search";
 
 
 function useQuery() {
@@ -76,8 +77,11 @@ const DoFilters = () => {
 
 
   return (
-    <div className="h-[80px] px-5 bg-white">
-      <div className="h-full  flex justify-end items-center ">
+    <div className="bg-slate-50 mx-20 mt-5 rounded-3xl shadow-md">
+      <div className="p-10">
+      <Search/>
+      </div>
+      <div className="h-full  flex justify-center items-center pb-6">
         <button
           className="bg-[color:var(--second-bg-color)] py-3 px-3 shadow-[inset_0_-2px_4px_rgba(0,0,0,0.6)]  hover:shadow-[inset_0_4px_4px_rgba(0,0,0,0.25)] rounded-[10px] flex align-middle"
           onClick={pressButtonFilter}
