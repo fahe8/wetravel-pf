@@ -1,10 +1,11 @@
 const { User, Hotel, Review } = require("../db");
 const { Router } = require("express");
+
 const routerReview = Router();
 
 routerReview.get("/", async (req, res) => {
   try {
-    const dataDb = await Hotel.findAll({
+    const dataDb = await Review.findAll({
       includes: {
         model: User,
         as: "user",
@@ -19,17 +20,16 @@ routerReview.get("/", async (req, res) => {
 });
 
 routerReview.post("/", async (req, res) => {
-  let {stars,comments,user} = req.body;
+  let { stars, comments, user } = req.body;
   try {
     let newReview = await Review.create({
       stars,
-    comments,
+      comments,
     });
 
     let userDb = await User.findAll({
       where: { name: user },
     });
-
 
     newReview.addUser(userDb);
     res.status(200).send(newReview);
@@ -38,20 +38,21 @@ routerReview.post("/", async (req, res) => {
   }
 });
 
-routerReview.delete('/:id', async (req, res, ) => {
+routerReview.delete("/:id", async (req, res) => {
   const { id } = req.params;
   try {
     const review = await Review.findByPk(id);
     if (!review) {
-      res.status(404).send("El id de la review no existe en nuestra base de datos");
+      res
+        .status(404)
+        .send("El id de la review no existe en nuestra base de datos");
     } else {
       await review.destroy();
-      res.status(200).send ("Review eliminada de nuestra base de datos")
+      res.status(200).send("Review eliminada de nuestra base de datos");
     }
   } catch (error) {
-    res.send(error.message)
+    res.send(error.message);
   }
-})
-
+});
 
 module.exports = routerReview;
