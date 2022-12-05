@@ -20,6 +20,7 @@ export const UPDATE_USER = "UPDATE_USER";
 export const POST_REVIEW = "POST-REVIEW";
 export const GET_FAVORITES = "GET_FAVORITES"
 export const GET_ID_MERCADO_PAGO = "GET_ID_MERCADO_PAGO";
+export const DELETE_RESERVE = "DELETE_RESERVE"
 // 1 depachar los hoteles
 export function getHotels() {
   return async function (dispatch) {
@@ -215,6 +216,7 @@ export function getReserves(id) {
 
 export function getReservesByCart(user) {
   return async function (dispatch) {
+   try {
     const json = await axios.get(
       "http://localhost:3001/order/" + user + "/cart"
     );
@@ -224,6 +226,12 @@ export function getReservesByCart(user) {
       type: GET_RESERVE_BY_CART,
       payload: json.data,
     }); //segunda función que recibe dispatch y despacha una acción / el tipo y el payload: devuelve el backend
+   } catch (error) {
+    return dispatch({
+      type: GET_RESERVE_BY_CART,
+      payload: [],
+    });
+   }
   };
 }
 
@@ -259,10 +267,15 @@ export function getIdMercadoPago(user) {
 //NO TERMINADA ESTA ACTION
 
 export function deleteReserve(id) {
-  console.log(id);
   return async function (dispatch) {
-    const json = await axios.get("http://localhost:3001/reserve/" + id);
+    console.log('first')
+     const json = await axios.delete("http://localhost:3001/reserve/" + id);
     console.log(json.data)
+
+    return dispatch({
+      type: DELETE_RESERVE
+
+    })
   };
 }
 

@@ -1,11 +1,10 @@
 import React, {useEffect} from 'react'
-import { deleteReserve } from "../../redux/action/";
-import { useDispatch } from "react-redux";
 
 
 
-const ScriptMercadoPago = ({productos, data,user }) => {
-  let dispatch = useDispatch();
+
+const ScriptMercadoPago = ({ data }) => {
+
 
     useEffect(()=>{
         const script = document.createElement('script'); //Crea un elemento html script
@@ -31,40 +30,7 @@ const ScriptMercadoPago = ({productos, data,user }) => {
     
         <div>
       <form id='form1'>
-        <div className="font-bold text-5xl pt-8">
-          <h1> Hola Viajero, Bienvenido al Carrito de compras</h1>
-        </div>
-        <div className="bg-slate-100 p-6 m-10 rounded-3xl shadow-md" >  
-        {productos?.map((producto, i) => {
-            return(
-              <div className="grid grid-cols-6" key={i}>
-                <div className='p-4'>
-                  <h2>{producto?.check_in}</h2>
-                </div>
-                <div className='p-4'>
-                  <h2>{producto?.check_out}</h2>
-                </div>
-                <div className='p-4'>
-                  <h2>{producto?.nameHotel}</h2>
-                </div>
-                
-                <div className='p-4'>
-                  <h2>{'$' + producto?.price}</h2>
-                </div>
-                <div className='p-4'>
-                  <h2>{producto?.quantity}</h2>
-                </div>
-                <div className='p-4'>
-                  <button
-                    className="bg-red-400 text-white text-xl p-1 rounded-xl"
-                    onClick={() => dispatch(deleteReserve(user?.email))}>
-                    Delete Reserve</button>
-                </div>
-                </div>   
-          )
-          
-        })}
-        </div>   
+
       </form>
      </div>
   )
