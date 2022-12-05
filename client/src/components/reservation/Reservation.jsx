@@ -4,7 +4,7 @@ import DetailRoom from "../detailRoom/DetailRoom";
 import { addDays, format, differenceInDays } from "date-fns";
 import RangeCalendar from "../calendar/RangeCalendar";
 import { useDispatch } from "react-redux";
-import { postHotel, cartReserves  } from "../../redux/action";
+import { postHotel, cartReserves, getReservesByCart  } from "../../redux/action";
 import { useAuth0 } from "@auth0/auth0-react";
 
 
@@ -66,6 +66,7 @@ const Reservation = ({ selectedHotel, price }) => {
       
     
     dispatch(cartReserves(info))
+    // dispatch(getReservesByCart(user?.email))
   };
   
 

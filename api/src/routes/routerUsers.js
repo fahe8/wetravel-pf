@@ -81,13 +81,14 @@ routerUsers.get('/', async (req, res) => {
   return res.json(allUser);
 });
 
-routerUsers.get('/:id', async (req, res) => {
-  let { id } = req.params;
+routerUsers.get('/:email', async (req, res) => {
+  let { email } = req.params;
   try {
-    let getById = await User.findByPk(id);
-    return res.json(getById);
+    let getUser = await User.findOne({where: {email: email}});
+    console.log(getUser)
+    return res.json(getUser);
   } catch (error) {
-    res.json(`No se pudo obtener el ID por: (${error})`);
+    res.json(`No se pudo obtener el EMAIL por: (${error})`);
   }
 })
 

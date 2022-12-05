@@ -13,7 +13,7 @@ server.post('/', async (req, res, next) => {
         .send('Cuidado! Faltan datos para poder crear una orden')
     }
     else {
-       console.log(user)
+
         let order =  await Order.findOne({
             where: {user_email: user, status: "created"}
          })
@@ -43,7 +43,7 @@ server.post('/', async (req, res, next) => {
                 // const findReserve = await Reserves.findOne({
                 //     where: {
                 //         [Op.and]: [
-                //             Sequelize.where(Sequelize.fn('date', Sequelize.col('check_in')), '=', elem.check_in),
+                //             Sequelize.where(Sequelize.fn('date', Sequelize.col('check_in')), '=', elem.check_in), 
                 //             Sequelize.where(Sequelize.fn('date', Sequelize.col('check_out')), '=', elem.check_out),
                 //         ]
 

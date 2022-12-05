@@ -1,11 +1,13 @@
 import { React, useState, useEffect } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
+import {BsCart4} from "react-icons/bs"
 import Search from "../search/Search";
 import logo from "../../assets/img/copia.png";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../../redux/action";
 import { useLocalStorage } from './useLocalStorage';
+
 import './NavBar.css'
 
 const NavBar = () => {
@@ -13,19 +15,16 @@ const NavBar = () => {
   let history = useHistory();
   const dispatch = useDispatch();
   const { user } = useAuth0();
-  console.log("USER:", user);
   const [state, setstate] = useState(false);
 
-  const users = useSelector((state) => state.users);
-  console.log("USERS:", users);
+  const reserveByCart = useSelector((state) => state.reserveByCart);
 
   const [userCondition, setUserCondition] = useLocalStorage('user', 'host');
-  console.log('ESTADO DEL USERS:',userCondition);
 
   function handleGuest(e) {
     e.preventDefault();
     setUserCondition("guest");
-    history.push("/carrito");
+    history.push("/cart");
   }
   function handleHost(e) {
     e.preventDefault();
@@ -74,7 +73,7 @@ const NavBar = () => {
           )}
           {(user && userCondition === 'guest') && (
             <div className=" w-65 flex justify-between items-center text-xl gap-5">
-            <button onClick={handleGuest}>Carrito</button>
+            {<button onClick={handleGuest}><BsCart4/><p>{reserveByCart.length}</p></button> }
             <Link to="/login">
               <div className=" w-65 flex justify-between items-center text-xl gap-5">
                 <p>{user?.name}</p>

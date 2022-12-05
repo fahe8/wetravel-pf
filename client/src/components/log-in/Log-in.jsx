@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch } from "react-redux";
-import { postUser, updateUser } from "../../redux/action";
+import { getUserById, postUser, updateUser } from "../../redux/action";
 import { useHistory } from "react-router-dom";
-import { useLocalStorage } from "../navBar/useLocalStorage";
+import { useLocalStorage } from "../../localStorage/useLocalStorage";
 import { Footer } from "../footer/Footer";
 import NavBar from "../navBar/NavBar";
 
@@ -31,11 +31,13 @@ function Login(props) {
   function handleGuest(e) {
     e.preventDefault();
     setUserCondition("guest");
+    history.push("/huesped")
 
   }
   function handleHost(e) {
     e.preventDefault();
     setUserCondition("host");
+    history.push("/anfitrion")
 
   }
 
@@ -50,6 +52,7 @@ function Login(props) {
           status: userCondition,
         })
       );
+
     }
   }, [userCondition, dispatch]);
 
@@ -89,13 +92,13 @@ function Login(props) {
 
         <button
           className="bg-black border-2 p-2 text-white rounded focus:bg-[#00B4FF] focus:rounded text-xl"
-          onClick={() => loginWithRedirect()}
+          onClick={() => {loginWithRedirect();  setUserCondition("guest");}}
         >
           Ser Huesped
         </button>
         <button
           className="bg-black border-2 p-2 text-white rounded focus:bg-[#00B4FF] focus:rounded text-xl"
-          onClick={() => loginWithRedirect()}
+          onClick={() => {loginWithRedirect(); setUserCondition("host");}}
         >
           Ser Hospedador
         </button>
