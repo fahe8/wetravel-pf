@@ -100,9 +100,9 @@ const validate = (input) => {
     errors.max = "No puede agregar más de 5";
   }
 
-  if (input.photos && !regexUrl.test(photos)) {
-    errors.url = "Inserte unicamente url que terminen en: jpeg, jpg o png";
-  }
+  // if (input.photos && !regexUrl.test(photos)) {
+  //   errors.url = "Inserte unicamente url que terminen en: jpeg, jpg o png";
+  // } //* Esta campo ya no es un input y no se puede validar
 
   return errors;
 };
@@ -135,7 +135,7 @@ const Create = () => {
   const [input, setInput] = useState(initialState);
 
   const [loading, setLoading] = useState("");
-  console.log("input.photos:", input.photos);
+  // console.log("input.photos:", input.photos);
 
   const submitImage = (files) => {
     const upLoader = files.map((file) => {
@@ -167,16 +167,14 @@ const Create = () => {
     if (loading === "false") {
       return (
         <h3>
-          {input.photos.length <= 0
-            ? "No hay imagenes"
-            : input.photos.map((image) => {
-                return (
-                  <div>
-                    <p>Imagen:</p>
-                    <img src={image} alt="img not found" />
-                  </div>
-                );
-              })}
+          {input.photos?.map((image) => {
+            return (
+              <div>
+                <p>Imagen:</p>
+                <img src={image} alt="img not found" />
+              </div>
+            );
+          })}
         </h3>
       );
     }
@@ -242,6 +240,7 @@ const Create = () => {
       alert("Felicidades el hotel ha sido creado con éxito");
       setInput(initialState);
       history.push("/home");
+      history.go(0)
     }
   };
 
@@ -469,7 +468,7 @@ const Create = () => {
                 </select>
               </div>
 
-              <div className="col-span-3 p-2.5">
+              {/* <div className="col-span-3 p-2.5">
                 <input
                   className="bg-transparent border-b border-gray w-full"
                   id="photoInput"
@@ -480,8 +479,7 @@ const Create = () => {
                   placeholder="Url photos.."
                   onChange={(e) => handleChange(e)}
                 />
-                {/* {errors.url && <p>{errors.url} </p>} */}
-              </div>
+              </div> */}
 
               <div className="col-span-3 p-2.5">
                 <Container>
@@ -543,6 +541,14 @@ const Create = () => {
                   </button>
                 </div>
               )}
+              {/* <button
+                    onClick={handleSubmit}
+                    className="cursor-pointer"
+                    type="submit"
+                    form="form"
+                  >
+                    Agregar
+                  </button> */}
             </form>
           </div>
         </div>

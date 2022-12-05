@@ -4,16 +4,18 @@ import DetailRoom from "../detailRoom/DetailRoom";
 import { addDays, format, differenceInDays } from "date-fns";
 import RangeCalendar from "../calendar/RangeCalendar";
 import { useDispatch } from "react-redux";
-import { postHotel, cartReserves } from "../../redux/action";
+import { postHotel, cartReserves, getReservesByCart  } from "../../redux/action";
 import { useAuth0 } from "@auth0/auth0-react";
 
 
-const Reservation = ({ selectedHotel }) => {
-  let dispatch = useDispatch()
+
+const Reservation = ({ selectedHotel, price }) => {
+  let dispatch = useDispatch(); 
+   const { user } = useAuth0();
+  const prices = selectedHotel?.price
   const [showCalendar, setShowCalendar] = useState(false);
 
 
-  const prices = selectedHotel?.price
  
   
   // manage date
@@ -34,11 +36,10 @@ const Reservation = ({ selectedHotel }) => {
     }
   };
 
-  const finalPrice = prices * differenceInDays(new Date(checkOut), new Date(checkIn)) > 0 ? prices * differenceInDays(new Date(checkOut), new Date(checkIn)) : prices;
-  
-  const difDays = differenceInDays(new Date(checkOut), new Date(checkIn)) <= 0 ? 1 : differenceInDays(new Date(checkOut), new Date(checkIn));
-
-  const refOne= useRef('') 
+  const finalPrice =
+    prices * differenceInDays(new Date(checkOut), new Date(checkIn)) > 0
+      ? prices * differenceInDays(new Date(checkOut), new Date(checkIn))
+      : prices;
 
 
 
@@ -48,21 +49,26 @@ const Reservation = ({ selectedHotel }) => {
     }
   };
 
+  // console.log(user)
   const fullInfo = () => {
     const info = {
       orderlines: [
-        {
-          idHotel: selectedHotel.id,
-          quantity: difDays,
-          check_out: checkOut,
-          check_in: checkIn,
-        },
+        {idHotel: selectedHotel.id,
+        quantity: difDays,
+        check_out: checkOut,
+        check_in: checkIn
+      }
       ],
-      user: 1,
-    };
-
-    dispatch(cartReserves(info));
+        user: user.email
+      }
+      
+    
+    dispatch(cartReserves(info))
+    // dispatch(getReservesByCart(user?.email))
   };
+  
+
+
 
   useEffect(() => {
     // event listeners
@@ -77,7 +83,7 @@ const Reservation = ({ selectedHotel }) => {
       )}
       <div className="row-span-1 bg-white shadow-xl  rounded-3xl m-11">
         <div className=" text-4xl mt-8">
-          <h3> $ {selectedHotel.price} Noche</h3>
+          <h3>$ {selectedHotel.price} Noche</h3>
         </div>
 
         <div className=" grid grid-cols-2 bg-[color:var(--primary-bg-opacity-color)] text-sm text-left mt-8 rounded-2xl mx-4 border border-black">
@@ -128,25 +134,6 @@ const Reservation = ({ selectedHotel }) => {
           </div>
         </div>
       </div>
-
-      <div className=" bg-white  shadow-xl  rounded-3xl items-center m-11 ">
-        <div>
-          <img className="px-16" src={icon} alt="userImage" />
-        </div>
-        <div className="py-4 text-3xl">
-          <h1>Name of user</h1>
-          <p>{selectedHotel.name}</p>
-        </div>
-
-        <div className="text-xl py-5">Join in month XXXX</div>
-        <div>
-          <button className="py-2.5 px-5 mr-2 mb-2 text-lg font-medium text-gray-900  bg-[color:var(--primary-bg-opacity-color)] rounded-full border border-black-800 ">
-            Perfil
-          </button>
-        </div>
-      </div>
-      <h1>
-      </h1>
     </div>
   );
 };

@@ -4,7 +4,7 @@ const {Router} = require("express");
 const routerUsers = Router();
 
 routerUsers.post('/', async (req, res) => {
-  const { name, email, email_verified, status } = req.body;
+  const { name, email, email_verified, status, photos } = req.body;
   try {
     const search = await User.findOne({where:
       {email: email}})
@@ -14,13 +14,15 @@ routerUsers.post('/', async (req, res) => {
           email,
           name,
           email_verified,
-          status
+          status,
+          photos
       })
       .then( user => {
+
+
           Order.create({
               status: "created",
-              price: 0,
-              quantity: 0,
+              user_email: user.dataValues.email,
               userId: user.dataValues.id    
           })
       })
@@ -53,6 +55,20 @@ routerUsers.post('/', async (req, res) => {
   }
 });
 
+routerUsers.put('/:id', async (req,res) => {
+  let { id } = req.params;
+  let user = req.body;
+
+  try {
+    let updateUser = await User.update(user, {
+      where: { id }
+    });
+    res.json({ change: 'Los datos del Usuario se actualizaron correctamente' });
+  } catch (error) {
+    res.json(`No se puedo actualizar por: (${error})`);
+  }
+});
+
 routerUsers.get('/', async (req, res) => {
   let allUser = await User.findAll({
     include: {
@@ -62,9 +78,18 @@ routerUsers.get('/', async (req, res) => {
     }
   });
 
- 
-
   return res.json(allUser);
 });
+
+routerUsers.get('/:email', async (req, res) => {
+  let { email } = req.params;
+  try {
+    let getUser = await User.findOne({where: {email: email}});
+    console.log(getUser)
+    return res.json(getUser);
+  } catch (error) {
+    res.json(`No se pudo obtener el EMAIL por: (${error})`);
+  }
+})
 
 module.exports = routerUsers;

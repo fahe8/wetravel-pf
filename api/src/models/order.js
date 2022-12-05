@@ -19,6 +19,10 @@ module.exports = (sequelize) => {
         merchant_order_id: {
             type: DataTypes.BIGINT,
             defaultValue: 0
+        },
+        user_email: {
+            type: DataTypes.STRING,
+            
         }
     });
 };

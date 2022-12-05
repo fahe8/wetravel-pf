@@ -94,16 +94,16 @@ routerHotels.get("/", async (req, res) => {
         if (resultadoDeBusqueda.length > 0) {
           let pri = resultadoDeBusqueda.filter((el) => {
             return (
-              el.price.split("$")[1].split(".").join("") <= Number(priceMax) &&
-              el.price.split("$")[1].split(".").join("") >= Number(priceMin)
+              Number(el.price) <= Number(priceMax) &&
+              Number(el.price) >= Number(priceMin)
             );
           });
           resultadoDeBusqueda = pri;
         } else {
           let pri = hotels.filter((el) => {
             return (
-              el.price.split("$")[1].split(".").join("") <= Number(priceMax) &&
-              el.price.split("$")[1].split(".").join("") >= Number(priceMin)
+              Number(el.price) <= Number(priceMax) &&
+              Number(el.price) >= Number(priceMin)
             );
           });
           resultadoDeBusqueda = pri;
@@ -199,19 +199,30 @@ routerHotels.post("/", async (req, res) => {
 
 // -------> Router Delete
 
-routerHotels.delete('/delete/:id', async (req, res, next) => {
+routerHotels.delete('/:id', async (req, res, next) => {
   const { id } = req.params;
+  
   try {
     const hotel = await Hotel.findByPk(id);
+    // const date = Date();
+    
+    // if(date > DATEADD(DAY, 1, date)){
+    //   await hotel.destroy();
+    //   res.status(200).send ("Hotel eliminado de nuestra base de datos")
+    // }
+
     if (!hotel) {
       res.status(404).send("El id de el hotel no existe en nuestra base de datos");
-    } else {
+    } 
+    else {
       await hotel.destroy();
-      res.status(200).send ("Hotel eliminado de nuestra base de datos")
+      res.status(200).send(`Hotel ${id} ha sido eliminado`);
     }
   } catch (error) {
     next(error)
   }
 })
+
+
 
 module.exports = routerHotels;

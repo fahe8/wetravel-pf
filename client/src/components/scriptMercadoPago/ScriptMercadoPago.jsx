@@ -1,6 +1,10 @@
 import React, {useEffect} from 'react'
 
-const ScriptMercadoPago = ({productos, data }) => {
+
+
+
+const ScriptMercadoPago = ({ data }) => {
+
 
     useEffect(()=>{
         const script = document.createElement('script'); //Crea un elemento html script
@@ -25,28 +29,10 @@ const ScriptMercadoPago = ({productos, data }) => {
   return (
     
         <div>
-
       <form id='form1'>
 
-        <h4>Carrito</h4>
-        <div className={''} >  
-        {productos.map((producto, i) => {
-            return(
-                <div className={''} key={i}>
-                  <ul className={''} >
-                    <li>{producto.nameHotel}</li>
-                    {/* <li>{'$' + producto.price}</li> 
-                    <li>{producto.quantity}</li> */}
-                  </ul>
-                </div>   
-            )
-        })}
-        </div>   
-        
       </form>
-
      </div>
-    
   )
 }
 

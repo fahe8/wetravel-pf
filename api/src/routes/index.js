@@ -5,14 +5,16 @@ const routerUsers = require("./routerUsers");
 const routerReserves = require("./routerReserves");
 const routerPay = require("./routerPay");
 const routerReview = require("./routerReview");
-
+const routerOrder = require("./order");
+const routerServices = require("./routerServices");
 router.use("/mercadopay", routerPay);
 
 router.use("/hotels", routerHotels);
 
 router.use("/users", routerUsers);
 
-// router.use('/services', routerServices);
+router.use('/services', routerServices);
+router.use("/order", routerOrder)
 
 router.use("/reserve", routerReserves);
 
