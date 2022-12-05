@@ -47,7 +47,7 @@ function Review() {
   function handleSubmit(e) {
     e.preventDefault();
     if (input.stars === 0) {
-      return alert("opps");
+      return alert("Es necesario poner una calificación");
     } else {
       dispatch(postReview(input));
       setInput({ user: "", stars: 0, comments: "" });
@@ -68,6 +68,7 @@ function Review() {
             .map((_, index) =>
               input.stars >= index + 1 || setCurrent >= index + 1 ? (
                 <AiFillStar
+                key={index}
                   onMouseOver={() => !input.stars && setCurrent(index + 1)}
                   onMouseLeave={() => setCurrent(undefined)}
                   style={{ color: "orange" }}
@@ -75,6 +76,8 @@ function Review() {
                 />
               ) : (
                 <AiOutlineStar
+                key={index}
+
                   onMouseOver={() => !input.stars && setCurrent(index + 1)}
                   onMouseLeave={() => setCurrent(undefined)}
                   style={{ color: "orange" }}

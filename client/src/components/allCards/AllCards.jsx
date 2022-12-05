@@ -2,10 +2,11 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux"
 import Card from '../card/card'
-import { getHotels } from '../../redux/action'
+import { getHotels} from '../../redux/action'
 import { Footer } from '../footer/Footer'
 // import InfiniteScroll from "react-infinite-scroll-component";
 import { useLocalStorage } from "../../localStorage/useLocalStorage";
+import { useAuth0 } from "@auth0/auth0-react";
 
 
 
@@ -17,6 +18,7 @@ const AllCards = () => { //función que pide la información y la renderiza
   useEffect(() => {
     if (estadoHoteles.length === 0) {
       dispatch(getHotels());
+
     }
   }, [dispatch])
   

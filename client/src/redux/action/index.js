@@ -94,11 +94,11 @@ export function getUser() {
   };
 }
 
-export function getUserById(id) {
-  console.log("getUserById:", id);
+export function getUserById(email) {
+  console.log("getUserById:", email);
   return async function (dispatch) {
     try {
-      let res = await axios(`http://localhost:3001/users/${id}`);
+      let res = await axios(`http://localhost:3001/users/${email}`);
       console.log("RES GET USER BY ID:", res.data);
       dispatch({
         type: DETAIL_USER,
@@ -158,6 +158,7 @@ export function postReserve(payload) {
 }
 
 export const payReserve = (payload) => {
+  console.log(payload)
   return async function (dispatch) {
     try {
       const pay = await axios.post("http://localhost:3001/mercadopay", payload);
@@ -191,11 +192,12 @@ export function getReview() {
 //     }); //segunda función que recibe dispatch y despacha una acción / el tipo y el payload: devuelve el backend
 //   };
 // }
-export function postReview() {
+export function postReview(review) {
   // console.log(payload);
   return async function () {
-    const response = await axios.post("http://localhost:3001/review");
-    console.log("response", response);
+    console.log(review)
+    const response = await axios.post("http://localhost:3001/review", review );
+    console.log("response", response.data);
     return response;
   };
 }
@@ -229,6 +231,8 @@ export function cartReserves(reserva) {
   return async function (dispatch) {
     console.log(reserva);
     const json = await axios.post("http://localhost:3001/order", reserva);
+
+    console.log(json)
     // console.log(json) //pendiente porque no me está trayendo nada
     //segunda función que recibe dispatch y despacha una acción / el tipo y el payload: devuelve el backend
 
@@ -255,9 +259,10 @@ export function getIdMercadoPago(user) {
 //NO TERMINADA ESTA ACTION
 
 export function deleteReserve(id) {
+  console.log(id);
   return async function (dispatch) {
     const json = await axios.get("http://localhost:3001/reserve/" + id);
-    console.log(json.data);
+    console.log(json.data)
   };
 }
 
