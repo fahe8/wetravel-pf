@@ -8,7 +8,9 @@ import NavBar from "../navBar/NavBar";
 import Stars from "../stars/Stars";
 import Carousel from "react-bootstrap/Carousel";
 import Reservation from "../reservation/Reservation";
+import { Footer } from "../footer/Footer";
 import Review from "../review/Review";
+
 
 const Detail = (props) => {
   const {
@@ -43,10 +45,7 @@ const Detail = (props) => {
             <Loading />
           ) : (
             <div>
-              <Link to={"/home"}>
-                <button>Volver</button>
-              </Link>
-
+              
               <div className="home-container">
                 <div className="home-container row ">
                   <Carousel className="carousel mt-4 w-[800px] h-[500px] m-auto ">
@@ -118,6 +117,15 @@ const Detail = (props) => {
           )}
           <Review />
         </div>
+      </div>
+      <div className="text-2xl m-4 font-medium">
+        <Link to={"/home"}>
+          <button className="rounded-xl w-80 bg-slate-200 hover:bg-slate-300 p-2">
+            Listado de Hoteles</button>
+        </Link>      
+      </div>
+      <div>
+        <Footer/>
       </div>
     </div>
   );

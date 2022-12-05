@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getReservesByCart } from "../../redux/action/";
 import ScriptMercadoPago from "../scriptMercadoPago/ScriptMercadoPago";
 import { useAuth0 } from "@auth0/auth0-react";
+import NavBar from "../navBar/NavBar";
+import { Footer } from "../footer/Footer";
 
 const Cart = () => {
   const { user } = useAuth0();
@@ -25,13 +27,27 @@ const Cart = () => {
   }, []);
 
   return (
+    <div>
+      <div>
+        <NavBar/>
+      </div>
+
     <div className="App">
-      {!datos ? (
-        <p>Está vacio</p>
-      ) : (
-        <ScriptMercadoPago productos={productos} data={datos} />
-      )}
+        {!datos ? (
+          <div className="text-3xl">
+            <h1>El carro está vacio</h1>
+          </div>
+          
+          
+        ) : (
+          <ScriptMercadoPago productos={productos} data={datos} />
+          )}
+      </div>
+      <div>
+        <Footer/>
+      </div>
     </div>
+    
   );
 };
 

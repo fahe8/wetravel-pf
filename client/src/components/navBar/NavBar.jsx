@@ -6,6 +6,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../../redux/action";
 import { useLocalStorage } from './useLocalStorage';
+import './NavBar.css'
 
 const NavBar = () => {
   let location = useLocation();
@@ -48,14 +49,14 @@ const NavBar = () => {
   };
 
   return (
-    <header className=" h-20 bg-[color:var(--second-bg-color)] flex justify-between text-center shadow-lg sticky top-0 z-10">
-      <figure className=" w-20 h-20 bg-cyan-700 cursor-pointer" onClick={handleReload}>
-        <img src={logo} alt="logo-wetravel" className="w-full h-full " />
-      </figure>
+    
+    <header className=" h-20 flex justify-between text-center back">
+      <div className=" w-20 h-20 " onClick={handleReload}>
 
-      <div className=" w-[60%] h-20  bg-white py-3 px-20">
-        {!state && <Search></Search>}
+        <img src={logo} alt="logo-wetravel" className="w-full h-full " />
       </div>
+
+    
       <nav className=" w-65 flex justify-between items-center text-xl gap-5">
         <Link to="/about">
           <p>About Us</p>
@@ -103,7 +104,8 @@ const NavBar = () => {
           )}
         </div>
       </nav>
-    </header>
+      </header>
+  
   );
 };
 
