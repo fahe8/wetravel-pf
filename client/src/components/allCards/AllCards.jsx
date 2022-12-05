@@ -3,9 +3,8 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux"
 import Card from '../card/card'
 import { getHotels } from '../../redux/action'
-import { useState, useRef } from 'react'
-import {useLocalStorage} from '../../localStorage/useLocalStorage'
 // import InfiniteScroll from "react-infinite-scroll-component";
+import { useLocalStorage } from "../../localStorage/useLocalStorage";
 
 
 
@@ -21,26 +20,7 @@ const AllCards = () => { //función que pide la información y la renderiza
   }, [dispatch])
   
 
-  const [favorites, setFavorites] = useLocalStorage("favorites", [])
-  const storagedArray = useRef(favorites)
-console.log(storagedArray);
-
-
-const handleToggleFavourite = (name) => {
-
-  if (!favorites.includes(name)) {
-    storagedArray.current.push(name);
-    setFavorites(storagedArray.current);
-    console.log('false');
-  } else {
-    console.log('true')
-    const indexFavouritedId = storagedArray.current.indexOf(name);
-    console.log(indexFavouritedId)
-    storagedArray.current.splice(indexFavouritedId, 1);
-    setFavorites(storagedArray.current);
-  }
-};
-
+  const [favorites, setFavorites] = useLocalStorage("fav", [])
 
   return (
     <div className='bg-gray-100 h-full md:h-screen w-full'>
@@ -51,7 +31,7 @@ const handleToggleFavourite = (name) => {
           <Card
             id={ht.id}
             key={ht.id}
-            photos={ht.photos[0]} // Se requiere el INDICE para las IMG de claudinary
+            photos={ht.photos}
             stars={ht.stars}
             location={ht.location}
             city={ht.city}
@@ -60,8 +40,6 @@ const handleToggleFavourite = (name) => {
             name={ht.name}
             favorites={favorites}
             setFavorites={setFavorites}
-            storagedArray={storagedArray}
-            handleToggleFavourite={handleToggleFavourite}
           />
         ) : 
         <h1>Mensaje de alerta que no hay hoteles</h1>

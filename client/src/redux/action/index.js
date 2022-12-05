@@ -17,7 +17,7 @@ export const POST_ORDER = "POST_ORDER";
 export const GET_USER = 'GET_USER';
 export const DETAIL_USER = 'DETAIL_USER';
 export const UPDATE_USER = 'UPDATE_USER';
-
+export const GET_FAVORITES = "GET_FAVORITES"
 export const GET_ID_MERCADO_PAGO = "GET_ID_MERCADO_PAGO"
 // 1 depachar los hoteles
 export function getHotels() {
@@ -255,3 +255,8 @@ export const deleteHotel = (id) => {
     }
   };
 };
+
+
+export const getFavorites = (fav) => {
+  return {type: GET_FAVORITES, payload: fav}
+}

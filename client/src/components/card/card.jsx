@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { AiFillHeart, AiTwotoneHome } from "react-icons/ai";
+import { AiFillHeart, AiTwotoneHome, AiOutlineHeart } from "react-icons/ai";
 import Stars from "../stars/Stars";
+import { useDispatch } from "react-redux";
+import { getFavorites } from "../../redux/action";
 
 //import Carousel from '../carousel/Carousel';
 
@@ -17,12 +19,32 @@ function Card({
   name,
   favorites,
   setFavorites,
-  storagedArray,
-  handleToggleFavourite
 }) {
+  let dispatch = useDispatch();
 
+  const infoCard = {
+    id: id,
+    photos: photos,
+    stars: stars,
+    location: location,
+    city: city,
+    price: price,
+    size: size,
+    name: name,
+  };
 
-
+  let isfavorite = favorites.some((s) => s.name === name);
+  const handleFav = () => {
+    let copyFav = [...favorites];
+    if (isfavorite) {
+      const indexFav = copyFav.map((e) => e.name).indexOf(infoCard.name);
+      copyFav.splice(indexFav, 1);
+    } else {
+      copyFav.push(infoCard);
+    }
+    setFavorites(copyFav);
+    dispatch(getFavorites(copyFav));
+  };
 
   return (
     <div className="bg-white hover:bg-gray-200 shadow-xl hover:shadow-none cursor-pointer w-80 rounded-3xl flex flex-col items-center justify-center transition-all duration-500 ease-in-out px-2">
@@ -31,10 +53,10 @@ function Card({
           <img src={photos} alt={name} className="object-cover w-full h-full" />
         </div>
         <div
-          onClick={() => handleToggleFavourite(name)}
+          onClick={handleFav}
           className="h-10 w-10 flex items-center justify-center text-xl bg-white hover:bg-red-500 text-red-500 hover:text-white rounded-2xl shadow-xl transform-gpu translate-y-0 hover:-translate-y-1 transition-all duration-300 ease-in-out"
         >
-          <AiFillHeart />
+          {isfavorite ? <AiFillHeart /> : <AiOutlineHeart />}
         </div>
         <div>
           <div>

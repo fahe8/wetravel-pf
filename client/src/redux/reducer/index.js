@@ -14,7 +14,8 @@ import {
   UPDATE_USER,
   GET_USER,
   GET_RESERVE_BY_CART,
-  GET_ID_MERCADO_PAGO
+  GET_ID_MERCADO_PAGO,
+  GET_FAVORITES
 } from "../action/index";
 
 const initialState = {
@@ -31,6 +32,7 @@ const initialState = {
   userId: {},
   idPay: "",
   loading: false,
+  favorites: []
 };
 
 function rootReducer(state = initialState, action) {
@@ -125,6 +127,13 @@ function rootReducer(state = initialState, action) {
       ...state, 
       idPay: action.payload
     }
+
+    case GET_FAVORITES: 
+    return {
+      ...state,
+      favorites: action.payload
+    }
+
     default:
       return state;
   }
