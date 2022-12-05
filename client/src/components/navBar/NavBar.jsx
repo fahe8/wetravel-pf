@@ -3,7 +3,6 @@ import { Link, useHistory, useLocation } from "react-router-dom";
 import Search from "../search/Search";
 import logo from "../../assets/img/copia.png";
 import { useAuth0 } from "@auth0/auth0-react";
-import Favourites from "../favourites/Favourites";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../../redux/action";
 import { useLocalStorage } from './useLocalStorage';
@@ -50,7 +49,7 @@ const NavBar = () => {
 
   return (
     <header className=" h-20 bg-[color:var(--second-bg-color)] flex justify-between text-center shadow-lg sticky top-0 z-10">
-      <figure className=" w-20 h-20 bg-cyan-700" onClick={handleReload}>
+      <figure className=" w-20 h-20 bg-cyan-700 cursor-pointer" onClick={handleReload}>
         <img src={logo} alt="logo-wetravel" className="w-full h-full " />
       </figure>
 

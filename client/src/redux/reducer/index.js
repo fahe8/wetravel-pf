@@ -15,7 +15,8 @@ import {
   GET_USER,
   GET_RESERVE_BY_CART,
   GET_ID_MERCADO_PAGO,
-  GET_FAVORITES
+  POST_REVIEW,
+  GET_FAVORITES,
 } from "../action/index";
 
 const initialState = {
@@ -25,7 +26,7 @@ const initialState = {
   hotelFilter: [],
   copyHotels: [],
   reserve: [],
-  reserveByCart:[],
+  reserveByCart: [],
   service: [],
   review: [],
   users: [],
@@ -81,7 +82,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         users: action.payload,
-      }
+      };
     case POST_USER:
       return {
         ...state,
@@ -90,7 +91,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         userId: action.payload,
-      }
+      };
     case POST_RESERVE:
       return {
         ...state,
@@ -100,6 +101,11 @@ function rootReducer(state = initialState, action) {
         ...state,
       };
     case GET_REVIEW:
+      return {
+        ...state,
+        review: action.payload,
+      };
+    case POST_REVIEW:
       return {
         ...state,
         review: action.payload,
@@ -119,21 +125,20 @@ function rootReducer(state = initialState, action) {
     case GET_RESERVE_BY_CART:
       return {
         ...state,
-        reserveByCart: action.payload
+        reserveByCart: action.payload,
+      };
+
+    case GET_ID_MERCADO_PAGO:
+      return {
+        ...state,
+        idPay: action.payload,
+      };
+
+      case GET_FAVORITES: 
+      return {
+        ...state,
+        favorites: action.payload
       }
-
-    case GET_ID_MERCADO_PAGO: 
-    return {
-      ...state, 
-      idPay: action.payload
-    }
-
-    case GET_FAVORITES: 
-    return {
-      ...state,
-      favorites: action.payload
-    }
-
     default:
       return state;
   }
