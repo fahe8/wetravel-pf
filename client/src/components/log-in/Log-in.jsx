@@ -25,6 +25,7 @@ function Login(props) {
   // const [input, setInput] = useState(initialState);
 
   // const [userCondition, setUserCondition] = useLocalStorage('user', 'guest');
+
   const [userCondition, setUserCondition] = useLocalStorage('user', 'host');
   console.log('ESTADO DEL USERS:',userCondition);
 
@@ -51,10 +52,9 @@ function Login(props) {
           email_verified: user.email_verified,
           status: userCondition,
         })
-      );
-
+      );     
     }
-  }, [userCondition, dispatch]);
+  }, [ dispatch]);
 
   useEffect(() => {
     dispatch(updateUser(id));
