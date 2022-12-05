@@ -17,6 +17,7 @@ import {
   GET_ID_MERCADO_PAGO,
   POST_REVIEW,
   GET_FAVORITES,
+  DELETE_RESERVE
 } from "../action/index";
 
 const initialState = {
@@ -139,6 +140,11 @@ function rootReducer(state = initialState, action) {
         ...state,
         favorites: action.payload
       }
+
+      case DELETE_RESERVE:
+        return {
+          ...state,
+        };
     default:
       return state;
   }

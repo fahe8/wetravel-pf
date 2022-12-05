@@ -240,6 +240,7 @@ const Create = () => {
       alert("Felicidades el hotel ha sido creado con éxito");
       setInput(initialState);
       history.push("/home");
+      history.go(0)
     }
   };
 
