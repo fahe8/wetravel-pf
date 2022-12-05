@@ -33,6 +33,9 @@ function Card({
     name: name,
   };
 
+
+  // *!FALTA HACERLO CON LOS USUARIO CREANDO UN MODELO EN EL BACK
+
   let isfavorite = favorites.some((s) => s.name === name);
   const handleFav = () => {
     let copyFav = [...favorites];
