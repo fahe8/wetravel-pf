@@ -18,13 +18,12 @@ export const GET_USER = "GET_USER";
 export const DETAIL_USER = "DETAIL_USER";
 export const UPDATE_USER = "UPDATE_USER";
 export const POST_REVIEW = "POST-REVIEW";
-
+export const GET_FAVORITES = "GET_FAVORITES"
 export const GET_ID_MERCADO_PAGO = "GET_ID_MERCADO_PAGO";
 // 1 depachar los hoteles
 export function getHotels() {
   return async function (dispatch) {
     const json = await axios.get("http://localhost:3001/hotels");
-    console.log(json);
     return dispatch({
       type: GET_HOTELS,
       payload: json.data,
@@ -276,3 +275,8 @@ export const deleteHotel = (id) => {
     }
   };
 };
+
+
+export const getFavorites = (fav) => {
+  return {type: GET_FAVORITES, payload: fav}
+}

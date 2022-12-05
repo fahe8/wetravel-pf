@@ -49,7 +49,7 @@ const NavBar = () => {
 
   return (
     <header className=" h-20 bg-[color:var(--second-bg-color)] flex justify-between text-center shadow-lg sticky top-0 z-10">
-      <figure className=" w-20 h-20 bg-cyan-700" onClick={handleReload}>
+      <figure className=" w-20 h-20 bg-cyan-700 cursor-pointer" onClick={handleReload}>
         <img src={logo} alt="logo-wetravel" className="w-full h-full " />
       </figure>
 
@@ -60,7 +60,9 @@ const NavBar = () => {
         <Link to="/about">
           <p>About Us</p>
         </Link>
-
+        <Link to="/favourites">
+          <p>Favorito</p>
+        </Link>
         <div className=" h-10 flex justify-between items-center gap-5  hover:bg-cyan-800 cursor-pointer p-7 rounded-full border-2 border-black">
           {!user && (
             <div>
