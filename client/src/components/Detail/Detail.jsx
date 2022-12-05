@@ -9,6 +9,8 @@ import Stars from "../stars/Stars";
 import Carousel from "react-bootstrap/Carousel";
 import Reservation from "../reservation/Reservation";
 import { Footer } from "../footer/Footer";
+import Review from "../review/Review";
+
 
 const Detail = (props) => {
   const {
@@ -113,6 +115,7 @@ const Detail = (props) => {
               </div>
             </div>
           )}
+          <Review />
         </div>
       </div>
       <div className="text-2xl m-4 font-medium">

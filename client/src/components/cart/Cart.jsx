@@ -14,7 +14,7 @@ const Cart = () => {
   let productos = useSelector((state) => state.reserveByCart);
   // let datos = useSelector((state) => state.idPay);
   const [datos, setDatos] = useState()
-  console.log(datos);
+  console.log(useAuth0());
   useEffect(() => {
     dispatch(getReservesByCart(user.email));
 

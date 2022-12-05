@@ -31,13 +31,14 @@ function Login(props) {
   function handleGuest(e) {
     e.preventDefault();
     setUserCondition("guest");
-    history.push("/huesped");
+
   }
   function handleHost(e) {
     e.preventDefault();
     setUserCondition("host");
-    history.push("/anfitrion");
+
   }
+
 
   useEffect(() => {
     if (user) {

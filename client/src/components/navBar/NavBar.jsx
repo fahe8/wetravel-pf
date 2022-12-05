@@ -52,6 +52,7 @@ const NavBar = () => {
     
     <header className=" h-20 flex justify-between text-center back">
       <div className=" w-20 h-20 " onClick={handleReload}>
+
         <img src={logo} alt="logo-wetravel" className="w-full h-full " />
       </div>
 
@@ -60,7 +61,9 @@ const NavBar = () => {
         <Link to="/about">
           <p>About Us</p>
         </Link>
-
+        <Link to="/favourites">
+          <p>Favorito</p>
+        </Link>
         <div className=" h-10 flex justify-between items-center gap-5  hover:bg-cyan-800 cursor-pointer p-7 rounded-full border-2 border-black">
           {!user && (
             <div>

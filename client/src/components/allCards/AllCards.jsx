@@ -5,6 +5,7 @@ import Card from '../card/card'
 import { getHotels } from '../../redux/action'
 import { Footer } from '../footer/Footer'
 // import InfiniteScroll from "react-infinite-scroll-component";
+import { useLocalStorage } from "../../localStorage/useLocalStorage";
 
 
 
@@ -19,6 +20,9 @@ const AllCards = () => { //función que pide la información y la renderiza
     }
   }, [dispatch])
   
+
+  const [favorites, setFavorites] = useLocalStorage("fav", [])
+
   return (
     <div className=' h-full md:h-screen w-full'>
       <div className='container mx-auto px-0 md:px-4 py-4' >
@@ -28,13 +32,15 @@ const AllCards = () => { //función que pide la información y la renderiza
           <Card
             id={ht.id}
             key={ht.id}
-            photos={ht.photos[0]} // Se requiere el INDICE para las IMG de claudinary
+            photos={ht.photos}
             stars={ht.stars}
             location={ht.location}
             city={ht.city}
             price={ht.price}
             // size={ht.room.size== null?ht.room.size:"No Data"}
             name={ht.name}
+            favorites={favorites}
+            setFavorites={setFavorites}
           />
         ) : 
         <h1>Mensaje de alerta que no hay hoteles</h1>
