@@ -20,15 +20,15 @@ routerFavorites.get('/:user', async (req, res) => {
 });
 
 routerFavorites.post('/', async (req, res) => {
-    const { name, description, stars, price, services, photos, location, city, review, comments, room, userFavorite } = req.body;
+    const { name, stars, price, photos, location, city, userFavorite } = req.body;
     try {
         const newFavorite = await Favorites.create({
-            name, description, stars, price, services, photos, location, city, review, comments, room
+            name, stars, price, photos, location, city,
         });
         const userDb = await User.findOne({
             where: { name: userFavorite }
         });
-        newFavorite.addUser(userDb);
+        newFavorite.setUser(userDb);
         res.json(newFavorite);
     } catch (error) {
         res.status(400).send(error.message);

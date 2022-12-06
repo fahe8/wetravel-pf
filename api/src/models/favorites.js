@@ -11,22 +11,14 @@ module.exports = (sequelize) => {
         name: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true
+            // unique: true
         },
-        description: {
-            type: DataTypes.TEXT,
-            allowNull: false,
-        }, 
         stars: {
             type: DataTypes.STRING,
             allowNull: false
         },
         price: {
             type: DataTypes.STRING,
-            allowNull: false
-        },
-        services: {
-            type: DataTypes.ARRAY(DataTypes.STRING),
             allowNull: false
         },
         photos: {
@@ -40,18 +32,9 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        review: {
-            type: DataTypes.STRING
-        },
-        comments: {
-            type: DataTypes.ARRAY(DataTypes.STRING)
-        },
-        room: {
-            type: DataTypes.JSONB
-        },
         userFavorite: {
             type: DataTypes.STRING,
-            allowNull: false
+            // allowNull: false
         }
     },
     { timestamps: false} 
