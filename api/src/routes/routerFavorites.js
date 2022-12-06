@@ -1,0 +1,53 @@
+const { Router } = require('express');
+const router = require('.');
+const { User, Favorites } = require('../db');
+const routerFavorites = Router();
+
+routerFavorites.get('/:user', async (req, res) => {
+    const { user } = req.params;
+    try {
+        if(user){
+            const userFavorites = await Favorites.findAll({
+                where: { userFavorite: user },
+            })
+            userFavorites.length ? 
+            res.json(userFavorites)
+            : res.status(404).json({message: "This user hasnt any favorite yet"});
+        }
+    } catch (error) {
+        res.status(400).json({message: error.message});
+    }
+});
+
+routerFavorites.post('/', async (req, res) => {
+    const { name, description, stars, price, services, photos, location, city, review, comments, room, userFavorite } = req.body;
+    try {
+        const newFavorite = await Favorites.create({
+            name, description, stars, price, services, photos, location, city, review, comments, room
+        });
+        const userDb = await User.findOne({
+            where: { name: userFavorite }
+        });
+        newFavorite.addUser(userDb);
+        res.json(newFavorite);
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+})
+
+routerFavorites.delete('/:id', async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const favorite = await Favorites.findOne({
+            where: {id}
+        });
+
+        await favorite.destroy()
+        res.json({message: 'Favorite deleted'});
+    } catch (error) {
+        res.status(400).json({message: error.message});
+    }
+})
+
+module.exports = routerFavorites;

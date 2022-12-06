@@ -7,6 +7,8 @@ const routerPay = require("./routerPay");
 const routerReview = require("./routerReview");
 const routerOrder = require("./order");
 const routerServices = require("./routerServices");
+const routerFavorites = require("./routerFavorites");
+
 router.use("/mercadopay", routerPay);
 
 router.use("/hotels", routerHotels);
@@ -19,5 +21,6 @@ router.use("/order", routerOrder)
 router.use("/reserve", routerReserves);
 
 router.use("/review", routerReview);
+router.use("/favorites", routerFavorites);
 
 module.exports = router;
