@@ -11,9 +11,9 @@ import { Footer } from "../footer/Footer";
 
 const Huesped = (props) => {
   let { id } = props.match.params;
-  console.log("ID HUESPED:", id);
+  // console.log("ID HUESPED:", id);
   const { user, logout } = useAuth0();
-  console.log("USER HUESPED:", user);
+  // console.log("USER HUESPED:", user);
 
   const initialState = {
     name: "",
