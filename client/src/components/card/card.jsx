@@ -4,6 +4,8 @@ import { AiFillHeart, AiTwotoneHome, AiOutlineHeart } from "react-icons/ai";
 import Stars from "../stars/Stars";
 import { useDispatch } from "react-redux";
 import { getFavorites } from "../../redux/action";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 //import Carousel from '../carousel/Carousel';
 
@@ -37,17 +39,51 @@ function Card({
   // *!FALTA HACERLO CON LOS USUARIO CREANDO UN MODELO EN EL BACK
 
   let isfavorite = favorites.some((s) => s.name === name);
+  const toastId = React.useRef(null);
+  const customId = "custom-id-yes";
+  const messageFavAdd = () => {
+    if(! toast.isActive(toastId.current)) {
+      toastId.current = toast('💘 Lo añadiste a favoritos', {
+        toastId: customId,
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        });
+    } else{
+    }
+  }
+  const messageFavRemove = () => {
+    toast('💔 Lo eliminaste de favorito', {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      });
+  }
   const handleFav = () => {
+    
     let copyFav = [...favorites];
     if (isfavorite) {
       const indexFav = copyFav.map((e) => e.name).indexOf(infoCard.name);
       copyFav.splice(indexFav, 1);
+      messageFavRemove()
     } else {
       copyFav.push(infoCard);
+      messageFavAdd()
     }
     setFavorites(copyFav);
     dispatch(getFavorites(copyFav));
   };
+  
 
   return (
     <div className="bg-white hover:bg-gray-200 shadow-xl hover:shadow-none cursor-pointer w-80 rounded-3xl flex flex-col items-center justify-center transition-all duration-500 ease-in-out px-2">
@@ -85,6 +121,7 @@ function Card({
           </Link>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }
