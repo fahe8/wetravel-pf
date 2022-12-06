@@ -5,7 +5,7 @@ import NavBar from "../navBar/NavBar";
 import { Footer } from "../footer/Footer";
 
 const Hospedador = () => {
-  const { loginWithRedirect, logout, user } = useAuth0();
+  const { logout, user } = useAuth0();
   return (
     <div>
       <div>
