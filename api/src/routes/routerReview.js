@@ -3,18 +3,20 @@ const { Router } = require("express");
 
 const routerReview = Router();
 
-routerReview.get("/", async (req, res) => {
+routerReview.get("/", async (_req, res) => {
+
   try {
-    const dataDb = await Review.findAll({
+    let reviewDb = await Review.findAll({
       includes: {
-        model: User, Hotel,
-        // as: "user", "hotel",
-        attributes: ["name"],
-        through: { attributes: [], },
+        model: Hotel, User,
+        attributes: ["stars", "comments", "nameUser", "nameHotel"],
+        through: { attributes: [] },
       },
-      attributes: ["stars", "comments", "nameUser", "nameHotel"],
     });
-    dataDb.length ? res.send(dataDb) : res.status(400).send("no se encuentra");
+
+    reviewDb.length
+      ? res.send(reviewDb)
+      : res.status(400).send("No hay ningun comentario hasta el momento");
   } catch (error) {
     res.status(400).send(error.message);
   }
@@ -22,8 +24,7 @@ routerReview.get("/", async (req, res) => {
 
 routerReview.post("/", async (req, res) => {
   let { stars, comments, nameUser, nameHotel } = req.body;
-  // console.log('NAME USER REV:', nameUser)
-  // console.log('NAME HOTEL REV:', nameHotel)
+
   try {
     let newReview = await Review.create({
       stars,
@@ -40,11 +41,11 @@ routerReview.post("/", async (req, res) => {
       where: { name: nameHotel },
     });
 
-    newReview.addUser(userDb);
-    newReview.addHotel(hotelDb);
+    newReview.setUser(userDb.id);
+    newReview.setHotel(hotelDb.id);
     res.status(200).send(newReview);
   } catch (error) {
-    res.status(400).send(error.message);
+    res.json({ error: `Error en POST REV por: (${error})` });
   }
 });
 

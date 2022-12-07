@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getDetail, getReview } from "../../redux/action/index";
+import { getDetail, getReview, postReview } from "../../redux/action/index";
 import { Loading } from "../Loading/Loading";
 import NavBar from "../navBar/NavBar";
 import Stars from "../stars/Stars";
@@ -20,7 +20,7 @@ const Detail = (props) => {
   const dispatch = useDispatch();
   const selectedHotel = useSelector((state) => state.detail);
   const loading = useSelector((state) => state.loading);
-  const review = useSelector((state) => state.review);
+  const { review } = useSelector((state) => state);
 
   // const handleDelete = () => {
   //   dispatch(deleteHotel(id));
@@ -29,6 +29,10 @@ const Detail = (props) => {
   // }
 
   useEffect(() => {
+    let allComments = review.map(el => el.comments)
+    if (allComments.length >= 1) {
+      dispatch(postReview(review));
+    }
     dispatch(getDetail(id));
     dispatch(getReview());
     return () => {
@@ -116,13 +120,19 @@ const Detail = (props) => {
           )}
           <div>
             {/* {console.log("ALL REVIEWS:", review)} */}
-            <Review />
+            <Review name={selectedHotel.name} />
             <br />
             <div>
-              {review?.map((el) => {
+              {review?.map(el => {
                 return (
-                  <div>
-                    <p>{el}</p>
+                  <div key={el.id} >
+                    <p>
+                      {
+                        (el.nameHotel === selectedHotel.name) && (
+                          <p>Comentario: {el.comments[0]}, Usuario: {el.nameUser}</p>
+                        )
+                      }
+                    </p>
                   </div>
                 );
               })}
