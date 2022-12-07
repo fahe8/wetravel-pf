@@ -20,4 +20,39 @@ routerImage.post("/", async (req, res) => {
   }
 });
 
+routerImage.get("/", async (req,res)=> {
+  try{
+      const dataDb= await Image.findAll({
+          includes:{
+              model: User,
+              as: "user", 
+              attributes: ["name"],
+              through:{attributes:[],}
+        }
+      })
+      dataDb.length? res.send(dataDb): res.status(400).send("No hay ninguna imagen")
+  }catch(error){
+      res.status(400).send(error.message)
+  }
+
+})
+routerImage.delete("/:id", async (req, res) => {
+  try {
+    const { id } = req.params
+
+    const image = await Image.findOne({
+      where: {id}
+    })
+
+    if(!image) {
+      res.send("No existe reserva con esta id")
+    }
+
+    await image.destroy()
+    res.send("se eliminó la reserva con id:" + id)
+  } catch (error) {
+    console.log(error)
+  }
+})
+
 module.exports = routerImage;
