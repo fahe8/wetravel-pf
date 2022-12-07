@@ -8,6 +8,7 @@ const routerReview = require("./routerReview");
 const routerOrder = require("./order");
 const routerServices = require("./routerServices");
 const routerFavorites = require("./routerFavorites");
+const routerImage = require("./routerImage");
 
 router.use("/mercadopay", routerPay);
 
@@ -22,5 +23,6 @@ router.use("/reserve", routerReserves);
 
 router.use("/review", routerReview);
 router.use("/favorites", routerFavorites);
+router.use("/images", routerImage);
 
 module.exports = router;
