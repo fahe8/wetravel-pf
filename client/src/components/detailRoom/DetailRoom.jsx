@@ -3,6 +3,7 @@ import Carousel from "react-bootstrap/Carousel";
 import { payReserve, postReserve, cartReserves } from "../../redux/action";
 import ScriptMercadoPago from "../scriptMercadoPago/ScriptMercadoPago";
 import { useLocalStorage } from "../../localStorage/useLocalStorage";
+import {FaCheck} from "react-icons/fa";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const DetailRoom = ({
@@ -64,7 +65,7 @@ const DetailRoom = ({
   // console.log('DETAIL ROOM HUESPED', huesped)
 
   return (
-    <div className="h-[100%] my-2 px-1">
+    <div className="h-[100%] my-2 px-1 " >
       <div className="h-full  flex justify-between items-center  ">
         <p>{name}</p>
         <button
@@ -86,7 +87,7 @@ const DetailRoom = ({
         {/* <ScriptMercadoPago item></ScriptMercadoPago> */}
         <div
           className={` w-screen h-screen  fixed  left-0 top-0 z-30   ease-in-out duration-300  ${
-            modalFilter ? " bg-[color:var(--bg-opacity-modal)] z-20 " : "-z-10"
+            modalFilter ? " bg-[color:var(--bg-opacity-modal)] z-20 backdrop-blur-[4px]  " : "-z-10"
           }`}
         >
           <div
@@ -125,8 +126,9 @@ const Modal = ({
   properties,
 }) => {
   return (
-    <div className="  w-screen h-screen  fixed top-0 left-0 z-30 flex justify-center items-center">
-      <div className="w-[600px] h-[600px] bg-white rounded-3xl " ref={refOne}>
+    <div className=" bg-white">
+    <div className="  w-screen h-screen  fixed top-0 left-0 z-30 flex justify-center items-center ">
+      <div className="w-[800px] h-[800px] bg-white  rounded-3xl " ref={refOne} >
         <div className="py-[10px] relative border-b text-center">
           <span
             className="absolute left-5 cursor-pointer px-2"
@@ -134,17 +136,18 @@ const Modal = ({
           >
             X
           </span>
-          <h1>{name}</h1>
+          <h1 className="font-semibold text-[16px]">{name}</h1>
         </div>
-        <div>
-          <Carousel className="carousel mt-4 w-[400px] h-[250px] m-auto ">
+        <div className="mt-7 flex flex-col text-[19px] font-light ml-3">
+          <div className="mb-20">
+          <Carousel className="carousel  w-[500px] h-[250px] m-auto ">
             {photos &&
               photos?.map((elemento, index) => {
                 return (
                   <Carousel.Item key={index}>
                     <div>
                       <img
-                        className=" w-[400px] h-[250px]"
+                        className=" w-[500px] h-[300px]"
                         src={elemento}
                         alt="hotel"
                       />
@@ -153,25 +156,28 @@ const Modal = ({
                 );
               })}
           </Carousel>
-          <div>
-            <h2>Descripción</h2>
+          </div>
+          <div className="mb-3  mt-4 ">
+            <h2 className="font-semibold">Descripción</h2>
             <p>{description}</p>
           </div>
-          <div>
-            <h2>Tamaño</h2>
+          <div className="mb-3 flex flex-row">
+            <h2 className="mr-1 font-semibold " >Tamaño</h2>
             <p>{size}</p>
           </div>
 
-          <div>
-            <h2>Cuenta con:</h2>
-            <div className="grid grid-cols-2">
+          <div className="mb-3">
+            <h2 className="font-semibold" >Cuenta con:</h2>
+            <div className="grid grid-cols-2 mb-3">
               {properties?.map((p) => (
-                <p>{p}</p>
+                <p className="mb-3 flex flex-row items-center "><i><FaCheck className="text-[13px]"/></i>{p}</p>
               ))}
+              
             </div>
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };
