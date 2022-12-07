@@ -1,5 +1,4 @@
 const { Router } = require('express');
-const router = require('.');
 const { User, Favorites } = require('../db');
 const routerFavorites = Router();
 
@@ -23,7 +22,7 @@ routerFavorites.post('/', async (req, res) => {
     const { name, stars, price, photos, location, city, userFavorite } = req.body;
     try {
         const newFavorite = await Favorites.create({
-            name, stars, price, photos, location, city,
+            name, stars, price, photos, location, city, userFavorite
         });
         const userDb = await User.findOne({
             where: { name: userFavorite }

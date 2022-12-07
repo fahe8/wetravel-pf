@@ -175,31 +175,29 @@ export const payReserve = (payload) => {
 
 export function getReview() {
   return async function (dispatch) {
-    const json = await axios.get("http://localhost:3001/review");
-    console.log("get review", json); //pendiente porque no me está trayendo nada
+    let reviews = []
+    const res = (await axios.get("http://localhost:3001/review")).data.map(el => {
+      return el.comments.map(el => el);
+    });
+    reviews.push(res);
+    // console.log("get review", reviews.flat(Infinity));
     return dispatch({
       type: GET_REVIEW,
-      payload: json.data,
+      payload: reviews.flat(Infinity),
     }); //segunda función que recibe dispatch y despacha una acción / el tipo y el payload: devuelve el backend
   };
 }
-// export function postReview() {
-//   return async function (dispatch) {
-//     const review = await axios.post("http://localhost:3001/review");
-//     // console.log("post review", review); //pendiente porque no me está trayendo nada
-//     return dispatch({
-//       type: POST_REVIEW,
-//       payload: review,
-//     }); //segunda función que recibe dispatch y despacha una acción / el tipo y el payload: devuelve el backend
-//   };
-// }
+
 export function postReview(review) {
-  // console.log(payload);
+  // console.log(review);
   return async function () {
-    console.log(review)
-    const response = await axios.post("http://localhost:3001/review", review );
-    console.log("response", response.data);
-    return response;
+    try {
+      const response = await axios.post("http://localhost:3001/review", review);
+      // console.log("response", response.data);
+      return response;
+    } catch (error) {
+      console.log(`Error en Action postReview por: (${error})`);
+    }
   };
 }
 
