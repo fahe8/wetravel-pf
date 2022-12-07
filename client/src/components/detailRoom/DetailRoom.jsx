@@ -61,7 +61,6 @@ const DetailRoom = ({
     }
   };
 
-  const reserve = () => {};
   return (
     <div className="h-[100%] my-2 px-1">
       <div className="h-full  flex justify-between items-center  ">
@@ -78,10 +77,9 @@ const DetailRoom = ({
         >
           <p>Reservar</p>
         </button>
-        {/* <ScriptMercadoPago item></ScriptMercadoPago> */}
         <div
           className={` w-screen h-screen  fixed  left-0 top-0 z-30   ease-in-out duration-300  ${
-            modalFilter ? " bg-[color:var(--bg-opacity-modal)] z-20 " : "-z-10"
+            modalFilter ? " bg-[color:var(--bg-opacity-modal)] z-20 backdrop-blur-[2px] " : "-z-10"
           }`}
         >
           <div

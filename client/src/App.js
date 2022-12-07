@@ -1,4 +1,5 @@
 import "./App.css";
+import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./components/home/Home";
 import LandingPage from "./components/landingPage/LandingPage";
@@ -11,9 +12,26 @@ import Huesped from "./components/ProfileUser/Huesped";
 import Cart from "./components/cart/Cart";
 import Favourites from "./components/favourites/Favourites";
 import { CurrentLogin } from "./components/ProfileUser/CurrentLogin";
-
+import { useDispatch } from "react-redux";
+import { getHotels, getFavorites, getReservesByCart, getUserById, getServices } from "./redux/action/index"
+import { useAuth0 } from "@auth0/auth0-react";
+import { useLocalStorage } from "./localStorage/useLocalStorage";
 
 function App() {
+
+
+  // const {isAuthenticated} = useAuth0()
+  useLocalStorage('userEmail', )
+
+  let dispatch =  useDispatch()
+// Tengo que organizar todos los dispatch para tener un codifo mas limpio 
+
+  React.useEffect(() => {
+    dispatch(getHotels())
+    dispatch(getServices())
+  }, []);
+
+
   return (
     <BrowserRouter>
       <div className="App min-h-screen h-screen">

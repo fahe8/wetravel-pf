@@ -115,7 +115,7 @@ const Detail = (props) => {
               </div>
             </div>
           )}
-          <Review />
+          <Review name={selectedHotel.name}/>
         </div>
       </div>
       <div className="text-2xl m-4 font-medium">

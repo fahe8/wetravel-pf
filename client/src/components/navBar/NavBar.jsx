@@ -5,7 +5,7 @@ import Search from "../search/Search";
 import logo from "../../assets/img/copia.png";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUser } from "../../redux/action";
+import { getUser, getUserById } from "../../redux/action";
 import { useLocalStorage } from './useLocalStorage';
 
 import './NavBar.css'

@@ -8,7 +8,8 @@ import { Button } from "react-bootstrap";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { postReview } from "../../redux/action/index";
 
-function Review() {
+function Review({name}) {
+  console.log(name);
   // const client = useSelector((state) => state.users);
   // eslint-disable-next-line no-unused-vars
   const [stars, setStars] = useState([1, 2, 3, 4, 5]);

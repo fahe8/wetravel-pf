@@ -14,6 +14,7 @@ import Stars from "../stars/Stars";
 import { Container } from "reactstrap";
 import Dropzone from "react-dropzone";
 import axios from "axios";
+import { useAuth0 } from "@auth0/auth0-react";
 
 //------> Funciones de checkeo <-----------
 
@@ -55,8 +56,8 @@ const checkNegatives = (arr) => {
 const validate = (input) => {
   const regexUrl =
     /(http[s]*:\/\/)([a-z\-_0-9\/.]+)\.([a-z.]{2,3})\/([a-z0-9\-_\/._~:?#\[\]@!$&'()*+,;=%]*)([a-z0-9]+\.)(jpg|jpeg|png)/i;
-  const regexName = /^[a-zA-Z ]+$/;
-  const { name, stars, price, photos, description } = input;
+  const regexName = /^[a-zA-Z0-9]+$/;
+  const { name, stars, price, photos, description, room } = input;
 
   const numbers = [stars, price];
   const errors = {};
@@ -67,11 +68,27 @@ const validate = (input) => {
   }
 
   //check price
-  if (!price) errors.price = "Enter a valid price";
+  if (!price) errors.price = "Ingresa un precio valido";
 
   //check description
-  if (!description) errors.description = "Description is required !";
+  if (!description) errors.description = "La descripcion es requerida!";
+  if (!room.description) {
+    errors.room = {
+      ...errors.room,
+      description: "La descripcion es requerida!",
+    };
+  } else if (room.description.length > 100) {
+    errors.room = {
+      ...errors.room,
+      description: "La descripcion es demasido larga",
+    };
+  }
 
+  if (!room.size) {
+    errors.room = { ...errors.room, size: "El tamaño es requerido" };
+  } else if (room.size.length > 20) {
+    errors.room = { ...errors.room, size: "El tamaño es demasiado largo" };
+  }
   //check name
   if (!regexName.test(name)) {
     errors.name = "Nombre incorrecto";
@@ -79,6 +96,20 @@ const validate = (input) => {
     errors.name = "El nombre debe de tener mas de 4 carácteres";
   } else if (name[0] !== name[0].toUpperCase()) {
     errors.name = "El nombre debe iniciar con una letra en mayúscula";
+  }
+
+  if (!regexName.test(room?.name)) {
+    errors.room = { ...errors.room, name: "Nombre incorrecto" };
+  } else if (room.name?.length < 4) {
+    errors.room = {
+      ...errors.room,
+      name: "El nombre debe de tener mas de 4 carácteres",
+    };
+  } else if (room?.name[0] !== room.name[0].toUpperCase()) {
+    errors.room = {
+      ...errors.room,
+      name: "El nombre debe iniciar con una letra en mayúscula",
+    };
   }
 
   //check negatives
@@ -110,6 +141,8 @@ const validate = (input) => {
 const Create = () => {
   const dispatch = useDispatch();
   //const navigate = useNavigate();
+  const { user } = useAuth0();
+
   const history = useHistory();
   const { service, hotelFilter } = useSelector((state) => state);
 
@@ -125,7 +158,14 @@ const Create = () => {
     city: "",
     review: "",
     comments: [],
-    user: "",
+    user: user?.name,
+    room: {
+      name: "",
+      properties: ["ghgh"],
+      size: "",
+      description: "",
+      photos: [],
+    },
   };
 
   const [errors, setErrors] = useState({
@@ -133,9 +173,7 @@ const Create = () => {
   });
 
   const [input, setInput] = useState(initialState);
-
   const [loading, setLoading] = useState("");
-  // console.log("input.photos:", input.photos);
 
   const submitImage = (files) => {
     const upLoader = files.map((file) => {
@@ -180,25 +218,45 @@ const Create = () => {
     }
   };
 
-  useEffect(() => {
-    dispatch(getServices());
-    dispatch(getHotels());
-  }, [dispatch]);
-
   const handleChange = (e) => {
-    e.target.name === "photos"
-      ? setInput({
-          ...input,
-          [e.target.name]: [e.target.value],
-        })
-      : setInput({
-          ...input,
-          [e.target.name]: e.target.value,
-        });
+    e.target.name === "photos" &&
+      setInput({
+        ...input,
+        [e.target.name]: [e.target.value],
+      });
+
+    setInput({
+      ...input,
+      [e.target.name]: e.target.value,
+    });
+
     setErrors(
       validate({
         ...input,
         [e.target.name]: e.target.value,
+      })
+    );
+  };
+
+  const handleChangeRoom = (e, index) => {
+    if (e.target.name === "properties") {
+      let list = [...input.room.properties];
+      list[index] = e.target.value;
+      setInput({
+        ...input,
+        room: { ...input.room, [e.target.name]: list },
+      });
+    } else {
+      setInput({
+        ...input,
+        room: { ...input.room, [e.target.name]: e.target.value },
+      });
+    }
+
+    setErrors(
+      validate({
+        ...input,
+        room: { ...input.room, [e.target.name]: e.target.value },
       })
     );
   };
@@ -240,80 +298,26 @@ const Create = () => {
       alert("Felicidades el hotel ha sido creado con éxito");
       setInput(initialState);
       history.push("/home");
-      history.go(0)
+      history.go(0);
     }
   };
 
-  // function validate(input){
-  //   let errors = {};
-  //   if(!input.name) errors.name = "Name is required !";
-  //   if(!input.description) errors.description = "Description is required !";
-  //   if(input.stars > 5 || input.stars < 0) errors.stars = "Stars could be just 1 to 5";
-  //   if(!input.price) errors.price = "Enter a valid price";
+  const handleAddServicesRoom = () => {
+    setInput({
+      ...input,
+      room: { ...input.room, properties: [...input.room.properties, ""] },
+    });
+  };
+  const handleRemoveServicesRoom = (index) => {
+    const list = [...input?.room?.properties];
+    list.splice(index, 1);
+    setInput({
+      ...input,
+      room: { ...input.room, properties: list },
+    });
+  };
 
-  //   return errors;
-  // }
-
-  // const Create = () => {
-  //   const dispatch = useDispatch();
-  //   const history = useHistory();
-
-  //   const [button, setButton] = useState(true);
-  //   const [errors, setErrors] = useState({});
-
-  //   const [ input, setInput ] = useState({
-  //     name: "",
-  //     description: "",
-  //     stars: "",
-  //     price: "",
-  //     services: [],
-  //     photos: [],
-  //     continent: "",
-  //     location: "",
-  //     city: "",
-  //     review: "",
-  //     comments: [],
-  //     user: ""
-  //   });
-
-  //   useEffect(() => {
-  //     if(input.name.length>0 && input.description.length>0 && input.stars && input.price && input.services.length && input.photos.length && input.continent.length>0 && input.location.length>0 && input.city.length>0 && input.user) setButton(false);
-  //     else setButton(true);
-  //   }, [input, setButton]);
-
-  //   const handleChange = (e) => {
-  //     setInput({
-  //       ...input,
-  //       [e.target.name]: e.target.value
-  //     });
-  //     setErrors(validate({
-  //       ...input,
-  //       [e.target.name]: e.target.value
-  //     }));
-  //   }
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   dispatch(postHotel(input));
-  //   alert("New Hotel created succesfully!");
-  //   setInput({
-  //     name: "",
-  //     description: "",
-  //     stars: "",
-  //     price: "",
-  //     services: [],
-  //     photos: [],
-  //     continent: "",
-  //     location: "",
-  //     city: "",
-  //     review: "",
-  //     comments: [],
-  //     user: ""
-  //   });
-  //   history.push("/home");
-  // }
-  console.log("error:", errors, "input", input);
-
+  console.log(input);
   return (
     <div>
       <div className="flex justify-between items-center pl-2.5 m-3.5">
@@ -334,9 +338,10 @@ const Create = () => {
 
             <form
               onSubmit={(e) => handleSubmit(e)}
-              className="p-6 grid grid-cols-3 mx-8 bg-slate-50 shadow-xl rounded-2xl"
+              className="p-6 grid grid-cols-3 mx-8 bg-slate-50 shadow-xl rounded-2xl text-start"
             >
               <div className="col-span-3 ">
+                <p>{"Nombre del Hotel:"}</p>
                 <input
                   className="w-full bg-transparent border-b border-gray"
                   id="name input"
@@ -350,19 +355,7 @@ const Create = () => {
                 {errors.name && <p>{errors.name}</p>}
               </div>
 
-              <div className="p-2.5 ">
-                <input
-                  className="bg-transparent border-b border-gray w-11/12"
-                  type="text"
-                  value={input.user}
-                  name="user"
-                  autoComplete="off"
-                  placeholder="Enter user.."
-                  onChange={(e) => handleChange(e)}
-                />
-              </div>
-
-              <div className="p-2.5 ">
+              {/* <div className="p-2.5 ">
                 <input
                   className="bg-transparent border-b border-gray w-11/12"
                   id="starsInput"
@@ -378,9 +371,12 @@ const Create = () => {
                 {errors.negatives && <p>{errors.negatives}</p>}
                 {errors.nan && <p>{errors.nan} </p>}
                 {errors.zero && <p>{errors.zero} </p>}
-              </div>
+              </div> */}
 
               <div className="p-2.5">
+                <p>
+                  {"Precio noche:"}
+                </p>
                 <input
                   className="bg-transparent border-b border-gray w-11/12"
                   type="number"
@@ -398,6 +394,7 @@ const Create = () => {
               </div>
 
               <div className="p-2.5">
+                <p>{"Continente:"}</p>
                 <input
                   className="bg-transparent border-b border-gray w-11/12"
                   type="text"
@@ -410,6 +407,8 @@ const Create = () => {
               </div>
 
               <div className="p-2.5">
+              <p>{"Pais:"}</p>
+
                 <input
                   className="bg-transparent border-b border-gray w-11/12"
                   type="text"
@@ -422,6 +421,8 @@ const Create = () => {
               </div>
 
               <div className="p-2.5 ">
+              <p>{"Ciudad:"}</p>
+
                 <input
                   className="bg-transparent border-b border-gray w-11/12"
                   type="text"
@@ -434,6 +435,8 @@ const Create = () => {
               </div>
 
               <div className=" col-span-3 p-2.5">
+              <p>{"Descripcion del Hotel:"}</p>
+
                 <input
                   className="bg-transparent border-b border-gray w-full h-auto"
                   type="text"
@@ -447,6 +450,8 @@ const Create = () => {
               </div>
 
               <div className="col-span-3 p-2.5">
+              <p>{"Serivicios del Hotel:"}</p>
+
                 <select
                   className="bg-transparent border-b border-gray w-full"
                   id="tempsInput"
@@ -482,6 +487,8 @@ const Create = () => {
               </div> */}
 
               <div className="col-span-3 p-2.5">
+              <p>{"Imagenes del Hotel:"}</p>
+
                 <Container>
                   <Dropzone
                     onDrop={submitImage}
@@ -522,6 +529,93 @@ const Create = () => {
                   placeholder='Enter comments..'
                   onChange={e => handleChange(e)} />
               </div> */}
+              <div>
+                <p>{"Agrega la habitacion"}</p>
+              </div>
+              <div className="col-span-3 p-2.5">
+              <p>{"Nombre de la habitacion:"}</p>
+
+                <input
+                  className="bg-transparent border-b border-gray w-11/12"
+                  id="roomNameInput"
+                  type="text"
+                  value={input.room.name}
+                  name="name"
+                  autoComplete="off"
+                  placeholder="Habitacion doble con camas grandes..."
+                  onChange={(e) => handleChangeRoom(e)}
+                />
+                {errors?.room?.name && <p>{errors?.room?.name}</p>}
+              </div>
+
+              <div className="col-span-3 p-2.5">
+              <p>{"Descripcion de la habitación:"}</p>
+
+                <input
+                  className="bg-transparent border-b border-gray w-11/12"
+                  id="roomDescriptionInput"
+                  type="text"
+                  value={input.room.description}
+                  name="description"
+                  autoComplete="off"
+                  placeholder="Descripcion"
+                  onChange={(e) => handleChangeRoom(e)}
+                />
+                {errors?.room?.description && (
+                  <p>{errors?.room?.description}</p>
+                )}
+              </div>
+
+              <div className="col-span-3 p-2.5">
+              <p>{"Tamaño de la habitación:"}</p>
+
+                <input
+                  className="bg-transparent border-b border-gray w-11/12"
+                  id="roomSizeInput"
+                  type="text"
+                  value={input.room.size}
+                  name="size"
+                  autoComplete="off"
+                  placeholder="Tamaño habitacion Ej: 18 m²"
+                  onChange={(e) => handleChangeRoom(e)}
+                />
+                {errors?.room?.size && <p>{errors?.room?.size}</p>}
+              </div>
+              <div className="col-span-3 p-2.5">
+                <p>{"Ingresa las caracteristicas de la habitacion:"}</p>
+
+                {input.room.properties.map((propertie, idx) => (
+                  <div key={idx}>
+                    <input
+                      className="bg-transparent border-b border-gray w-11/12"
+                      id="Input"
+                      type="text"
+                      value={propertie}
+                      name="properties"
+                      autoComplete="off"
+                      placeholder="Caracteristicas de la habitacion"
+                      onChange={(e) => handleChangeRoom(e, idx)}
+                    />
+                    {input.room.properties.length > 1 && (
+                      <div
+                        onClick={() => handleRemoveServicesRoom(idx)}
+                        className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded cursor-pointer w-[40px]"
+                      >
+                        REMOVER
+                      </div>
+                    )}
+                    {input.room.properties.length - 1 === idx &&
+                      input.room.properties.length < 5 && (
+                        <div
+                          onClick={handleAddServicesRoom}
+                          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer"
+                        >
+                          Agregar otra
+                        </div>
+                      )}
+                  </div>
+                ))}
+              </div>
 
               {Object.keys(errors).length ? (
                 <div className="text-lg font-medium text-gray-900  bg-[color:var(--primary-bg-opacity-color)] rounded-full border border-black-800 p-2 ">
@@ -552,6 +646,7 @@ const Create = () => {
             </form>
           </div>
         </div>
+
         <div>
           <div>
             <div className="py-4 font-medium text-3xl mt-2">

@@ -118,6 +118,7 @@ const Reservation = ({ selectedHotel, price }) => {
             <h2>Rooms:</h2>
             <div>
               <DetailRoom
+              room={selectedHotel?.room}
                 id={selectedHotel?.id}
                 name={selectedHotel?.room?.name}
                 description={selectedHotel?.room?.description}
