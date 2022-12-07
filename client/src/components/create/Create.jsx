@@ -115,7 +115,7 @@ const Create = () => {
   const history = useHistory();
   const { service, hotelFilter } = useSelector((state) => state);
   const message = () => {
-    toast('🦄 Felicitaciones publicaste tu alojamiento!', {
+    toast('🏠 Felicitaciones publicaste tu alojamiento!', {
       position: "top-center",
       autoClose: 3000,
       hideProgressBar: false,
