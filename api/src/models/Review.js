@@ -11,5 +11,13 @@ module.exports = (sequelize) => {
     comments: {
       type: DataTypes.ARRAY(DataTypes.STRING),
     },
+    nameUser: {
+      type: DataTypes.STRING,
+    },
+    nameHotel: {
+      type: DataTypes.STRING,
+    },
+  }, {
+    timestamps: false
   });
 };

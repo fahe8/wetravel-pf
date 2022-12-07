@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getDetail } from "../../redux/action/index";
+import { getDetail, getReview } from "../../redux/action/index";
 import { Loading } from "../Loading/Loading";
 import NavBar from "../navBar/NavBar";
 import Stars from "../stars/Stars";
@@ -10,7 +10,6 @@ import Carousel from "react-bootstrap/Carousel";
 import Reservation from "../reservation/Reservation";
 import { Footer } from "../footer/Footer";
 import Review from "../review/Review";
-
 
 const Detail = (props) => {
   const {
@@ -21,7 +20,7 @@ const Detail = (props) => {
   const dispatch = useDispatch();
   const selectedHotel = useSelector((state) => state.detail);
   const loading = useSelector((state) => state.loading);
-  //const history = useHistory()
+  const review = useSelector((state) => state.review);
 
   // const handleDelete = () => {
   //   dispatch(deleteHotel(id));
@@ -31,6 +30,7 @@ const Detail = (props) => {
 
   useEffect(() => {
     dispatch(getDetail(id));
+    dispatch(getReview());
     return () => {
       dispatch(getDetail(""));
     };
@@ -45,7 +45,6 @@ const Detail = (props) => {
             <Loading />
           ) : (
             <div>
-              
               <div className="home-container">
                 <div className="home-container row ">
                   <Carousel className="carousel mt-4 w-[800px] h-[500px] m-auto ">
@@ -115,17 +114,31 @@ const Detail = (props) => {
               </div>
             </div>
           )}
-          <Review />
+          <div>
+            {/* {console.log("ALL REVIEWS:", review)} */}
+            <Review />
+            <br />
+            <div>
+              {review?.map((el) => {
+                return (
+                  <div>
+                    <p>{el}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
       <div className="text-2xl m-4 font-medium">
         <Link to={"/home"}>
           <button className="rounded-xl w-80 bg-slate-200 hover:bg-slate-300 p-2">
-            Listado de Hoteles</button>
-        </Link>      
+            Listado de Hoteles
+          </button>
+        </Link>
       </div>
       <div>
-        <Footer/>
+        <Footer />
       </div>
     </div>
   );

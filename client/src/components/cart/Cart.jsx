@@ -47,6 +47,15 @@ let history = useHistory()
     <div className="font-bold text-5xl pt-8">
           <h1> Hola Viajero, Bienvenido al Carrito de compras</h1>
         </div>
+        <div className="bg-slate-100 p-6 m-10 rounded-3xl shadow-md" >
+          <div className="font-medium text-l grid grid-cols-6 font-medium p-4" >
+            <div><h2>check in</h2></div>
+            <div><h2>check out</h2></div>
+            <div><h2>nombre del hotel</h2></div>
+            <div><h2>precio</h2></div>
+            <div><h2>cantidad de noches</h2></div>
+          </div>
+        </div>
         <div className="bg-slate-100 p-6 m-10 rounded-3xl shadow-md" >  
         {productos?.map((producto, i) => {
             return(

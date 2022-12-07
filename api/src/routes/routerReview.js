@@ -7,11 +7,12 @@ routerReview.get("/", async (req, res) => {
   try {
     const dataDb = await Review.findAll({
       includes: {
-        model: User,
-        as: "user",
+        model: User, Hotel,
+        // as: "user", "hotel",
         attributes: ["name"],
+        through: { attributes: [], },
       },
-      attributes: ["id", "stars", "comments"],
+      attributes: ["stars", "comments", "nameUser", "nameHotel"],
     });
     dataDb.length ? res.send(dataDb) : res.status(400).send("no se encuentra");
   } catch (error) {
@@ -20,18 +21,27 @@ routerReview.get("/", async (req, res) => {
 });
 
 routerReview.post("/", async (req, res) => {
-  let { stars, comments, user } = req.body;
+  let { stars, comments, nameUser, nameHotel } = req.body;
+  // console.log('NAME USER REV:', nameUser)
+  // console.log('NAME HOTEL REV:', nameHotel)
   try {
     let newReview = await Review.create({
       stars,
       comments,
+      nameUser,
+      nameHotel,
     });
 
     let userDb = await User.findAll({
-      where: { name: user },
+      where: { name: nameUser },
+    });
+
+    let hotelDb = await Hotel.findAll({
+      where: { name: nameHotel },
     });
 
     newReview.addUser(userDb);
+    newReview.addHotel(hotelDb);
     res.status(200).send(newReview);
   } catch (error) {
     res.status(400).send(error.message);
