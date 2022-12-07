@@ -7,17 +7,18 @@ import Form from "react-bootstrap/Form";
 import { Button } from "react-bootstrap";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { postReview } from "../../redux/action/index";
+import { useAuth0 } from "@auth0/auth0-react";
 
-function Review() {
-  // const client = useSelector((state) => state.users);
-  // eslint-disable-next-line no-unused-vars
+function Review({ name }) {
   const [stars, setStars] = useState([1, 2, 3, 4, 5]);
   const [current, setCurrent] = useState(undefined);
-  //  const [description, setDescription] = useState("");
+  const { user } = useAuth0();
+  console.log('USER:', user)
   const [input, setInput] = useState({
-    user: "",
+    nameUser: user?.name,
     stars: 0,
-    comments: "",
+    comments: [],
+    nameHotel: name,
   });
   const dispatch = useDispatch();
 
@@ -42,7 +43,9 @@ function Review() {
     // setInput({ ...input, stars: index });
   }
   function handleChange(e) {
-    setInput({ ...input, [e.target.name]: e.target.value });
+    e.target.name === 'comments' ?
+    setInput({ ...input, nameUser: user?.name, nameHotel: name, [e.target.name]: [e.target.value] }):
+    setInput({ ...input, nameUser: user?.name, nameHotel: name, [e.target.name]: e.target.value })
   }
   function handleSubmit(e) {
     e.preventDefault();
@@ -50,7 +53,7 @@ function Review() {
       return alert("Es necesario poner una calificación");
     } else {
       dispatch(postReview(input));
-      setInput({ user: "", stars: 0, comments: "" });
+      setInput({ nameUser: user?.name, stars: 0, comments: [], nameHotel: name, });
 
       // setInput({ user: client.name, stars: 0, comments: "" });
       setCurrent(0);
@@ -58,13 +61,14 @@ function Review() {
       alert("gracias por su opiñion");
     }
   }
+  console.log('INPUT:', input)
   return (
     <form onSubmit={(e) => handleSubmit(e)}>
       <div className="container ">
         <div className="container d-flex justify-content-center  ">
           <h1>{handleClick()}</h1>
           {Array(5)
-            .fill()
+            .fill()//* Llena la info y permite vizualizar las STARS
             .map((_, index) =>
               input.stars >= index + 1 || setCurrent >= index + 1 ? (
                 <AiFillStar
@@ -85,16 +89,6 @@ function Review() {
                 />
               )
             )}
-          {/* {stars.map((r, index) => (
-            <IoIosStar
-              className={r <= current && current}
-              key={index}
-              name="stars" //No acepta name
-              style={{ color: "orange" }}
-              value={input.stars}
-              onClick={() => handleClick(r)}
-            ></IoIosStar>
-          ))} */}
         </div>
 
         <br />
