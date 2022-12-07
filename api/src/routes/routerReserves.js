@@ -2,8 +2,6 @@ const { Hotel, User, Reserves } = require("../db");
 const { Router } = require("express");
 const routerReserves = Router();
 
-
-
 routerReserves.get("/", async (req,res)=> {
     try{
         const dataDb= await Reserves.findAll({

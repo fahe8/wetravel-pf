@@ -15,6 +15,8 @@ import { Container } from "reactstrap";
 import Dropzone from "react-dropzone";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 //------> Funciones de checkeo <-----------
 
@@ -145,7 +147,22 @@ const Create = () => {
 
   const history = useHistory();
   const { service, hotelFilter } = useSelector((state) => state);
-
+  const message = () => {
+    toast('🏠 Felicitaciones publicaste tu alojamiento!', {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      });
+      setTimeout(() => {
+        history.push("/");
+      }, "4000")
+  
+  }
   const initialState = {
     name: "",
     description: "",
@@ -271,7 +288,7 @@ const Create = () => {
   const handleSelect = (e) => {
     const { value } = e.target;
     if (input.services.includes(value))
-      return alert("Ya ha seleccionado esos servicios");
+      // return alert("Ya ha seleccionado esos servicios");
     if (input.services.length < 15) {
       setInput({
         ...input,
@@ -320,6 +337,7 @@ const Create = () => {
   console.log(input);
   return (
     <div>
+      <ToastContainer />
       <div className="flex justify-between items-center pl-2.5 m-3.5">
         <div className="text-lg font-medium text-gray-900  bg-[color:var(--primary-bg-opacity-color)] rounded-full border border-black-800 p-2">
           <Link to="/home">
@@ -619,7 +637,7 @@ const Create = () => {
 
               {Object.keys(errors).length ? (
                 <div className="text-lg font-medium text-gray-900  bg-[color:var(--primary-bg-opacity-color)] rounded-full border border-black-800 p-2 ">
-                  <button className="cursor-pointer" type="submit" form="form">
+                  <button className="cursor-pointer" onClick={message} type="submit" form="form">
                     Agregara
                   </button>
                 </div>

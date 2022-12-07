@@ -104,7 +104,7 @@ function rootReducer(state = initialState, action) {
     case GET_REVIEW:
       return {
         ...state,
-        review: action.payload,
+        review: [...action.payload]
       };
     case POST_REVIEW:
       return {

@@ -36,7 +36,7 @@ let capsEntries = entries.map((entry) => [
 
 sequelize.models = Object.fromEntries(capsEntries);
 
-const { Hotel, User, Reserves, Review, Order } = sequelize.models;
+const { Hotel, User, Reserves, Review, Order, Favorites, Image } = sequelize.models;
 
 Hotel.belongsToMany(User, { through: "user-hotels" });
 User.belongsToMany(Hotel, { through: "user-hotels" });
@@ -44,12 +44,21 @@ User.belongsToMany(Hotel, { through: "user-hotels" });
 User.hasMany(Reserves);
 Reserves.belongsTo(User);
 
-Review.belongsToMany(User, { through: "user-review" });
-User.belongsToMany(Review, { through: "user-review" });
+Review.belongsTo(User);
+User.hasMany(Review);
+
+Review.belongsTo(Hotel);
+Hotel.hasMany(Review);
 
 Order.hasMany(Reserves);
 User.hasMany(Order);
 Order.belongsTo(User);
+
+User.hasMany(Favorites);
+Favorites.belongsTo(User);
+
+User.hasMany(Image);
+Image.belongsTo(User);
 
 module.exports = {
   ...sequelize.models,

@@ -1,46 +1,31 @@
 import React, { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch } from "react-redux";
-import { getUserById, postUser, updateUser } from "../../redux/action";
+import { postUser } from "../../redux/action";
 import { useHistory } from "react-router-dom";
 import { useLocalStorage } from "../../localStorage/useLocalStorage";
 import { Footer } from "../footer/Footer";
 import NavBar from "../navBar/NavBar";
 
-function Login(props) {
-  let { id } = props.match.params;
+function Login() {
   const dispatch = useDispatch();
   const history = useHistory();
   const { loginWithRedirect, logout, user } = useAuth0();
-  console.log("USER LOGIN:", user);
-  
-  // const initialState = {
-  //   name: "",
-  //   email: "",
-  //   email_verified: false,
-  //   status: "guest" ? "guest" : "host",
-  //   photos: [],
-  // };
-
-  // const [input, setInput] = useState(initialState);
-
-  // const [userCondition, setUserCondition] = useLocalStorage('user', 'guest');
-  const [userCondition, setUserCondition] = useLocalStorage('user', 'host');
-  console.log('ESTADO DEL USERS:',userCondition);
+  // console.log("USER LOGIN:", user);
+console.log(useAuth0())
+  const [userCondition, setUserCondition] = useLocalStorage('user', 'guest');
+  // console.log('ESTADO DEL USERS:',userCondition);
 
   function handleGuest(e) {
     e.preventDefault();
     setUserCondition("guest");
     history.push("/huesped")
-
   }
   function handleHost(e) {
     e.preventDefault();
     setUserCondition("host");
     history.push("/anfitrion")
-
   }
-
 
   useEffect(() => {
     if (user) {
@@ -52,13 +37,8 @@ function Login(props) {
           status: userCondition,
         })
       );
-
     }
-  }, [userCondition, dispatch]);
-
-  useEffect(() => {
-    dispatch(updateUser(id));
-  }, [dispatch, id]);
+  }, [userCondition, dispatch, user]);
 
   ///////////////////////////////////////////
   if (!user) {
@@ -108,9 +88,6 @@ function Login(props) {
 
       </div>
     );
-
-
-
   }
   ///////////////////////////////////////////////////////////
   else if (user && userCondition === 'guest') {
@@ -120,7 +97,6 @@ function Login(props) {
         <div>
           <NavBar/>
         </div>
-
 
       <div>
           <div className="m-8 text-3xl font-semibold ">
@@ -166,14 +142,11 @@ function Login(props) {
   }
   //////////////////////////////////////////////////////////////////////
   else if (user && userCondition === 'host') {
-    return (
-      
-
+    return ( 
       <div>
         <div>
           <NavBar/>
         </div>
-
 
       <div>
           <div className="m-8 text-3xl font-semibold ">
@@ -217,8 +190,6 @@ function Login(props) {
         </div>
         </div>
     );
-    
-      
   }
 }
 
