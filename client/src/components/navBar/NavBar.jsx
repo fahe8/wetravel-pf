@@ -60,19 +60,21 @@ const NavBar = () => {
         <Link to="/about">
           <p>About Us</p>
         </Link>
+        <Link to="/favourites">
+              <p>Favorito</p>
+            </Link>
         <div className=" h-10 flex justify-between items-center gap-5  hover:bg-cyan-800 cursor-pointer p-7 rounded-full border-2 border-black">
           {!user && (
             <div>
               <Link to="/login">
                 Iniciar sesion
               </Link>
+              
             </div>
           )}
           {(user && userCondition === 'guest') && (
             <div className=" w-65 flex justify-between items-center text-xl gap-5">
-            <Link to="/favourites">
-              <p>Favorito</p>
-            </Link>
+
             {<button onClick={handleGuest}><BsCart4/><p>{reserveByCart.length}</p></button> }
             <Link to="/login">
               <div className=" w-65 flex justify-between items-center text-xl gap-5">

@@ -12,7 +12,7 @@ function Login() {
   const history = useHistory();
   const { loginWithRedirect, logout, user } = useAuth0();
   // console.log("USER LOGIN:", user);
-
+console.log(useAuth0())
   const [userCondition, setUserCondition] = useLocalStorage('user', 'guest');
   // console.log('ESTADO DEL USERS:',userCondition);
 
