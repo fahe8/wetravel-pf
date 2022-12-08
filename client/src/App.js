@@ -16,6 +16,7 @@ import { useDispatch } from "react-redux";
 import { getHotels, getFavorites, getReservesByCart, getUserById, getServices } from "./redux/action/index"
 import { useAuth0 } from "@auth0/auth0-react";
 import { useLocalStorage } from "./localStorage/useLocalStorage";
+import EditCreate from "./components/create/EditCreate";
 
 function App() {
 
@@ -41,6 +42,7 @@ function App() {
           <Route exact path="/login" component={Login} />
           <Route path="/home/:id" component={Detail}></Route>
           <Route exact path="/createhotel" component={Create}></Route>
+          <Route exact path="/edithotel/:id" component={EditCreate}></Route>
           <Route exact path="/about" component={About} />
           <Route exact path="/anfitrion" component={Hospedador} />
           <Route exact path="/huesped" component={Huesped} />
