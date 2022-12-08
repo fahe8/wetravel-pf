@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { BiImageAdd } from "react-icons/bi";
+import { FaCheck } from "react-icons/fa";
+import Carousel from "react-bootstrap/Carousel";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-//import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import validate from "./validations";
 import {
   postHotel,
   getHotels,
@@ -14,108 +17,19 @@ import Stars from "../stars/Stars";
 import { Container } from "reactstrap";
 import Dropzone from "react-dropzone";
 import axios from "axios";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
-//------> Funciones de checkeo <-----------
-
-const checkUndefined = (input) => {
-  if (!input.services.length) return true;
-  for (let el in input) {
-    if (input[el] === undefined) {
-      return true;
-    }
-    return false;
-  }
-};
-
-const checkZero = (arr) => {
-  return arr.find((el) => Number(el) === 0); //nos comprueba si el número es 0
-};
-
-// const checkLimit = (arr, limit) => {
-//   return arr.filter((el) = el > limit).length; // nos comprueba si el valor es mayor que el límite
-// };
-
-const checkNaN = (arr) => {
-  return arr.filter((el) => isNaN(Number(el))).length; // comprueba si el valor es NaN
-};
-
-const checkMinMax = (min, max) => {
-  const nMax = Number(max);
-  const nMin = Number(min);
-  if (nMin > nMax || nMin === nMax) return false; // comprueba si el valor es menor o mayor
-  return true;
-};
-
-const checkNegatives = (arr) => {
-  return arr.filter((el) => Number(el) < 0).length; // comprueba si el valor es negativo
-};
-
-//--------> Función de validación <--------
-
-const validate = (input) => {
-  const regexUrl =
-    /(http[s]*:\/\/)([a-z\-_0-9\/.]+)\.([a-z.]{2,3})\/([a-z0-9\-_\/._~:?#\[\]@!$&'()*+,;=%]*)([a-z0-9]+\.)(jpg|jpeg|png)/i;
-  const regexName = /^[a-zA-Z ]+$/;
-  const { name, stars, price, photos, description } = input;
-
-  const numbers = [stars, price];
-  const errors = {};
-
-  //check undefined
-  if (checkUndefined(input)) {
-    errors.allFields = "Todos los campos son requeridos";
-  }
-
-  //check price
-  if (!price) errors.price = "Enter a valid price";
-
-  //check description
-  if (!description) errors.description = "Description is required !";
-
-  //check name
-  if (!regexName.test(name)) {
-    errors.name = "Nombre incorrecto";
-  } else if (name.length < 4) {
-    errors.name = "El nombre debe de tener mas de 4 carácteres";
-  } else if (name[0] !== name[0].toUpperCase()) {
-    errors.name = "El nombre debe iniciar con una letra en mayúscula";
-  }
-
-  //check negatives
-  if (checkNegatives(numbers)) {
-    errors.negatives = "No se permitén agregar números negativos";
-  }
-
-  // check number type
-  else if (checkNaN(numbers)) {
-    errors.nan = "El valor ingresado debe ser un número";
-  }
-
-  //check number 0
-  if (checkZero(numbers)) {
-    errors.zero = "El valor igresado debe ser mayor a 0";
-  }
-
-  if (stars > 5) {
-    errors.max = "No puede agregar más de 5";
-  }
-
-  // if (input.photos && !regexUrl.test(photos)) {
-  //   errors.url = "Inserte unicamente url que terminen en: jpeg, jpg o png";
-  // } //* Esta campo ya no es un input y no se puede validar
-
-  return errors;
-};
+import { useAuth0 } from "@auth0/auth0-react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Create = () => {
   const dispatch = useDispatch();
   //const navigate = useNavigate();
+  const { user } = useAuth0();
+
   const history = useHistory();
-  const { service, hotelFilter } = useSelector((state) => state);
+  const { service } = useSelector((state) => state);
   const message = () => {
-    toast('🏠 Felicitaciones publicaste tu alojamiento!', {
+    toast("🏠 Felicitaciones publicaste tu alojamiento!", {
       position: "top-center",
       autoClose: 3000,
       hideProgressBar: false,
@@ -124,12 +38,22 @@ const Create = () => {
       draggable: true,
       progress: undefined,
       theme: "light",
-      });
-      setTimeout(() => {
-        history.push("/");
-      }, "4000")
-  
-  }
+    });
+
+  };
+
+  const messageError = () => {
+    toast("Hay campos con errores o vacios", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
   const initialState = {
     name: "",
     description: "",
@@ -142,7 +66,14 @@ const Create = () => {
     city: "",
     review: "",
     comments: [],
-    user: "",
+    user: user?.name,
+    room: {
+      name: "",
+      properties: [""],
+      size: "",
+      description: "",
+      photos: [],
+    },
   };
 
   const [errors, setErrors] = useState({
@@ -150,11 +81,9 @@ const Create = () => {
   });
 
   const [input, setInput] = useState(initialState);
-
   const [loading, setLoading] = useState("");
-  // console.log("input.photos:", input.photos);
 
-  const submitImage = (files) => {
+  const submitImage = (files, name) => {
     const upLoader = files.map((file) => {
       const data = new FormData();
       data.append("file", file);
@@ -164,11 +93,18 @@ const Create = () => {
         .post("https://api.cloudinary.com/v1_1/dll9vsr6c/image/upload", data)
         .then((res) => {
           let url = res.data.secure_url;
-          let arrayImage = input.photos;
-          arrayImage.push(url);
-          const newObj = { ...input, arrayImage };
-          setInput(newObj);
-          console.log("INPUT:", input);
+          if(name === "room") {
+           
+            setInput({
+              ...input,
+              room: { ...input.room, photos: [...input.room.photos, url] },
+            });
+          } else {
+            let arrayImage = input.photos ;
+            arrayImage.push(url);
+            const newObj = { ...input, arrayImage };
+            setInput(newObj);
+          }
         })
         .catch((error) => console.log("CLOUDINARY ERROR:", error));
     });
@@ -177,47 +113,77 @@ const Create = () => {
     });
   };
 
-  const imagePreview = () => {
+  const imagePreview = (value) => {
+    
     if (loading === "true") {
       return <h3>Cargando Imagenes...</h3>;
     }
     if (loading === "false") {
+      console.log(value)
       return (
-        <h3>
-          {input.photos?.map((image) => {
+        
+        <div className="flex flex-wrap gap-5">
+          {value?.map((image) => {
             return (
               <div>
                 <p>Imagen:</p>
-                <img src={image} alt="img not found" />
+                <img src={image} alt="img not found" className="w-[180px] " />
               </div>
             );
           })}
-        </h3>
+        </div>
       );
     }
   };
 
-  useEffect(() => {
-    dispatch(getServices());
-    dispatch(getHotels());
-  }, [dispatch]);
-
   const handleChange = (e) => {
-    e.target.name === "photos"
-      ? setInput({
-          ...input,
-          [e.target.name]: [e.target.value],
-        })
-      : setInput({
-          ...input,
-          [e.target.name]: e.target.value,
-        });
+    e.target.name === "photos" &&
+      setInput({
+        ...input,
+        [e.target.name]: [e.target.value],
+      });
+
+    setInput({
+      ...input,
+      [e.target.name]: e.target.value,
+    });
+
     setErrors(
       validate({
         ...input,
         [e.target.name]: e.target.value,
       })
     );
+  };
+
+  const handleChangeRoom = (e, index) => {
+    if (e.target.name === "properties") {
+      let list = [...input.room.properties];
+      list[index] = e.target.value;
+      setInput({
+        ...input,
+        room: { ...input.room, [e.target.name]: list },
+      });
+      setErrors(
+        validate({
+          ...input,
+          room: { ...input.room, [e.target.name]: [...input.room.properties ,e.target.value] },
+        })
+      );
+    } else {
+      setInput({
+        ...input,
+        room: { ...input.room, [e.target.name]: e.target.value },
+      });
+      setErrors(
+        validate({
+          ...input,
+          room: { ...input.room, [e.target.name]: e.target.value },
+        })
+      );
+    }
+
+   
   };
 
   const handleDelete = (e) => {
@@ -229,107 +195,51 @@ const Create = () => {
 
   const handleSelect = (e) => {
     const { value } = e.target;
-    if (input.services.includes(value))
-      // return alert("Ya ha seleccionado esos servicios");
-    if (input.services.length < 15) {
-      setInput({
-        ...input,
-        services: [...input.services, value],
-      });
-      setErrors(
-        validate({
+    if (!input.services.includes(value))
+      if (input.services.length < 15) {
+        // return alert("Ya ha seleccionado esos servicios");
+        setInput({
           ...input,
           services: [...input.services, value],
-        })
-      );
-    } else alert("Has alcanzado la cantidad máxima de servicios");
+        });
+        setErrors(
+          validate({
+            ...input,
+            services: [...input.services, value],
+          })
+        );
+      } else alert("Has alcanzado la cantidad máxima de servicios");
   };
-
   const handleSubmit = (e) => {
-    const namefilterd = hotelFilter.filter((el) => el.name === input.name);
-    if (namefilterd.length) {
-      e.preventDefault();
-      alert("No puede usar un nombre existente");
+    e.preventDefault();
+    if (Object.keys(errors).length) {
+      messageError();
     } else {
       e.preventDefault();
       dispatch(postHotel(input));
-      console.log(input);
-      alert("Felicidades el hotel ha sido creado con éxito");
-      setInput(initialState);
-      history.push("/home");
-      history.go(0)
+      message();
+      setTimeout(() => {
+        setInput(initialState);
+        history.push("/home");
+        history.go(0)
+      }, "3000");
     }
   };
 
-  // function validate(input){
-  //   let errors = {};
-  //   if(!input.name) errors.name = "Name is required !";
-  //   if(!input.description) errors.description = "Description is required !";
-  //   if(input.stars > 5 || input.stars < 0) errors.stars = "Stars could be just 1 to 5";
-  //   if(!input.price) errors.price = "Enter a valid price";
-
-  //   return errors;
-  // }
-
-  // const Create = () => {
-  //   const dispatch = useDispatch();
-  //   const history = useHistory();
-
-  //   const [button, setButton] = useState(true);
-  //   const [errors, setErrors] = useState({});
-
-  //   const [ input, setInput ] = useState({
-  //     name: "",
-  //     description: "",
-  //     stars: "",
-  //     price: "",
-  //     services: [],
-  //     photos: [],
-  //     continent: "",
-  //     location: "",
-  //     city: "",
-  //     review: "",
-  //     comments: [],
-  //     user: ""
-  //   });
-
-  //   useEffect(() => {
-  //     if(input.name.length>0 && input.description.length>0 && input.stars && input.price && input.services.length && input.photos.length && input.continent.length>0 && input.location.length>0 && input.city.length>0 && input.user) setButton(false);
-  //     else setButton(true);
-  //   }, [input, setButton]);
-
-  //   const handleChange = (e) => {
-  //     setInput({
-  //       ...input,
-  //       [e.target.name]: e.target.value
-  //     });
-  //     setErrors(validate({
-  //       ...input,
-  //       [e.target.name]: e.target.value
-  //     }));
-  //   }
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   dispatch(postHotel(input));
-  //   alert("New Hotel created succesfully!");
-  //   setInput({
-  //     name: "",
-  //     description: "",
-  //     stars: "",
-  //     price: "",
-  //     services: [],
-  //     photos: [],
-  //     continent: "",
-  //     location: "",
-  //     city: "",
-  //     review: "",
-  //     comments: [],
-  //     user: ""
-  //   });
-  //   history.push("/home");
-  // }
-  console.log("error:", errors, "input", input);
+  const handleAddServicesRoom = () => {
+    setInput({
+      ...input,
+      room: { ...input.room, properties: [...input.room.properties, ""] },
+    });
+  };
+  const handleRemoveServicesRoom = (index) => {
+    const list = [...input?.room?.properties];
+    list.splice(index, 1);
+    setInput({
+      ...input,
+      room: { ...input.room, properties: list },
+    });
+  };
 
   return (
     <div>
@@ -352,9 +262,10 @@ const Create = () => {
 
             <form
               onSubmit={(e) => handleSubmit(e)}
-              className="p-6 grid grid-cols-3 mx-8 bg-slate-50 shadow-xl rounded-2xl"
+              className="p-6 grid grid-cols-3 mx-8 bg-slate-50 shadow-xl rounded-2xl text-start"
             >
               <div className="col-span-3 ">
+                <p className=" text-lg font-semibold ">{"Nombre del Hotel:"}</p>
                 <input
                   className="w-full bg-transparent border-b border-gray"
                   id="name input"
@@ -365,40 +276,13 @@ const Create = () => {
                   placeholder="Hotel Name..."
                   onChange={(e) => handleChange(e)}
                 />
-                {errors.name && <p>{errors.name}</p>}
-              </div>
-
-              <div className="p-2.5 ">
-                <input
-                  className="bg-transparent border-b border-gray w-11/12"
-                  type="text"
-                  value={input.user}
-                  name="user"
-                  autoComplete="off"
-                  placeholder="Enter user.."
-                  onChange={(e) => handleChange(e)}
-                />
-              </div>
-
-              <div className="p-2.5 ">
-                <input
-                  className="bg-transparent border-b border-gray w-11/12"
-                  id="starsInput"
-                  type="text"
-                  value={input.stars}
-                  name="stars"
-                  autoComplete="off"
-                  placeholder="Enter stars.."
-                  onChange={(e) => handleChange(e)}
-                />
-                {errors.stars && <p>{errors.stars}</p>}
-                {errors.max && <p>{errors.max}</p>}
-                {errors.negatives && <p>{errors.negatives}</p>}
-                {errors.nan && <p>{errors.nan} </p>}
-                {errors.zero && <p>{errors.zero} </p>}
+                <div className=" text-sm text-red-500">
+                  {errors.name && <p>{errors.name}</p>}
+                </div>
               </div>
 
               <div className="p-2.5">
+                <p className=" text-lg font-semibold">{"Precio noche:"}</p>
                 <input
                   className="bg-transparent border-b border-gray w-11/12"
                   type="number"
@@ -408,26 +292,38 @@ const Create = () => {
                   placeholder="$"
                   onChange={(e) => handleChange(e)}
                 />
-
-                {errors.price && <p>{errors.price}</p>}
-                {errors.negatives && <p>{errors.negatives}</p>}
-                {errors.nan && <p>{errors.nan} </p>}
-                {errors.zero && <p>{errors.zero} </p>}
+                <div className=" text-sm text-red-500">
+                  {errors.price && <p>{errors.price}</p>}
+                  {errors.negatives && <p>{errors.negatives}</p>}
+                  {errors.nan && <p>{errors.nan} </p>}
+                  {errors.zero && <p>{errors.zero} </p>}
+                </div>
               </div>
 
               <div className="p-2.5">
-                <input
-                  className="bg-transparent border-b border-gray w-11/12"
-                  type="text"
-                  value={input.continent}
+                <p className=" text-lg font-semibold">{"Continente:"}</p>
+                <select
                   name="continent"
-                  autoComplete="off"
-                  placeholder="Enter continent.."
+                  id=""
+                  className=" bg-transparent border-b border-gray w-full"
                   onChange={(e) => handleChange(e)}
-                />
+                >
+                  <option value="" hidden>
+                    Selecciona el continente
+                  </option>
+                  <option value="America">America</option>
+                  <option value="Europa">Europa</option>
+                  <option value="Africa">Africa</option>
+                  <option value="Asia">Asia</option>
+                </select>
+                <div className=" text-sm text-red-500">
+                  {errors.continent && <p>{errors.continent}</p>}
+                </div>
               </div>
 
               <div className="p-2.5">
+                <p className=" text-lg font-semibold">{"Pais:"}</p>
+
                 <input
                   className="bg-transparent border-b border-gray w-11/12"
                   type="text"
@@ -437,9 +333,14 @@ const Create = () => {
                   placeholder="Enter location.."
                   onChange={(e) => handleChange(e)}
                 />
+                <div className=" text-sm text-red-500">
+                  {errors.location && <p>{errors.location}</p>}
+                </div>
               </div>
 
               <div className="p-2.5 ">
+                <p className=" text-lg font-semibold">{"Ciudad:"}</p>
+
                 <input
                   className="bg-transparent border-b border-gray w-11/12"
                   type="text"
@@ -449,9 +350,16 @@ const Create = () => {
                   placeholder="Enter city.."
                   onChange={(e) => handleChange(e)}
                 />
+                <div className=" text-sm text-red-500">
+                  {errors.city && <p>{errors.city}</p>}
+                </div>
               </div>
 
               <div className=" col-span-3 p-2.5">
+                <p className=" text-lg font-semibold">
+                  {"Descripcion del Hotel:"}
+                </p>
+
                 <input
                   className="bg-transparent border-b border-gray w-full h-auto"
                   type="text"
@@ -461,10 +369,17 @@ const Create = () => {
                   placeholder="Add description.."
                   onChange={(e) => handleChange(e)}
                 />
-                {errors.description && <p>{errors.description}</p>}
+                <div className=" text-sm text-red-500">
+                  {errors.description && <p>{errors.description}</p>}
+                </div>
               </div>
 
               <div className="col-span-3 p-2.5">
+                <p className=" text-lg font-semibold">
+                  {" "}
+                  {"Servicios del Hotel:"}
+                </p>
+
                 <select
                   className="bg-transparent border-b border-gray w-full"
                   id="tempsInput"
@@ -484,92 +399,195 @@ const Create = () => {
                     );
                   })}
                 </select>
+                <div className=" text-sm text-red-500">
+                  {errors.services && <p>{errors.services}</p>}
+                </div>
               </div>
 
-              {/* <div className="col-span-3 p-2.5">
-                <input
-                  className="bg-transparent border-b border-gray w-full"
-                  id="photoInput"
-                  type="text"
-                  autoComplete="off"
-                  value={input.photos}
-                  name="photos"
-                  placeholder="Url photos.."
-                  onChange={(e) => handleChange(e)}
-                />
-              </div> */}
-
               <div className="col-span-3 p-2.5">
-                <Container>
+                <p className=" text-lg font-semibold">
+                  {"Imagenes del Hotel:"}
+                </p>
+
+                <Container id={input.photos}>
                   <Dropzone
-                    onDrop={submitImage}
+                    onDrop={e => submitImage(e)}
                     onChange={(e) => setInput(e.target.files[0])}
                     value={input.photos}
                   >
                     {({ getRootProps, getInputProps }) => (
                       <section>
                         <div {...getRootProps({ className: "dropzone" })}>
-                          <input {...getInputProps()} />
-                          <span>Icono de carpeta</span>
-                          <p>Click here to select the images</p>
+                          <div className=" flex justify-start items-center cursor-pointer">
+                            <input {...getInputProps()} />
+                            <BiImageAdd className=" w-[40px] h-[40px]" />
+                            <p className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                              Ingresar imagen
+                            </p>
+                          </div>
+                        </div>
+                      </section>
+                    )
+                  }
+                  </Dropzone>
+                  {imagePreview(input.photos)}
+                </Container>
+                <div className=" text-sm text-red-500">
+                  {errors.photos && <p>{errors.photos}</p>}
+                </div>
+              </div>
+              <div className=" pt-3 col-span-3 p-2.5">
+                <p className=" font-bold text-2xl">{"Agrega la habitacion"}</p>
+              </div>
+              <div className="col-span-3 p-2.5">
+                <p className=" text-lg font-semibold">
+                  {"Nombre de la habitacion:"}
+                </p>
+
+                <input
+                  className="bg-transparent border-b border-gray w-11/12"
+                  id="roomNameInput"
+                  type="text"
+                  value={input.room.name}
+                  name="name"
+                  autoComplete="off"
+                  placeholder="Habitacion doble con camas grandes..."
+                  onChange={(e) => handleChangeRoom(e)}
+                />
+                <div className=" text-sm text-red-500">
+                  {errors?.room?.name && <p>{errors?.room?.name}</p>}
+                </div>
+              </div>
+
+              <div className="col-span-3 p-2.5">
+                <p className=" text-lg font-semibold">
+                  {"Imagenes de la Habitacion:"}
+                </p>
+
+                <Container>
+                  <Dropzone
+                    onDrop={e => submitImage(e, "room")}
+                    onChange={(e) => setInput(e.target.files[0])}
+                    value={input?.room?.photos}
+                  >
+                    {({ getRootProps, getInputProps }) => (
+                      <section>
+                        <div {...getRootProps({ className: "dropzone" })}>
+                          <div className=" flex justify-start items-center cursor-pointer">
+                            <input {...getInputProps()} />
+                            <BiImageAdd className=" w-[40px] h-[40px]" />
+                            <p className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                              Ingresar imagen
+                            </p>
+                          </div>
                         </div>
                       </section>
                     )}
                   </Dropzone>
-                  {imagePreview()}
+                  {imagePreview(input.room.photos)}
                 </Container>
+                <div className=" text-sm text-red-500">
+                  {errors.photos && <p>{errors.photos}</p>}
+                </div>
               </div>
-              {/* <div className='col-span-3 p-2.5'>
-                <input
-                  className='bg-transparent border-b border-gray w-full'
-                  type="text" value={input.review}
-                  name="review"
-                  autoComplete="off"
-                  placeholder='Enter review..'
-                  onChange={e => handleChange(e)}
-                />
-              </div> */}
 
-              {/* <div className='col-span-3 p-2.5'>
+
+              <div className="col-span-3 p-2.5">
+                <p className=" text-lg font-semibold">
+                  {"Descripcion de la habitación:"}
+                </p>
+
                 <input
-                  className='bg-transparent border-b border-gray w-full'
+                  className="bg-transparent border-b border-gray w-11/12"
+                  id="roomDescriptionInput"
                   type="text"
-                  value={input.comments}
-                  name="comments"
+                  value={input.room.description}
+                  name="description"
                   autoComplete="off"
-                  placeholder='Enter comments..'
-                  onChange={e => handleChange(e)} />
-              </div> */}
+                  placeholder="Descripcion"
+                  onChange={(e) => handleChangeRoom(e)}
+                />
+                <div className=" text-sm text-red-500">
+                  {errors?.room?.description && (
+                    <p>{errors?.room?.description}</p>
+                  )}
+                </div>
+              </div>
 
-              {Object.keys(errors).length ? (
-                <div className="text-lg font-medium text-gray-900  bg-[color:var(--primary-bg-opacity-color)] rounded-full border border-black-800 p-2 ">
-                  <button className="cursor-pointer" onClick={message} type="submit" form="form">
-                    Agregara
-                  </button>
+              <div className="col-span-3 p-2.5">
+                <p className=" text-lg font-semibold">
+                  {"Tamaño de la habitación:"}
+                </p>
+
+                <input
+                  className="bg-transparent border-b border-gray w-11/12"
+                  id="roomSizeInput"
+                  type="text"
+                  value={input.room.size}
+                  name="size"
+                  autoComplete="off"
+                  placeholder="Tamaño habitacion Ej: 18 m²"
+                  onChange={(e) => handleChangeRoom(e)}
+                />
+                <div className=" text-sm text-red-500">
+                  {errors?.room?.size && <p>{errors?.room?.size}</p>}
                 </div>
-              ) : (
-                <div className="text-lg font-medium text-gray-900  bg-[color:var(--primary-bg-opacity-color)] rounded-full border border-black-800 p-2 ">
-                  <button
-                    onClick={handleSubmit}
-                    className="cursor-pointer"
-                    type="submit"
-                    form="form"
-                  >
-                    Agregar
-                  </button>
+              </div>
+              <div className="col-span-3 p-2.5">
+                <p className=" text-lg font-semibold">
+                  {"Ingresa las caracteristicas de la habitacion:"}
+                </p>
+
+                {input.room.properties.map((propertie, idx) => (
+                  <div key={idx} className="flex flex-wrap mb-2" >
+                    <input
+                      className="bg-transparent border-b border-gray w-[80%] "
+                      id="Input"
+                      type="text"
+                      value={propertie}
+                      name="properties"
+                      autoComplete="off"
+                      placeholder="Caracteristicas de la habitacion"
+                      onChange={(e) => handleChangeRoom(e, idx)}
+                    />
+                    {input.room.properties.length > 1 && (
+                      <div
+                        onClick={() => handleRemoveServicesRoom(idx)}
+                        className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded cursor-pointer w-[fit-content]"
+                      >
+                        REMOVER
+                      </div>
+                    )}
+                    {input.room.properties.length - 1 === idx &&
+                      input.room.properties.length < 5 && (
+                        <div
+                          onClick={handleAddServicesRoom}
+                          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer"
+                        >
+                          Agregar otra
+                        </div>
+                      )}
+                  </div>
+                ))}
+                <div className=" text-sm text-red-500">
+                  {errors?.room?.properties && (
+                    <p>{errors?.room?.properties}</p>
+                  )}
                 </div>
-              )}
-              {/* <button
-                    onClick={handleSubmit}
-                    className="cursor-pointer"
-                    type="submit"
-                    form="form"
-                  >
-                    Agregar
-                  </button> */}
+              </div>
+
+              <div
+                className=" cursor-pointer text-lg font-medium text-gray-900  bg-[color:var(--primary-bg-opacity-color)] rounded-full border border-black-800 p-2"
+                onClick={handleSubmit}
+              >
+                <button className=" w-full h-full" type="submit" form="form">
+                  Agregar
+                </button>
+              </div>
             </form>
           </div>
         </div>
+
         <div>
           <div>
             <div className="py-4 font-medium text-3xl mt-2">
@@ -634,21 +652,75 @@ const Create = () => {
                     <h3 className="text-slate-300"> price for night</h3>
                   )}
                 </div>
-                <div>
+                <div >
                   {input.services.map((services) => (
-                    <p key={services}>{services}</p>
-                  ))}
-                </div>
-                <div>
-                  {input.services.map((serv) => (
-                    <div key={serv}>
-                      <button name={serv} onClick={handleDelete}>
+                   <div className=" flex items-center gap-4 mb-2 border-b-2">
+                     <p className=" w-[90%]" key={services}> {services} </p>
+                    <button name={services} onClick={handleDelete} className="bg-red-500 hover:bg-red-700 text-white font-bold py px-2 rounded cursor-pointer w-[fit-content]">
                         X
                       </button>
-                    </div>
+                   </div>
                   ))}
                 </div>
+              
                 <br />
+              </div>
+            </div>
+
+            <div className=" bg-white shadow-xl mx-[20px] mt-5 ">
+              <div className="  flex justify-center items-center ">
+                <div className="w-[800px] h-auto bg-white  rounded-3xl ">
+                  <div className="py-[10px] relative border-b text-center">
+                    <span className="absolute left-5 cursor-pointer px-2">
+                      X
+                    </span>
+                    <h1 className="font-semibold text-[16px]">
+                      {input?.room?.name || 'habitacion'}
+                    </h1>
+                  </div>
+                  <div className="mt-7 flex flex-col text-[19px] font-light ml-3">
+                    <div className="mb-20">
+                      <Carousel className="carousel  w-[500px] h-[250px] m-auto ">
+                        {input?.room?.photos &&
+                          input?.room?.photos?.map((elemento, index) => {
+                            return (
+                              <Carousel.Item key={index}>
+                                <div>
+                                  <img
+                                    className=" w-[500px] h-[300px]"
+                                    src={elemento}
+                                    alt="hotel"
+                                  />
+                                </div>
+                              </Carousel.Item>
+                            );
+                          })}
+                      </Carousel>
+                    </div>
+                    <div className="mb-3  mt-4 ">
+                      <h2 className="font-semibold text-left ">Descripción</h2>
+                      <p className=" overflow-x-hidden mmax-w-[600px]">{input?.room?.description}</p>
+                    </div>
+                    <div className="mb-3 flex flex-row">
+                      <h2 className="mr-1 font-semibold ">Tamaño</h2>
+                      <p>{input?.room?.size}</p>
+                    </div>
+
+                    <div className="mb-3">
+                      <h2 className="font-semibold text-left">Cuenta con:</h2>
+                      <div className="grid grid-cols-2 mb-3">
+                        {input?.room?.properties?.map((p,idx) => (
+                          <p className="mb-3 flex flex-row items-center " key={idx}>
+                            <i>
+                              <FaCheck className="text-[13px]" />
+                            </i>
+                            {p}
+                          </p>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

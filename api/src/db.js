@@ -44,11 +44,11 @@ User.belongsToMany(Hotel, { through: "user-hotels" });
 User.hasMany(Reserves);
 Reserves.belongsTo(User);
 
-Review.belongsToMany(User, { through: "user-review" });
-User.belongsToMany(Review, { through: "user-review" });
+Review.belongsTo(User);
+User.hasMany(Review);
 
-Review.belongsToMany(Hotel, { through: "review-hotel" });
-Hotel.belongsToMany(Review, { through: "review-hotel" });
+Review.belongsTo(Hotel);
+Hotel.hasMany(Review);
 
 Order.hasMany(Reserves);
 User.hasMany(Order);

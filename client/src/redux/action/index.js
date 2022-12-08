@@ -112,7 +112,6 @@ export function getUserById(email) {
 }
 
 export function postUser(payload) {
-  console.log(payload);
   return async function () {
     const response = await axios.post("http://localhost:3001/users", payload);
     return response;
@@ -175,10 +174,8 @@ export const payReserve = (payload) => {
 
 export function getReview() {
   return async function (dispatch) {
-    let reviews = []
-    const res = (await axios.get("http://localhost:3001/review")).data.map(el => {
-      return el.comments.map(el => el);
-    });
+    let reviews = [];
+    const res = (await axios.get("http://localhost:3001/review")).data
     reviews.push(res);
     // console.log("get review", reviews.flat(Infinity));
     return dispatch({
@@ -192,8 +189,8 @@ export function postReview(review) {
   // console.log(review);
   return async function () {
     try {
-      const response = await axios.post("http://localhost:3001/review", review);
-      // console.log("response", response.data);
+      const response = (await axios.post("http://localhost:3001/review", review)).data;
+      // console.log("response", response);
       return response;
     } catch (error) {
       console.log(`Error en Action postReview por: (${error})`);
