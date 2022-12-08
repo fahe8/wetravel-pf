@@ -4,7 +4,8 @@ import React from 'react'
 
 const HospedadorCard = ({
   name, 
-  email
+  email,
+  hotels
 
 }) => {
 
@@ -22,7 +23,9 @@ const HospedadorCard = ({
         </h1>
         
       </div>
-     
+      <div>
+        {hotels}
+     </div>
       
     </div>
   )

@@ -1,20 +1,23 @@
 import React from 'react'
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { getUser } from '../../../../redux/action';
+import { getUserById } from '../../../../redux/action';
 import HospedadorCard from './HospedadorCard';
+import { useAuth0 } from "@auth0/auth0-react";
 
 const HospedadorCards = () => {
 
     let estadoUser = useSelector(state => state.users);
     const dispatch = useDispatch();
+  const { user } = useAuth0();
+
     console.log (estadoUser)
 
     useEffect(() => {
         if (estadoUser.length === 0) {
-            dispatch(getUser())
+            dispatch(getUserById(user?.email))
         }
-    }, [])
+    }, [dispatch])
 
   return (
       <div>
@@ -23,6 +26,7 @@ const HospedadorCards = () => {
                   <HospedadorCard
                       name={us.name}
                       email={us.email}
+                      hotels={us.hotels}
                      
                   />
               ) : 
