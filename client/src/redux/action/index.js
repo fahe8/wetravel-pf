@@ -21,6 +21,9 @@ export const POST_REVIEW = "POST-REVIEW";
 export const GET_FAVORITES = "GET_FAVORITES"
 export const GET_ID_MERCADO_PAGO = "GET_ID_MERCADO_PAGO";
 export const DELETE_RESERVE = "DELETE_RESERVE"
+
+
+
 // 1 depachar los hoteles
 export function getHotels() {
   return async function (dispatch) {

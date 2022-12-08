@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-import NavBar from "../navBar/NavBar";
-import { Footer } from "../footer/Footer";
+import NavBar from "../../navBar/NavBar";
+import { Footer } from "../../footer/Footer";
+import HospedadorCards from "./Cards/HospedadorCards";
 
 const Hospedador = () => {
   const { logout, user } = useAuth0();
@@ -66,6 +67,9 @@ const Hospedador = () => {
       >
         Log-out
       </button>
+      <div>
+        <HospedadorCards/>
+      </div>
       <div>
         <Footer/>
       </div>

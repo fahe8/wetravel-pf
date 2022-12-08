@@ -7,7 +7,7 @@ import Login from "./components/log-in/Log-in";
 import Detail from "./components/Detail/Detail";
 import About from "./components/about/about.jsx";
 import Create from "./components/create/Create";
-import Hospedador from "./components/ProfileUser/Hospedador";
+import Hospedador from "./components/ProfileUser/hospedador/Hospedador";
 import Huesped from "./components/ProfileUser/Huesped";
 import Cart from "./components/cart/Cart";
 import Favourites from "./components/favourites/Favourites";
