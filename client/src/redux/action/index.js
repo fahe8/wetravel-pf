@@ -282,7 +282,7 @@ export function deleteReserve(id) {
 export const deleteHotel = (id) => {
   return async function (dispatch) {
     try {
-      await axios.delete(`http://localhost:3001/hotels/delete/${id}`);
+      await axios.delete(`http://localhost:3001/hotels/${id}`);
       return dispatch({
         type: DELETE_HOTEL,
       });

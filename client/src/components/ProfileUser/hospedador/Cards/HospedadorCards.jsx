@@ -16,13 +16,18 @@ const HospedadorCards = () => {
 
   console.log(estadoUser);
   return (
-    <div>
+    <div className=' h-full md:h-screen w-full'>
+      <div className='container mx-auto px-0 md:px-4 py-4'>
+    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-items-center gap-4'>
       {estadoUser?.hotels ? (
-        estadoUser?.hotels?.map((hotel) => <HospedadorCard hotel={hotel} />)
+        estadoUser?.hotels?.map((hotel) =>
+          <HospedadorCard hotel={hotel} />)
       ) : (
-        <p>No hay hoteles</p>
+        <h1>No hay hoteles</h1>
       )}
-    </div>
+        </div>
+        </div>
+      </div>
   );
 };
 
