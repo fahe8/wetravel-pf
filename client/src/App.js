@@ -16,6 +16,7 @@ import { useDispatch } from "react-redux";
 import { getHotels, getFavorites, getReservesByCart, getUserById, getServices } from "./redux/action/index"
 import { useAuth0 } from "@auth0/auth0-react";
 import { useLocalStorage } from "./localStorage/useLocalStorage";
+import { Images } from "./components/Images/Images";
 
 function App() {
 
@@ -47,6 +48,7 @@ function App() {
           <Route exact path="/cart" component={Cart} />
           <Route exact path="/favourites" component={Favourites} />
           <Route path="/users/:id" component={CurrentLogin} />
+          <Route exact path="/images" component={Images} />
         </Switch>
       </div>
     </BrowserRouter>
