@@ -220,7 +220,7 @@ const Create = () => {
       message();
       setTimeout(() => {
         setInput(initialState);
-        history.push("/home");
+        history.push("/anfitrion");
         history.go(0)
       }, "3000");
     }
