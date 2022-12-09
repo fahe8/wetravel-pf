@@ -14,25 +14,29 @@ import Favourites from "./components/favourites/Favourites";
 import { HotelsHos } from "./components/ProfileUser/hospedador/hotels/HotelsHos";
 import { CurrentLogin } from "./components/ProfileUser/CurrentLogin";
 import { useDispatch } from "react-redux";
-import { getHotels, getFavorites, getReservesByCart, getUserById, getServices } from "./redux/action/index"
+import {
+  getHotels,
+  getFavorites,
+  getReservesByCart,
+  getUserById,
+  getServices,
+} from "./redux/action/index";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useLocalStorage } from "./localStorage/useLocalStorage";
 import EditCreate from "./components/create/EditCreate";
+import Dashboard from "./components/Dashboard/Dashboard";
 
 function App() {
-
-
   // const {isAuthenticated} = useAuth0()
-  useLocalStorage('userEmail', )
+  useLocalStorage("userEmail");
 
-  let dispatch =  useDispatch()
-// Tengo que organizar todos los dispatch para tener un codifo mas limpio 
+  let dispatch = useDispatch();
+  // Tengo que organizar todos los dispatch para tener un codifo mas limpio
 
   React.useEffect(() => {
-    dispatch(getHotels())
-    dispatch(getServices())
+    dispatch(getHotels());
+    dispatch(getServices());
   }, []);
-
 
   return (
     <BrowserRouter>
@@ -51,6 +55,8 @@ function App() {
           <Route exact path="/favourites" component={Favourites} />
           <Route path="/users/:id" component={CurrentLogin} />
           <Route path= "/anfitrion/hotels" component={HotelsHos} />
+
+
         </Switch>
       </div>
     </BrowserRouter>
