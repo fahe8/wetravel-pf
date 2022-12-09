@@ -1,31 +1,29 @@
 import React from 'react'
-
+import {Link} from 'react-router-dom'
 
 
 const HospedadorCard = ({
-  name, 
-  email,
-  hotels
+  hotel
 
 }) => {
-
 
 
   return (
     <div className='bg-red-50'>
 
       <div>
-        <h1>{name}</h1>
+        {hotel.name}
+
+        {hotel.price}
+        {hotel.continent}
+        {hotel.location}
+        {hotel.city}
+        <button>Eliminar</button>
+        <Link to={"/edithotel/"+ hotel.id}>
+        <button>Editar</button>
+        </Link>
       </div>
-      <div>
-        <h1>
-        {email}|
-        </h1>
-        
-      </div>
-      <div>
-        {hotels}
-     </div>
+       
       
     </div>
   )

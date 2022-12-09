@@ -89,7 +89,7 @@ function rootReducer(state = initialState, action) {
     case DETAIL_USER:
       return {
         ...state,
-        users: action.payload,
+        userId: action.payload,
       };
     
     case POST_USER:
