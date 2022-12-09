@@ -11,6 +11,7 @@ import Hospedador from "./components/ProfileUser/hospedador/Hospedador";
 import Huesped from "./components/ProfileUser/Huesped";
 import Cart from "./components/cart/Cart";
 import Favourites from "./components/favourites/Favourites";
+import { HotelsHos } from "./components/ProfileUser/hospedador/hotels/HotelsHos";
 import { CurrentLogin } from "./components/ProfileUser/CurrentLogin";
 import { useDispatch } from "react-redux";
 import {
