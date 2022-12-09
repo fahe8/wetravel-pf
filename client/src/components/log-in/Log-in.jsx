@@ -11,10 +11,10 @@ function Login() {
   const dispatch = useDispatch();
   const history = useHistory();
   const { loginWithRedirect, logout, user } = useAuth0();
-  // console.log("USER LOGIN:", user);
+
 
   const [userCondition, setUserCondition] = useLocalStorage('user', 'guest');
-  // console.log('ESTADO DEL USERS:',userCondition);
+
 
   function handleGuest(e) {
     e.preventDefault();

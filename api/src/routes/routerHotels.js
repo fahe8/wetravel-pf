@@ -223,6 +223,18 @@ routerHotels.delete('/:id', async (req, res, next) => {
   }
 })
 
+routerHotels.put('/:id', async (req,res) => {
+  const { id } = req.params;
+  let hotel = req.body;
 
+  try {
+    await Hotel.update(hotel, {
+      where: { id }
+    });
+    res.json({ change: 'Los datos del Hotel se actualizaron correctamente' });
+  } catch (error) {
+    res.json(`No se puedo actualizar por: (${error})`);
+  }
+})
 
 module.exports = routerHotels;

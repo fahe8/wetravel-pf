@@ -3,15 +3,10 @@ import { BiImageAdd } from "react-icons/bi";
 import { FaCheck } from "react-icons/fa";
 import Carousel from "react-bootstrap/Carousel";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import validate from "./validations";
-import {
-  postHotel,
-  getHotels,
-  getServices,
-  submitImage,
-} from "../../redux/action";
+import { postHotel, getDetail } from "../../redux/action";
 import { AiFillHeart } from "react-icons/ai";
 import Stars from "../stars/Stars";
 import { Container } from "reactstrap";
@@ -20,14 +15,15 @@ import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-const Create = () => {
+const EditCreate = () => {
   const dispatch = useDispatch();
   //const navigate = useNavigate();
   const { user } = useAuth0();
-
+  const {id} = useParams()
   const history = useHistory();
   const { service } = useSelector((state) => state);
+  const {detail}= useSelector((state) => state);
+  console.log(detail);
   const message = () => {
     toast("🏠 Felicitaciones publicaste tu alojamiento!", {
       position: "top-center",
@@ -39,7 +35,6 @@ const Create = () => {
       progress: undefined,
       theme: "light",
     });
-
   };
 
   const messageError = () => {
@@ -54,8 +49,13 @@ const Create = () => {
       theme: "light",
     });
   };
+
+
+
+
+
   const initialState = {
-    name: "",
+    name: '',
     description: "",
     stars: "",
     price: "$",
@@ -76,6 +76,30 @@ const Create = () => {
     },
   };
 
+  useEffect(() => {
+    setInput({
+      name: detail.name,
+      description: detail.description,
+      stars: detail.stars,
+      price: "$",
+      services: [],
+      photos: [],
+      continent: "",
+      location: "",
+      city: "",
+      review: "",
+      comments: [],
+      user: user?.name,
+      room: {
+        name: "",
+        properties: [""],
+        size: "",
+        description: "",
+        photos: [],
+      },
+    })
+  }, [dispatch]);
+
   const [errors, setErrors] = useState({
     allFields: "All fields are required",
   });
@@ -93,14 +117,13 @@ const Create = () => {
         .post("https://api.cloudinary.com/v1_1/dll9vsr6c/image/upload", data)
         .then((res) => {
           let url = res.data.secure_url;
-          if(name === "room") {
-           
+          if (name === "room") {
             setInput({
               ...input,
               room: { ...input.room, photos: [...input.room.photos, url] },
             });
           } else {
-            let arrayImage = input.photos ;
+            let arrayImage = input.photos;
             arrayImage.push(url);
             const newObj = { ...input, arrayImage };
             setInput(newObj);
@@ -114,14 +137,12 @@ const Create = () => {
   };
 
   const imagePreview = (value) => {
-    
     if (loading === "true") {
       return <h3>Cargando Imagenes...</h3>;
     }
     if (loading === "false") {
-      console.log(value)
+      console.log(value);
       return (
-        
         <div className="flex flex-wrap gap-5">
           {value?.map((image) => {
             return (
@@ -167,7 +188,10 @@ const Create = () => {
       setErrors(
         validate({
           ...input,
-          room: { ...input.room, [e.target.name]: [...input.room.properties ,e.target.value] },
+          room: {
+            ...input.room,
+            [e.target.name]: [...input.room.properties, e.target.value],
+          },
         })
       );
     } else {
@@ -182,8 +206,6 @@ const Create = () => {
         })
       );
     }
-
-   
   };
 
   const handleDelete = (e) => {
@@ -221,7 +243,7 @@ const Create = () => {
       setTimeout(() => {
         setInput(initialState);
         history.push("/home");
-        history.go(0)
+        history.go(0);
       }, "3000");
     }
   };
@@ -411,7 +433,7 @@ const Create = () => {
 
                 <Container id={input.photos}>
                   <Dropzone
-                    onDrop={e => submitImage(e)}
+                    onDrop={(e) => submitImage(e)}
                     onChange={(e) => setInput(e.target.files[0])}
                     value={input.photos}
                   >
@@ -427,8 +449,7 @@ const Create = () => {
                           </div>
                         </div>
                       </section>
-                    )
-                  }
+                    )}
                   </Dropzone>
                   {imagePreview(input.photos)}
                 </Container>
@@ -466,7 +487,7 @@ const Create = () => {
 
                 <Container>
                   <Dropzone
-                    onDrop={e => submitImage(e, "room")}
+                    onDrop={(e) => submitImage(e, "room")}
                     onChange={(e) => setInput(e.target.files[0])}
                     value={input?.room?.photos}
                   >
@@ -490,7 +511,6 @@ const Create = () => {
                   {errors.photos && <p>{errors.photos}</p>}
                 </div>
               </div>
-
 
               <div className="col-span-3 p-2.5">
                 <p className=" text-lg font-semibold">
@@ -539,7 +559,7 @@ const Create = () => {
                 </p>
 
                 {input.room.properties.map((propertie, idx) => (
-                  <div key={idx} className="flex flex-wrap mb-2" >
+                  <div key={idx} className="flex flex-wrap mb-2">
                     <input
                       className="bg-transparent border-b border-gray w-[80%] "
                       id="Input"
@@ -652,17 +672,24 @@ const Create = () => {
                     <h3 className="text-slate-300"> price for night</h3>
                   )}
                 </div>
-                <div >
+                <div>
                   {input.services.map((services) => (
-                   <div className=" flex items-center gap-4 mb-2 border-b-2">
-                     <p className=" w-[90%]" key={services}> {services} </p>
-                    <button name={services} onClick={handleDelete} className="bg-red-500 hover:bg-red-700 text-white font-bold py px-2 rounded cursor-pointer w-[fit-content]">
+                    <div className=" flex items-center gap-4 mb-2 border-b-2">
+                      <p className=" w-[90%]" key={services}>
+                        {" "}
+                        {services}{" "}
+                      </p>
+                      <button
+                        name={services}
+                        onClick={handleDelete}
+                        className="bg-red-500 hover:bg-red-700 text-white font-bold py px-2 rounded cursor-pointer w-[fit-content]"
+                      >
                         X
                       </button>
-                   </div>
+                    </div>
                   ))}
                 </div>
-              
+
                 <br />
               </div>
             </div>
@@ -675,7 +702,7 @@ const Create = () => {
                       X
                     </span>
                     <h1 className="font-semibold text-[16px]">
-                      {input?.room?.name || 'habitacion'}
+                      {input?.room?.name || "habitacion"}
                     </h1>
                   </div>
                   <div className="mt-7 flex flex-col text-[19px] font-light ml-3">
@@ -699,7 +726,9 @@ const Create = () => {
                     </div>
                     <div className="mb-3  mt-4 ">
                       <h2 className="font-semibold text-left ">Descripción</h2>
-                      <p className=" overflow-x-hidden mmax-w-[600px]">{input?.room?.description}</p>
+                      <p className=" overflow-x-hidden mmax-w-[600px]">
+                        {input?.room?.description}
+                      </p>
                     </div>
                     <div className="mb-3 flex flex-row">
                       <h2 className="mr-1 font-semibold ">Tamaño</h2>
@@ -709,8 +738,11 @@ const Create = () => {
                     <div className="mb-3">
                       <h2 className="font-semibold text-left">Cuenta con:</h2>
                       <div className="grid grid-cols-2 mb-3">
-                        {input?.room?.properties?.map((p,idx) => (
-                          <p className="mb-3 flex flex-row items-center " key={idx}>
+                        {input?.room?.properties?.map((p, idx) => (
+                          <p
+                            className="mb-3 flex flex-row items-center "
+                            key={idx}
+                          >
                             <i>
                               <FaCheck className="text-[13px]" />
                             </i>
@@ -729,4 +761,5 @@ const Create = () => {
     </div>
   );
 };
-export default Create;
+
+export default EditCreate;

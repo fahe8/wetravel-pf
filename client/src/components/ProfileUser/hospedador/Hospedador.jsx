@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-import NavBar from "../navBar/NavBar";
-import { Footer } from "../footer/Footer";
+import NavBar from "../../navBar/NavBar";
+import { Footer } from "../../footer/Footer";
+import HospedadorCards from "./Cards/HospedadorCards";
 
 const Hospedador = () => {
   const { logout, user } = useAuth0();
@@ -60,12 +61,20 @@ const Hospedador = () => {
         </Link>
         </div>
       <br />
+
+      <div>
+        <p>{"Mis Hoteles"}</p>
+        
+      </div>
       <button
         className="bg-red-400 w-60 p-2 text-white rounded focus:bg-[#00B4FF] focus:rounded text-xl"
         onClick={() => logout({ returnTo: window.location.origin })}
       >
         Log-out
       </button>
+      <div>
+        <HospedadorCards/>
+      </div>
       <div>
         <Footer/>
       </div>

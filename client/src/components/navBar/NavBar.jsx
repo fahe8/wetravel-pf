@@ -57,6 +57,9 @@ const NavBar = () => {
         <Link to="/about">
           <p>About Us</p>
         </Link>
+        <Link to="/favourites">
+          <p>Favorito</p>
+        </Link>
         <div className=" h-10 flex justify-between items-center gap-5  hover:bg-cyan-800 cursor-pointer p-7 rounded-full border-2 border-black">
           {!user && (
             <div>
@@ -86,11 +89,6 @@ const NavBar = () => {
               </Link>
             </div>
           )}
-          <div>
-            <Link to={"/Dashboard"}>
-              <button> Administrador</button>
-            </Link>
-          </div>
           {user && userCondition === "host" && (
             <div className=" w-65 flex justify-between items-center text-xl gap-5">
               <button onClick={handleHost}>Create New Hotel</button>

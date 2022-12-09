@@ -17,12 +17,17 @@ router.use("/hotels", routerHotels);
 router.use("/users", routerUsers);
 
 router.use('/services', routerServices);
+
 router.use("/order", routerOrder)
 
 router.use("/reserve", routerReserves);
 
 router.use("/review", routerReview);
+
 router.use("/favorites", routerFavorites);
+
 router.use("/images", routerImage);
+
+
 
 module.exports = router;
