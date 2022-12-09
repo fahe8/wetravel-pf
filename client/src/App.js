@@ -11,6 +11,7 @@ import Hospedador from "./components/ProfileUser/hospedador/Hospedador";
 import Huesped from "./components/ProfileUser/Huesped";
 import Cart from "./components/cart/Cart";
 import Favourites from "./components/favourites/Favourites";
+import { HotelsHos } from "./components/ProfileUser/hospedador/hotels/HotelsHos";
 import { CurrentLogin } from "./components/ProfileUser/CurrentLogin";
 import { useDispatch } from "react-redux";
 import { getHotels, getFavorites, getReservesByCart, getUserById, getServices } from "./redux/action/index"
@@ -49,6 +50,7 @@ function App() {
           <Route exact path="/cart" component={Cart} />
           <Route exact path="/favourites" component={Favourites} />
           <Route path="/users/:id" component={CurrentLogin} />
+          <Route path= "/anfitrion/hotels" component={HotelsHos} />
         </Switch>
       </div>
     </BrowserRouter>
