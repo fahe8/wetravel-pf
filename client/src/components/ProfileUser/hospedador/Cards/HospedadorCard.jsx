@@ -1,12 +1,14 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import {Link} from 'react-router-dom'
-
+import { getDetail } from '../../../../redux/action'
 
 const HospedadorCard = ({
+
   hotel
 
 }) => {
-
+  const dispatch = useDispatch()
 
   return (
     <div className='bg-red-50'>
@@ -20,7 +22,7 @@ const HospedadorCard = ({
         {hotel.city}
         <button>Eliminar</button>
         <Link to={"/edithotel/"+ hotel.id}>
-        <button>Editar</button>
+        <button onClick={() => dispatch(getDetail(hotel.id))}>Editar</button>
         </Link>
       </div>
        
