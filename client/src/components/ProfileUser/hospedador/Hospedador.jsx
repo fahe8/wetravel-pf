@@ -61,6 +61,11 @@ const Hospedador = () => {
         </Link>
         </div>
       <br />
+
+      <div>
+        <p>{"Mis Hoteles"}</p>
+        
+      </div>
       <button
         className="bg-red-400 w-60 p-2 text-white rounded focus:bg-[#00B4FF] focus:rounded text-xl"
         onClick={() => logout({ returnTo: window.location.origin })}
