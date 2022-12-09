@@ -11,7 +11,7 @@ import Huesped from "./components/ProfileUser/Huesped";
 import Cart from "./components/cart/Cart";
 import Favourites from "./components/favourites/Favourites";
 import { CurrentLogin } from "./components/ProfileUser/CurrentLogin";
-
+import Dashboard from "../src/components/Dashboard/Dashboard";
 
 function App() {
   return (
@@ -29,6 +29,8 @@ function App() {
           <Route exact path="/cart" component={Cart} />
           <Route exact path="/favourites" component={Favourites} />
           <Route path="/users/:id" component={CurrentLogin} />
+          <Route path="/Dashboard" component={Dashboard} />
+          <Route path="#" element={<Home />} />
         </Switch>
       </div>
     </BrowserRouter>
