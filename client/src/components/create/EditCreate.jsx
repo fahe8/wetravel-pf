@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import validate from "./validations";
-import { postHotel, getDetail } from "../../redux/action";
+import { postHotel, getDetail, updateHotel } from "../../redux/action";
 import { AiFillHeart } from "react-icons/ai";
 import Stars from "../stars/Stars";
 import { Container } from "reactstrap";
@@ -23,7 +23,7 @@ const EditCreate = () => {
   const history = useHistory();
   const { service } = useSelector((state) => state);
   const {detail}= useSelector((state) => state);
-  console.log(detail);
+
   const message = () => {
     toast("🏠 Felicitaciones publicaste tu alojamiento!", {
       position: "top-center",
@@ -66,7 +66,7 @@ const EditCreate = () => {
     city: "",
     review: "",
     comments: [],
-    user: user?.name,
+    user: '',
     room: {
       name: "",
       properties: [""],
@@ -76,29 +76,37 @@ const EditCreate = () => {
     },
   };
 
+
+
   useEffect(() => {
-    setInput({
-      name: detail.name,
-      description: detail.description,
-      stars: detail.stars,
-      price: "$",
-      services: [],
-      photos: [],
-      continent: "",
-      location: "",
-      city: "",
-      review: "",
-      comments: [],
-      user: user?.name,
-      room: {
-        name: "",
-        properties: [""],
-        size: "",
-        description: "",
-        photos: [],
-      },
-    })
-  }, [dispatch]);
+    dispatch(getDetail(id))
+  }, []);
+
+  useEffect(() => {
+    if(Object.keys(detail).length !== 0) {
+      setInput({...input,
+        name: detail?.name,
+        description: detail?.description,
+        stars: detail?.stars,
+        price: detail?.price,
+        services: detail?.services,
+        photos: detail?.photos,
+        continent: detail?.continent,
+        location: detail?.location,
+        city: detail?.city,
+        user: user?.name,
+        room: {
+          name: detail?.room?.name,
+          properties: detail?.room?.properties,
+          size: detail?.room?.size,
+          description: detail?.room?.description,
+          photos: detail?.room?.photos,
+        },
+      })
+    }
+  }, [detail]);
+
+ 
 
   const [errors, setErrors] = useState({
     allFields: "All fields are required",
@@ -238,7 +246,7 @@ const EditCreate = () => {
       messageError();
     } else {
       e.preventDefault();
-      dispatch(postHotel(input));
+      dispatch(updateHotel(input, id));
       message();
       setTimeout(() => {
         setInput(initialState);
@@ -270,6 +278,7 @@ const EditCreate = () => {
         <div className="text-lg font-medium text-gray-900  bg-[color:var(--primary-bg-opacity-color)] rounded-full border border-black-800 p-2">
           <Link to="/home">
             <button>Go Home</button>
+            <p>{detail.name}</p>
           </Link>
         </div>
       </div>
@@ -601,7 +610,7 @@ const EditCreate = () => {
                 onClick={handleSubmit}
               >
                 <button className=" w-full h-full" type="submit" form="form">
-                  Agregar
+                  Editar
                 </button>
               </div>
             </form>
