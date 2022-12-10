@@ -11,12 +11,13 @@ import Huesped from "./components/ProfileUser/Huesped";
 import Cart from "./components/cart/Cart";
 import Favourites from "./components/favourites/Favourites";
 import { CurrentLogin } from "./components/ProfileUser/CurrentLogin";
-
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
     <BrowserRouter>
       <div className="App min-h-screen h-screen">
+      <ToastContainer />
         <Switch>
           <Route exact path="/home" component={Home} />
           <Route exact path="/" component={LandingPage} />

@@ -115,7 +115,7 @@ const Create = () => {
   const history = useHistory();
   const { service, hotelFilter } = useSelector((state) => state);
   const message = () => {
-    toast('🦄 Felicitaciones publicaste tu alojamiento!', {
+    toast('🏡 Felicitaciones publicaste tu alojamiento!', {
       position: "top-center",
       autoClose: 3000,
       hideProgressBar: false,
@@ -333,7 +333,7 @@ const Create = () => {
 
   return (
     <div>
-      <ToastContainer />
+      
       <div className="flex justify-between items-center pl-2.5 m-3.5">
         <div className="text-lg font-medium text-gray-900  bg-[color:var(--primary-bg-opacity-color)] rounded-full border border-black-800 p-2">
           <Link to="/home">

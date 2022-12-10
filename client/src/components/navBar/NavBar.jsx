@@ -7,7 +7,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../../redux/action";
 import { useLocalStorage } from './useLocalStorage';
-
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './NavBar.css'
 
 const NavBar = () => {
@@ -16,7 +17,7 @@ const NavBar = () => {
   const dispatch = useDispatch();
   const { user } = useAuth0();
   const [state, setstate] = useState(false);
-
+  const [idToast, setIdToast] = useState(false)
   const reserveByCart = useSelector((state) => state.reserveByCart);
 
   const [userCondition, setUserCondition] = useLocalStorage('user', 'host');
@@ -32,9 +33,26 @@ const NavBar = () => {
     history.push("/createhotel");
   }
 
+  const message = () => {
+    if(idToast === false){
+      toast('🦄 Te logueaste correctamente', {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: false,
+        progress: undefined,
+        theme: "light",
+        });
+        setIdToast(true)
+    }
+  
+  }
+
   useEffect(() => {
     dispatch(getUser());
-  }, [dispatch]);
+  }, []);
 
   useEffect(() => {
     if (location.pathname === "/") {
@@ -54,8 +72,13 @@ const NavBar = () => {
 
         <img src={logo} alt="logo-wetravel" className="w-full h-full " />
       </div>
-
-    
+{ 
+  user?
+  <>
+   { message()}
+  </> :
+  false
+} 
       <nav className=" w-65 flex justify-between items-center text-xl gap-5">
         <Link to="/about">
           <p>About Us</p>
