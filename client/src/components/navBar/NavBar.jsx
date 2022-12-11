@@ -15,9 +15,11 @@ const NavBar = () => {
   let history = useHistory();
   const dispatch = useDispatch();
   const { user } = useAuth0();
+  // console.log('USUARIO:', user)
   const [state, setstate] = useState(false);
 
-  const reserveByCart = useSelector((state) => state.reserveByCart);
+  // const reserveByCart = useSelector((state) => state.reserveByCart);
+  const { reserveByCart } = useSelector((state) => state);
 
   const [userCondition, setUserCondition] = useLocalStorage("user", "host");
 
@@ -26,10 +28,17 @@ const NavBar = () => {
     setUserCondition("guest");
     history.push("/cart");
   }
+
   function handleHost(e) {
     e.preventDefault();
     setUserCondition("host");
     history.push("/createhotel");
+  }
+
+  function handleAdmin(e) {
+    e.preventDefault();
+    setUserCondition("admin");
+    history.push("/Dashboard");
   }
 
   useEffect(() => {
@@ -65,12 +74,20 @@ const NavBar = () => {
         </Link>
         <div className=" h-10 flex justify-between items-center gap-5  hover:bg-cyan-800 cursor-pointer p-7 rounded-full border-2 border-black">
           {!user && (
-            <div>
-              <Link to="/login">Iniciar sesion</Link>
+            <div className=" w-65 flex justify-between items-center text-xl gap-5">
+              <div>
+                <Link to='access-denied' >Dashboard</Link>
+              </div>
+              <div>
+                <Link to="/login">Iniciar sesion</Link>
+              </div>
             </div>
           )}
           {user && userCondition === "guest" && (
             <div className=" w-65 flex justify-between items-center text-xl gap-5">
+              <div>
+                <Link to='access-denied' >Dashboard</Link>
+              </div>
               <Link to="/favourites">
                 <p>Favorito</p>
               </Link>
@@ -94,7 +111,25 @@ const NavBar = () => {
           )}
           {user && userCondition === "host" && (
             <div className=" w-65 flex justify-between items-center text-xl gap-5">
+              <div>
+                <Link to='access-denied' >Dashboard</Link>
+              </div>
               <button onClick={handleHost}>Create New Hotel</button>
+              <Link to="/login">
+                <div className=" w-65 flex justify-between items-center text-xl gap-5">
+                  <p>{user?.name}</p>
+                  <img
+                    src={user?.picture}
+                    alt="icon"
+                    className="bg-center bg-cover bg-no-repeat w-10 h-10 rounded-full"
+                  />
+                </div>
+              </Link>
+            </div>
+          )}
+          {user && userCondition === "admin" && (
+            <div className=" w-65 flex justify-between items-center text-xl gap-5">
+              <button onClick={handleAdmin}>Dashboard</button>
               <Link to="/login">
                 <div className=" w-65 flex justify-between items-center text-xl gap-5">
                   <p>{user?.name}</p>
