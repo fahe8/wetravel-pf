@@ -56,6 +56,10 @@ module.exports = (sequelize) => {
       room: {
         type: DataTypes.JSONB,
       },
+      status:{
+        type: DataTypes.BOOLEAN,
+        defaultValue: true
+      }
     },
     { timestamps: false }
   );
