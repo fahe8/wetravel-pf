@@ -17,7 +17,9 @@ import {
   GET_ID_MERCADO_PAGO,
   POST_REVIEW,
   GET_FAVORITES,
-  DELETE_RESERVE
+  DELETE_RESERVE,
+  GET_IMAGE,
+  DETAIL_USER
 } from "../action/index";
 
 const initialState = {
@@ -30,11 +32,12 @@ const initialState = {
   reserveByCart: [],
   service: [],
   review: [],
-  users: [],
+  users: {},
   userId: {},
   idPay: "",
   loading: false,
-  favorites: []
+  favorites: [],
+  images: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -84,6 +87,13 @@ function rootReducer(state = initialState, action) {
         ...state,
         users: action.payload,
       };
+    
+    case DETAIL_USER:
+      return {
+        ...state,
+        userId: action.payload,
+      };
+    
     case POST_USER:
       return {
         ...state,
@@ -145,6 +155,11 @@ function rootReducer(state = initialState, action) {
         return {
           ...state,
         };
+    case GET_IMAGE:
+      return {
+        ...state,
+        images: action.payload,
+      }
     default:
       return state;
   }

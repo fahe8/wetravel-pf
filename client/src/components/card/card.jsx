@@ -70,7 +70,7 @@ function Card({
       });
   }
   const handleFav = () => {
-    console.log('first')
+
     let copyFav = [...favorites];
     if (isfavorite) {
       const indexFav = copyFav.map((e) => e.name).indexOf(infoCard.name);

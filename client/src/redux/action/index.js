@@ -18,9 +18,10 @@ export const GET_USER = "GET_USER";
 export const DETAIL_USER = "DETAIL_USER";
 export const UPDATE_USER = "UPDATE_USER";
 export const POST_REVIEW = "POST-REVIEW";
-export const GET_FAVORITES = "GET_FAVORITES"
+export const GET_FAVORITES = "GET_FAVORITES";
 export const GET_ID_MERCADO_PAGO = "GET_ID_MERCADO_PAGO";
-export const DELETE_RESERVE = "DELETE_RESERVE"
+export const DELETE_RESERVE = "DELETE_RESERVE";
+export const GET_IMAGE = "GET_IMAGE";
 // 1 depachar los hoteles
 export function getHotels() {
   return async function (dispatch) {
@@ -112,7 +113,6 @@ export function getUserById(email) {
 }
 
 export function postUser(payload) {
-  console.log(payload);
   return async function () {
     const response = await axios.post("http://localhost:3001/users", payload);
     return response;
@@ -159,7 +159,7 @@ export function postReserve(payload) {
 }
 
 export const payReserve = (payload) => {
-  console.log(payload)
+  console.log(payload);
   return async function (dispatch) {
     try {
       const pay = await axios.post("http://localhost:3001/mercadopay", payload);
@@ -176,7 +176,7 @@ export const payReserve = (payload) => {
 export function getReview() {
   return async function (dispatch) {
     let reviews = [];
-    const res = (await axios.get("http://localhost:3001/review")).data
+    const res = (await axios.get("http://localhost:3001/review")).data;
     reviews.push(res);
     // console.log("get review", reviews.flat(Infinity));
     return dispatch({
@@ -187,11 +187,9 @@ export function getReview() {
 }
 
 export function postReview(review) {
-  // console.log(review);
   return async function () {
     try {
       const response = (await axios.post("http://localhost:3001/review", review)).data;
-      // console.log("response", response);
       return response;
     } catch (error) {
       console.log(`Error en Action postReview por: (${error})`);
@@ -212,22 +210,22 @@ export function getReserves(id) {
 
 export function getReservesByCart(user) {
   return async function (dispatch) {
-   try {
-    const json = await axios.get(
-      "http://localhost:3001/order/" + user + "/cart"
-    );
+    try {
+      const json = await axios.get(
+        "http://localhost:3001/order/" + user + "/cart"
+      );
 
-    // console.log(json) //pendiente porque no me está trayendo nada
-    return dispatch({
-      type: GET_RESERVE_BY_CART,
-      payload: json.data,
-    }); //segunda función que recibe dispatch y despacha una acción / el tipo y el payload: devuelve el backend
-   } catch (error) {
-    return dispatch({
-      type: GET_RESERVE_BY_CART,
-      payload: [],
-    });
-   }
+      // console.log(json) //pendiente porque no me está trayendo nada
+      return dispatch({
+        type: GET_RESERVE_BY_CART,
+        payload: json.data,
+      }); //segunda función que recibe dispatch y despacha una acción / el tipo y el payload: devuelve el backend
+    } catch (error) {
+      return dispatch({
+        type: GET_RESERVE_BY_CART,
+        payload: [],
+      });
+    }
   };
 }
 
@@ -236,7 +234,7 @@ export function cartReserves(reserva) {
     console.log(reserva);
     const json = await axios.post("http://localhost:3001/order", reserva);
 
-    console.log(json)
+    console.log(json);
     // console.log(json) //pendiente porque no me está trayendo nada
     //segunda función que recibe dispatch y despacha una acción / el tipo y el payload: devuelve el backend
 
@@ -260,18 +258,39 @@ export function getIdMercadoPago(user) {
   };
 }
 
+export const postImage = (payload) => async () => {
+  try {
+    const images = (await axios.post('http://localhost:3001/images', payload)).data;
+    // console.log('res post:', images)
+    return images;
+  } catch (error) {
+    console.log('Error en postImages por:',error);
+  }
+}
+
+export const getImage = () => async (dispatch) => {
+  try {
+    let res = (await axios('http://localhost:3001/images')).data;
+    return dispatch({
+      type: GET_IMAGE,
+      payload: res,
+    });
+  } catch (error) {
+    console.log(`Error en getImg por:`,error);
+  }
+}
+
 //NO TERMINADA ESTA ACTION
 
 export function deleteReserve(id) {
   return async function (dispatch) {
-    console.log('first')
-     const json = await axios.delete("http://localhost:3001/reserve/" + id);
-    console.log(json.data)
+    console.log("first");
+    const json = await axios.delete("http://localhost:3001/reserve/" + id);
+    console.log(json.data);
 
     return dispatch({
-      type: DELETE_RESERVE
-
-    })
+      type: DELETE_RESERVE,
+    });
   };
 }
 
@@ -280,7 +299,7 @@ export function deleteReserve(id) {
 export const deleteHotel = (id) => {
   return async function (dispatch) {
     try {
-      await axios.delete(`http://localhost:3001/hotels/delete/${id}`);
+      await axios.delete(`http://localhost:3001/hotels/${id}`);
       return dispatch({
         type: DELETE_HOTEL,
       });
@@ -290,7 +309,19 @@ export const deleteHotel = (id) => {
   };
 };
 
-
 export const getFavorites = (fav) => {
-  return {type: GET_FAVORITES, payload: fav}
-}
+  return { type: GET_FAVORITES, payload: fav };
+};
+
+export const updateHotel = (hotel, id) => {
+  return async function (dispatch) {
+    try {
+      const response = (
+        await axios.put(`http://localhost:3001/hotels/${id}`, hotel)
+      ).data;
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
