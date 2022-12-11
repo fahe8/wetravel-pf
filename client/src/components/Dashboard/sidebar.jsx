@@ -10,80 +10,96 @@ import {
   RiEarthLine,
 } from "react-icons/ri";
 import { shadows } from "@mui/system";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useLocalStorage } from "../../localStorage/useLocalStorage";
 
 const Sidebar = () => {
+  const { user } = useAuth0();
+  const [userCondition, setUserCondition] = useLocalStorage("user", "host");
   return (
     <div className="xl:h-[100vh] overFlow-y-scroll fixed xl:static w-full h-full -left-full top-0 bg-secondary-100 p-4 flex flex-col justify-between ">
       <div className="text-center text-2xl font-bold text-white">
         <h1>Admin.</h1>
-        <ul>
+
+        <ul className="mt-4">
           <li>
             <Link
               to={""}
-              className="bg-Dark grayish blue flex items-center gap-4 py-2 px-4 roudend-lg hover:bg-white.900"
+              className="py-2 px-4 ml-1 border-l border-gray-500 ml-6 block"
             >
-              <IconButton>inicio</IconButton>
+              <h1>Regresar a Landing</h1>
             </Link>
           </li>
           <li>
-            <button className="w-full flex items-center justify-between py-2 px-4 rounded-lg hover:bg-primary-900 transitions-colors">
-              <span className="flex items-center gap-4">
-                <RiEarthLine />
-                Review
-              </span>
-              <RiArrowRightSLine />
-            </button>
-            <ul className="my-2 hidden"></ul>
-            <Link
-              to={""}
-              className="bg-Dark grayish blue flex items-center gap-4 py-2 px-4 roudend-lg hover:bg-white.900"
-            ></Link>
-            <ul className="mt-4">
-              <li>
-                <Link
-                  to={"/home"}
-                  className="py-2 px-4 ml-1 border-l border-gray-500 ml-6 block"
-                >
-                  <h1>Hoteles</h1>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to={"/createhotel"}
-                  className="py-2 px-4 ml-1 border-l border-gray-500 ml-6 block"
-                >
-                  <h1>Crear Hoteles</h1>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to={"/createhotel"}
-                  className="py-2 px-4 ml-1 border-l border-gray-500 ml-6 block"
-                >
-                  <h1>Modificar Hoteles</h1>
-                </Link>
-              </li>
-            </ul>
-            <li>
+            {user && userCondition !== "admin" ? (
               <Link
-                to={"/home"}
-                className=" bg-Dark grayish blue flex items-center gap-4 py-2 px-4 roudend-lg hover:bg-white.900 text-black"
+                to={"/access-denied"}
+                className="py-2 px-4 ml-1 border-l border-gray-500 ml-6 block"
               >
-                <RiCalendarTodoLine className="">calendar</RiCalendarTodoLine>
+                <h1>Reviews</h1>
               </Link>
-            </li>
-            <li>
+            ) : (
               <Link
-                to={"/login"}
-                className="bg-Dark grayish blue flex items-center gap-4 py-2 px-4 roudend-lg hover:bg-white.900 text-black"
+                to={"/admin-reviews"}
+                className="py-2 px-4 ml-1 border-l border-gray-500 ml-6 block"
               >
-                <RiLogoutCircleRLine className="text-black flex flex-col justify-between ">
-                  cerrar secion
-                </RiLogoutCircleRLine>
+                <h1>Reviews</h1>
               </Link>
-            </li>
+            )}
+          </li>
+          <li>
+            {user && userCondition !== "admin" ? (
+              <Link
+                to={"/access-denied"}
+                className="py-2 px-4 ml-1 border-l border-gray-500 ml-6 block"
+              >
+                <h1>Hoteles</h1>
+              </Link>
+            ) : (
+              <Link
+                to={"/admin-cards"}
+                className="py-2 px-4 ml-1 border-l border-gray-500 ml-6 block"
+              >
+                <h1>Hoteles</h1>
+              </Link>
+            )}
+          </li>
+          <li>
+            {user && userCondition !== "admin" ? (
+              <Link
+                to={"/access-denied"}
+                className="py-2 px-4 ml-1 border-l border-gray-500 ml-6 block"
+              >
+                <h1>Images</h1>
+              </Link>
+            ) : (
+              <Link
+                to={"/admin-images"}
+                className="py-2 px-4 ml-1 border-l border-gray-500 ml-6 block"
+              >
+                <h1>Images</h1>
+              </Link>
+            )}
           </li>
         </ul>
+        <li>
+          <Link
+            to={"/home"}
+            className=" bg-Dark grayish blue flex items-center gap-4 py-2 px-4 roudend-lg hover:bg-white.900 text-black"
+          >
+            <h1>Regresar a Home</h1>
+          </Link>
+        </li>
+        <li>
+          <Link
+            to={"/login"}
+            className="bg-Dark grayish blue flex items-center gap-4 py-2 px-4 roudend-lg hover:bg-white.900 text-black"
+          >
+            <RiLogoutCircleRLine className="text-black flex flex-col justify-between ">
+              Cerrar Seción
+            </RiLogoutCircleRLine>
+          </Link>
+        </li>
       </div>
     </div>
   );

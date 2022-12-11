@@ -22,6 +22,8 @@ export const GET_FAVORITES = "GET_FAVORITES";
 export const GET_ID_MERCADO_PAGO = "GET_ID_MERCADO_PAGO";
 export const DELETE_RESERVE = "DELETE_RESERVE";
 export const GET_IMAGE = "GET_IMAGE";
+export const DELETE_REVIEW = 'DELETE_REVIEW';
+export const DELETE_IMAGES = 'DELETE_IMAGES';
 // 1 depachar los hoteles
 export function getHotels() {
   return async function (dispatch) {
@@ -197,6 +199,17 @@ export function postReview(review) {
   };
 }
 
+export const deleteReview = (id) => async (dispatch) => {
+  try {
+    await axios.delete(`http://localhost:3001/review/${id}`);
+    dispatch({
+      type: DELETE_REVIEW,
+    })
+  } catch (error) {
+    console.log('Error action deleteReview por:', error);
+  }
+}
+
 export function getReserves(id) {
   return async function (dispatch) {
     const json = await axios.get("http://localhost:3001/reserve/" + id);
@@ -277,6 +290,17 @@ export const getImage = () => async (dispatch) => {
     });
   } catch (error) {
     console.log(`Error en getImg por:`,error);
+  }
+}
+
+export const deleteImages = (id) => async (dispatch) => {
+  try {
+    await axios.delete(`http://localhost:3001/images/${id}`);
+    dispatch({
+      type: DELETE_REVIEW,
+    })
+  } catch (error) {
+    console.log('Error action deleteReview por:', error);
   }
 }
 

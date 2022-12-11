@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { getImage } from "../../../redux/action";
+import NavBar from "../../navBar/NavBar";
 import { Link } from "react-router-dom";
-import { getImage } from "../../redux/action";
-import NavBar from "../navBar/NavBar";
 
-export const Images = () => {
+export const UserImages = () => {
   const dispatch = useDispatch();
   const { images } = useSelector(state => state);
   
@@ -16,13 +16,13 @@ export const Images = () => {
     <div>
       <NavBar />
       <div>
-        <Link to="/home">
-          <button>Regresar</button>
+        <Link to="/huesped">
+          <button>Regresar a mi perfil</button>
         </Link>
       </div>
       <br />
       <div>
-        <h1>Visualiza todas las fotos compartidas</h1>
+        <h1>Mis fotos</h1>
       </div>
       <br />
       <div>
@@ -31,16 +31,19 @@ export const Images = () => {
           {images?.map(el => {
             return (
               <div key={el.id} className="border border-success rounded justify-center items-center" >
-                <p>El usuario <strong>{!el.nameUser ? 'anonymous' : el.nameUser}</strong> compartio la siguente imagen:</p>
+                {/* <p>El usuario <strong>{el.nameUser}</strong> compartio la siguente imagen:</p> */}
                   {
                     el?.images?.map(el => {
+                      // console.log('IMG USER:', el)
                       return (
-                        <div className="d-flex justify-content-around w-[350px] h-[250px]" >
-                          <img src={el && el} alt='img not found' />
+                        <div className="d-flex align-items-center justify-content-around w-[350px] h-[250px]" >
+                          <img src={el} alt='img not found' />
+                          <br />
                         </div>
                       )
                     })
                   }
+                  <br />
               </div>
             );
           })}

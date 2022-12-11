@@ -20,7 +20,9 @@ import {
   GET_FAVORITES,
   DELETE_RESERVE,
   GET_IMAGE,
-  DETAIL_USER
+  DETAIL_USER,
+  DELETE_REVIEW,
+  DELETE_IMAGES
 } from "../action/index";
 
 const initialState = {
@@ -33,7 +35,7 @@ const initialState = {
   reserveByCart: [],
   service: [],
   review: [],
-  users: {},
+  users: [],
   userId: {},
   idPay: "",
   loading: false,
@@ -122,7 +124,10 @@ function rootReducer(state = initialState, action) {
         ...state,
         review: action.payload,
       };
-
+    case DELETE_REVIEW:
+      return {
+        ...state
+      }
     case DELETE_HOTEL:
       return {
         ...state,
@@ -162,6 +167,10 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         images: action.payload,
+      }
+    case DELETE_IMAGES:
+      return {
+        ...state,
       }
     default:
       return state;

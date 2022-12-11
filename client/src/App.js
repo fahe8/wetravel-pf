@@ -8,12 +8,12 @@ import Detail from "./components/Detail/Detail";
 import About from "./components/about/about.jsx";
 import Create from "./components/create/Create";
 import Hospedador from "./components/ProfileUser/hospedador/Hospedador";
-import Huesped from "./components/ProfileUser/Huesped";
+import { ProfileHuesped } from "./components/ProfileUser/Huesped/ProfileHuesped";
 import Cart from "./components/cart/Cart";
 import Favourites from "./components/favourites/Favourites";
 import { HotelsHos } from "./components/ProfileUser/hospedador/hotels/HotelsHos";
-import { CurrentLogin } from "./components/ProfileUser/CurrentLogin";
-import { useDispatch } from "react-redux";
+import { UserImages } from "./components/ProfileUser/Huesped/UserImages";
+import { useDispatch, useSelector } from "react-redux";
 import {
   getHotels,
   getFavorites,
@@ -26,6 +26,10 @@ import { useLocalStorage } from "./localStorage/useLocalStorage";
 import { Images } from "./components/Images/Images";
 import EditCreate from "./components/create/EditCreate";
 import Dashboard from "./components/Dashboard/Dashboard";
+import { AdminCards } from "./components/Dashboard/AdminCards";
+import { AdminReviews } from "./components/Dashboard/AdminReviews";
+import { AccessDenied } from "./components/Dashboard/AccessDenied";
+import { AdminImages } from "./components/Dashboard/AdminImages";
 
 function App() {
   // const {isAuthenticated} = useAuth0()
@@ -51,13 +55,17 @@ function App() {
           <Route exact path="/edithotel/:id" component={EditCreate}></Route>
           <Route exact path="/about" component={About} />
           <Route exact path="/anfitrion" component={Hospedador} />
-          <Route exact path="/huesped" component={Huesped} />
+          <Route exact path="/huesped" component={ProfileHuesped} />
           <Route exact path="/cart" component={Cart} />
           <Route exact path="/favourites" component={Favourites} />
-          <Route path="/users/:id" component={CurrentLogin} />
+          <Route exact path="/user-images" component={UserImages} />
           <Route exact path="/images" component={Images} />
-          <Route path="/Dashboard" component={Dashboard} />
           <Route path= "/anfitrion/hotels" component={HotelsHos} />
+          <Route exact path="/Dashboard" component={Dashboard} />
+          <Route exact path="/admin-cards" component={AdminCards} />
+          <Route exact path="/admin-reviews" component={AdminReviews} />
+          <Route exact path="/admin-images" component={AdminImages} />
+          <Route exact path="/access-denied" component={AccessDenied} />
           <Route path="#" element={<Home />} />
         </Switch>
       </div>
