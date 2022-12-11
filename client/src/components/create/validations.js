@@ -155,10 +155,7 @@ const checkUndefined = (input) => {
     if (stars > 5) {
       errors.max = "No puede agregar más de 5";
     }
-  
-    // if (input.photos && !regexUrl.test(photos)) {
-    //   errors.url = "Inserte unicamente url que terminen en: jpeg, jpg o png";
-    // } //* Esta campo ya no es un input y no se puede validar
+
   
     return errors;
   };

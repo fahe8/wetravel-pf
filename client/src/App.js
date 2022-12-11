@@ -55,6 +55,7 @@ function App() {
           <Route exact path="/favourites" component={Favourites} />
           <Route path="/users/:id" component={CurrentLogin} />
           <Route path="/Dashboard" component={Dashboard} />
+          <Route path= "/anfitrion/hotels" component={HotelsHos} />
           <Route path="#" element={<Home />} />
         </Switch>
       </div>

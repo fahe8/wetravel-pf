@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch } from "react-redux";
-import { postUser } from "../../redux/action";
+import { getUserById, postUser } from "../../redux/action";
 import { useHistory } from "react-router-dom";
 import { useLocalStorage } from "../../localStorage/useLocalStorage";
 import { Footer } from "../footer/Footer";
@@ -36,7 +36,9 @@ function Login() {
           email_verified: user.email_verified,
           status: userCondition,
         })
-      );
+      )
+      
+      dispatch(getUserById(user.email));
     }
   }, [userCondition, dispatch, user]);
 
@@ -104,7 +106,7 @@ function Login() {
           </div>
           <div className="grid grid-cols-2 mx-24 mt-20 shadow-md ">
             <div>
-              <img className="m-auto w-60 h-60 rounded-3xl " src={user?.picture} alt={user?.name} />
+              <img className="m-auto w-60 h-60 rounded-3xl " src={user?.picture} alt={user?.name} referrerPolicy="no-referrer"/>
             </div>
             <div className="shadow-md">
               <div className="m-4 text-xl">
