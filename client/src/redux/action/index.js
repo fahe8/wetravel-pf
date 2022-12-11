@@ -21,7 +21,7 @@ export const POST_REVIEW = "POST-REVIEW";
 export const GET_FAVORITES = "GET_FAVORITES";
 export const GET_ID_MERCADO_PAGO = "GET_ID_MERCADO_PAGO";
 export const DELETE_RESERVE = "DELETE_RESERVE";
-
+export const GET_IMAGE = "GET_IMAGE";
 // 1 depachar los hoteles
 export function getHotels() {
   return async function (dispatch) {
@@ -187,13 +187,9 @@ export function getReview() {
 }
 
 export function postReview(review) {
-  // console.log(review);
   return async function () {
     try {
-      const response = (
-        await axios.post("http://localhost:3001/review", review)
-      ).data;
-      // console.log("response", response);
+      const response = (await axios.post("http://localhost:3001/review", review)).data;
       return response;
     } catch (error) {
       console.log(`Error en Action postReview por: (${error})`);
@@ -260,6 +256,28 @@ export function getIdMercadoPago(user) {
       payload: json.data,
     });
   };
+}
+
+export const postImage = (payload) => async () => {
+  try {
+    const images = (await axios.post('http://localhost:3001/images', payload)).data;
+    // console.log('res post:', images)
+    return images;
+  } catch (error) {
+    console.log('Error en postImages por:',error);
+  }
+}
+
+export const getImage = () => async (dispatch) => {
+  try {
+    let res = (await axios('http://localhost:3001/images')).data;
+    return dispatch({
+      type: GET_IMAGE,
+      payload: res,
+    });
+  } catch (error) {
+    console.log(`Error en getImg por:`,error);
+  }
 }
 
 //NO TERMINADA ESTA ACTION
