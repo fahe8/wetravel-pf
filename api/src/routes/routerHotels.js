@@ -224,5 +224,24 @@ routerHotels.delete('/:id', async (req, res, next) => {
 })
 
 
+routerHotels.put("/:id", async (res,req)=>{
+  const {id}= req.params
+  const {status} = req.body
+
+  try{
+    const hotel = await Hotel.findByPk(id)
+    if(hotel && status){
+      hotel.status = status
+      hotel.save()
+      res.status(200).send(`Hotel ${id} ha sido eliminado`)
+    }else res.status(404).send("El id de el hotel no existe en nuestra base de datos")
+
+
+  }catch(error){
+    res.status(400).send(error.message)
+  }
+})
+
+
 
 module.exports = routerHotels;
