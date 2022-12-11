@@ -11,6 +11,7 @@ import {
   PAY_RESERVE,
   GET_REVIEW,
   GET_RESERVE,
+  
   UPDATE_USER,
   GET_USER,
   GET_RESERVE_BY_CART,
@@ -152,8 +153,10 @@ function rootReducer(state = initialState, action) {
       }
 
       case DELETE_RESERVE:
+
         return {
           ...state,
+          reserveByCart: [...state.reserveByCart].filter(h => h.id !== action.payload)
         };
     case GET_IMAGE:
       return {

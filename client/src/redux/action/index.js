@@ -290,6 +290,7 @@ export function deleteReserve(id) {
 
     return dispatch({
       type: DELETE_RESERVE,
+      payload: id
     });
   };
 }
