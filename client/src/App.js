@@ -41,6 +41,7 @@ function App() {
   React.useEffect(() => {
     dispatch(getHotels());
     dispatch(getServices());
+    dispatch(getReservesByCart())
   }, []);
 
   return (

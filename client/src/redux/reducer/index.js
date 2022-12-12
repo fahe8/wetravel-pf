@@ -142,7 +142,7 @@ function rootReducer(state = initialState, action) {
     case GET_RESERVE_BY_CART:
       return {
         ...state,
-        reserveByCart: action.payload,
+        reserveByCart: [...action.payload],
       };
 
     case GET_ID_MERCADO_PAGO:

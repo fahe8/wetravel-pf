@@ -76,7 +76,7 @@ console.log(userDB)
           </button>
         </Link>
       </div>
-      <div className="mt-24">
+      <div className="mt-24 mb-5">
         <Swiper
           navigation={true}
           modules={[Navigation]}
