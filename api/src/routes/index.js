@@ -9,8 +9,8 @@ const routerOrder = require("./order");
 const routerServices = require("./routerServices");
 const routerFavorites = require("./routerFavorites");
 const routerImage = require("./routerImage");
-const routerMail = require ("./mail")
-
+const routerMail = require("./mail");
+const routerBaned = require("./routerBaned");
 
 router.use("/mercadopay", routerPay);
 
@@ -18,9 +18,9 @@ router.use("/hotels", routerHotels);
 
 router.use("/users", routerUsers);
 
-router.use('/services', routerServices);
+router.use("/services", routerServices);
 
-router.use("/order", routerOrder)
+router.use("/order", routerOrder);
 
 router.use("/reserve", routerReserves);
 
@@ -30,9 +30,8 @@ router.use("/favorites", routerFavorites);
 
 router.use("/images", routerImage);
 
-router.use("/send-email", routerMail)
+router.use("/send-email", routerMail);
 
-
-
+router.use("/baned", routerBaned);
 
 module.exports = router;

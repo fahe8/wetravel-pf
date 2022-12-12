@@ -3,28 +3,35 @@ const { DataTypes } = require("sequelize");
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
   // defino el modelo
-  sequelize.define("user", {
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
+  sequelize.define(
+    "user",
+    {
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      email_verified: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+      },
+      status: {
+        type: DataTypes.ENUM("guest", "host", "admin"),
+        allowNull: false,
+      },
+      photos: {
+        type: DataTypes.JSONB(DataTypes.STRING),
+      },
+      baned: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
     },
-    email:{
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    email_verified:{
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-    },
-    status:{
-      type: DataTypes.ENUM("guest","host","admin"),
-      allowNull: false,
-    },
-    photos: {
-      type: DataTypes.JSONB(DataTypes.STRING),
-    },
-
-  }, {
-    timestamps: false,
-  });
+    {
+      timestamps: false,
+    }
+  );
 };
