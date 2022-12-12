@@ -48,8 +48,8 @@ const initialState = {
   loading: false,
   favorites: [],
   images: [],
-<<<<<<< HEAD
- 
+  reservesUser: {},
+  hasMore:true
 
 
 =======
@@ -64,11 +64,17 @@ function rootReducer(state = initialState, action) {
     action.type // evalúa el tipo de acción // actions type
   ) {
     case GET_HOTELS: // en el caso de obtener los hoteles necesitamos que se llene el estado que nos devuelve los personajes nuestro payload
+      var setHasMore;
+      if(action.payload !== undefined){
+        setHasMore = action.payload.length !== 0 ? true : false
+      } else {
+        setHasMore = false
+      }
       return {
         ...state, //una copia del estado
-        hotels: action.payload, // almacenar en este objeto lo que llega del backend
-        copyHotels: action.payload,
-        hotelFilter: action.payload,
+        hotels: state.hasMore !== true ? state.hotels : state.hotels.concat(action.payload), // almacenar en este objeto lo que llega del backend
+        copyHotels: [...state.hotels, action.payload],
+        hotelFilter: [...state.hotels, action.payload],
       };
     case GET_DETAIL:
       return {
@@ -193,7 +199,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         images: action.payload,
-      };
+      }
     case BANED:
       return {
         ...state,
