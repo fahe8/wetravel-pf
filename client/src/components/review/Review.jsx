@@ -42,7 +42,7 @@ function Review({ name }) {
     // setCurrent(index);
     // setInput({ ...input, stars: index });
   }
-  const message = () => {
+  const messageOk = () => {
     toast("💛 Gracias por su opiñion", {
       position: "top-center",
       autoClose: 3000,
@@ -55,6 +55,18 @@ function Review({ name }) {
     });
 
   };
+  const messageError = () =>{
+    toast.error('Es necesario poner una calificación', {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      });
+  }
   function handleChange(e) {
     e.target.name === 'comments' ?
     setInput({ ...input, nameUser: user?.name, nameHotel: name, [e.target.name]: [e.target.value] }):
@@ -63,7 +75,7 @@ function Review({ name }) {
   function handleSubmit(e) {
     e.preventDefault();
     if (input.stars === 0) {
-      return alert("Es necesario poner una calificación");
+      return messageError();
     } else {
       dispatch(postReview(input));
       setInput({ nameUser: user?.name, stars: 0, comments: [], nameHotel: name, });
@@ -71,7 +83,7 @@ function Review({ name }) {
       // setInput({ user: client.name, stars: 0, comments: "" });
       setCurrent(0);
       setStars([1, 2, 3, 4, 5]);
-      
+      messageOk()
     }
   }
   console.log('INPUT:', input)
@@ -122,7 +134,7 @@ function Review({ name }) {
             style={{ height: "120px" }}
           />
           <div className="mx-auto mt-5 m-1">
-            <Button type="submit" value="Enviar" onClick={message} class="btn btn-primary btn-md">
+            <Button type="submit" value="Enviar" class="btn btn-primary btn-md">
               Enviar
             </Button>
           </div>
