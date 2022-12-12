@@ -11,6 +11,7 @@ import {
   PAY_RESERVE,
   GET_REVIEW,
   GET_RESERVE,
+  GET_RESERVE_USER,
   
   UPDATE_USER,
   GET_USER,
@@ -41,6 +42,9 @@ const initialState = {
   loading: false,
   favorites: [],
   images: [],
+  reservesUser: {}
+
+
 };
 
 function rootReducer(state = initialState, action) {
@@ -145,6 +149,12 @@ function rootReducer(state = initialState, action) {
         reserveByCart: [...action.payload],
       };
 
+    case GET_RESERVE_USER:
+      return {
+        ...state,
+        reservesUser: action.payload
+      }
+    
     case GET_ID_MERCADO_PAGO:
       return {
         ...state,
