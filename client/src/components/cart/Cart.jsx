@@ -79,7 +79,7 @@ let history = useHistory()
                 <div className='p-4'>
                   <button
                     className="bg-red-400 text-white text-xl p-1 rounded-xl"
-                    onClick={() => {dispatch(deleteReserve(producto.id)); history.go(0)} }
+                    onClick={() => {dispatch(deleteReserve(producto.id));} }
                     >
                     Delete Reserve</button>
                 </div>

@@ -60,6 +60,7 @@ function App() {
           <Route exact path="/favourites" component={Favourites} />
           <Route exact path="/user-images" component={UserImages} />
           <Route exact path="/images" component={Images} />
+          <Route path= "/anfitrion/hotels" component={HotelsHos} />
           <Route exact path="/Dashboard" component={Dashboard} />
           <Route exact path="/admin-cards" component={AdminCards} />
           <Route exact path="/admin-reviews" component={AdminReviews} />

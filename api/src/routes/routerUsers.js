@@ -36,18 +36,21 @@ routerUsers.post('/', async (req, res) => {
 
 
     
-  }} catch (error) {
+  } else {
+    res.send('Ya existe')
+  }
+} catch (error) {
     return res.send(`Error en POST por: (${error})`);
   }
 });
 
-routerUsers.put('/:id', async (req,res) => {
-  let { id } = req.params;
+routerUsers.put('/:email', async (req,res) => {
+  let { email } = req.params;
   let user = req.body;
 
   try {
     let updateUser = await User.update(user, {
-      where: { id }
+      where: { email }
     });
     res.json({ change: 'Los datos del Usuario se actualizaron correctamente' });
   } catch (error) {
