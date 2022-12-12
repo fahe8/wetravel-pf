@@ -26,7 +26,7 @@ function Card({
   const dispatch = useDispatch();
   const userDb = useSelector((state) => state.userId);
   const [panel, setPanel] = useState(false);
-  const refOne = useRef(null)
+  const refOne = useRef(null);
   const infoCard = {
     id: id,
     photos: photos,
@@ -110,8 +110,8 @@ function Card({
     dispatch(getFavorites(copyFav));
   };
 
-   // Hide dropdown on outside click
-   const hideOnClickOutside = (e) => {
+  // Hide dropdown on outside click
+  const hideOnClickOutside = (e) => {
     // console.log(refOne.current)
     // console.log(e.target)
     if (refOne.current && !refOne.current.contains(e.target)) {
@@ -137,16 +137,38 @@ function Card({
           >
             {isfavorite ? <AiFillHeart /> : <AiOutlineHeart />}
           </div>
-          <div
-            onClick={() => setPanel(!panel)}
-            className="h-10 w-10 flex items-center justify-center text-xl bg-white hover:bg-black-500 text-black-500 rounded-2xl shadow-xl transform-gpu translate-y-0 hover:-translate-y-1 transition-all duration-300 ease-in-out"
-          >
-            {userDb.status === "admin" && <BsPencilSquare />}
-          </div>
+          {userDb.status === "admin" && (
+            <div
+              onClick={() => setPanel(!panel)}
+              className="h-10 w-10 flex items-center justify-center text-xl bg-white hover:bg-black-500 text-black-500 rounded-2xl shadow-xl transform-gpu translate-y-0 hover:-translate-y-1 transition-all duration-300 ease-in-out"
+            >
+              <BsPencilSquare />
+            </div>
+          )}
+
           {panel && (
-            <div className="absolute bg-white right-0 -top-16 w-[100px] flex flex-col 2 rounded border" ref={refOne}>
-              <p className=" hover:bg-gray-200" onClick={() => {dispatch(deleteHotel(id)); messageHotelRemove()}}>Eliminar</p>
-              <p className=" hover:bg-gray-200"  onClick={() => {dispatch(updateHotel({status: false},id)); messageHotelBan()}}>Bloquear</p>
+            <div
+              className="absolute bg-white right-0 -top-16 w-[100px] flex flex-col 2 rounded border"
+              ref={refOne}
+            >
+              <p
+                className=" hover:bg-gray-200"
+                onClick={() => {
+                  dispatch(deleteHotel(id));
+                  messageHotelRemove();
+                }}
+              >
+                Eliminar
+              </p>
+              <p
+                className=" hover:bg-gray-200"
+                onClick={() => {
+                  dispatch(updateHotel({ status: false }, id));
+                  messageHotelBan();
+                }}
+              >
+                Bloquear
+              </p>
             </div>
           )}
         </div>
