@@ -24,11 +24,19 @@ routerMail.post("/", async (req, res) => {
 
 
     const mapeo = () => {
-        data.map(dat => {
-            "<ul>"
-                "<li></li>"
-            "</ul>"
+        const msg = data.map(dat => {
+            return  "<ul>"+
+            "<li>"+dat.nameHotel+"</li>"+
+           " <li>"+"Room: "+dat.nameRoom+"</li>"+
+            "<li>" +"precio: " +dat.price + "</li>"+
+            "<li> check in: " +dat.check_in+ "</li>"+
+            "<li> check out: " +dat.check_out+ "</li>"+
+            "<li> Cantidad de noches: " +dat.quantity+"</li>"+
+            "<li> Correo de la reservación: " +email+"</li>"+
+        "</ul>"
+           
         })
+        return msg
     }
     
 
@@ -43,16 +51,7 @@ routerMail.post("/", async (req, res) => {
 
             <p> Hola, ${userFind.name} estos son los datos de tu reservación </p>
 
-            <ul>
-                <li>  Hotel: ${data.nameHotel}</li>
-                <li>Room: ${data.nameRoom}</li>
-                <li> precio: ${data.price} </li>
-                <li> check in ${data.check_in} </li>
-                <li> check out ${data.check_out} </li>
-                <li> Cantidad de noches ${data.quantity} </li>
-                <li> Correo de la reservación ${data.email} </li>
-            </ul>
-
+            ${mapeo()}
             <p> Muchas gracias por contar con nosotros y esperamos acompañarte en la busqueda de tus sitios de descanso</p>
 
             <p> Un abrazo, WeTavel 🎅🏿</p>
