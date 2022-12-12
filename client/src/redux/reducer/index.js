@@ -130,6 +130,7 @@ function rootReducer(state = initialState, action) {
     case DELETE_HOTEL:
       return {
         ...state,
+        hotels: [...state.hotels].filter(h => h.id !== action.payload)
       };
 
     case GET_RESERVE:

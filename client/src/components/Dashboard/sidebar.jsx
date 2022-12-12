@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserById } from "../../redux/action";
+
 // import { BsFillCalendarDateFill } from "react-icons/";
 import { IconButton } from "@mui/material";
 // import { CalendarMonth } from "@mui/material";
@@ -15,7 +18,16 @@ import { useLocalStorage } from "../../localStorage/useLocalStorage";
 
 const Sidebar = () => {
   const { user } = useAuth0();
-  const [userCondition, setUserCondition] = useLocalStorage("user", "host");
+  const dispatch = useDispatch()
+  const userDb = useSelector((state) => state.userId);
+
+  useEffect(() => {
+    if (user) {
+      dispatch(getUserById(user.email));
+    }
+  }, [dispatch, user]);
+
+
   return (
     <div className="xl:h-[100vh] overFlow-y-scroll fixed xl:static w-full h-full -left-full top-0 bg-secondary-100 p-4 flex flex-col justify-between ">
       <div className="text-center text-2xl font-bold text-white">
@@ -31,7 +43,7 @@ const Sidebar = () => {
             </Link>
           </li>
           <li>
-            {user && userCondition !== "admin" ? (
+            {user && userDb.status !== "admin" ? (
               <Link
                 to={"/access-denied"}
                 className="py-2 px-4 ml-1 border-l border-gray-500 ml-6 block"
@@ -48,7 +60,7 @@ const Sidebar = () => {
             )}
           </li>
           <li>
-            {user && userCondition !== "admin" ? (
+            {user && userDb.status !== "admin" ? (
               <Link
                 to={"/access-denied"}
                 className="py-2 px-4 ml-1 border-l border-gray-500 ml-6 block"
@@ -65,7 +77,7 @@ const Sidebar = () => {
             )}
           </li>
           <li>
-            {user && userCondition !== "admin" ? (
+            {user && userDb.status !== "admin" ? (
               <Link
                 to={"/access-denied"}
                 className="py-2 px-4 ml-1 border-l border-gray-500 ml-6 block"
