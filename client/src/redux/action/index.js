@@ -28,12 +28,12 @@ export const GET_RESERVE_USER = "GET_RESERVE_USER";
 export const SEND_MAIL = "SEND_MAIL";
 export const BANED = "BANED";
 // 1 depachar los hoteles
-export function getHotels() {
+export function getHotels(page= 0) {
   return async function (dispatch) {
-    const json = await axios.get("http://localhost:3001/hotels");
+    const json = await axios.get(`http://localhost:3001/hotels?page=${page}`);
     return dispatch({
       type: GET_HOTELS,
-      payload: json.data,
+      payload: json.data.rows,
     }); //segunda función que recibe dispatch y despacha una acción / el tipo y el payload: devuelve el backend
   };
 }

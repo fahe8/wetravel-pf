@@ -45,8 +45,12 @@ const getHotels = async () => {
 };
 
 routerHotels.get("/", async (req, res) => {
-  const { search, stars, priceMin, priceMax, servicies } = req.query;
-
+  const { search, stars, priceMin, priceMax, servicies, page } = req.query;
+  // const pageAsNumber = Number.parseInt(page)
+  // let pages= 0
+  // if(!Number.isNaN(pageAsNumber) && pageAsNumber > 0) {
+  //   page = pageAsNumber
+  // }
   try {
     const hotels = await getHotels();
 
@@ -131,7 +135,21 @@ routerHotels.get("/", async (req, res) => {
       return res.send(resultadoDeBusqueda)
 
     } else {
-      return res.send(hotels)
+      
+      const dataDb = await Hotel.findAndCountAll({
+        limit: 5,
+        offset: page*5,
+        include: [
+          {
+            model: User,
+            attributes: ["name"],
+            through: {
+              attributes: [],
+            },
+          }
+        ],
+      });
+      return res.send(dataDb)
     }
   } catch (error) {
     res.status(400).send(error.message);
