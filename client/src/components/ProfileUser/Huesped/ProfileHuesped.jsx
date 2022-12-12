@@ -14,7 +14,7 @@ import { BiImageAdd } from "react-icons/bi";
 export const ProfileHuesped = () => {
   const { user, logout } = useAuth0();
   // console.log("USER HUESPED:", user);
-
+  
   const initialState = {
     nameUser: user?.name,
     images: [],
