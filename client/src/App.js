@@ -31,6 +31,7 @@ import { AdminReviews } from "./components/Dashboard/AdminReviews";
 import { AccessDenied } from "./components/Dashboard/AccessDenied";
 import { AdminImages } from "./components/Dashboard/AdminImages";
 import Confirmacion from "./components/confirmacion/Confirmacion"
+import Paginate from "./components/Paginate/Paginate"
 
 
 function App() {
@@ -77,6 +78,7 @@ function App() {
           <Route exact path="/admin-images" component={AdminImages} />
           <Route exact path="/access-denied" component={AccessDenied} />
           <Route exact path ="/confirmacion" component = {Confirmacion} />
+          <Route exact path="/test" component = {Paginate}></Route>
 
           <Route path="#" element={<Home />} />
         </Switch>
