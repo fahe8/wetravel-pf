@@ -25,7 +25,7 @@ export const GET_IMAGE = "GET_IMAGE";
 export const DELETE_REVIEW = 'DELETE_REVIEW';
 export const DELETE_IMAGES = 'DELETE_IMAGES';
 export const GET_RESERVE_USER = 'GET_RESERVE_USER';
-
+export const SEND_MAIL = "SEND_MAIL"
 // 1 depachar los hoteles
 export function getHotels() {
   return async function (dispatch) {
@@ -367,3 +367,20 @@ export const updateHotel = (hotel, id) => {
     }
   };
 };
+
+export const sendMail = (email) => {
+  return async function (dispatch)  {
+    try {
+      const response = (
+        await axios.post(`http://localhost:3001/send-email`, email)
+      ).data;
+
+      return dispatch({
+        type: SEND_MAIL,
+        payload: ''
+      })
+    } catch (error) {
+      
+    }
+  }
+}

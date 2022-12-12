@@ -137,7 +137,7 @@ function Card({
           >
             {isfavorite ? <AiFillHeart /> : <AiOutlineHeart />}
           </div>
-          {userDb.status === "admin" && (
+          {userDb?.status === "admin" && (
             <div
               onClick={() => setPanel(!panel)}
               className="h-10 w-10 flex items-center justify-center text-xl bg-white hover:bg-black-500 text-black-500 rounded-2xl shadow-xl transform-gpu translate-y-0 hover:-translate-y-1 transition-all duration-300 ease-in-out"
