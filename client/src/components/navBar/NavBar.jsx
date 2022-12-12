@@ -82,9 +82,6 @@ const NavBar = () => {
           )}
           {user && userDb.status === "guest" && (
             <div className=" w-65 flex justify-between items-center text-xl gap-5">
-              <Link to="/favourites">
-                <p>Favorito</p>
-              </Link>
               {
                 <button onClick={handleGuest}>
                   <BsCart4 />

@@ -191,9 +191,10 @@ export function getReview() {
 }
 
 export function postReview(review) {
-  return async function () {
+  return async function (dispatch) {
     try {
       const response = (await axios.post("http://localhost:3001/review", review)).data;
+      dispatch(getReview())
       return response;
     } catch (error) {
       console.log(`Error en Action postReview por: (${error})`);
@@ -252,7 +253,7 @@ export function cartReserves(reserva) {
     console.log(json);
     // console.log(json) //pendiente porque no me está trayendo nada
     //segunda función que recibe dispatch y despacha una acción / el tipo y el payload: devuelve el backend
-
+    dispatch(getReservesByCart(reserva.user))
     return dispatch({
       type: POST_ORDER,
       payload: json,

@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import Carousel from "react-bootstrap/Carousel";
-import { payReserve, postReserve, cartReserves } from "../../redux/action";
-import ScriptMercadoPago from "../scriptMercadoPago/ScriptMercadoPago";
-import { useLocalStorage } from "../../localStorage/useLocalStorage";
 import {FaCheck} from "react-icons/fa";
 import { useAuth0 } from "@auth0/auth0-react";
+import {useSelector} from "react-redux"
 
 const DetailRoom = ({
   name,
@@ -18,6 +16,7 @@ const DetailRoom = ({
   nameHotel,
   fullInfo,
 }) => {
+  const userDb = useSelector(state => state.userId)
   const [modalFilter, setModalFilter] = useState(false);
   const { user } = useAuth0();
   const [item, setItem] = useState();
@@ -61,7 +60,6 @@ const DetailRoom = ({
     }
   };
 
-  const [huesped,] = useLocalStorage('user', 'guest');
   // console.log('DETAIL ROOM HUESPED', huesped)
 
   return (
@@ -75,7 +73,7 @@ const DetailRoom = ({
           <p>Ver</p>
         </button>
         {
-          (user && huesped === 'guest') && (
+          (user && userDb.status === 'guest') && (
             <button
               className="bg-[color:var(--second-bg-color)] py-2 px-3 shadow-[inset_0_-2px_4px_rgba(0,0,0,0.6)]  hover:shadow-[inset_0_4px_4px_rgba(0,0,0,0.25)] rounded-[10px] flex align-middle"
               onClick={fullInfo}
