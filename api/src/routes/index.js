@@ -9,6 +9,8 @@ const routerOrder = require("./order");
 const routerServices = require("./routerServices");
 const routerFavorites = require("./routerFavorites");
 const routerImage = require("./routerImage");
+const routerMail = require ("./mail")
+
 
 router.use("/mercadopay", routerPay);
 
@@ -27,6 +29,9 @@ router.use("/review", routerReview);
 router.use("/favorites", routerFavorites);
 
 router.use("/images", routerImage);
+
+router.use("/send-email", routerMail)
+
 
 
 
