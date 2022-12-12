@@ -24,8 +24,12 @@ routerMail.post("/", async (req, res) => {
     var mailOptions = {
         from: '"WeTravel" <appwetravel77@gmail.com> ', //desde donde llega el email
         to: "juanrodriguez9502@gmail.com",  //paras quien: use.user.email
-        subject: "Prueba mensaje",
-        html: "<b> Un nuevo texto de prueba<b>    Esta es tu ${order_id} "
+        subject: "Información Reserva WeTravel ",
+        html: ` <div>
+
+        
+        
+        </div>`
         
         
     //abrir back tips para hacer el mensaje

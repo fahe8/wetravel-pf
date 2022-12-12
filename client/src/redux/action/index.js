@@ -24,6 +24,8 @@ export const DELETE_RESERVE = "DELETE_RESERVE";
 export const GET_IMAGE = "GET_IMAGE";
 export const DELETE_REVIEW = 'DELETE_REVIEW';
 export const DELETE_IMAGES = 'DELETE_IMAGES';
+export const GET_RESERVE_USER = 'GET_RESERVE_USER';
+
 // 1 depachar los hoteles
 export function getHotels() {
   return async function (dispatch) {
@@ -243,6 +245,16 @@ export function getReservesByCart(user) {
       });
     }
   };
+}
+
+export function getReservesUser (email) {
+  return async function (dispatch) {
+     const json = await axios.get(`http://localhost:3001/reserve/${email}`);
+    return dispatch ( {
+      type: GET_RESERVE_USER,
+      payload: json.data,
+  })
+  }
 }
 
 export function cartReserves(reserva) {
