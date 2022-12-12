@@ -73,7 +73,7 @@ routerUsers.get("/:email", async (req, res) => {
         through: { attributes: [] },
       },
     });
-    console.log(getUser);
+    //console.log(getUser);
     return res.json(getUser);
   } catch (error) {
     res.json(`No se pudo obtener el EMAIL por: (${error})`);

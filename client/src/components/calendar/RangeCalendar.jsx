@@ -7,20 +7,14 @@ import 'react-date-range/dist/theme/default.css'
 
 const RangeCalendar = ({range, setRange}) => {
 
-//   // date state
-//   const [range, setRange] = useState([
-//     {
-//       startDate: new Date(),
-//       endDate: addDays(new Date(), 7),
-//       key: 'selection'
-//     }
-//   ])
-
-
-
-
-
-
+  // date state
+  // const [range, setRange] = useState([
+  //   {
+  //     startDate: new Date(),
+  //     endDate: addDays(new Date(), 7),
+  //     key: 'selection'
+  //   }
+  // ])
 
   return (
     <div className="w-auto">
