@@ -8,12 +8,15 @@ import { Link } from "react-router-dom";
 // import { Typography } from "@mui/material";
 
 import { useDispatch, useSelector } from "react-redux";
-import { getUser } from "../../redux/action";
+import { getUser, baned } from "../../redux/action";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.users);
   console.log(user);
+  const banear = (id, payload) => {
+    baned(id, payload);
+  };
 
   useEffect(() => {
     dispatch(getUser());
@@ -32,7 +35,23 @@ const Dashboard = () => {
               <div className="flex items-center gap-x-2 hover:bg-red-900 p-2 rounded-lg transition  "> */}
               <h3 className="uppercase font-bold">Usuarios</h3>
               <br />
-              {user ? user.map((el) => <p>{el.name}</p>) : "esta vacio"}
+              {user
+                ? user.map((el) => {
+                    return (
+                      <div>
+                        <button
+                          onClick={() => {
+                            dispatch(baned({ baned: true }, el.id));
+                          }}
+                        >
+                          X
+                        </button>
+
+                        <p>{el.name}</p>
+                      </div>
+                    );
+                  })
+                : "esta vacio"}
 
               {/* <RiMore2Line /> */}
               {/* <Link to={"/favourites"}> Usuarios</Link> */}
