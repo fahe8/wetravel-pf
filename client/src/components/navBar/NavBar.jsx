@@ -24,6 +24,8 @@ const NavBar = () => {
 
   // const [userCondition, setUserCondition] = useLocalStorage("user", "host");
 
+
+
   function handleGuest(e) {
     e.preventDefault();
     history.push("/cart");
@@ -80,7 +82,7 @@ const NavBar = () => {
               </div>
             </div>
           )}
-          {user && userDb.status === "guest" && (
+          {user && userDb?.status === "guest" && (
             <div className=" w-65 flex justify-between items-center text-xl gap-5">
               {
                 <button onClick={handleGuest}>
@@ -100,7 +102,7 @@ const NavBar = () => {
               </Link>
             </div>
           )}
-          {user && userDb.status === "host" && (
+          {user && userDb?.status === "host" && (
             <div className=" w-65 flex justify-between items-center text-xl gap-5">
               <button onClick={handleHost}>Create New Hotel</button>
               <Link to="/login">
@@ -115,7 +117,7 @@ const NavBar = () => {
               </Link>
             </div>
           )}
-          {user && userDb.status === "admin" && (
+          {user && userDb?.status === "admin" && (
             <div className=" w-65 flex justify-between items-center text-xl gap-5">
               <button onClick={handleAdmin}>Dashboard</button>
               <Link to="/login">
