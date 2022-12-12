@@ -32,7 +32,7 @@ import { AccessDenied } from "./components/Dashboard/AccessDenied";
 import { AdminImages } from "./components/Dashboard/AdminImages";
 
 function App() {
-  // const {isAuthenticated} = useAuth0()
+  const {user} = useAuth0()
   useLocalStorage("userEmail");
 
   let dispatch = useDispatch();
@@ -41,8 +41,15 @@ function App() {
   React.useEffect(() => {
     dispatch(getHotels());
     dispatch(getServices());
-    dispatch(getReservesByCart())
   }, []);
+
+  React.useEffect(() => {
+    if(user) {
+      dispatch(getReservesByCart(user.email))
+    }
+
+  }, [user]);
+
 
   return (
     <BrowserRouter>
