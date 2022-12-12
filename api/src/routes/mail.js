@@ -25,14 +25,34 @@ routerMail.post("/", async (req, res) => {
         from: '"WeTravel" <appwetravel77@gmail.com> ', //desde donde llega el email
         to: "juanrodriguez9502@gmail.com",  //paras quien: use.user.email
         subject: "Información Reserva WeTravel ",
-        html: ` <div>
+        html: `
+        <html>
+         <div>
+            <p>Ten un buen saludo desde el equipo de WeTravel</p>
 
+            <p> Hola, juan estos son los datos de tu reservación </p>
+
+            <ul>
+                <li>  Hotel: {nameHotel}</li>
+                <li>Room: {nameRoom}</li>
+                <li> precio: {price} </li>
+                <li> check in {check_in} </li>
+                <li> check out {check_out} </li>
+                <li> Cantidad de noches {quantity} </li>
+                <li> Correo de la reservación {userReserve} </li>
+            </ul>
+
+            <p> Muchas gracias por contar con nosotros y esperamos acompañarte en la busqueda de tus sitios de descanso</p>
+
+            <p> Un abrazo, WeTavel 🎅🏿</p>
+            <img  src="https://ibb.co/jJ2HWjS" alt="Logotipo"/>
+        
+        </div>
+        </html>
+        `
         
         
-        </div>`
-        
-        
-    //abrir back tips para hacer el mensaje
+   
     }
 
     transporter.sendMail(mailOptions, (error, info) => {
