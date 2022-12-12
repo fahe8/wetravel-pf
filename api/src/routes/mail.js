@@ -1,13 +1,16 @@
 var nodemailer = require("nodemailer");
-const {Order} = require ("../db")
-const {Router, Reserves, User} = require("express");
+const {Order, User} = require ("../db")
+const {Router} = require("express");
 const routerMail = Router()
 
 
 routerMail.post("/", async (req, res) => {
     //console.log("Email enviado con éxito")
 
-    const {email} = req.body
+    const {email, data} = req.body
+    const userFind = await User.findOne({
+        where:{email}
+    })
 
     const transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
@@ -19,17 +22,43 @@ routerMail.post("/", async (req, res) => {
         },
     });
 
+
+    const mapeo = () => {
+        data.map(dat => {
+            "<ul>"
+                "<li></li>"
+            "</ul>"
+        })
+    }
     
 
     var mailOptions = {
         from: '"WeTravel" <appwetravel77@gmail.com> ', //desde donde llega el email
-        to: "juanrodriguez9502@gmail.com",  //paras quien: use.user.email
+        to: email,  //paras quien: use.user.email
         subject: "Información Reserva WeTravel ",
-        html: ` <div>
+        html: ` 
+        <html>
+         <div>
+            <p>Ten un buen saludo desde el equipo de WeTravel</p>
 
+            <p> Hola, ${userFind.name} estos son los datos de tu reservación </p>
+
+            <ul>
+                <li>  Hotel: ${data.nameHotel}</li>
+                <li>Room: ${data.nameRoom}</li>
+                <li> precio: ${data.price} </li>
+                <li> check in ${data.check_in} </li>
+                <li> check out ${data.check_out} </li>
+                <li> Cantidad de noches ${data.quantity} </li>
+                <li> Correo de la reservación ${data.email} </li>
+            </ul>
+
+            <p> Muchas gracias por contar con nosotros y esperamos acompañarte en la busqueda de tus sitios de descanso</p>
+
+            <p> Un abrazo, WeTavel 🎅🏿</p>
         
-        
-        </div>`
+        </div>
+        </html>`
         
         
     //abrir back tips para hacer el mensaje
@@ -37,6 +66,7 @@ routerMail.post("/", async (req, res) => {
 
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
+            console.log(error)
             res.status(500).send(error.message)
         } else {
             console.log("Email enviado con éxito")
