@@ -103,8 +103,7 @@ function rootReducer(state = initialState, action) {
       };
     case UPDATE_USER:
       return {
-        ...state,
-        userId: action.payload,
+        ...state
       };
     case POST_RESERVE:
       return {

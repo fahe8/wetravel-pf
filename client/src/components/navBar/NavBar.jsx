@@ -5,7 +5,7 @@ import Search from "../search/Search";
 import logo from "../../assets/img/copia.png";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUser } from "../../redux/action";
+import { getUserById } from "../../redux/action";
 import { useLocalStorage } from "../../localStorage/useLocalStorage";
 
 import "./NavBar.css";
@@ -15,35 +15,35 @@ const NavBar = () => {
   let history = useHistory();
   const dispatch = useDispatch();
   const { user } = useAuth0();
+  const userDb = useSelector(state => state.userId)
   // console.log('USUARIO:', user)
   const [state, setstate] = useState(false);
 
   // const reserveByCart = useSelector((state) => state.reserveByCart);
   const { reserveByCart } = useSelector((state) => state);
 
-  const [userCondition, setUserCondition] = useLocalStorage("user", "host");
+  // const [userCondition, setUserCondition] = useLocalStorage("user", "host");
 
   function handleGuest(e) {
     e.preventDefault();
-    setUserCondition("guest");
     history.push("/cart");
   }
 
   function handleHost(e) {
     e.preventDefault();
-    setUserCondition("host");
     history.push("/createhotel");
   }
 
   function handleAdmin(e) {
     e.preventDefault();
-    setUserCondition("admin");
     history.push("/Dashboard");
   }
 
   useEffect(() => {
-    dispatch(getUser());
-  }, [dispatch]);
+    if (user) {
+      dispatch(getUserById(user.email));
+    }
+  }, [dispatch, user]);
 
   useEffect(() => {
     if (location.pathname === "/") {
@@ -76,18 +76,12 @@ const NavBar = () => {
           {!user && (
             <div className=" w-65 flex justify-between items-center text-xl gap-5">
               <div>
-                <Link to='access-denied' >Dashboard</Link>
-              </div>
-              <div>
                 <Link to="/login">Iniciar sesion</Link>
               </div>
             </div>
           )}
-          {user && userCondition === "guest" && (
+          {user && userDb.status === "guest" && (
             <div className=" w-65 flex justify-between items-center text-xl gap-5">
-              <div>
-                <Link to='access-denied' >Dashboard</Link>
-              </div>
               <Link to="/favourites">
                 <p>Favorito</p>
               </Link>
@@ -109,11 +103,8 @@ const NavBar = () => {
               </Link>
             </div>
           )}
-          {user && userCondition === "host" && (
+          {user && userDb.status === "host" && (
             <div className=" w-65 flex justify-between items-center text-xl gap-5">
-              <div>
-                <Link to='access-denied' >Dashboard</Link>
-              </div>
               <button onClick={handleHost}>Create New Hotel</button>
               <Link to="/login">
                 <div className=" w-65 flex justify-between items-center text-xl gap-5">
@@ -127,7 +118,7 @@ const NavBar = () => {
               </Link>
             </div>
           )}
-          {user && userCondition === "admin" && (
+          {user && userDb.status === "admin" && (
             <div className=" w-65 flex justify-between items-center text-xl gap-5">
               <button onClick={handleAdmin}>Dashboard</button>
               <Link to="/login">

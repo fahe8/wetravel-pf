@@ -1,31 +1,52 @@
 import { React, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import Card from "../card/card";
 import NavBar from "../navBar/NavBar";
 import Search from "../search/Search";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { getHotels } from "../../redux/action/index.js";
-import "./Landing.css";
 import { Footer } from "../footer/Footer";
-import Card from "../card/card";
 import { RxLapTimer } from "react-icons/rx";
 import { RiSecurePaymentFill, RiHandHeartLine } from "react-icons/ri";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
+import "./Landing.css";
 import { useLocalStorage } from "../../localStorage/useLocalStorage";
-
+import { useAuth0 } from "@auth0/auth0-react";
+import { getUserById, postUser } from "../../redux/action/index";
 function LandingPage() {
   let dispatch = useDispatch();
   const hotels = useSelector((state) => state.hotels);
   const hotelSlide = [];
+  const { user } = useAuth0();
+  const userDB = useSelector((state) => state.userId);
 
   useEffect(() => {
     dispatch(getHotels());
   }, [dispatch]);
 
-  console.log(hotels);
+
+console.log(userDB)
+
+    useEffect( () => {
+      if (user) {
+        dispatch(
+          postUser({
+            name: user.name,
+            email: user.email,
+            email_verified: user.email_verified,
+            status: 'guest',
+          })
+        ).then(res => {
+          dispatch(getUserById(user.email))
+        }) 
+       
+
+      }
+    }, [ dispatch, user]);
+
   if (hotels.length) {
     hotels.forEach((hotel) => {
       if (hotelSlide.length < 5) hotelSlide.push(hotel);
@@ -81,7 +102,12 @@ function LandingPage() {
                   />
                 </div>
                 <Link to={"/home"}>
-                <button type="button" class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mt-4 ">Ver mas</button>
+                  <button
+                    type="button"
+                    class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mt-4 "
+                  >
+                    Ver mas
+                  </button>
                 </Link>
               </SwiperSlide>
             ))

@@ -121,16 +121,18 @@ export function postUser(payload) {
   };
 }
 
-export function updateUser(id) {
+export function updateUser(email, status) {
   // console.log('PUT ID:', id);
   return async function (dispatch) {
     try {
-      const response = await axios.put(`http://localhost:3001/users/${id}`, id);
+      const response = await axios.put(`http://localhost:3001/users/${email}`, status);
       console.log("RES PUT:", response);
       dispatch({
         type: UPDATE_USER,
         payload: response.data,
       });
+
+      dispatch(getUserById(email))
     } catch (error) {
       console.log(
         `No se pudo actualizar la información del Usuario por: (${error})`

@@ -120,7 +120,7 @@ export const ProfileHuesped = () => {
         </div>
         <br />
         <div>
-          <form onClick={(e) => handlerSubmit(e)}>
+          <form>
             <div>
               <Container>
                 <Dropzone onDrop={submitImage}>
@@ -142,7 +142,9 @@ export const ProfileHuesped = () => {
               </Container>
             </div>
             <br />
-            <div className="text-xl">
+            
+          </form>
+          <div className="text-xl">
               <button
                 onClick={handlerSubmit}
                 className="rounded-xl w-80 bg-slate-200 hover:bg-slate-300 p-2"
@@ -150,7 +152,6 @@ export const ProfileHuesped = () => {
                 Subir imagenes
               </button>
             </div>
-          </form>
         </div>
       </div>
       <br />
