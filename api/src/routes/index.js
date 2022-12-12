@@ -9,8 +9,8 @@ const routerOrder = require("./order");
 const routerServices = require("./routerServices");
 const routerFavorites = require("./routerFavorites");
 const routerImage = require("./routerImage");
-const routerMail = require ("./mail")
-
+const routerMail = require ("../routes/routesMails/confirmacion")
+const routerMailCreate = require ("../routes/routesMails/creacion")
 
 router.use("/mercadopay", routerPay);
 
@@ -31,6 +31,8 @@ router.use("/favorites", routerFavorites);
 router.use("/images", routerImage);
 
 router.use("/send-email", routerMail)
+
+router.use("/send-email-create", routerMailCreate)
 
 
 

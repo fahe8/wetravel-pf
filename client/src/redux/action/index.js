@@ -26,6 +26,9 @@ export const DELETE_REVIEW = 'DELETE_REVIEW';
 export const DELETE_IMAGES = 'DELETE_IMAGES';
 export const GET_RESERVE_USER = 'GET_RESERVE_USER';
 export const SEND_MAIL = "SEND_MAIL"
+export const SEND_MAIL_CREATE = "SEND_MAIL_CREATE"
+
+
 // 1 depachar los hoteles
 export function getHotels() {
   return async function (dispatch) {
@@ -62,7 +65,7 @@ export function getSearchHotels(
 ) {
   // console.log(search);
   return async function (dispatch) {
-    console.log(filters);
+    //console.log(filters);
     const { stars, priceMin, priceMax } = filters;
     const json = await axios.get(
       `http://localhost:3001/hotels?search=${search}&stars=${stars}&priceMin=${priceMin}&priceMax=${priceMax}`
@@ -101,11 +104,11 @@ export function getUser() {
 }
 
 export function getUserById(email) {
-  console.log("getUserById:", email);
+  //console.log("getUserById:", email);
   return async function (dispatch) {
     try {
       let res = await axios(`http://localhost:3001/users/${email}`);
-      console.log("RES GET USER BY ID:", res.data);
+      //console.log("RES GET USER BY ID:", res.data);
       dispatch({
         type: DETAIL_USER,
         payload: res.data,
@@ -165,7 +168,7 @@ export function postReserve(payload) {
 }
 
 export const payReserve = (payload) => {
-  console.log(payload);
+  //console.log(payload);
   return async function (dispatch) {
     try {
       const pay = await axios.post("http://localhost:3001/mercadopay", payload);
@@ -259,10 +262,10 @@ export function getReservesUser (email) {
 
 export function cartReserves(reserva) {
   return async function (dispatch) {
-    console.log(reserva);
+    //console.log(reserva);
     const json = await axios.post("http://localhost:3001/order", reserva);
 
-    console.log(json);
+    //console.log(json);
     // console.log(json) //pendiente porque no me está trayendo nada
     //segunda función que recibe dispatch y despacha una acción / el tipo y el payload: devuelve el backend
     dispatch(getReservesByCart(reserva.user))
@@ -323,7 +326,7 @@ export const deleteImages = (id) => async (dispatch) => {
 
 export function deleteReserve(id) {
   return async function (dispatch) {
-    console.log("first");
+    //console.log("first");
     const json = await axios.delete("http://localhost:3001/reserve/" + id);
     console.log(json.data);
 
@@ -360,7 +363,7 @@ export const updateHotel = (hotel, id) => {
       const response = (
         await axios.put(`http://localhost:3001/hotels/${id}`, hotel)
       ).data;
-      console.log(response);
+     // console.log(response);
       dispatch(getHotels())
     } catch (error) {
       console.log(error);
@@ -377,6 +380,23 @@ export const sendMail = (email) => {
 
       return dispatch({
         type: SEND_MAIL,
+        payload: ''
+      })
+    } catch (error) {
+      
+    }
+  }
+}
+
+export const sendMailCreate = (email) => {
+  return async function (dispatch)  {
+    try {
+      const response = (
+        await axios.post(`http://localhost:3001/send-email-create`, email)
+      ).data;
+
+      return dispatch({
+        type: SEND_MAIL_CREATE,
         payload: ''
       })
     } catch (error) {

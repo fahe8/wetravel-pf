@@ -59,7 +59,7 @@ routerHotels.get("/", async (req, res) => {
           .toLowerCase()
           .includes(search.toLowerCase())
       );
-      console.log(hotelName);
+     // console.log(hotelName);
       let filterLocation = hotels.filter((el) =>
         el.location
           .normalize("NFD")
@@ -67,7 +67,7 @@ routerHotels.get("/", async (req, res) => {
           .toLowerCase()
           .includes(search.toLowerCase())
       );
-      console.log(filterLocation);
+     // console.log(filterLocation);
       let filterCity = hotels.filter((el) =>
         el.city
           .normalize("NFD")
@@ -75,7 +75,7 @@ routerHotels.get("/", async (req, res) => {
           .toLowerCase()
           .includes(search.toLowerCase())
       );
-      console.log(filterCity);
+      //console.log(filterCity);
 
       let filtercontinent = hotels.filter((el) =>
         el.continent

@@ -37,7 +37,7 @@ const allreservation = await reservaciones(user)
 const id_orden = allreservation[0].orderId 
 // const id_orden = 1
 
-console.log("ESTA ES LA ORDERID",id_orden)
+//console.log("ESTA ES LA ORDERID",id_orden)
   const items_ml = allreservation.map(i => ({
 
     title: i.nameHotel,
@@ -82,12 +82,12 @@ console.log("ESTA ES LA ORDERID",id_orden)
 
 //Ruta que recibe la información del pago
 routerPay.get("/:user/pagos", (req, res)=>{
-  console.info("EN LA RUTA PAGOS ", req)
+  //console.info("EN LA RUTA PAGOS ", req)
   const payment_id= req.query.payment_id
   const payment_status= req.query.status
   const external_reference = req.query.external_reference
   const merchant_order_id= req.query.merchant_order_id
-  console.log("EXTERNAL REFERENCE ", external_reference)
+  //console.log("EXTERNAL REFERENCE ", external_reference)
 
 //Aquí edito el status de mi orden
 Order.findByPk(external_reference)
@@ -96,10 +96,10 @@ Order.findByPk(external_reference)
   order.payment_status= payment_status
   order.merchant_order_id = merchant_order_id
   order.status = "completed"
-  console.info('Salvando order')
+  //console.info('Salvando order')
   order.save()
   .then(() => {
-    console.info('redirect success')
+    //console.info('redirect success')
 
     return res.redirect(`http://localhost:3000/confirmacion`)
   })
@@ -122,10 +122,10 @@ Order.findByPk(external_reference)
 routerPay.get("/pagos/:id", (req, res)=>{
   const mp = new mercadopago(ACCESS_TOKEN)
   const id = req.params.id
-  console.info("Buscando el id", id)
+  //console.info("Buscando el id", id)
   mp.get(`/v1/payments/search`, {'status': 'pending'}) //{"external_reference":id})
   .then(resultado  => {
-    console.info('resultado', resultado)
+    //console.info('resultado', resultado)
     res.json({"resultado": resultado})
   })
   .catch(err => {
