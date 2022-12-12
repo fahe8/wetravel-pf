@@ -36,6 +36,7 @@ const HospedadorCard = ({
         <div>
           <h3>$ { hotel.price} night </h3>  
         </div>
+        <div> { hotel.email}</div>
         <div onClick={handleDelete}>
           <button
             className="bg-red-400 w-60 p-2 text-white rounded focus:bg-[#00B4FF] focus:rounded text-xl">

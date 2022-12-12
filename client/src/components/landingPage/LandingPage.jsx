@@ -16,6 +16,7 @@ import "./Landing.css";
 import { useLocalStorage } from "../../localStorage/useLocalStorage";
 import { useAuth0 } from "@auth0/auth0-react";
 import { getUserById, postUser } from "../../redux/action/index";
+
 function LandingPage() {
   let dispatch = useDispatch();
   const hotels = useSelector((state) => state.hotels);
