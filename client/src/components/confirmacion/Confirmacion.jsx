@@ -25,7 +25,7 @@ const Confirmacion = () => {
 
  const sendInfo = () => {
   const info = {
-    data: estadoReserva[0],
+    data: estadoReserva,
     email: user?.email
   }
 
