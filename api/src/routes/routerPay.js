@@ -101,7 +101,7 @@ Order.findByPk(external_reference)
   .then(() => {
     console.info('redirect success')
 
-    return res.redirect(`http://localhost:3000`)
+    return res.redirect(`http://localhost:3000/confirmacion`)
   })
   .catch((err) =>{
     console.error('error al salvar', err)
