@@ -11,8 +11,12 @@ import {
   PAY_RESERVE,
   GET_REVIEW,
   GET_RESERVE,
+<<<<<<< HEAD
 
   
+=======
+  GET_RESERVE_USER,
+>>>>>>> 2291c1dcdcc67d616db3a63d9f212e52a901e7e6
   UPDATE_USER,
   GET_USER,
   GET_RESERVE_BY_CART,
@@ -23,7 +27,9 @@ import {
   GET_IMAGE,
   DETAIL_USER,
   DELETE_REVIEW,
-  DELETE_IMAGES
+  DELETE_IMAGES,
+  BANED,
+  baned,
 } from "../action/index";
 
 const initialState = {
@@ -42,9 +48,13 @@ const initialState = {
   loading: false,
   favorites: [],
   images: [],
+<<<<<<< HEAD
  
 
 
+=======
+  reservesUser: {},
+>>>>>>> 2291c1dcdcc67d616db3a63d9f212e52a901e7e6
 };
 
 function rootReducer(state = initialState, action) {
@@ -94,20 +104,20 @@ function rootReducer(state = initialState, action) {
         ...state,
         users: action.payload,
       };
-    
+
     case DETAIL_USER:
       return {
         ...state,
         userId: action.payload,
       };
-    
+
     case POST_USER:
       return {
         ...state,
       };
     case UPDATE_USER:
       return {
-        ...state
+        ...state,
       };
     case POST_RESERVE:
       return {
@@ -120,7 +130,7 @@ function rootReducer(state = initialState, action) {
     case GET_REVIEW:
       return {
         ...state,
-        review: [...action.payload]
+        review: [...action.payload],
       };
     case POST_REVIEW:
       return {
@@ -129,12 +139,12 @@ function rootReducer(state = initialState, action) {
       };
     case DELETE_REVIEW:
       return {
-        ...state
-      }
+        ...state,
+      };
     case DELETE_HOTEL:
       return {
         ...state,
-        hotels: [...state.hotels].filter(h => h.id !== action.payload)
+        hotels: [...state.hotels].filter((h) => h.id !== action.payload),
       };
 
     case GET_RESERVE:
@@ -149,35 +159,49 @@ function rootReducer(state = initialState, action) {
         reserveByCart: [...action.payload],
       };
 
+<<<<<<< HEAD
     
     
+=======
+    case GET_RESERVE_USER:
+      return {
+        ...state,
+        reservesUser: action.payload,
+      };
+
+>>>>>>> 2291c1dcdcc67d616db3a63d9f212e52a901e7e6
     case GET_ID_MERCADO_PAGO:
       return {
         ...state,
         idPay: action.payload,
       };
 
-      case GET_FAVORITES: 
+    case GET_FAVORITES:
       return {
         ...state,
-        favorites: action.payload
-      }
+        favorites: action.payload,
+      };
 
-      case DELETE_RESERVE:
-
-        return {
-          ...state,
-          reserveByCart: [...state.reserveByCart].filter(h => h.id !== action.payload)
-        };
+    case DELETE_RESERVE:
+      return {
+        ...state,
+        reserveByCart: [...state.reserveByCart].filter(
+          (h) => h.id !== action.payload
+        ),
+      };
     case GET_IMAGE:
       return {
         ...state,
         images: action.payload,
-      }
+      };
+    case BANED:
+      return {
+        ...state,
+      };
     case DELETE_IMAGES:
       return {
         ...state,
-      }
+      };
     default:
       return state;
   }

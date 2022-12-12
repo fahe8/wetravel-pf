@@ -11,6 +11,7 @@ import {
   RiLogoutCircleRLine,
   RiArrowRightSLine,
   RiEarthLine,
+  RiHome4Fill,
 } from "react-icons/ri";
 import { shadows } from "@mui/system";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -18,7 +19,7 @@ import { useLocalStorage } from "../../localStorage/useLocalStorage";
 
 const Sidebar = () => {
   const { user } = useAuth0();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const userDb = useSelector((state) => state.userId);
 
   useEffect(() => {
@@ -27,19 +28,18 @@ const Sidebar = () => {
     }
   }, [dispatch, user]);
 
-
   return (
     <div className="xl:h-[100vh] overFlow-y-scroll fixed xl:static w-full h-full -left-full top-0 bg-secondary-100 p-4 flex flex-col justify-between ">
       <div className="text-center text-2xl font-bold text-white">
-        <h1>Admin.</h1>
+        <h1>Administrador</h1>
 
         <ul className="mt-4">
           <li>
             <Link
               to={""}
-              className="py-2 px-4 ml-1 border-l border-gray-500 ml-6 block"
+              className="bg-Dark grayish blue flex items-center gap-4 py-2 px-4 roudend-lg hover:bg-white.900"
             >
-              <h1>Regresar a Landing</h1>
+              <RiHome4Fill>Inicio</RiHome4Fill>
             </Link>
           </li>
           <li>
