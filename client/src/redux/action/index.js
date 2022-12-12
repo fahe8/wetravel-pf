@@ -329,6 +329,7 @@ export const deleteHotel = (id) => {
       await axios.delete(`http://localhost:3001/hotels/${id}`);
       return dispatch({
         type: DELETE_HOTEL,
+        payload: id
       });
     } catch (error) {
       return error;
@@ -347,6 +348,7 @@ export const updateHotel = (hotel, id) => {
         await axios.put(`http://localhost:3001/hotels/${id}`, hotel)
       ).data;
       console.log(response);
+      dispatch(getHotels())
     } catch (error) {
       console.log(error);
     }

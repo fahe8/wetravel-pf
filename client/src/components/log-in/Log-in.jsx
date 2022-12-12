@@ -12,10 +12,6 @@ function Login() {
   const { loginWithRedirect, logout, user } = useAuth0();
   const userDb = useSelector((state) => state.userId);
 
-
- 
-
-
   useEffect(() => {
     if (user) {
       dispatch(getUserById(user.email));
@@ -125,22 +121,30 @@ function Login() {
                 )}
               </div>
               <hr />
-              <div className="m-4 poitner font-medium">
-                <button
-                  className=" rounded-xl w-40 hover:bg-slate-100 p-2"
-                  onClick={() => {dispatch(updateUser(user.email, {status: "guest"})); history.push("/huesped");}}
-                >
-                  Ir a mi perfil como Huesped
-                </button>
-                <br />
-                <button
-                  className=" rounded-xl w-40 hover:bg-slate-100 p-2"
-                  onClick={() => {dispatch(updateUser(user.email, {status: "host"})); history.push("/anfitrion");}}
-                >
-                  Ir a mi perfil como Anfitrión
-                </button>
-                <br />
-              </div>
+              {userDb.status !== "admin" && (
+                <div className="m-4 poitner font-medium">
+                  <button
+                    className=" rounded-xl w-40 hover:bg-slate-100 p-2"
+                    onClick={() => {
+                      dispatch(updateUser(user.email, { status: "guest" }));
+                      history.push("/huesped");
+                    }}
+                  >
+                    Ir a mi perfil como Huesped
+                  </button>
+                  <br />
+                  <button
+                    className=" rounded-xl w-40 hover:bg-slate-100 p-2"
+                    onClick={() => {
+                      dispatch(updateUser(user.email, { status: "host" }));
+                      history.push("/anfitrion");
+                    }}
+                  >
+                    Ir a mi perfil como Anfitrión
+                  </button>
+                  <br />
+                </div>
+              )}
             </div>
           </div>
           <div className="m-4">
@@ -158,7 +162,6 @@ function Login() {
       </div>
     );
   }
- 
 }
 
 export default Login;
