@@ -22,10 +22,11 @@ export const GET_FAVORITES = "GET_FAVORITES";
 export const GET_ID_MERCADO_PAGO = "GET_ID_MERCADO_PAGO";
 export const DELETE_RESERVE = "DELETE_RESERVE";
 export const GET_IMAGE = "GET_IMAGE";
-export const DELETE_REVIEW = 'DELETE_REVIEW';
-export const DELETE_IMAGES = 'DELETE_IMAGES';
-export const GET_RESERVE_USER = 'GET_RESERVE_USER';
-export const SEND_MAIL = "SEND_MAIL"
+export const DELETE_REVIEW = "DELETE_REVIEW";
+export const DELETE_IMAGES = "DELETE_IMAGES";
+export const GET_RESERVE_USER = "GET_RESERVE_USER";
+export const SEND_MAIL = "SEND_MAIL";
+export const BANED = "BANED";
 // 1 depachar los hoteles
 export function getHotels() {
   return async function (dispatch) {
@@ -126,13 +127,17 @@ export function updateUser(email, status) {
   // console.log('PUT ID:', id);
   return async function (dispatch) {
     try {
-      const response = await axios.put(`http://localhost:3001/users/${email}`, status);
+      const response = await axios.put(
+        `http://localhost:3001/users/${email}`,
+        status
+      );
+      console.log("RES PUT:", response);
       dispatch({
         type: UPDATE_USER,
         payload: response.data,
       });
 
-      dispatch(getUserById(email))
+      dispatch(getUserById(email));
     } catch (error) {
       console.log(
         `No se pudo actualizar la información del Usuario por: (${error})`
@@ -192,8 +197,10 @@ export function getReview() {
 export function postReview(review) {
   return async function (dispatch) {
     try {
-      const response = (await axios.post("http://localhost:3001/review", review)).data;
-      dispatch(getReview())
+      const response = (
+        await axios.post("http://localhost:3001/review", review)
+      ).data;
+      dispatch(getReview());
       return response;
     } catch (error) {
       console.log(`Error en Action postReview por: (${error})`);
@@ -206,11 +213,11 @@ export const deleteReview = (id) => async (dispatch) => {
     await axios.delete(`http://localhost:3001/review/${id}`);
     dispatch({
       type: DELETE_REVIEW,
-    })
+    });
   } catch (error) {
-    console.log('Error action deleteReview por:', error);
+    console.log("Error action deleteReview por:", error);
   }
-}
+};
 
 export function getReserves(id) {
   return async function (dispatch) {
@@ -244,21 +251,20 @@ export function getReservesByCart(user) {
   };
 }
 
-export function getReservesUser (email) {
+export function getReservesUser(email) {
   return async function (dispatch) {
-     const json = await axios.get(`http://localhost:3001/reserve/${email}`);
-    return dispatch ( {
+    const json = await axios.get(`http://localhost:3001/reserve/${email}`);
+    return dispatch({
       type: GET_RESERVE_USER,
       payload: json.data,
-  })
-  }
+    });
+  };
 }
 
 export function cartReserves(reserva) {  
-    console.log(reserva);
-    return async function() {
-      const json = await axios.post("http://localhost:3001/order", reserva);
-      return {type: POST_ORDER}
+     return async function(dispatch) {
+      const json = await axios.post("http://localhost:3001/order", reserva).data;
+      return dispatch({type: POST_ORDER})
     }
 
   
@@ -277,36 +283,37 @@ export function getIdMercadoPago(user) {
 
 export const postImage = (payload) => async () => {
   try {
-    const images = (await axios.post('http://localhost:3001/images', payload)).data;
+    const images = (await axios.post("http://localhost:3001/images", payload))
+      .data;
     // console.log('res post:', images)
     return images;
   } catch (error) {
-    console.log('Error en postImages por:',error);
+    console.log("Error en postImages por:", error);
   }
-}
+};
 
 export const getImage = () => async (dispatch) => {
   try {
-    let res = (await axios('http://localhost:3001/images')).data;
+    let res = (await axios("http://localhost:3001/images")).data;
     return dispatch({
       type: GET_IMAGE,
       payload: res,
     });
   } catch (error) {
-    console.log(`Error en getImg por:`,error);
+    console.log(`Error en getImg por:`, error);
   }
-}
+};
 
 export const deleteImages = (id) => async (dispatch) => {
   try {
     await axios.delete(`http://localhost:3001/images/${id}`);
     dispatch({
       type: DELETE_REVIEW,
-    })
+    });
   } catch (error) {
-    console.log('Error action deleteReview por:', error);
+    console.log("Error action deleteReview por:", error);
   }
-}
+};
 
 //NO TERMINADA ESTA ACTION
 
@@ -317,7 +324,7 @@ export function deleteReserve(id) {
 
     return dispatch({
       type: DELETE_RESERVE,
-      payload: id
+      payload: id,
     });
   };
 }
@@ -330,7 +337,7 @@ export const deleteHotel = (id) => {
       await axios.delete(`http://localhost:3001/hotels/${id}`);
       return dispatch({
         type: DELETE_HOTEL,
-        payload: id
+        payload: id,
       });
     } catch (error) {
       return error;
@@ -349,7 +356,7 @@ export const updateHotel = (hotel, id) => {
         await axios.put(`http://localhost:3001/hotels/${id}`, hotel)
       ).data;
       console.log(response);
-      dispatch(getHotels())
+      dispatch(getHotels());
     } catch (error) {
       console.log(error);
     }
@@ -357,7 +364,7 @@ export const updateHotel = (hotel, id) => {
 };
 
 export const sendMail = (email) => {
-  return async function (dispatch)  {
+  return async function (dispatch) {
     try {
       const response = (
         await axios.post(`http://localhost:3001/send-email`, email)
@@ -365,10 +372,26 @@ export const sendMail = (email) => {
 
       return dispatch({
         type: SEND_MAIL,
-        payload: ''
-      })
+        payload: "",
+      });
+    } catch (error) {}
+  };
+};
+export const baned = (payload, id) => {
+  console.log("baned", payload, id);
+  return async function (dispatch) {
+    try {
+      const json = (
+        await axios.put(`http://localhost:3001/baned/${id}`, payload)
+      ).data;
+      console.log("json", json);
+      dispatch(getUser());
+      // return dispatch({
+      //   type: BANED,
+      //   payload: "",
+      // });
     } catch (error) {
-      
+      console.log(error);
     }
-  }
-}
+  };
+};
