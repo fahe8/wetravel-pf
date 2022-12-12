@@ -3,45 +3,35 @@ import icon from "../../assets/icons/user.svg";
 import DetailRoom from "../detailRoom/DetailRoom";
 import { addDays, format, differenceInDays } from "date-fns";
 import RangeCalendar from "../calendar/RangeCalendar";
-import { useDispatch } from "react-redux";
-import { postHotel, cartReserves, getReservesByCart  } from "../../redux/action";
+import { useDispatch, useSelector } from "react-redux";
+import { postHotel, cartReserves, getReservesByCart } from "../../redux/action";
 import { useAuth0 } from "@auth0/auth0-react";
 
-
-
 const Reservation = ({ selectedHotel, price }) => {
-  let dispatch = useDispatch(); 
-   const { user } = useAuth0();
-  const prices = selectedHotel?.price
+  let dispatch = useDispatch();
+  const reserves = useSelector((state) => state.reserveByCart);
+
+  const { user } = useAuth0();
+  const prices = selectedHotel?.price;
   const [showCalendar, setShowCalendar] = useState(false);
 
-  // manage date
-  const [checkIn, setCheckIn] = useState(format(new Date(), "yyyy-MM-dd"));
-  const [checkOut, setCheckOut] = useState(
-    format(addDays(new Date(), 1), "yyyy-MM-dd")
-  );
-
-  const handleCheckInchange = (e) => {
+  const [range, setRange] = useState([
     {
-      setCheckIn(e.target.value);
-    }
-  };
-
-  const handleCheckOutChange = (e) => {
-    {
-      setCheckOut(e.target.value);
-    }
-  };
+      startDate: new Date(),
+      endDate: addDays(new Date(), 1),
+      key: "selection",
+    },
+  ]);
 
   const finalPrice =
-    prices * differenceInDays(new Date(checkOut), new Date(checkIn)) > 0
-      ? prices * differenceInDays(new Date(checkOut), new Date(checkIn))
+    prices * differenceInDays(range[0].endDate, range[0].startDate) > 0
+      ? prices * differenceInDays(range[0].endDate, range[0].startDate)
       : prices;
 
   const difDays =
-    differenceInDays(new Date(checkOut), new Date(checkIn)) <= 0
+    differenceInDays(range[0].endDate, range[0].startDate) <= 0
       ? 1
-      : differenceInDays(new Date(checkOut), new Date(checkIn));
+      : differenceInDays(range[0].endDate, range[0].startDate);
 
   const refOne = useRef("");
 
@@ -51,26 +41,67 @@ const Reservation = ({ selectedHotel, price }) => {
     }
   };
 
-  // console.log(user)
+  // Get date from DataBase  in format mm-dd-yy
+  const getOnlyDate = (date) => {
+    const onlyDate = date.split("T")[0];
+    const [year, month, day] = onlyDate.split("-");
+
+    const result = [month, day, year].join("-");
+    return result;
+  };
+
+  //Get all dates with reserves
+  const getDaysArray = function (s, e) {
+    for (
+      var a = [], d = new Date(s);
+      d <= new Date(e);
+      d.setDate(d.getDate() + 1)
+    ) {
+      a.push(new Date(d));
+    }
+    return a;
+  };
+
+  const getAllDatesReserves = reserves
+    .filter((f) => selectedHotel.name === f.nameHotel)
+    .map((reserve) => {
+      const newArr = [];
+      newArr.push(getOnlyDate(reserve.check_in));
+      newArr.push(getOnlyDate(reserve.check_out));
+      return newArr;
+    });
+
+
   const fullInfo = () => {
-    const info = {
-      orderlines: [
-        {idHotel: selectedHotel.id,
-        quantity: difDays,
-        check_out: checkOut,
-        check_in: checkIn
-      }
-      ],
-        user: user.email
-      }
-      
-    
-    dispatch(cartReserves(info))
+    if (user) {
+      let info = {
+        orderlines: [
+          {
+            idHotel: selectedHotel.id,
+            quantity: difDays,
+            check_out: format(range[0].startDate, "MM-dd-yyyy"),
+            check_in: format(range[0].endDate, "MM-dd-yyyy"),
+          },
+        ],
+        user: user.email,
+      };
+
+      const reserveFind = getAllDatesReserves
+        .flat()
+        .find(
+          (f) =>
+            f === info.orderlines[0].check_in ||
+            f === info.orderlines[0].check_out
+        );
+      !reserveFind
+        ? dispatch(cartReserves(info)).then((res) => {
+            dispatch(getReservesByCart(user?.email));
+          })
+        : alert("El carrito ya tiene una reservación en estas fechas");
+    }
+
     // dispatch(getReservesByCart(user?.email))
   };
-  
-
-
 
   useEffect(() => {
     // event listeners
@@ -80,7 +111,14 @@ const Reservation = ({ selectedHotel, price }) => {
     <div className=" grid grid-rows-2 " ref={refOne}>
       {showCalendar && (
         <div className="absolute w-auto h-auto left-0">
-          <RangeCalendar />
+          <RangeCalendar
+            range={range}
+            setRange={setRange}
+            reserves={reserves}
+            getDaysArray={getDaysArray}
+            getOnlyDate={getOnlyDate}
+            getAllDatesReserves={getAllDatesReserves}
+          />
         </div>
       )}
       <div className="row-span-1 bg-white shadow-xl  rounded-3xl m-11">
@@ -89,23 +127,24 @@ const Reservation = ({ selectedHotel, price }) => {
         </div>
 
         <div className=" grid grid-cols-2 bg-[color:var(--primary-bg-opacity-color)] text-sm text-left mt-8 rounded-2xl mx-4 border border-black">
-          <div className="border-r border-black pr-3 pb-4 pl-1">
+          <div
+            className="border-r border-black pr-3 pb-4 pl-1"
+            onClick={() => setShowCalendar(true)}
+          >
             <label> Check-In</label>
             <input
-              type="date"
-              value={checkIn}
-              min={format(new Date(), "yyyy-MM-dd")}
-              onChange={handleCheckInchange}
+              value={`${format(range[0].startDate, "yyyy-MM-dd")}`}
+              readOnly
+              className=" outline-none w-[100%] text-center bg-transparent"
             />
           </div>
 
           <div className="pr-3 pb-4 pl-1">
             <label>Check-Out</label>
             <input
-              type="date"
-              value={checkOut}
-              min={format(addDays(new Date(checkIn || null), 2), "yyyy-MM-dd")}
-              onChange={handleCheckOutChange}
+              value={`${format(range[0].endDate, "yyyy-MM-dd")}`}
+              readOnly
+              className=" outline-none w-[100%] text-center bg-transparent"
             />
           </div>
 
@@ -118,7 +157,7 @@ const Reservation = ({ selectedHotel, price }) => {
             <h2>Rooms:</h2>
             <div>
               <DetailRoom
-              room={selectedHotel?.room}
+                room={selectedHotel?.room}
                 id={selectedHotel?.id}
                 name={selectedHotel?.room?.name}
                 description={selectedHotel?.room?.description}

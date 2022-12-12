@@ -101,7 +101,6 @@ export function getUser() {
 }
 
 export function getUserById(email) {
-  console.log("getUserById:", email);
   return async function (dispatch) {
     try {
       let res = await axios(`http://localhost:3001/users/${email}`);
@@ -128,7 +127,6 @@ export function updateUser(email, status) {
   return async function (dispatch) {
     try {
       const response = await axios.put(`http://localhost:3001/users/${email}`, status);
-      console.log("RES PUT:", response);
       dispatch({
         type: UPDATE_USER,
         payload: response.data,
@@ -165,7 +163,6 @@ export function postReserve(payload) {
 }
 
 export const payReserve = (payload) => {
-  console.log(payload);
   return async function (dispatch) {
     try {
       const pay = await axios.post("http://localhost:3001/mercadopay", payload);
@@ -257,22 +254,14 @@ export function getReservesUser (email) {
   }
 }
 
-export function cartReserves(reserva) {
-  return async function (dispatch) {
+export function cartReserves(reserva) {  
     console.log(reserva);
-    const json = await axios.post("http://localhost:3001/order", reserva);
+    return async function() {
+      const json = await axios.post("http://localhost:3001/order", reserva);
+      return {type: POST_ORDER}
+    }
 
-    console.log(json);
-    // console.log(json) //pendiente porque no me está trayendo nada
-    //segunda función que recibe dispatch y despacha una acción / el tipo y el payload: devuelve el backend
-    dispatch(getReservesByCart(reserva.user))
-    return dispatch({
-      type: POST_ORDER,
-      payload: json,
-    });
-  };
-  // console.log(json) //pendiente porque no me está trayendo nada
-  //segunda función que recibe dispatch y despacha una acción / el tipo y el payload: devuelve el backend
+  
 }
 
 export function getIdMercadoPago(user) {
@@ -323,7 +312,6 @@ export const deleteImages = (id) => async (dispatch) => {
 
 export function deleteReserve(id) {
   return async function (dispatch) {
-    console.log("first");
     const json = await axios.delete("http://localhost:3001/reserve/" + id);
     console.log(json.data);
 
