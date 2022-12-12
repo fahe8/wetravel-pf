@@ -13,7 +13,6 @@ function Review({ name }) {
   const [stars, setStars] = useState([1, 2, 3, 4, 5]);
   const [current, setCurrent] = useState(undefined);
   const { user } = useAuth0();
-  console.log('USER:', user)
   const [input, setInput] = useState({
     nameUser: user?.name,
     stars: 0,
@@ -86,7 +85,7 @@ function Review({ name }) {
       messageOk()
     }
   }
-  console.log('INPUT:', input)
+
   return (
     <form onSubmit={(e) => handleSubmit(e)}>
       <div className="container ">
