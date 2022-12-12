@@ -8,7 +8,7 @@ import { Button } from "react-bootstrap";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { postReview } from "../../redux/action/index";
 import { useAuth0 } from "@auth0/auth0-react";
-
+import { ToastContainer, toast } from "react-toastify";
 function Review({ name }) {
   const [stars, setStars] = useState([1, 2, 3, 4, 5]);
   const [current, setCurrent] = useState(undefined);
@@ -42,6 +42,19 @@ function Review({ name }) {
     // setCurrent(index);
     // setInput({ ...input, stars: index });
   }
+  const message = () => {
+    toast("💛 Gracias por su opiñion", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+
+  };
   function handleChange(e) {
     e.target.name === 'comments' ?
     setInput({ ...input, nameUser: user?.name, nameHotel: name, [e.target.name]: [e.target.value] }):
@@ -58,7 +71,7 @@ function Review({ name }) {
       // setInput({ user: client.name, stars: 0, comments: "" });
       setCurrent(0);
       setStars([1, 2, 3, 4, 5]);
-      alert("gracias por su opiñion");
+      
     }
   }
   console.log('INPUT:', input)
@@ -92,6 +105,7 @@ function Review({ name }) {
         </div>
 
         <br />
+        <ToastContainer />
         <FloatingLabel
           name="comments"
           controlId="floatingTextarea"
@@ -108,7 +122,7 @@ function Review({ name }) {
             style={{ height: "120px" }}
           />
           <div className="mx-auto mt-5 m-1">
-            <Button type="submit" value="Enviar" class="btn btn-primary btn-md">
+            <Button type="submit" value="Enviar" onClick={message} class="btn btn-primary btn-md">
               Enviar
             </Button>
           </div>
