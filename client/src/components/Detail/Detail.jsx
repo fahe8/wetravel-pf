@@ -77,7 +77,6 @@ const Detail = (props) => {
                     </h2>
                     <h3 className="text-2xl text-center m-4">
                       <Stars stars={selectedHotel.stars} />
-                      {selectedHotel.stars}
                     </h3>
                   </div>
                   <div className=" text-xl text-left m-4">

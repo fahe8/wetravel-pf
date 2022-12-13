@@ -22,13 +22,14 @@ export const GET_FAVORITES = "GET_FAVORITES";
 export const GET_ID_MERCADO_PAGO = "GET_ID_MERCADO_PAGO";
 export const DELETE_RESERVE = "DELETE_RESERVE";
 export const GET_IMAGE = "GET_IMAGE";
-export const DELETE_REVIEW = "DELETE_REVIEW";
-export const DELETE_IMAGES = "DELETE_IMAGES";
-export const GET_RESERVE_USER = "GET_RESERVE_USER";
-export const SEND_MAIL = "SEND_MAIL";
+export const DELETE_REVIEW = 'DELETE_REVIEW';
+export const DELETE_IMAGES = 'DELETE_IMAGES';
+export const GET_RESERVE_USER = 'GET_RESERVE_USER';
+export const SEND_MAIL = "SEND_MAIL"
+export const SEND_MAIL_CREATE = "SEND_MAIL_CREATE"
 export const BANED = "BANED";
 // 1 depachar los hoteles
-export function getHotels(page= 0) {
+export function getHotels(page=0) {
   return async function (dispatch) {
     const json = await axios.get(`http://localhost:3001/hotels?page=${page}`);
     return dispatch({
@@ -63,7 +64,7 @@ export function getSearchHotels(
 ) {
   // console.log(search);
   return async function (dispatch) {
-    console.log(filters);
+    //console.log(filters);
     const { stars, priceMin, priceMax } = filters;
     const json = await axios.get(
       `http://localhost:3001/hotels?search=${search}&stars=${stars}&priceMin=${priceMin}&priceMax=${priceMax}`
@@ -105,7 +106,7 @@ export function getUserById(email) {
   return async function (dispatch) {
     try {
       let res = await axios(`http://localhost:3001/users/${email}`);
-      console.log("RES GET USER BY ID:", res.data);
+      //console.log("RES GET USER BY ID:", res.data);
       dispatch({
         type: DETAIL_USER,
         payload: res.data,
@@ -355,8 +356,8 @@ export const updateHotel = (hotel, id) => {
       const response = (
         await axios.put(`http://localhost:3001/hotels/${id}`, hotel)
       ).data;
-      console.log(response);
-      dispatch(getHotels());
+     // console.log(response);
+      dispatch(getHotels())
     } catch (error) {
       console.log(error);
     }
@@ -393,5 +394,22 @@ export const baned = (payload, id) => {
     } catch (error) {
       console.log(error);
     }
-  };
-};
+  }
+}
+
+export const sendMailCreate = (email) => {
+  return async function (dispatch)  {
+    try {
+      const response = (
+        await axios.post(`http://localhost:3001/send-email-create`, email)
+      ).data;
+
+      return dispatch({
+        type: SEND_MAIL_CREATE,
+        payload: ''
+      })
+    } catch (error) {
+      
+    }
+  }
+}

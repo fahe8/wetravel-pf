@@ -11,6 +11,9 @@ import {
   getHotels,
   getServices,
   submitImage,
+  sendMailCreate,
+  getReservesByCart
+ 
 } from "../../redux/action";
 import { AiFillHeart } from "react-icons/ai";
 import Stars from "../stars/Stars";
@@ -82,6 +85,7 @@ const Create = () => {
 
   const [input, setInput] = useState(initialState);
   const [loading, setLoading] = useState("");
+
 
   const submitImage = (files, name) => {
     const upLoader = files.map((file) => {
@@ -241,6 +245,25 @@ const Create = () => {
     });
   };
 
+
+  ///////////////////////////////
+  useEffect(() => {
+    if(user){
+        
+        dispatch(getReservesByCart(user?.email));
+    }
+ }, [dispatch, user])
+
+
+  const sendInfo = () => {
+    const info = {
+      data: input,
+      email: user?.email
+    }
+    dispatch (sendMailCreate(info))
+  }
+
+//////////////////////////////////////////
   return (
     <div>
       <ToastContainer />
@@ -600,9 +623,12 @@ const Create = () => {
                 className=" cursor-pointer text-lg font-medium text-gray-900  bg-[color:var(--primary-bg-opacity-color)] rounded-full border border-black-800 p-2"
                 onClick={handleSubmit}
               >
-                <button className=" w-full h-full" type="submit" form="form">
+                <button onClick={sendInfo}  className=" w-full h-full" type="submit" form="form">
                   Agregar
                 </button>
+             
+              </div>
+              <div>
               </div>
             </form>
           </div>

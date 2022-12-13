@@ -2,6 +2,7 @@ const { Hotel, User } = require("../db");
 const { Router } = require("express");
 const routerHotels = Router();
 const apiData = require("../../hotels.json");
+const { Op } = require("sequelize");
 // const { Op } = require("sequelize");
 
 const getHotels = async () => {
@@ -13,84 +14,93 @@ const getHotels = async () => {
         through: {
           attributes: [],
         },
-      }
+      },
     ],
   });
 
-    if(!dataDb.length){
-      const apiInfo = apiData.map(el => {
-          return {
-              id: el.id,
-              name: el.name,
-              description: el.description,
-              stars: el.stars,
-              price: el.price,
-              services: el.services.map(ele => ele),
-              photos: el.photos.map(ele => ele),
-              continent: el.continent,
-              location: el.location,
-              city: el.city,
-              review: el.review,
-              comments: el.comments,
-              room: el.room
-          }
-      });
-      const hotels = await Hotel.bulkCreate(apiInfo);
-      // console.log(hotels);
-      return hotels;
+  if (!dataDb.length) {
+    const apiInfo = apiData.map((el) => {
+      return {
+        id: el.id,
+        name: el.name,
+        description: el.description,
+        stars: el.stars,
+        price: el.price,
+        services: el.services.map((ele) => ele),
+        photos: el.photos.map((ele) => ele),
+        continent: el.continent,
+        location: el.location,
+        city: el.city,
+        review: el.review,
+        comments: el.comments,
+        room: el.room,
+      };
+    });
+    const hotels = await Hotel.bulkCreate(apiInfo);
+    // console.log(hotels);
+    return hotels;
   }
-  if(dataDb.length){
-      return dataDb;
+  if (dataDb.length) {
+    return dataDb;
   }
 };
 
 routerHotels.get("/", async (req, res) => {
   const { search, stars, priceMin, priceMax, servicies, page } = req.query;
-  // const pageAsNumber = Number.parseInt(page)
-  // let pages= 0
-  // if(!Number.isNaN(pageAsNumber) && pageAsNumber > 0) {
-  //   page = pageAsNumber
-  // }
   try {
     const hotels = await getHotels();
 
     let resultadoDeBusqueda = [];
-    if (search && hotels.length) {
-      let hotelName = hotels.filter((el) =>
-        el.name
-          .normalize("NFD")
-          .replace(/[\u0300-\u036f]/g, "")
-          .toLowerCase()
-          .includes(search.toLowerCase())
-      );
-      console.log(hotelName);
-      let filterLocation = hotels.filter((el) =>
-        el.location
-          .normalize("NFD")
-          .replace(/[\u0300-\u036f]/g, "")
-          .toLowerCase()
-          .includes(search.toLowerCase())
-      );
-      console.log(filterLocation);
-      let filterCity = hotels.filter((el) =>
-        el.city
-          .normalize("NFD")
-          .replace(/[\u0300-\u036f]/g, "")
-          .toLowerCase()
-          .includes(search.toLowerCase())
-      );
-      console.log(filterCity);
+    if (search) {
+      const dataDb = await Hotel.findAndCountAll({
+        where: { name: { [Op.like]: `%Hotel%` } },
+        limit: 5,
+        offset: page * 5,
+        include: [
+          {
+            model: User,
+            attributes: ["name"],
+            through: {
+              attributes: [],
+            },
+          },
+        ],
+      });
+      res.send(dataDb);
+      //   let hotelName = hotels.filter((el) =>
+      //     el.name
+      //       .normalize("NFD")
+      //       .replace(/[\u0300-\u036f]/g, "")
+      //       .toLowerCase()
+      //       .includes(search.toLowerCase())
+      //   );
+      //  // console.log(hotelName);
+      //   let filterLocation = hotels.filter((el) =>
+      //     el.location
+      //       .normalize("NFD")
+      //       .replace(/[\u0300-\u036f]/g, "")
+      //       .toLowerCase()
+      //       .includes(search.toLowerCase())
+      //   );
+      //  // console.log(filterLocation);
+      //   let filterCity = hotels.filter((el) =>
+      //     el.city
+      //       .normalize("NFD")
+      //       .replace(/[\u0300-\u036f]/g, "")
+      //       .toLowerCase()
+      //       .includes(search.toLowerCase())
+      //   );
+      //   //console.log(filterCity);
 
-      let filtercontinent = hotels.filter((el) =>
-        el.continent
-          
-          .toLowerCase()
-          .includes(search.toLowerCase())
-      );
+      //   let filtercontinent = hotels.filter((el) =>
+      //     el.continent
 
+      //       .toLowerCase()
+      //       .includes(search.toLowerCase())
+      //   );
 
-      const arr = [...new Set([...hotelName, ...filterCity, ...filterLocation, ...filtercontinent])];
-      resultadoDeBusqueda = arr;
+      //   const arr = [...new Set([...hotelName, ...filterCity, ...filterLocation, ...filtercontinent])];
+      //   resultadoDeBusqueda = arr;
     }
 
     if (stars || priceMin || priceMax || servicies) {
@@ -127,18 +137,13 @@ routerHotels.get("/", async (req, res) => {
       }
 
       return res.send(resultadoDeBusqueda);
-
-      
     }
 
-    if(resultadoDeBusqueda.length) {
-      return res.send(resultadoDeBusqueda)
-
+    if (resultadoDeBusqueda.length) {
+      return res.send(resultadoDeBusqueda);
     } else {
-      
-      const dataDb = await Hotel.findAndCountAll({
-        limit: 5,
-        offset: page*5,
+      const dataDb = await Hotel.findAll({
+        where:{name:{[Op.like]: "%Hotel%"}},
         include: [
           {
             model: User,
@@ -146,10 +151,10 @@ routerHotels.get("/", async (req, res) => {
             through: {
               attributes: [],
             },
-          }
+          },
         ],
       });
-      return res.send(dataDb)
+      return res.send(dataDb);
     }
   } catch (error) {
     res.status(400).send(error.message);
@@ -207,7 +212,6 @@ routerHotels.post("/", async (req, res) => {
       where: { name: user },
     });
 
-
     newHotel.addUser(userDb);
     res.status(200).send(newHotel);
   } catch (error) {
@@ -217,42 +221,43 @@ routerHotels.post("/", async (req, res) => {
 
 // -------> Router Delete
 
-routerHotels.delete('/:id', async (req, res, next) => {
+routerHotels.delete("/:id", async (req, res, next) => {
   const { id } = req.params;
-  
+
   try {
     const hotel = await Hotel.findByPk(id);
     // const date = Date();
-    
+
     // if(date > DATEADD(DAY, 1, date)){
     //   await hotel.destroy();
     //   res.status(200).send ("Hotel eliminado de nuestra base de datos")
     // }
 
     if (!hotel) {
-      res.status(404).send("El id de el hotel no existe en nuestra base de datos");
-    } 
-    else {
+      res
+        .status(404)
+        .send("El id de el hotel no existe en nuestra base de datos");
+    } else {
       await hotel.destroy();
       res.status(200).send(`Hotel ${id} ha sido eliminado`);
     }
   } catch (error) {
-    next(error)
+    next(error);
   }
-})
+});
 
-routerHotels.put('/:id', async (req,res) => {
+routerHotels.put("/:id", async (req, res) => {
   const { id } = req.params;
   let hotel = req.body;
 
   try {
     await Hotel.update(hotel, {
-      where: { id }
+      where: { id },
     });
-    res.json({ change: 'Los datos del Hotel se actualizaron correctamente' });
+    res.json({ change: "Los datos del Hotel se actualizaron correctamente" });
   } catch (error) {
     res.json(`No se puedo actualizar por: (${error})`);
   }
-})
+});
 
 module.exports = routerHotels;

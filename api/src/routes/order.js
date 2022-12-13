@@ -7,7 +7,7 @@ const { Order , Reserves, Hotel, User } = require('../db');
 
 server.post('/', async (req, res, next) => {
     const { user, orderlines } = req.body
-    console.log(req.body)
+    //console.log(req.body)
     if(!user && !orderlines) {
         res.status(400)
         .send('Cuidado! Faltan datos para poder crear una orden')
@@ -17,7 +17,7 @@ server.post('/', async (req, res, next) => {
         let order =  await Order.findOne({
             where: {user_email: user, status: "created"}
          })
-         console.log(order)
+         //console.log(order)
 
         if(!order) {
             const userFind = await User.findOne({
