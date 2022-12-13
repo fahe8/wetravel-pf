@@ -11,12 +11,8 @@ import {
   PAY_RESERVE,
   GET_REVIEW,
   GET_RESERVE,
-<<<<<<< HEAD
 
   
-=======
-  GET_RESERVE_USER,
->>>>>>> 2291c1dcdcc67d616db3a63d9f212e52a901e7e6
   UPDATE_USER,
   GET_USER,
   GET_RESERVE_BY_CART,
@@ -49,12 +45,9 @@ const initialState = {
   favorites: [],
   images: [],
   reservesUser: {},
-  hasMore:true
-
-
-=======
+  hasMore:true,
   reservesUser: {},
->>>>>>> 2291c1dcdcc67d616db3a63d9f212e52a901e7e6
+
 };
 
 function rootReducer(state = initialState, action) {
@@ -165,17 +158,8 @@ function rootReducer(state = initialState, action) {
         reserveByCart: [...action.payload],
       };
 
-<<<<<<< HEAD
     
     
-=======
-    case GET_RESERVE_USER:
-      return {
-        ...state,
-        reservesUser: action.payload,
-      };
-
->>>>>>> 2291c1dcdcc67d616db3a63d9f212e52a901e7e6
     case GET_ID_MERCADO_PAGO:
       return {
         ...state,
