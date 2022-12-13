@@ -46,7 +46,6 @@ const initialState = {
   images: [],
   reservesUser: {},
   hasMore:true,
-  reservesUser: {},
 
 };
 

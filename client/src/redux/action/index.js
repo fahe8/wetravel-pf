@@ -22,12 +22,12 @@ export const GET_FAVORITES = "GET_FAVORITES";
 export const GET_ID_MERCADO_PAGO = "GET_ID_MERCADO_PAGO";
 export const DELETE_RESERVE = "DELETE_RESERVE";
 export const GET_IMAGE = "GET_IMAGE";
-export const DELETE_REVIEW = 'DELETE_REVIEW';
-export const DELETE_IMAGES = 'DELETE_IMAGES';
-export const GET_RESERVE_USER = 'GET_RESERVE_USER';
-export const SEND_MAIL = "SEND_MAIL"
-export const SEND_MAIL_CREATE = "SEND_MAIL_CREATE"
+export const DELETE_REVIEW = "DELETE_REVIEW";
+export const DELETE_IMAGES = "DELETE_IMAGES";
+export const GET_RESERVE_USER = "GET_RESERVE_USER";
+export const SEND_MAIL = "SEND_MAIL";
 export const BANED = "BANED";
+export const SEND_MAIL_CREATE = "SEND_MAIL_CREATE";
 // 1 depachar los hoteles
 export function getHotels(page=0) {
   return async function (dispatch) {
@@ -356,6 +356,7 @@ export const updateHotel = (hotel, id) => {
       const response = (
         await axios.put(`http://localhost:3001/hotels/${id}`, hotel)
       ).data;
+      console.log(response);
      // console.log(response);
       dispatch(getHotels())
     } catch (error) {
@@ -413,3 +414,6 @@ export const sendMailCreate = (email) => {
     }
   }
 }
+
+  
+
