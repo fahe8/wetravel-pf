@@ -175,18 +175,18 @@ const ModalFilter = ({ refOne, setModalFilter,handleStar,filters, handleChange, 
         <div className=" w-full pt-5">
           <h2>{"Calificación por estrellas"}</h2>
           <div className="flex justify-around items-center my-3 mb-5">
-          <button className=" w-[70px] h-full rounded-3xl border " id={''} onClick={handleStar}>{"Por defecto"}</button>
-          <button className=" w-[50px] h-full rounded-3xl border " id={'1'} onClick={handleStar}>{"1"}</button>
-          <button className=" w-[50px] h-full rounded-3xl border " id={'2'} onClick={handleStar} >{"2"}</button>
-          <button className=" w-[50px] h-full rounded-3xl border " id={'3'} onClick={handleStar}>{"3"}</button>
-          <button className=" w-[50px] h-full rounded-3xl border " id={'4'} onClick={handleStar}>{"4"}</button>
-          <button className=" w-[50px] h-full rounded-3xl border " id={'5'} onClick={handleStar}>{"5"}</button>
+          <button className=" w-[70px] h-full rounded-3xl border hover:bg-[#feefd0]" id={''} onClick={handleStar}>{"Por defecto"}</button>
+          <button className=" w-[50px] h-full rounded-3xl border hover:bg-[#feefd0]" id={'1'} onClick={handleStar}>{"1"}</button>
+          <button className=" w-[50px] h-full rounded-3xl border hover:bg-[#feefd0]" id={'2'} onClick={handleStar} >{"2"}</button>
+          <button className=" w-[50px] h-full rounded-3xl border hover:bg-[#feefd0]" id={'3'} onClick={handleStar}>{"3"}</button>
+          <button className=" w-[50px] h-full rounded-3xl border hover:bg-[#feefd0]" id={'4'} onClick={handleStar}>{"4"}</button>
+          <button className=" w-[50px] h-full rounded-3xl border hover:bg-[#feefd0]" id={'5'} onClick={handleStar}>{"5"}</button>
           </div>
         </div>
 
         <div className="w-full h-[60px] mb-3 relative">
           <p className="  w-[auto] h-auto  border-b-2 font-bold border-black  cursor-pointer px-2 absolute top-[50%] ml-2" onClick={restartFilters}>{"Reiniciar filtros"}</p>
-          <button className=" w-[100px] h-full rounded-3xl border" onClick={DoFilters}>{"Filtrar"}</button>
+          <button className=" w-[100px] h-full rounded-3xl border hover:bg-[#feefd0]" onClick={DoFilters}>{"Filtrar"}</button>
 
         </div>
       </div>
