@@ -2,21 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserById } from "../../redux/action";
-
-
-// import { BsFillCalendarDateFill } from "react-icons/";
-import { IconButton } from "@mui/material";
-// import { CalendarMonth } from "@mui/material";
-import {
-  RiCalendarTodoLine,
-  RiLogoutCircleRLine,
-  RiArrowRightSLine,
-  RiEarthLine,
-  
-} from "react-icons/ri";
-import { shadows } from "@mui/system";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useLocalStorage } from "../../localStorage/useLocalStorage";
 
 const Sidebar = () => {
   const { user } = useAuth0();
@@ -30,123 +16,101 @@ const Sidebar = () => {
   }, [dispatch, user]);
 
   return (
-    <div className="bg-sky-200" >
+    <div className="bg-sky-200">
       <div className="text-center ">
         <div className=" text-4xl mt-8 font-medium">
           <h1>SuperAdmin</h1>
         </div>
-        
-        <hr/>     
+
+        <hr />
         <div className="text-2xl font-medium">
-
-        <ul >
-          <div className="  p-3  hover:bg-sky-300" >
-          <li>
-            <Link
-              to={""}
-                >
-                    <h1>To home</h1>
-            </Link>
-            </li>
-            </div>
-            <hr/>
-          <div className=" p-2  hover:bg-sky-300">
-            <li>
-              Usuarios Registrados
-            </li>
-          </div>
-          <hr/>
-          <div className=" p-2  hover:bg-sky-300 ">
-          <li>
-            {user && userDb.status !== "admin" ? (
-              <Link
-                to={"/access-denied"}
-                
-              >
-                <h1>Control de comentarios</h1>
-              </Link>
-            ) : (
-              <Link
-                to={"/admin-reviews"}
-              >
-                <h1>Control de comentarios</h1>
-              </Link>
-            )}
-          </li>
-            </div>
-          <hr/>
-            
-
-          <div className=" p-2  hover:bg-sky-300">
-      
-          <li>
-            {user && userDb.status !== "admin" ? (
-              <Link
-                to={"/access-denied"}
-              >
-                <h1>Control de Hoteles</h1>
-              </Link>
-            ) : (
-              <Link
-                to={"/admin-cards"}
-              >
-                <h1>Control de Hoteles</h1>
-              </Link>
-            )}
-            </li>
-            </div>
-          <hr/>
-            
-          
-          <div className=" p-2  hover:bg-sky-300">
-          <li>
-            {user && userDb.status !== "admin" ? (
-              <Link
-                to={"/access-denied"}
-              >
-                <h1>Control de Images</h1>
-              </Link>
-            ) : (
-              <Link
-                to={"/admin-images"}
-              >
-                <h1>Control de Images</h1>
-              </Link>
-            )}
-            </li>
-            </div>
-          <hr/>
-
-          
-          
-       
-        <div className=" p-2  hover:bg-sky-300">
-        <li>
-          <Link
-            to={"/home"}
-              >
-                <button>
-                  Regresar a Home
-                </button>
-
-          </Link>
-          </li>
-            </div>
-            <hr/>
-        <div className=" p-3 m-1  ">
-        <li>
-          <Link
-            to={"/login"}
-          >
-                <button className="bg-red-400 w-30 p-2 rounded  focus:rounded text-xl">
-                Cerrar Sesión
-                </button>
-          </Link>
+          <ul>
+            <div className="  p-3  hover:bg-sky-300">
+              <li>
+                <Link to={"/"}>
+                  <h1>Landing Pages</h1>
+                </Link>
               </li>
-          </div>
-              </ul>
-           </div >
-          
+            </div>
+            <hr />
+            <div className=" p-2  hover:bg-sky-300">
+              <li>
+                {user && userDb.status !== "admin" ? (
+                  <Link to={"/access-denied"}>
+                    <h1>Usuarios Registrados</h1>
+                  </Link>
+                ) : (
+                  <Link to={"/admin-users"}>
+                    <h1>Usuarios Registrados</h1>
+                  </Link>
+                )}
+              </li>
+            </div>
+            <hr />
+            <div className=" p-2  hover:bg-sky-300 ">
+              <li>
+                {user && userDb.status !== "admin" ? (
+                  <Link to={"/access-denied"}>
+                    <h1>Control de comentarios</h1>
+                  </Link>
+                ) : (
+                  <Link to={"/admin-reviews"}>
+                    <h1>Control de comentarios</h1>
+                  </Link>
+                )}
+              </li>
+            </div>
+            <hr />
+
+            <div className=" p-2  hover:bg-sky-300">
+              <li>
+                {user && userDb.status !== "admin" ? (
+                  <Link to={"/access-denied"}>
+                    <h1>Control de Hoteles</h1>
+                  </Link>
+                ) : (
+                  <Link to={"/admin-cards"}>
+                    <h1>Control de Hoteles</h1>
+                  </Link>
+                )}
+              </li>
+            </div>
+            <hr />
+
+            <div className=" p-2  hover:bg-sky-300">
+              <li>
+                {user && userDb.status !== "admin" ? (
+                  <Link to={"/access-denied"}>
+                    <h1>Control de Images</h1>
+                  </Link>
+                ) : (
+                  <Link to={"/admin-images"}>
+                    <h1>Control de Images</h1>
+                  </Link>
+                )}
+              </li>
+            </div>
+            <hr />
+
+            <div className=" p-2  hover:bg-sky-300">
+              <li>
+                <Link to={"/home"}>
+                  <button>Regresar a Home</button>
+                </Link>
+              </li>
+            </div>
+            <hr />
+            <div className=" p-3 m-1  ">
+              <li>
+                <Link to={"/login"}>
+                  <button className="bg-red-400 w-30 p-2 rounded  focus:rounded text-xl">
+                    Cerrar Sesión
+                  </button>
+                </Link>
+              </li>
+            </div>
+          </ul>
+        </div>
       </div>
     </div>
   );

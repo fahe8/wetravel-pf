@@ -36,7 +36,7 @@ export const Images = () => {
         {images?.map((el, idx) => {
           return (
             <div className="w-[400px] h-[auto]" key={idx}>
-              <p>Imagen subida por: {el.nameUser}</p>
+              <p>Imagen subida por <strong>{el.nameUser}</strong></p>
               <Swiper
                 navigation={true}
                 modules={[Navigation]}
