@@ -88,14 +88,15 @@ function Review({ name }) {
 
   return (
     <form onSubmit={(e) => handleSubmit(e)}>
-      <div className="container ">
-        <div className="container d-flex justify-content-center  ">
+      <div className="container w-1500px m-3">
+        <div className="container d-flex justify-content-center w-50 bg-stone-50	 ">
           <h1>{handleClick()}</h1>
           {Array(5)
             .fill()//* Llena la info y permite vizualizar las STARS
             .map((_, index) =>
               input.stars >= index + 1 || setCurrent >= index + 1 ? (
                 <AiFillStar
+                
                 key={index}
                   onMouseOver={() => !input.stars && setCurrent(index + 1)}
                   onMouseLeave={() => setCurrent(undefined)}
@@ -105,6 +106,7 @@ function Review({ name }) {
               ) : (
                 <AiOutlineStar
                 key={index}
+                
 
                   onMouseOver={() => !input.stars && setCurrent(index + 1)}
                   onMouseLeave={() => setCurrent(undefined)}
@@ -113,7 +115,6 @@ function Review({ name }) {
                 />
               )
             )}
-        </div>
 
         <br />
         <ToastContainer />
@@ -138,6 +139,7 @@ function Review({ name }) {
             </Button>
           </div>
         </FloatingLabel>
+      </div>
       </div>
     </form>
   );

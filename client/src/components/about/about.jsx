@@ -1,6 +1,7 @@
 import React from 'react'
 import NavBar from '../navBar/NavBar';
 import { Link } from 'react-router-dom';
+import {AiOutlineGithub} from "react-icons/ai";
 
 function About() {
   return (
@@ -18,7 +19,39 @@ function About() {
               <Link to="/home">
                 <button className='bg-white border-2 p-2 rounded hover:bg-black hover:rounded hover:text-white mt-5 text-xl flex ml-5'>Comenzar</button>
               </Link>
+              <div className='w-1/4 flex ml-[600px] justify-items-center items-center pl-[20px]]'>
+              <div className='w-[200px] h-[100px] justify-items-center items-center '>
+                <p>Fabian Carrion</p>
+                <a href='https://github.com/fahe8'><AiOutlineGithub className='w-[60px] h-[50px]'/></a>
+                </div>
+                <div className='w-[200px] h-[100px] justify-items-center items-center'>
+                <p>Carlos Martinez</p>
+                <a href='https://github.com/Cemb93 justify-items-center items-center'><AiOutlineGithub className='w-[60px] h-[50px]'/></a>
+                </div>
+                <div className='w-[200px] h-[100px] justify-items-center items-center '>
+                <p>Lucas Montecino</p>
+                <a href='https://github.com/LucasMontecino'><AiOutlineGithub className='w-[60px] h-[50px]'/></a>
+                </div>
+                <div className='w-[200px] h-[100px] justify-items-center items-center '>
+                <p> Juan Rodriguez</p>
+                <a href='https://github.com/juan-rv'><AiOutlineGithub className='w-[60px] h-[50px]'/></a>
+                </div>
+                <div className='w-[200px] h-[100px]  justify-items-center items-center '>
+                <p>Lucas andrada</p>
+                <a href='https://github.com/andradaalucas'><AiOutlineGithub className='w-[60px] h-[50px]'/></a>
+                </div>
+                <div className='w-[200px] h-[100px] justify-items-center items-center '>
+                <p>Caro Barragan</p>
+                <a href='https://github.com/carobarragan'><AiOutlineGithub className='w-[60px] h-[50px]'/></a>
+                </div>
+                <div className='w-[200px] h-[100px]justify-items-center items-center  '>
+                <p>Santiago Gomez</p>
+                <a href='https://github.com/santiagogomezz'><AiOutlineGithub className='w-[60px] h-[50px]'/></a>
+                </div>
+            </div>    
+              
             </div>
+           
         </div>
     </div>
   )
