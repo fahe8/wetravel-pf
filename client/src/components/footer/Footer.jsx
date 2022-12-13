@@ -18,8 +18,8 @@ export const Footer = () => {
                       <ul className='flex items-center'>
                           <li><AiFillFacebook /></li>
                           <li><AiFillYoutube /></li>
-                          <li><AiFillInstagram /></li>
-                          <li><AiFillTwitterSquare /></li>
+                          <a href='https://www.instagram.com/wetravelpf/'><li><AiFillInstagram /></li></a>
+                          <a href='https://twitter.com/WetravelW'><li><AiFillTwitterSquare /></li></a>
                       </ul>
                   </div>
                   
