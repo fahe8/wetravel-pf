@@ -123,7 +123,7 @@ const DoFilters = () => {
 const ModalFilter = ({ refOne, setModalFilter,handleStar,filters, handleChange, DoFilters , restartFilters}) => {
   return (
     <div className="  w-screen h-screen  fixed top-0 left-0 z-30 flex justify-center items-center">
-      <div className="w-[600px] h-[600px] bg-white rounded-3xl " ref={refOne}>
+      <div className="w-[600px] h-[auto] bg-white rounded-3xl relative" ref={refOne}>
         <div className="py-[10px] relative border-b ">
           <span
             className="absolute left-5 cursor-pointer px-2"
@@ -184,9 +184,10 @@ const ModalFilter = ({ refOne, setModalFilter,handleStar,filters, handleChange, 
           </div>
         </div>
 
-        <div className="w-full h-[60px] relative">
-          <p className=" absolute w-auto h-auto  border-b-2 font-bold border-black top-[50%] left-5 cursor-pointer px-2 " onClick={restartFilters}>{"Reiniciar filtros"}</p>
-          <button className=" w-[100px] h-full rounded-3xl border " onClick={DoFilters}>{"Filtrar"}</button>
+        <div className="w-full h-[60px] mb-3 relative">
+          <p className="  w-[auto] h-auto  border-b-2 font-bold border-black  cursor-pointer px-2 absolute top-[50%] ml-2" onClick={restartFilters}>{"Reiniciar filtros"}</p>
+          <button className=" w-[100px] h-full rounded-3xl border" onClick={DoFilters}>{"Filtrar"}</button>
+
         </div>
       </div>
     </div>
