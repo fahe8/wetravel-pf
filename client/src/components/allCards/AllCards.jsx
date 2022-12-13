@@ -8,6 +8,7 @@ import { Footer } from "../footer/Footer";
 import { useLocalStorage } from "../../localStorage/useLocalStorage";
 // import { useAuth0 } from "@auth0/auth0-react";
 // import InfiniteScroll from 'react-infinite-scroll-component';
+import LoadHome from "../Loading/loadingHome/LoadHome";
 
 const AllCards = () => {
   //función que pide la información y la renderiza
@@ -64,7 +65,7 @@ const AllCards = () => {
                 />
               ))
           ) : (
-            <h1>Mensaje de alerta que no hay hoteles</h1>
+            <LoadHome/>
           )}
         </div>
       </div>

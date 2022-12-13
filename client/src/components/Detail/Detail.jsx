@@ -136,7 +136,10 @@ const Detail = (props) => {
                     <p>
                       {
                         (el.nameHotel === selectedHotel.name) && (
-                        <p>Comentario: {el.comments[0]}, Usuario: {`${console.log("asd",el)}; ${el.nameUser}`}</p>
+                          <div>
+                            <p>Usuario: {!el.nameUser ? 'Anonymous' : el.nameUser}</p>
+                            <p>Comentario: {el.comments[0]}</p>
+                          </div>
                         )
                       }
                     </p>

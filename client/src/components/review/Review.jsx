@@ -55,7 +55,7 @@ function Review({ name }) {
 
   };
   const messageError = () =>{
-    toast.error('Es necesario poner una calificación', {
+    toast.error('Debes dar una calificación y un comentario al respecto con al menos 10 caracteres', {
       position: "top-center",
       autoClose: 5000,
       hideProgressBar: true,
@@ -73,16 +73,16 @@ function Review({ name }) {
   }
   function handleSubmit(e) {
     e.preventDefault();
-    if (input.stars === 0) {
-      return messageError();
+    if (input.stars === 0 || !input.comments.length || input.comments[0].length <= 9) {
+      messageError();
     } else {
-      dispatch(postReview(input));
-      setInput({ nameUser: user?.name, stars: 0, comments: [], nameHotel: name, });
-
-      // setInput({ user: client.name, stars: 0, comments: "" });
-      setCurrent(0);
-      setStars([1, 2, 3, 4, 5]);
-      messageOk()
+      if (input.stars !== 0 || input.comments[0].length >= 10) {
+        dispatch(postReview(input));
+        setInput({ nameUser: user?.name, stars: 0, comments: [], nameHotel: name, });
+        setCurrent(0);
+        setStars([1, 2, 3, 4, 5]);
+        messageOk();
+      }
     }
   }
 

@@ -6,6 +6,8 @@ import RangeCalendar from "../calendar/RangeCalendar";
 import { useDispatch, useSelector } from "react-redux";
 import { postHotel, cartReserves, getReservesByCart } from "../../redux/action";
 import { useAuth0 } from "@auth0/auth0-react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Reservation = ({ selectedHotel, price }) => {
   let dispatch = useDispatch();
@@ -22,6 +24,31 @@ const Reservation = ({ selectedHotel, price }) => {
       key: "selection",
     },
   ]);
+  const messageSuccesful = () => {
+    toast.success('Se agrego la reserva al carrito 🛒', {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      });
+  }
+  const messageError = () => {
+    toast.error('Ya tenes una reserva en esa fecha', {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      });
+  }
+
 
   const finalPrice =
     prices * differenceInDays(range[0].endDate, range[0].startDate) > 0
@@ -95,8 +122,9 @@ const Reservation = ({ selectedHotel, price }) => {
       !reserveFind
         ? dispatch(cartReserves(info)).then((res) => {
             dispatch(getReservesByCart(user?.email));
+            messageSuccesful()
           })
-        : alert("El carrito ya tiene una reservación en estas fechas");
+        : messageError();
     }
 
     // dispatch(getReservesByCart(user?.email))
