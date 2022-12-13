@@ -32,17 +32,22 @@ export const AdminUsers = () => {
               {users
                 ? users.map((el) => {
                     return (
-                      <div>
-                        <img src={user.picture} alt="img not found" />
+                    <>
+                    { el.baned === true ?
+                    (   
+                      <>
                         <p>{el.name}</p>
-                        <button
-                          onClick={() => {
-                            dispatch(baned({ baned: true }, el.id));
-                          }}
-                        >
-                          <strong>Eliminar usuario</strong>
-                        </button>
-                      </div>
+                        <button onClick={() => {dispatch(baned({ baned:false }, el.id))}}>Desbanear usuario</button>
+                      </>
+                    ) :
+                    <>
+                      <img src={user.picture} alt="imagen not found"/>
+                      <p>{el.name}</p>
+                      <button onClick={() => {dispatch(baned({ baned: true }, el.id))}}>Banear usuario</button>
+                    </>
+                    }
+                    </>      
+                     
                     );
                   })
                 : "esta vacio"}
@@ -53,3 +58,34 @@ export const AdminUsers = () => {
     </div>
   );
 };
+
+
+
+
+
+                        // <div>
+                        // {el.baned === false?
+                        //   (<>
+                        // <img src={user.picture} alt="img not found" />
+                        // <p>{el.name}</p>
+                        // <button
+                        //   onClick={() => {
+                        //     dispatch(baned({ baned: true }, el.id));
+                        //   }}
+                        // >
+                        //   <strong>Eliminar usuario</strong>
+                        // </button>
+                        //  </>):
+                        //   (<>
+                        //   <img src={user.picture} alt="img not found" />
+                        //   <p>{el.name}</p>
+                        //   <button
+                        //   onClick={() => {
+                        //     dispatch(baned({ baned: false }, el.id));
+                        //   }}
+                        // >
+                        //   <strong>Desbanear usuario</strong>
+                        // </button>
+                        //   </>)
+                        // }}
+                        // <div/>
