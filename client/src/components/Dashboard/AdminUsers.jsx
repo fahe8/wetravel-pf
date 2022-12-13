@@ -13,6 +13,7 @@ export const AdminUsers = () => {
   const banear = (id, payload) => {
     baned(id, payload);
   };
+  
 
   useEffect(() => {
     dispatch(getUser());
@@ -28,12 +29,12 @@ export const AdminUsers = () => {
           <div className="flex items-center justify-between bg-red-100 p-8 rounded-xl">
             <div>
               <h3 className="uppercase font-bold">Usuarios</h3>
-              <br />
+              <hr />
               {users
                 ? users.map((el) => {
                     return (
                       <div>
-                        <img src={user.picture} alt="img not found" />
+                        <img src={user.picture} className="flex justify-center space-x-4" alt="img not found" />
                         <p>{el.name}</p>
                         <button
                           onClick={() => {
