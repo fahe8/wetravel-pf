@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserById } from "../../redux/action";
 
+
 // import { BsFillCalendarDateFill } from "react-icons/";
 import { IconButton } from "@mui/material";
 // import { CalendarMonth } from "@mui/material";
@@ -11,7 +12,7 @@ import {
   RiLogoutCircleRLine,
   RiArrowRightSLine,
   RiEarthLine,
-  RiHome4Fill,
+  
 } from "react-icons/ri";
 import { shadows } from "@mui/system";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -29,89 +30,123 @@ const Sidebar = () => {
   }, [dispatch, user]);
 
   return (
-    <div className="xl:h-[100vh] overFlow-y-scroll fixed xl:static w-full h-full -left-full top-0 bg-secondary-100 p-4 flex flex-col justify-between ">
-      <div className="text-center text-2xl font-bold text-white">
-        <h1>Administrador</h1>
+    <div className="bg-sky-200" >
+      <div className="text-center ">
+        <div className=" text-4xl mt-8 font-medium">
+          <h1>SuperAdmin</h1>
+        </div>
+        
+        <hr/>     
+        <div className="text-2xl font-medium">
 
-        <ul className="mt-4">
+        <ul >
+          <div className="  p-3  hover:bg-sky-300" >
           <li>
             <Link
               to={""}
-              className="bg-Dark grayish blue flex items-center gap-4 py-2 px-4 roudend-lg hover:bg-white.900"
-            >
-              <RiHome4Fill>Inicio</RiHome4Fill>
+                >
+                    <h1>To home</h1>
             </Link>
-          </li>
+            </li>
+            </div>
+            <hr/>
+          <div className=" p-2  hover:bg-sky-300">
+            <li>
+              Usuarios Registrados
+            </li>
+          </div>
+          <hr/>
+          <div className=" p-2  hover:bg-sky-300 ">
           <li>
             {user && userDb.status !== "admin" ? (
               <Link
                 to={"/access-denied"}
-                className="py-2 px-4 ml-1 border-l border-gray-500 ml-6 block"
+                
               >
-                <h1>Reviews</h1>
+                <h1>Control de comentarios</h1>
               </Link>
             ) : (
               <Link
                 to={"/admin-reviews"}
-                className="py-2 px-4 ml-1 border-l border-gray-500 ml-6 block"
               >
-                <h1>Reviews</h1>
+                <h1>Control de comentarios</h1>
               </Link>
             )}
           </li>
+            </div>
+          <hr/>
+            
+
+          <div className=" p-2  hover:bg-sky-300">
+      
           <li>
             {user && userDb.status !== "admin" ? (
               <Link
                 to={"/access-denied"}
-                className="py-2 px-4 ml-1 border-l border-gray-500 ml-6 block"
               >
-                <h1>Hoteles</h1>
+                <h1>Control de Hoteles</h1>
               </Link>
             ) : (
               <Link
                 to={"/admin-cards"}
-                className="py-2 px-4 ml-1 border-l border-gray-500 ml-6 block"
               >
-                <h1>Hoteles</h1>
+                <h1>Control de Hoteles</h1>
               </Link>
             )}
-          </li>
+            </li>
+            </div>
+          <hr/>
+            
+          
+          <div className=" p-2  hover:bg-sky-300">
           <li>
             {user && userDb.status !== "admin" ? (
               <Link
                 to={"/access-denied"}
-                className="py-2 px-4 ml-1 border-l border-gray-500 ml-6 block"
               >
-                <h1>Images</h1>
+                <h1>Control de Images</h1>
               </Link>
             ) : (
               <Link
                 to={"/admin-images"}
-                className="py-2 px-4 ml-1 border-l border-gray-500 ml-6 block"
               >
-                <h1>Images</h1>
+                <h1>Control de Images</h1>
               </Link>
             )}
-          </li>
-        </ul>
+            </li>
+            </div>
+          <hr/>
+
+          
+          
+       
+        <div className=" p-2  hover:bg-sky-300">
         <li>
           <Link
             to={"/home"}
-            className=" bg-Dark grayish blue flex items-center gap-4 py-2 px-4 roudend-lg hover:bg-white.900 text-black"
-          >
-            <h1>Regresar a Home</h1>
+              >
+                <button>
+                  Regresar a Home
+                </button>
+
           </Link>
-        </li>
+          </li>
+            </div>
+            <hr/>
+        <div className=" p-3 m-1  ">
         <li>
           <Link
             to={"/login"}
-            className="bg-Dark grayish blue flex items-center gap-4 py-2 px-4 roudend-lg hover:bg-white.900 text-black"
           >
-            <RiLogoutCircleRLine className="text-black flex flex-col justify-between ">
-              Cerrar Seción
-            </RiLogoutCircleRLine>
+                <button className="bg-red-400 w-30 p-2 rounded  focus:rounded text-xl">
+                Cerrar Sesión
+                </button>
           </Link>
-        </li>
+              </li>
+          </div>
+              </ul>
+           </div >
+          
       </div>
     </div>
   );
