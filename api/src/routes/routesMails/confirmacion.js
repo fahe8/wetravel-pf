@@ -81,7 +81,7 @@ routerMail.post("/", async (req, res) => {
                 <tr>
                   <td style="padding:0;">
                    <h3> Aca están los principales datos de tu reserva</h3>
-                  &{mapeo()}
+                  ${mapeo()}
                   </td>
                   <tr>
                     <td>

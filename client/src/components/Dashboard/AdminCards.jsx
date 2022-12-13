@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { deleteHotel, updateHotel } from "../../redux/action";
-import Header from "./Header";
+import NavBar from "../navBar/NavBar";
 import Sidebar from "./sidebar";
 
 export const AdminCards = () => {
@@ -18,7 +18,7 @@ export const AdminCards = () => {
     <div className="min-h-screen grid grid-cols-6 ">
       <Sidebar />
       <div className="xl:col-span-5  ">
-        <Header />
+        <NavBar />
         <div className="xl:col-span-5 p-8">
           {hotelCreated?.map((el) => {
             return (
