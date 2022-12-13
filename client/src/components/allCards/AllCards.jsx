@@ -8,6 +8,7 @@ import { Footer } from "../footer/Footer";
 import { useLocalStorage } from "../../localStorage/useLocalStorage";
 import { useAuth0 } from "@auth0/auth0-react";
 import InfiniteScroll from 'react-infinite-scroll-component';
+import LoadHome from "../Loading/loadingHome/LoadHome";
 
 const AllCards = () => {
   //función que pide la información y la renderiza
@@ -45,7 +46,7 @@ const AllCards = () => {
     <div className=" h-full md:m-h-screen w-full">
       <div className="container mx-auto px-0 md:px-4 py-4">
         {/* <div className="flex flex-wrap justify-center gap-4"> */}
-          <InfiniteScroll dataLength={estadoHoteles.length} next={fetchMoreData} hasMore={hasMore} loader={<h4>Loading...</h4>} className="flex flex-wrap justify-center gap-4">
+          <InfiniteScroll dataLength={estadoHoteles.length} next={fetchMoreData} hasMore={hasMore} loader={<LoadHome/>} className="flex flex-wrap justify-center gap-4">
           {estadoHoteles.length > 0 ? (
             estadoHoteles
               .filter((h) => h.status !== false)
@@ -66,7 +67,7 @@ const AllCards = () => {
                 />
               ))
           ) : (
-            <h1>Mensaje de alerta que no hay hoteles</h1>
+            <LoadHome/>
           )}
           </InfiniteScroll>
         {/* </div> */}
