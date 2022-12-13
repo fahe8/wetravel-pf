@@ -3,6 +3,10 @@ import Carousel from "react-bootstrap/Carousel";
 import {FaCheck} from "react-icons/fa";
 import { useAuth0 } from "@auth0/auth0-react";
 import {useSelector} from "react-redux"
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper";
+import "swiper/css";
+import "swiper/css/navigation";
 
 const DetailRoom = ({
   name,
@@ -138,11 +142,15 @@ const Modal = ({
         </div>
         <div className="mt-7 flex flex-col text-[19px] font-light ml-3">
           <div className="mb-20">
-          <Carousel className="carousel  w-[500px] h-[250px] m-auto ">
+          <Swiper
+          navigation={true}
+          modules={[Navigation]}
+          className="mySwiper justify-center items-center backdrop-blur "
+        >
             {photos &&
               photos?.map((elemento, index) => {
                 return (
-                  <Carousel.Item key={index}>
+                  <SwiperSlide>
                     <div>
                       <img
                         className=" w-[500px] h-[300px]"
@@ -150,10 +158,10 @@ const Modal = ({
                         alt="hotel"
                       />
                     </div>
-                  </Carousel.Item>
+                  </SwiperSlide>
                 );
               })}
-          </Carousel>
+          </Swiper>
           </div>
           <div className="mb-3  mt-4 ">
             <h2 className="font-semibold">Descripción</h2>
