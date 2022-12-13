@@ -58,10 +58,10 @@ function rootReducer(state = initialState, action) {
   ) {
     case GET_HOTELS: // en el caso de obtener los hoteles necesitamos que se llene el estado que nos devuelve los personajes nuestro payload
       var setHasMore;
-      if(action.payload !== undefined){
-        setHasMore = action.payload.length !== 0 ? true : false
+      if (action.payload !== undefined) {
+        setHasMore = action.payload.length !== 0 ? true : false;
       } else {
-        setHasMore = false
+        setHasMore = false;
       }
       return {
         ...state, //una copia del estado
@@ -187,7 +187,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         images: action.payload,
-      }
+      };
     case BANED:
       return {
         ...state,
