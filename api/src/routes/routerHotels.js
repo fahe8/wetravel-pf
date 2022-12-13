@@ -2,6 +2,7 @@ const { Hotel, User } = require("../db");
 const { Router } = require("express");
 const routerHotels = Router();
 const apiData = require("../../hotels.json");
+const { Op } = require("sequelize");
 // const { Op } = require("sequelize");
 
 const getHotels = async () => {
@@ -45,13 +46,15 @@ const getHotels = async () => {
 };
 
 routerHotels.get("/", async (req, res) => {
-  const { search, stars, priceMin, priceMax, servicies } = req.query;
 
+  const { search, stars, priceMin, priceMax, servicies, page } = req.query;
   try {
     const hotels = await getHotels();
 
     let resultadoDeBusqueda = [];
-    if (search && hotels.length) {
+    if (search ) {
+
+      
       let hotelName = hotels.filter((el) =>
         el.name
           .normalize("NFD")
@@ -131,7 +134,21 @@ routerHotels.get("/", async (req, res) => {
       return res.send(resultadoDeBusqueda)
 
     } else {
-      return res.send(hotels)
+      
+      const dataDb = await Hotel.findAndCountAll({
+        limit: 5,
+        offset: page*5,
+        include: [
+          {
+            model: User,
+            attributes: ["name"],
+            through: {
+              attributes: [],
+            },
+          }
+        ],
+      });
+      return res.send(dataDb)
     }
   } catch (error) {
     res.status(400).send(error.message);
