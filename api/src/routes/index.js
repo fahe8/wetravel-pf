@@ -9,13 +9,9 @@ const routerOrder = require("./order");
 const routerServices = require("./routerServices");
 const routerFavorites = require("./routerFavorites");
 const routerImage = require("./routerImage");
-<<<<<<< HEAD
-const routerMail = require ("../routes/routesMails/confirmacion")
-const routerMailCreate = require ("../routes/routesMails/creacion")
-=======
-const routerMail = require("./mail");
+const routerMail = require("./routesMails/confirmacion");
+
 const routerBaned = require("./routerBaned");
->>>>>>> 2291c1dcdcc67d616db3a63d9f212e52a901e7e6
 
 router.use("/mercadopay", routerPay);
 
@@ -35,15 +31,7 @@ router.use("/favorites", routerFavorites);
 
 router.use("/images", routerImage);
 
-<<<<<<< HEAD
-router.use("/send-email", routerMail)
-
-router.use("/send-email-create", routerMailCreate)
-
-
-=======
 router.use("/send-email", routerMail);
->>>>>>> 2291c1dcdcc67d616db3a63d9f212e52a901e7e6
 
 router.use("/baned", routerBaned);
 

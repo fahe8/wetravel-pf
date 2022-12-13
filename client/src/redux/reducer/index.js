@@ -11,12 +11,7 @@ import {
   PAY_RESERVE,
   GET_REVIEW,
   GET_RESERVE,
-<<<<<<< HEAD
-
-  
-=======
   GET_RESERVE_USER,
->>>>>>> 2291c1dcdcc67d616db3a63d9f212e52a901e7e6
   UPDATE_USER,
   GET_USER,
   GET_RESERVE_BY_CART,
@@ -49,12 +44,7 @@ const initialState = {
   favorites: [],
   images: [],
   reservesUser: {},
-  hasMore:true
-
-
-=======
-  reservesUser: {},
->>>>>>> 2291c1dcdcc67d616db3a63d9f212e52a901e7e6
+  hasMore: true,
 };
 
 function rootReducer(state = initialState, action) {
@@ -65,14 +55,17 @@ function rootReducer(state = initialState, action) {
   ) {
     case GET_HOTELS: // en el caso de obtener los hoteles necesitamos que se llene el estado que nos devuelve los personajes nuestro payload
       var setHasMore;
-      if(action.payload !== undefined){
-        setHasMore = action.payload.length !== 0 ? true : false
+      if (action.payload !== undefined) {
+        setHasMore = action.payload.length !== 0 ? true : false;
       } else {
-        setHasMore = false
+        setHasMore = false;
       }
       return {
         ...state, //una copia del estado
-        hotels: state.hasMore !== true ? state.hotels : state.hotels.concat(action.payload), // almacenar en este objeto lo que llega del backend
+        hotels:
+          state.hasMore !== true
+            ? state.hotels
+            : state.hotels.concat(action.payload), // almacenar en este objeto lo que llega del backend
         copyHotels: [...state.hotels, action.payload],
         hotelFilter: [...state.hotels, action.payload],
       };
@@ -165,17 +158,6 @@ function rootReducer(state = initialState, action) {
         reserveByCart: [...action.payload],
       };
 
-<<<<<<< HEAD
-    
-    
-=======
-    case GET_RESERVE_USER:
-      return {
-        ...state,
-        reservesUser: action.payload,
-      };
-
->>>>>>> 2291c1dcdcc67d616db3a63d9f212e52a901e7e6
     case GET_ID_MERCADO_PAGO:
       return {
         ...state,
@@ -199,7 +181,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         images: action.payload,
-      }
+      };
     case BANED:
       return {
         ...state,
