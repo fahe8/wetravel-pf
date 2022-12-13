@@ -323,6 +323,26 @@ const Create = () => {
                 </div>
               </div>
 
+              <div className="p-2.5 ">
+                <input
+                  className="bg-transparent border-b border-gray w-11/12"
+                  id="starsInput"
+                  type="text"
+                  value={input.stars}
+                  name="stars"
+                  autoComplete="off"
+                  placeholder="Enter stars.."
+                  onChange={(e) => handleChange(e)}
+                />
+                <div className=" text-sm text-red-500">
+                {errors.stars && <p>{errors.stars}</p>}
+                {errors.max && <p>{errors.max}</p>}
+                {errors.negatives && <p>{errors.negatives}</p>}
+                {errors.nan && <p>{errors.nan} </p>}
+                {errors.zero && <p>{errors.zero} </p>}
+                </div>
+                
+              </div> 
               <div className="p-2.5">
                 <p className=" text-lg font-semibold">{"Continente:"}</p>
                 <select

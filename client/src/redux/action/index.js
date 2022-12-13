@@ -22,11 +22,11 @@ export const GET_FAVORITES = "GET_FAVORITES";
 export const GET_ID_MERCADO_PAGO = "GET_ID_MERCADO_PAGO";
 export const DELETE_RESERVE = "DELETE_RESERVE";
 export const GET_IMAGE = "GET_IMAGE";
-export const DELETE_REVIEW = "DELETE_REVIEW";
-export const DELETE_IMAGES = "DELETE_IMAGES";
-export const GET_RESERVE_USER = "GET_RESERVE_USER";
-export const SEND_MAIL = "SEND_MAIL";
-export const SEND_MAIL_CREATE = "SEND_MAIL_CREATE";
+export const DELETE_REVIEW = 'DELETE_REVIEW';
+export const DELETE_IMAGES = 'DELETE_IMAGES';
+export const GET_RESERVE_USER = 'GET_RESERVE_USER';
+export const SEND_MAIL = "SEND_MAIL"
+export const SEND_MAIL_CREATE = "SEND_MAIL_CREATE"
 export const BANED = "BANED";
 // 1 depachar los hoteles
 export function getHotels(page=0) {
@@ -103,7 +103,6 @@ export function getUser() {
 }
 
 export function getUserById(email) {
-  //console.log("getUserById:", email);
   return async function (dispatch) {
     try {
       let res = await axios(`http://localhost:3001/users/${email}`);
@@ -170,7 +169,6 @@ export function postReserve(payload) {
 }
 
 export const payReserve = (payload) => {
-  //console.log(payload);
   return async function (dispatch) {
     try {
       const pay = await axios.post("http://localhost:3001/mercadopay", payload);
@@ -264,22 +262,13 @@ export function getReservesUser(email) {
   };
 }
 
-export function cartReserves(reserva) {
-  return async function (dispatch) {
-    //console.log(reserva);
-    const json = await axios.post("http://localhost:3001/order", reserva);
+export function cartReserves(reserva) {  
+     return async function(dispatch) {
+      const json = await axios.post("http://localhost:3001/order", reserva).data;
+      return dispatch({type: POST_ORDER})
+    }
 
-    //console.log(json);
-    // console.log(json) //pendiente porque no me está trayendo nada
-    //segunda función que recibe dispatch y despacha una acción / el tipo y el payload: devuelve el backend
-    dispatch(getReservesByCart(reserva.user));
-    return dispatch({
-      type: POST_ORDER,
-      payload: json,
-    });
-  };
-  // console.log(json) //pendiente porque no me está trayendo nada
-  //segunda función que recibe dispatch y despacha una acción / el tipo y el payload: devuelve el backend
+  
 }
 
 export function getIdMercadoPago(user) {
@@ -331,7 +320,6 @@ export const deleteImages = (id) => async (dispatch) => {
 
 export function deleteReserve(id) {
   return async function (dispatch) {
-    //console.log("first");
     const json = await axios.delete("http://localhost:3001/reserve/" + id);
     console.log(json.data);
 

@@ -25,6 +25,7 @@ import {
   DELETE_IMAGES,
   BANED,
   baned,
+  POST_ORDER
 } from "../action/index";
 
 const initialState = {
@@ -44,7 +45,9 @@ const initialState = {
   favorites: [],
   images: [],
   reservesUser: {},
-  hasMore: true,
+  hasMore:true,
+  reservesUser: {},
+
 };
 
 function rootReducer(state = initialState, action) {
@@ -62,12 +65,9 @@ function rootReducer(state = initialState, action) {
       }
       return {
         ...state, //una copia del estado
-        hotels:
-          state.hasMore !== true
-            ? state.hotels
-            : state.hotels.concat(action.payload), // almacenar en este objeto lo que llega del backend
-        copyHotels: [...state.hotels, action.payload],
-        hotelFilter: [...state.hotels, action.payload],
+        hotels: state.hasMore !== true ? state.hotels : state.hotels.concat(action.payload), // almacenar en este objeto lo que llega del backend
+        copyHotels: state.hasMore !== true ? state.hotels : state.hotels.concat(action.payload),
+        hotelFilter: state.hasMore !== true ? state.hotels : state.hotels.concat(action.payload)
       };
     case GET_DETAIL:
       return {
@@ -149,13 +149,19 @@ function rootReducer(state = initialState, action) {
     case GET_RESERVE:
       return {
         ...state,
-        reserve: action.payload,
+        reserve: [...action.payload],
       };
 
     case GET_RESERVE_BY_CART:
       return {
         ...state,
         reserveByCart: [...action.payload],
+      };
+
+    case GET_RESERVE_USER:
+      return {
+        ...state,
+        reservesUser: action.payload,
       };
 
     case GET_ID_MERCADO_PAGO:
@@ -190,6 +196,11 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
       };
+
+     case POST_ORDER: 
+     return {
+      ...state
+     }
     default:
       return state;
   }
