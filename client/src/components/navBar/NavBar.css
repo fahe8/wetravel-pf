@@ -1,5 +1,16 @@
 .back {
-    background-color: rgba(123, 174, 178, 0.877);
-    box-shadow: 5px 5px 5px 5px rgba(202, 202, 202, 0.596);
-    
+  position: sticky;
+  top: 0;
+  background-color: #a2d2ff;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.btn {
+  background: linear-gradient(134.88deg, rgb(254, 249, 239) 25.05%, rgb(254, 249, 239) 53.88%, rgb(249, 240, 221) 70.29%);
+}
+
+.btn:hover {
+  background: linear-gradient(134.88deg, rgb(255, 241, 214) 25.05%, rgb(254, 249, 239) 53.88%, rgb(248, 228, 190) 70.29%);
+
 }

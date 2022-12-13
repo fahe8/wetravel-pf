@@ -15,7 +15,7 @@ const NavBar = () => {
   let history = useHistory();
   const dispatch = useDispatch();
   const { user } = useAuth0();
-  const userDb = useSelector(state => state.userId)
+  const userDb = useSelector((state) => state.userId);
   // console.log('USUARIO:', user)
   const [state, setstate] = useState(false);
 
@@ -23,23 +23,6 @@ const NavBar = () => {
   const { reserveByCart } = useSelector((state) => state);
 
   // const [userCondition, setUserCondition] = useLocalStorage("user", "host");
-
-
-
-  function handleGuest(e) {
-    e.preventDefault();
-    history.push("/cart");
-  }
-
-  function handleHost(e) {
-    e.preventDefault();
-    history.push("/createhotel");
-  }
-
-  function handleAdmin(e) {
-    e.preventDefault();
-    history.push("/Dashboard");
-  }
 
   useEffect(() => {
     if (user) {
@@ -59,22 +42,42 @@ const NavBar = () => {
   };
 
   return (
-    <header className=" h-20 flex justify-between text-center back">
+    <header className=" h-20 flex justify-between text-center back z-10">
       <div className="cursor-pointer w-20 h-20 " onClick={handleReload}>
         <img src={logo} alt="logo-wetravel" className="w-full h-full " />
       </div>
 
-      <nav className=" w-65 flex justify-between items-center text-xl gap-5">
-        <Link to="/about">
-          <p>About Us</p>
+      <nav className=" w-65 flex items-center text-xl gap-4 ">
+        <Link to="/about" className=" p-2 border-black border-r-2 hover:bg-[#FEF9EF] rounded">
+          <p className="px-2">About Us</p>
         </Link>
-        <Link to="/images">
-          <p>Imagenes</p>
+        <Link to="/images" className=" p-2 border-black border-r-2 hover:bg-[#FEF9EF] rounded">
+          <p className="px-2">Imagenes</p>
         </Link>
-        <Link to="/favourites">
-          <p>Favorito</p>
+        <Link to="/favourites" className=" p-2 border-black border-r-2 hover:bg-[#FEF9EF] rounded">
+          <p className="px-2">Favorito</p>
         </Link>
-        <div className=" h-10 flex justify-between items-center gap-5  hover:bg-cyan-800 cursor-pointer p-7 rounded-full border-2 border-black">
+        {user && userDb?.status === "guest" && (
+          <Link to={"/cart"} className=" p-2 border-black border-r-2 hover:bg-[#FEF9EF] rounded">
+            <button className="flex relative text-black pr-2">
+              <BsCart4 />
+              <p className=" text-base absolute -right-1 -top-2">
+                {reserveByCart.length}
+              </p>
+            </button>
+          </Link>
+        )}
+        {user && userDb?.status === "host" && (
+          <Link to={"/create"} className=" p-2 border-black border-r-2 hover:bg-[#FEF9EF] rounded">
+            <button>Create New Hotel</button>
+          </Link>
+        )}
+        {user && userDb?.status === "admin" && (
+          <Link to={"/Dashboard"} className=" p-2 border-black border-r-2 hover:bg-[#FEF9EF] rounded">
+            <button>Dashboard</button>
+          </Link>
+        )}
+        <div className=" btn  text-black bg-gradient-to-r  focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 border-black border cursor-pointer">
           {!user && (
             <div className=" w-65 flex justify-between items-center text-xl gap-5">
               <div>
@@ -82,14 +85,8 @@ const NavBar = () => {
               </div>
             </div>
           )}
-          {user && userDb?.status === "guest" && (
-            <div className=" w-65 flex justify-between items-center text-xl gap-5">
-              {
-                <button onClick={handleGuest}>
-                  <BsCart4 />
-                  <p>{reserveByCart.length}</p>
-                </button>
-              }
+          {user && (
+            <div className=" w-65 flex justify-between items-center text-xl gap-5 ">
               <Link to="/login">
                 <div className=" w-65 flex justify-between items-center text-xl gap-5">
                   <p>{user?.name}</p>
@@ -102,36 +99,7 @@ const NavBar = () => {
               </Link>
             </div>
           )}
-          {user && userDb?.status === "host" && (
-            <div className=" w-65 flex justify-between items-center text-xl gap-5">
-              <button onClick={handleHost}>Create New Hotel</button>
-              <Link to="/login">
-                <div className=" w-65 flex justify-between items-center text-xl gap-5">
-                  <p>{user?.name}</p>
-                  <img
-                    src={user?.picture}
-                    alt="icon"
-                    className="bg-center bg-cover bg-no-repeat w-10 h-10 rounded-full"
-                  />
-                </div>
-              </Link>
-            </div>
-          )}
-          {user && userDb?.status === "admin" && (
-            <div className=" w-65 flex justify-between items-center text-xl gap-5">
-              <button onClick={handleAdmin}>Dashboard</button>
-              <Link to="/login">
-                <div className=" w-65 flex justify-between items-center text-xl gap-5">
-                  <p>{user?.name}</p>
-                  <img
-                    src={user?.picture}
-                    alt="icon"
-                    className="bg-center bg-cover bg-no-repeat w-10 h-10 rounded-full"
-                  />
-                </div>
-              </Link>
-            </div>
-          )}
+         
         </div>
       </nav>
     </header>

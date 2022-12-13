@@ -66,12 +66,12 @@ const Search = () => {
 
     return (
       <div
-        className={` w-[70%] mx-auto "
+        className={` w-[70%] mx-auto relative"
         }`}
        ref={ref2} 
       >
         <div
-          className={`${panelSelect.active && "translate-y-[-80%]"}  mx-auto ease-in-out duration-300 transform w-[95%] h-[130px] flex bg-[color:var(--second-bg-color)] rounded-full shadow-md border border-[color:var(--search-border-color)] cursor-pointer `}
+          className={`  mx-auto ease-in-out duration-300 transform w-[95%] h-[130px] flex bg-[color:var(--second-bg-color)] rounded-full shadow-md border border-[color:var(--search-border-color)] cursor-pointer `}
         >
           <button
             className={`${
@@ -108,9 +108,8 @@ const Search = () => {
           </button>
         </div>
         <div
-          className={`  -z-10 w-[100%] mx-auto top-[90%] ease-in-out duration-300 relative${
-            panelSelect.active ? "h-[400px] translate-y-[-25%]" : "h-[0px] translate-y-[1000%]"
-          }`}
+          className={`ease-in-out duration-300 w-auto absolute z-10 left-[50%] translate-x-[-50%] ${panelSelect.active? "translate-y-[0%]": "translate-y-[100%]"}`}
+          
           ref={ref}>
           {panelSelect.active && (
             <SearchPanel
