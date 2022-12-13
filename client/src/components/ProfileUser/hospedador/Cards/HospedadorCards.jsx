@@ -14,7 +14,7 @@ const HospedadorCards = () => {
     dispatch(getUserById(user?.email));
   }, [dispatch, user]);
 
-  console.log(estadoUser);
+  // console.log(estadoUser);
   return (
     <div className=' h-full md:h-screen w-full'>
       <div className='container mx-auto px-0 md:px-4 py-4'>

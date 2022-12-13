@@ -1,14 +1,11 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { deleteHotel, updateHotel } from "../../redux/action";
 import NavBar from "../navBar/NavBar";
 import Sidebar from "./sidebar";
 
 export const AdminCards = () => {
   const dispatch = useDispatch();
-
-  const history = useHistory();
 
   const { hotels } = useSelector((state) => state);
 
@@ -22,13 +19,13 @@ export const AdminCards = () => {
         <div className="xl:col-span-5 p-8">
           {hotelCreated?.map((el) => {
             return (
-              <div className="grid grid-cols-2 border border-primary rounded">
-                <div className="p-1">
+              <div className="grid grid-cols-3 m-3 bg-sky-100 shadow-xl hover:shadow-none cursor-pointer rounded-3xl">
+                <div className="p-5 col-span-2 text-lg ">
                   <div className="d-flex justify-content-center">
                     <img src={el.photos[0]} alt="img not found" />
                   </div>
                   <div>
-                    <p>{el.name}</p>
+                    <p>Hotel <strong>{el.name}</strong></p>
                   </div>
                   <div>
                     <p>
@@ -50,7 +47,7 @@ export const AdminCards = () => {
                     </p>
                   </div>
                 </div>
-                <div className="p-1 d-flex align-items-center">
+                <div className="p-16 d-flex align-items-center flex-col space-y-4 my-40">
                   <button
                     className="bg-red-500 text-black text-xl p-1 rounded"
                     onClick={() => {
