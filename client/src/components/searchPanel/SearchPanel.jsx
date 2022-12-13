@@ -28,9 +28,7 @@ setCount(counterAdult.counter + counterChild.counter + counterBaby.counter + cou
   if (selected === "location") {
     return (
       <div
-        className={`${
-          active ? "" : "translate-y-[5%] "
-        } ease-in-out duration-300 transform  h-[400px] w-[800px] mx-auto bg-[color:var(--second-bg-color)] shadow-lg rounded-[30px] relative`}
+        className={ "transform  h-[400px] w-[800px] mx-auto bg-[color:var(--second-bg-color)] shadow-lg rounded-[30px] relative"}
       >
         <h1 className=" text-4xl pb-2">Location</h1>
         <div className=" h-auto flex justify-between">
@@ -97,68 +95,68 @@ setCount(counterAdult.counter + counterChild.counter + counterBaby.counter + cou
     );
   }
 
-  if (selected === "calendar") {
-    return (
-      <div
-        className={`${
-          active ? "" : "translate-y-[5%] "
-        }  ease-in-out duration-300 transform  h-[400px] w-auto mx-auto bg-[color:var(--second-bg-color)] shadow-lg rounded-[30px] relative `}
-      >
-        <div className=" h-auto w-auto ">
-          <RangeCalendar range={range} setRange={setRange}></RangeCalendar>
-        </div>
-      </div>
-    );
-  }
+  // if (selected === "calendar") {
+  //   return (
+  //     <div
+  //       className={`${
+  //         active ? "" : "translate-y-[5%] "
+  //       }  ease-in-out duration-300 transform  h-[400px] w-auto mx-auto bg-[color:var(--second-bg-color)] shadow-lg rounded-[30px] relative `}
+  //     >
+  //       <div className=" h-auto w-auto ">
+  //         <RangeCalendar range={range} setRange={setRange}></RangeCalendar>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
-  if (selected === "guest") {
+  // if (selected === "guest") {
 
 
-    return (
-      <div
-        className={`${
-          active ? "" : "translate-y-[5%] "
-        }  ease-in-out duration-300 transform h-[400px] w-[400px] mx-auto bg-[color:var(--second-bg-color)] shadow-lg rounded-[30px]  relative `}
-      >
-        {" "}
-        <h1 className=" text-4xl pb-2 ">Guest</h1>
-        <div className="pr-5">
-        <div className="flex py-2">
-          <h2 className=" w-[300px] text-left pl-10">Adultos</h2>
-          <div className=" flex items-center">
-          <div> <button className="w-[40px] h-[40px] bg-slate-400 rounded-full" onClick={counterAdult.increase}>+</button></div>
-            <p className=" w-[30px] mx-2 text-center" type="text">{counterAdult.counter}</p>
-            <div> <button className="w-[40px] h-[40px] bg-slate-400 rounded-full" disabled={counterAdult.counter === 0} onClick={counterAdult.decrement}>-</button></div>
-          </div>
-        </div>
-        <div className="flex  py-2">
-          <h2 className=" w-[300px] text-left pl-10">Niños</h2>
-          <div className=" flex items-center">
-          <div> <button className="w-[40px] h-[40px] bg-slate-400 rounded-full" onClick={counterChild.increase}>+</button></div>
-          <p className=" w-[30px] mx-2 text-center" type="text">{counterChild.counter}</p>
-          <div> <button className="w-[40px] h-[40px] bg-slate-400 rounded-full" disabled={counterChild.counter === 0} onClick={counterChild.decrement}>-</button></div>
-          </div>
-        </div>
-        <div className="flex  py-2">
-          <h2 className=" w-[300px] text-left pl-10">Bebes</h2>
-          <div className=" flex items-center">
-          <div><button className="w-[40px] h-[40px] bg-slate-400 rounded-full" onClick={counterBaby.increase}>+</button></div>
-          <p className=" w-[30px] mx-2 text-center" type="text">{counterBaby.counter}</p>
-           <div> <button className="w-[40px] h-[40px] bg-slate-400 rounded-full" disabled={counterBaby.counter === 0} onClick={counterBaby.decrement}>-</button></div>
-          </div>
-        </div>
-        <div className="flex  py-2">
-          <h2 className=" w-[300px] text-left pl-10">Mascotas</h2>
-          <div className=" flex items-center">
-          <div> <button className="w-[40px] h-[40px] bg-slate-400 rounded-full" onClick={counterPet.increase}>+</button></div>
-            <p className=" w-[30px] mx-2 text-center" type="text">{counterPet.counter}</p>
-            <div> <button className="w-[40px] h-[40px] bg-slate-400 rounded-full" disabled={counterPet.counter === 0} onClick={counterPet.decrement}>-</button></div>
-          </div>
-        </div>
-        </div>
-      </div>
-    );
-  }
+  //   return (
+  //     <div
+  //       className={`${
+  //         active ? "" : "translate-y-[5%] "
+  //       }  ease-in-out duration-300 transform h-[400px] w-[400px] mx-auto bg-[color:var(--second-bg-color)] shadow-lg rounded-[30px]  relative `}
+  //     >
+  //       {" "}
+  //       <h1 className=" text-4xl pb-2 ">Guest</h1>
+  //       <div className="pr-5">
+  //       <div className="flex py-2">
+  //         <h2 className=" w-[300px] text-left pl-10">Adultos</h2>
+  //         <div className=" flex items-center">
+  //         <div> <button className="w-[40px] h-[40px] bg-slate-400 rounded-full" onClick={counterAdult.increase}>+</button></div>
+  //           <p className=" w-[30px] mx-2 text-center" type="text">{counterAdult.counter}</p>
+  //           <div> <button className="w-[40px] h-[40px] bg-slate-400 rounded-full" disabled={counterAdult.counter === 0} onClick={counterAdult.decrement}>-</button></div>
+  //         </div>
+  //       </div>
+  //       <div className="flex  py-2">
+  //         <h2 className=" w-[300px] text-left pl-10">Niños</h2>
+  //         <div className=" flex items-center">
+  //         <div> <button className="w-[40px] h-[40px] bg-slate-400 rounded-full" onClick={counterChild.increase}>+</button></div>
+  //         <p className=" w-[30px] mx-2 text-center" type="text">{counterChild.counter}</p>
+  //         <div> <button className="w-[40px] h-[40px] bg-slate-400 rounded-full" disabled={counterChild.counter === 0} onClick={counterChild.decrement}>-</button></div>
+  //         </div>
+  //       </div>
+  //       <div className="flex  py-2">
+  //         <h2 className=" w-[300px] text-left pl-10">Bebes</h2>
+  //         <div className=" flex items-center">
+  //         <div><button className="w-[40px] h-[40px] bg-slate-400 rounded-full" onClick={counterBaby.increase}>+</button></div>
+  //         <p className=" w-[30px] mx-2 text-center" type="text">{counterBaby.counter}</p>
+  //          <div> <button className="w-[40px] h-[40px] bg-slate-400 rounded-full" disabled={counterBaby.counter === 0} onClick={counterBaby.decrement}>-</button></div>
+  //         </div>
+  //       </div>
+  //       <div className="flex  py-2">
+  //         <h2 className=" w-[300px] text-left pl-10">Mascotas</h2>
+  //         <div className=" flex items-center">
+  //         <div> <button className="w-[40px] h-[40px] bg-slate-400 rounded-full" onClick={counterPet.increase}>+</button></div>
+  //           <p className=" w-[30px] mx-2 text-center" type="text">{counterPet.counter}</p>
+  //           <div> <button className="w-[40px] h-[40px] bg-slate-400 rounded-full" disabled={counterPet.counter === 0} onClick={counterPet.decrement}>-</button></div>
+  //         </div>
+  //       </div>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 };
 
 export default SearchPanel;
