@@ -10,6 +10,10 @@ import Carousel from "react-bootstrap/Carousel";
 import Reservation from "../reservation/Reservation";
 import { Footer } from "../footer/Footer";
 import Review from "../review/Review";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper";
+import "swiper/css";
+import "swiper/css/navigation";
 
 const Detail = (props) => {
   const {
@@ -51,11 +55,16 @@ const Detail = (props) => {
             <div>
               <div className="home-container">
                 <div className="home-container row ">
-                  <Carousel className="carousel mt-4 w-[800px] h-[500px] m-auto ">
+                  
+                  <Swiper
+          navigation={true}
+          modules={[Navigation]}
+          className="mySwiper justify-center items-center backdrop-blurcarousel mt-4 w-[800px] h-[500px] m-auto "
+        >
                     {selectedHotel &&
                       selectedHotel.photos?.map((elemento, index) => {
                         return (
-                          <Carousel.Item key={index}>
+                          <SwiperSlide>
                             <div className=" w-[800px] h-[500px]">
                               <img
                                 className=" w-[800px] h-[500px]"
@@ -63,10 +72,10 @@ const Detail = (props) => {
                                 alt="hotel"
                               />
                             </div>
-                          </Carousel.Item>
+                          </SwiperSlide>
                         );
                       })}
-                  </Carousel>
+                  </Swiper>
                 </div>
               </div>
               <div className="grid grid-cols-3 ">
