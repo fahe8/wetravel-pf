@@ -68,7 +68,7 @@ const DetailRoom = ({
 
   return (
     <div className="h-[100%] my-2 px-1 " >
-      <div className="h-full  flex justify-between items-center  ">
+      <div className="h-full  flex gap-3 justify-center items-center text-xl ">
         <p>{name}</p>
         <button
           className="bg-[color:var(--second-bg-color)] py-2 px-3 shadow-[inset_0_-2px_4px_rgba(0,0,0,0.6)]  hover:shadow-[inset_0_4px_4px_rgba(0,0,0,0.25)] rounded-[10px] flex align-middle"

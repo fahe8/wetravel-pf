@@ -135,20 +135,21 @@ routerHotels.get("/", async (req, res) => {
 
     } else {
       
-      const dataDb = await Hotel.findAndCountAll({
-        limit: 5,
-        offset: page*5,
-        include: [
-          {
-            model: User,
-            attributes: ["name"],
-            through: {
-              attributes: [],
-            },
-          }
-        ],
-      });
-      return res.send(dataDb)
+      // const dataDb = await Hotel.findAndCountAll({
+      //   limit: 5,
+      //   offset: page*5,
+      //   include: [
+      //     {
+      //       model: User,
+      //       attributes: ["name"],
+      //       through: {
+      //         attributes: [],
+      //       },
+      //     }
+      //   ],
+      // });
+      // return res.send(dataDb)
+      return res.send(hotels)
     }
   } catch (error) {
     res.status(400).send(error.message);

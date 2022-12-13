@@ -30,7 +30,7 @@ export const AdminUsers = () => {
               <h3 className="uppercase font-bold">Usuarios</h3>
               <br />
               {users
-                ? users.map((el) => {
+                ? users.filter(f => f.email !== user.email).map((el) => {
                     return (
                       <div>
                         <img src={user.picture} alt="img not found" />

@@ -14,6 +14,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
+import { FcApproval } from "react-icons/fc";
 
 const Detail = (props) => {
   const {
@@ -26,11 +27,6 @@ const Detail = (props) => {
   const loading = useSelector((state) => state.loading);
   const { review } = useSelector((state) => state);
 
-  // const handleDelete = () => {
-  //   dispatch(deleteHotel(id));
-  //   alert("Hotel borrado de nuesta base de datos");
-  //   history.push("/home")
-  // }
 
   useEffect(() => {
     let allComments = review.map(el => el.comments)
@@ -92,7 +88,7 @@ const Detail = (props) => {
                     <h3>
                       {selectedHotel.location}, {selectedHotel.city}
                     </h3>
-                    <h3>{selectedHotel.price}</h3>
+                    <h3>Price: ${selectedHotel.price}</h3>
                   </div>
                   <hr />
                   <div className=" text-left m-4">
@@ -110,9 +106,12 @@ const Detail = (props) => {
                           </h2>
                           <div className="grid grid-cols-2">
                             {selectedHotel.services.map((service, idx) => (
-                              <p key={idx} className="m-4 ">
+                              <div key={idx} className=" flex items-center">
+                                <span> <FcApproval/></span>
+                                <p  className="m-4 ">
                                 {service}
                               </p>
+                              </div>
                             ))}
                           </div>
                         </div>

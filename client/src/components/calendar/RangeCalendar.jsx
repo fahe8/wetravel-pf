@@ -22,6 +22,7 @@ const RangeCalendar = ({ range, setRange,getDaysArray, getAllDatesReserves }) =>
         editableDateInputs={true}
         moveRangeOnFirstSelection={false}
         disabledDates={daylist.flat()}
+        minDate={new Date()}
         ranges={range}
         months={2}
         direction="horizontal"

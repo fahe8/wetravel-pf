@@ -71,7 +71,6 @@ const Reservation = ({ selectedHotel, price }) => {
       return newArr;
     });
 
-
   const fullInfo = () => {
     if (user) {
       let info = {
@@ -126,50 +125,51 @@ const Reservation = ({ selectedHotel, price }) => {
           <h3>$ {selectedHotel.price} Noche</h3>
         </div>
 
-        <div className=" grid grid-cols-2 bg-[color:var(--primary-bg-opacity-color)] text-sm text-left mt-8 rounded-2xl mx-4 border border-black">
-          <div
-            className="border-r border-black pr-3 pb-4 pl-1"
-            onClick={() => setShowCalendar(true)}
-          >
-            <label> Check-In</label>
-            <input
-              value={`${format(range[0].startDate, "yyyy-MM-dd")}`}
-              readOnly
-              className=" outline-none w-[100%] text-center bg-transparent"
-            />
-          </div>
-
-          <div className="pr-3 pb-4 pl-1">
-            <label>Check-Out</label>
-            <input
-              value={`${format(range[0].endDate, "yyyy-MM-dd")}`}
-              readOnly
-              className=" outline-none w-[100%] text-center bg-transparent"
-            />
-          </div>
-
-          <p>
-            The price for {difDays} night/s is;
-            <strong>${finalPrice}</strong>
-          </p>
-
-          <div className="col-span-2 border-t border-black pr-3 pb-4 pl-1">
-            <h2>Rooms:</h2>
-            <div>
-              <DetailRoom
-                room={selectedHotel?.room}
-                id={selectedHotel?.id}
-                name={selectedHotel?.room?.name}
-                description={selectedHotel?.room?.description}
-                size={selectedHotel?.room?.size}
-                photos={selectedHotel?.room?.photos}
-                date={difDays}
-                nameHotel={selectedHotel?.name}
-                price={selectedHotel?.price}
-                properties={selectedHotel?.room?.properties}
-                fullInfo={fullInfo}
+        <div className=" text-center  bg-[#a2d2ff] text-sm mt-8 rounded-2xl mx-4 border-2 border-black ">
+          <div className=" flex hover:bg-[#5aa8f7] rounded-t-2xl cursor-pointer " onClick={() => setShowCalendar(true)}>
+            <div
+              className="border-r-2 border-black border-b-2 cursor-pointer w-1/2"
+              
+            >
+              <label className=" text-xl font-semibold m-0"> Check-In:</label>
+              <input
+                value={`${format(range[0].startDate, "yyyy-MM-dd")}`}
+                readOnly
+                className=" outline-none w-[100%] bg-transparent text-lg text-center"
               />
             </div>
+
+            <div className="pr-3  border-b-2 border-black w-1/2">
+              <label className=" text-xl font-semibold m-0">Check-Out:</label>
+              <input
+                value={`${format(range[0].endDate, "yyyy-MM-dd")}`}
+                readOnly
+                className=" outline-none w-[100%] bg-transparent text-lg text-center"
+              />
+            </div>
+          </div>
+
+          <p className=" py-3 text-xl">
+            El precio por {difDays} noche/s es:
+            <strong> ${finalPrice}</strong>
+          </p>
+        </div>
+        <div className="col-span-2  pr-3 pb-4 pl-1">
+          <h2 className=" pt-3 text-xl font-semibold">Room:</h2>
+          <div>
+            <DetailRoom
+              room={selectedHotel?.room}
+              id={selectedHotel?.id}
+              name={selectedHotel?.room?.name}
+              description={selectedHotel?.room?.description}
+              size={selectedHotel?.room?.size}
+              photos={selectedHotel?.room?.photos}
+              date={difDays}
+              nameHotel={selectedHotel?.name}
+              price={selectedHotel?.price}
+              properties={selectedHotel?.room?.properties}
+              fullInfo={fullInfo}
+            />
           </div>
         </div>
       </div>

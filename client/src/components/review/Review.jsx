@@ -128,13 +128,15 @@ function Review({ name }) {
         >
           <Form.Control
             as="textarea"
+            rows="4"
             value={input.comments}
             name="comments"
             placeholder="Leave a comment here"
             style={{ height: "120px" }}
+            className="resize-none"
           />
           <div className="mx-auto mt-5 m-1">
-            <Button type="submit" value="Enviar" class="btn btn-primary btn-md">
+            <Button type="submit" value="Enviar" class="btn btn-primary btn-md text-black">
               Enviar
             </Button>
           </div>
