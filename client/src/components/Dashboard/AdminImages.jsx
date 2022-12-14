@@ -21,7 +21,7 @@ export const AdminImages = () => {
     <div className="min-h-screen grid grid-cols-6 ">
       <Sidebar />
       <div className="xl:col-span-5  ">
-        <NavBar/>
+        <NavBar />
         <div className="xl:col-span-5 p-8">
           <h1 className="text-black text-3xl p-1 shadow-xl">
             <strong>ELIMINA LAS IMAGENES INAPROPIADOS</strong>
@@ -33,39 +33,42 @@ export const AdminImages = () => {
                 <div>
                   <div className=" text-2xl p-3 font-medium">
                     <h1>
-                      El usuario <strong>{el.nameUser}</strong> publicó la siguiente imagen:
-                      <hr/>
+                      El usuario <strong>{el.nameUser}</strong> publicó la
+                      siguiente imagen:
+                      <hr />
                     </h1>
-                    </div>
-                  <div className=" grid grid-cols-4">
-                   {el.images.length > 0 ? (
-                  el.images?.map((el, index) => {
-                    return (
-                      <div
-                        className="m-5 p-3 bg-slate-100 rounded shadow-xl"
-                        key={index} >
-                        <img
-                          src={el}
-                          alt="img not found"
-                          className="h-40 w-40"
-                        />
-                        <div className="p-1 d-flex align-items-center">
-                  <button
-                    className="bg-red-400 text-white text-xl  rounded-xl"
-                    onClick={() => {
-                      dispatch(deleteImages(el.id));
-                      history.go(0);
-                    }}
-                  >
-                    Delete This pic
-                  </button>
                   </div>
-                       
-                      </div>
-                    );
-                  })): (<h2>"hola"</h2>)
-                }
-                   
+                  <div className=" grid grid-cols-4">
+                    {el.images.length > 0 ? (
+                      el.images?.map((el, index) => {
+                        return (
+                          <div
+                            className="m-5 p-3 bg-slate-100 rounded shadow-xl"
+                            key={index}
+                          >
+                            <img
+                              src={el}
+                              alt="img not found"
+                              className="h-40 w-40"
+                            />
+                            <div className="p-1 d-flex align-items-center">
+                              <button
+                                className="bg-red-400 text-white text-xl  rounded-xl"
+                                onClick={() => {
+                                  dispatch(deleteImages(el.id));
+                                  history.go(0);
+                                }}
+                              >
+                                Delete This pic
+                              </button>
+                            </div>
+                          </div>
+                        );
+                      })
+                    ) : (
+                      <h2>"hola"</h2>
+                    )}
+
                     {/* {el.images?.map((el, index) => {
                     
                     return (
@@ -76,9 +79,8 @@ export const AdminImages = () => {
                       </div>
                     );
                   })} */}
-                </div>
-                
                   </div>
+                </div>
               </div>
             );
           })}

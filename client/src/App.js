@@ -32,7 +32,8 @@ import { AccessDenied } from "./components/Dashboard/AccessDenied";
 import { AdminImages } from "./components/Dashboard/AdminImages";
 import Confirmacion from "./components/confirmacion/Confirmacion"
 import Paginate from "./components/Paginate/Paginate"
-
+import { AdminUsers } from "./components/Dashboard/AdminUsers";
+import Baned from "./components/baned/baned"
 
 function App() {
   const {user} = useAuth0()
@@ -76,10 +77,10 @@ function App() {
           <Route exact path="/admin-cards" component={AdminCards} />
           <Route exact path="/admin-reviews" component={AdminReviews} />
           <Route exact path="/admin-images" component={AdminImages} />
+          <Route exact path="/admin-users" component={AdminUsers} />
           <Route exact path="/access-denied" component={AccessDenied} />
-          <Route exact path ="/confirmacion" component = {Confirmacion} />
-          <Route exact path="/test" component = {Paginate}></Route>
-
+          <Route exact path="/confirmacion" component={Confirmacion} />       
+          <Route exact path="/baned" component={Baned}/>
           <Route path="#" element={<Home />} />
         </Switch>
       </div>

@@ -1,14 +1,15 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
-import FloatingLabel from "react-bootstrap/FloatingLabel";
-import Form from "react-bootstrap/Form";
-import { Button } from "react-bootstrap";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { postReview } from "../../redux/action/index";
 import { useAuth0 } from "@auth0/auth0-react";
+import { getUserById } from "../../redux/action/index";
 import { ToastContainer, toast } from "react-toastify";
+import './Review.css'
+import { useEffect } from "react";
+
+
 function Review({ name }) {
   const [stars, setStars] = useState([1, 2, 3, 4, 5]);
   const [current, setCurrent] = useState(undefined);
@@ -20,6 +21,12 @@ function Review({ name }) {
     nameHotel: name,
   });
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (user) {
+      dispatch(getUserById(user.email))
+    }
+  }, [dispatch, user])
 
   function handleClick() {
     switch (input.stars || setCurrent) {
@@ -55,7 +62,7 @@ function Review({ name }) {
 
   };
   const messageError = () =>{
-    toast.error('Es necesario poner una calificación', {
+    toast.error('Debes dar una calificación y un comentario al respecto con al menos 10 caracteres', {
       position: "top-center",
       autoClose: 5000,
       hideProgressBar: true,
@@ -73,23 +80,50 @@ function Review({ name }) {
   }
   function handleSubmit(e) {
     e.preventDefault();
-    if (input.stars === 0) {
-      return messageError();
+    if (input.stars === 0 || !input.comments.length || input.comments[0].length <= 9) {
+      messageError();
     } else {
-      dispatch(postReview(input));
-      setInput({ nameUser: user?.name, stars: 0, comments: [], nameHotel: name, });
-
-      // setInput({ user: client.name, stars: 0, comments: "" });
-      setCurrent(0);
-      setStars([1, 2, 3, 4, 5]);
-      messageOk()
+      if (input.stars !== 0 || input.comments[0].length >= 10) {
+        dispatch(postReview(input));
+        setInput({ nameUser: user?.name, stars: 0, comments: [], nameHotel: name, });
+        setCurrent(0);
+        setStars([1, 2, 3, 4, 5]);
+        messageOk();
+      }
     }
   }
 
   return (
-    <form onSubmit={(e) => handleSubmit(e)}>
-      <div className="container w-1500px m-3">
-        <div className="container d-flex justify-content-center w-50 bg-stone-50	 ">
+    <div >
+      <div className="p-3 text-3xl font-semibold">
+        <h1>Inserte acá sus comentarios acerca de este hotel!</h1>
+      </div>
+
+      <form className="contain_review" onSubmit={(e) => handleSubmit(e)}>
+
+        
+        <ToastContainer />
+
+        <div
+          onChange={(e) => handleChange(e)}
+          className="contain_review bg-slate-50  p-3 w-4/5 rounded-md shadow-xl"
+          >        
+        <img
+          src={user?.picture}
+          alt="icon"
+          className="bg-center bg-cover bg-no-repeat w-10 h-10 rounded-full m-3"       
+        />
+
+          <textarea
+            value={input.comments}
+            name="comments"
+            className="resize-none  w-3/5 text-base bg-white rounded-lg border  h-9 p-1  outline-none"
+            placeholder="Inserte acá su comentario">
+          </textarea>
+
+          <div className="grid grid-rows-2 m-3">
+          
+          <div className="contain_review font-medium">
           <h1>{handleClick()}</h1>
           {Array(5)
             .fill()//* Llena la info y permite vizualizar las STARS
@@ -114,34 +148,24 @@ function Review({ name }) {
                   onClick={() => setInput({ ...input, stars: index + 1 })}
                 />
               )
-            )}
+          )}
+            </div>
+            <div>
 
-        <br />
-        <ToastContainer />
-        <FloatingLabel
-          name="comments"
-          controlId="floatingTextarea"
-          label="Comments"
-          className="mb-3 d-flex mx-auto form-floating gap-2"
-          onChange={(e) => handleChange(e)}
-          style={{ height: "100px", width: "600px" }}
+        <button
+          type="submit"
+          value="enviar"
+         className="bg-[color:var(--second-bg-color)] px-3 shadow-[inset_0_-2px_4px_rgba(0,0,0,0.6)]  hover:shadow-[inset_0_4px_4px_rgba(0,0,0,0.25)] rounded-[10px] flex align-middle"
         >
-          <Form.Control
-            as="textarea"
-            value={input.comments}
-            name="comments"
-            placeholder="Leave a comment here"
-            style={{ height: "120px" }}
-          />
-          <div className="mx-auto mt-5 m-1">
-            <Button type="submit" value="Enviar" class="btn btn-primary btn-md">
-              Enviar
-            </Button>
-          </div>
-        </FloatingLabel>
-      </div>
+          Enviar Comentario
+              </button>    
+
+            </div>  
+            
+            </div>
       </div>
     </form>
+    </div>
   );
 }
 // mx-auto d-flex justify-content-start w-50
