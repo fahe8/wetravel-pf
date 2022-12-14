@@ -23,20 +23,12 @@ function Baned() {
             window.location.href = "http://localhost:3000/"
         }, 6000);
     }, [])
-  return (
+
+    return (
     <> 
     <ToastContainer/>
-    
-    </>
-    
-
-    
+    </>    
   )
 }
 
 export default Baned
-
-// user && users?.map(el => {
-//     if(el.baned === true && el.email === user.email ){
-//       window.location.href = "http://localhost:3000/baned"
-//     }})

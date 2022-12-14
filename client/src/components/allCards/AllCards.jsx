@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import Card from "../card/card";
 import { getHotels } from "../../redux/action";
 import { Footer } from "../footer/Footer";
-// import InfiniteScroll from "react-infinite-scroll-component";
 import { useLocalStorage } from "../../localStorage/useLocalStorage";
 // import { useAuth0 } from "@auth0/auth0-react";
 // import InfiniteScroll from 'react-infinite-scroll-component';
@@ -31,15 +30,14 @@ const AllCards = () => {
   //       }, 1000);
   // };
 
+  const [favorites, setFavorites] = useLocalStorage("fav", []);
+
   useEffect(() => {
 
 
       dispatch(getHotels());
     
   }, [dispatch]);
-
-
-  const [favorites, setFavorites] = useLocalStorage("fav", []);
 
   return (
     <div className=" h-full md:m-h-screen w-full">
@@ -49,7 +47,6 @@ const AllCards = () => {
             estadoHoteles
               .filter((h) => h.status !== false)
               .map((ht) => (
-                //gracias al map, este se va parar en cada uno de los hoteles mapeados y lo va renderizar
                 <Card
                   id={ht.id}
                   key={ht.id}
@@ -58,7 +55,6 @@ const AllCards = () => {
                   location={ht.location}
                   city={ht.city}
                   price={ht.price}
-                  // size={ht.room.size== null?ht.room.size:"No Data"}
                   name={ht.name}
                   favorites={favorites}
                   setFavorites={setFavorites}

@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import icon from "../../assets/icons/user.svg";
 import DetailRoom from "../detailRoom/DetailRoom";
-import { addDays, format, differenceInDays } from "date-fns";
+import { addDays, format, differenceInDays, set } from "date-fns";
 import RangeCalendar from "../calendar/RangeCalendar";
 import { useDispatch, useSelector } from "react-redux";
 import { postHotel, cartReserves, getReservesByCart } from "../../redux/action";
@@ -16,7 +16,7 @@ const Reservation = ({ selectedHotel, price }) => {
   const { user } = useAuth0();
   const prices = selectedHotel?.price;
   const [showCalendar, setShowCalendar] = useState(false);
-
+  const [active, setActive] = useState(false)
   const [range, setRange] = useState([
     {
       startDate: new Date(),
@@ -121,7 +121,14 @@ const Reservation = ({ selectedHotel, price }) => {
         );
       !reserveFind
         ? dispatch(cartReserves(info)).then((res) => {
-            dispatch(getReservesByCart(user?.email));
+            setActive(true)
+            setShowCalendar(false)
+            if(res.status === 200){
+              setTimeout(() =>{
+                dispatch(getReservesByCart(user.email));
+                setActive(false)
+              },200)
+            }
             messageSuccesful()
           })
         : messageError();
@@ -135,7 +142,7 @@ const Reservation = ({ selectedHotel, price }) => {
     document.addEventListener("click", hideOnClickOutside, true);
   }, []);
   return (
-    <div className=" grid grid-rows-2 relative">
+    <div className=" grid grid-rows-2 relative" ref={refOne}>
       {showCalendar && (
         <div className="absolute w-auto h-auto translate-x-[-90%] ">
           <RangeCalendar
@@ -148,7 +155,7 @@ const Reservation = ({ selectedHotel, price }) => {
           />
         </div>
       )}
-      <div className="row-span-1 bg-white shadow-xl  rounded-3xl m-11" ref={refOne}>
+      <div className="row-span-1 bg-white shadow-xl  rounded-3xl m-11" >
         <div className=" text-4xl mt-8">
           <h3>$ {selectedHotel.price} Noche</h3>
         </div>
@@ -197,27 +204,11 @@ const Reservation = ({ selectedHotel, price }) => {
               price={selectedHotel?.price}
               properties={selectedHotel?.room?.properties}
               fullInfo={fullInfo}
+              active={active}
             />
           </div>
         </div>
       </div>
-
-      {/* <div className=" bg-white  shadow-xl  rounded-3xl items-center m-11 ">
-        <div>
-          <img className="px-16" src={icon} alt="userImage" />
-        </div>
-        <div className="py-4 text-3xl">
-          <h1>Name of user</h1>
-          <p>{selectedHotel.name}</p>
-        </div>
-
-        <div className="text-xl py-5">Join in month XXXX</div>
-        <div>
-          <button className="py-2.5 px-5 mr-2 mb-2 text-lg font-medium text-gray-900  bg-[color:var(--primary-bg-opacity-color)] rounded-full border border-black-800 ">
-            Perfil
-          </button>
-        </div>
-      </div> */}
     </div>
   );
 };

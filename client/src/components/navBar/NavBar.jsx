@@ -1,8 +1,7 @@
 import { React, useState, useEffect } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { BsCart4 } from "react-icons/bs";
-import Search from "../search/Search";
-import logo from "../../assets/img/copia.png";
+import logo from "../../assets/img/copia2.png";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserById } from "../../redux/action";

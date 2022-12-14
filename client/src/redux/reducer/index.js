@@ -201,10 +201,10 @@ function rootReducer(state = initialState, action) {
         ...state,
       };
 
-     case POST_ORDER: 
-     return {
-      ...state
-     }
+    //  case POST_ORDER: 
+    //  return {
+    //   ...state
+    //  }
     default:
       return state;
   }

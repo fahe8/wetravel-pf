@@ -264,8 +264,9 @@ export function getReservesUser(email) {
 
 export function cartReserves(reserva) {  
      return async function(dispatch) {
-      const json = await axios.post("http://localhost:3001/order", reserva).data;
-      return dispatch({type: POST_ORDER})
+      const json = await axios.post("http://localhost:3001/order", reserva);
+      console.log(json)
+      return json
     }
 
   
