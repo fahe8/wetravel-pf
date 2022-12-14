@@ -148,7 +148,6 @@ routerHotels.get("/", async (req, res) => {
       //     }
       //   ],
       // });
-      // return res.send(dataDb)
       return res.send(hotels)
     }
   } catch (error) {

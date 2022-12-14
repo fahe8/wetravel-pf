@@ -68,11 +68,13 @@ function rootReducer(state = initialState, action) {
       //   hotelFilter: state.hasMore !== true ? state.hotels : state.hotels.concat(action.payload)
       // };
       return {
-        ...state,
-        hotels: action.payload,
+        ...state, //una copia del estado
+        hotels: action.payload, // almacenar en este objeto lo que llega del backend
         copyHotels: action.payload,
-        hotelFilter: action.payload,
-      }
+        hotelFilter: action.payload
+        // copyHotels: state.hasMore !== true ? state.hotels : state.hotels.concat(action.payload),
+        // hotelFilter: state.hasMore !== true ? state.hotels : state.hotels.concat(action.payload)
+      };
     case GET_DETAIL:
       return {
         ...state,

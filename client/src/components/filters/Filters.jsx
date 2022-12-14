@@ -12,9 +12,9 @@ function useQuery() {
   return React.useMemo(() => new URLSearchParams(search), [search]);
 }
 
-const Filters = () => {
+const Filters = ({parameterSearch}) => {
   let query = useQuery()
-  let parameterSearch = query.get('search')
+  // let parameterSearch = query.get('search')
 
   let history = useHistory()
   const dispatch = useDispatch()
@@ -42,7 +42,6 @@ const Filters = () => {
 
 const DoFilters = () => {
   dispatch(getSearchHotels(parameterSearch, filters))
-  // history.push(`home?${query}&stars=${filters.stars}&priceMin=${filters.priceMin}&priceMax=${filters.priceMax}`);
 }
 
   const pressButtonFilter = () => {
