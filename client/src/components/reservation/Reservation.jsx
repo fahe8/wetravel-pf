@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import icon from "../../assets/icons/user.svg";
+import {useHistory} from "react-router-dom"
 import DetailRoom from "../detailRoom/DetailRoom";
 import { addDays, format, differenceInDays, set } from "date-fns";
 import RangeCalendar from "../calendar/RangeCalendar";
@@ -10,9 +11,10 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Reservation = ({ selectedHotel, price }) => {
+
   let dispatch = useDispatch();
   const reserves = useSelector((state) => state.reserveByCart);
-
+  let history =  useHistory()
   const { user } = useAuth0();
   const prices = selectedHotel?.price;
   const [showCalendar, setShowCalendar] = useState(false);
@@ -98,6 +100,7 @@ const Reservation = ({ selectedHotel, price }) => {
       return newArr;
     });
 
+
   const fullInfo = () => {
     if (user) {
       let info = {
@@ -127,6 +130,7 @@ const Reservation = ({ selectedHotel, price }) => {
               setTimeout(() =>{
                 dispatch(getReservesByCart(user.email));
                 setActive(false)
+                history.push("/cart")
               },200)
             }
             messageSuccesful()
