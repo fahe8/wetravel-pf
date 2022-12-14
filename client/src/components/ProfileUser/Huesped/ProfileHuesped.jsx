@@ -58,8 +58,18 @@ export const ProfileHuesped = () => {
         <div className="flex-wrap gap-5 flex justify-center items-center p-3 border">
           {input.images?.map((image) => {
             return (
-              <div className="bg-slate-100 w-52 h-52 flex justify-center items-center rounded-lg shadow border-4">
-                <img src={image} alt="img not found" className="w-[180px] " />
+              <div className=" bg-slate-400  rounded-xl relative mt-2">
+                <div
+                  onClick={() => handleDeletePhotos(input.images, image)}
+                  className="bg-red-500 hover:bg-red-700 text-white font-bold py px-2 rounded cursor-pointer w-[fit-content] absolute right-0"
+                >
+                  X
+                </div>
+                <img
+                  src={image}
+                  alt="img not found"
+                  className="w-[180px] h-[120px] "
+                />
               </div>
             );
           })}
@@ -68,6 +78,15 @@ export const ProfileHuesped = () => {
     }
   };
 
+
+  const handleDeletePhotos = (inputP, image, ) => {
+
+    let newArrPhotos= inputP.filter((c) => c !== image)
+      setInput({
+        ...input,
+        images: newArrPhotos,
+      });
+  };
   // console.log('INPUT:', input)
   const handlerSubmit = (e) => {
     e.preventDefault();

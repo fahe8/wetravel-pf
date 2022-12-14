@@ -6,7 +6,7 @@ import ConfirmacionCard from './ConfirmacionCard'
 
 
  const ConfirmacionCards = ({estadoReserva}) => {
-
+console.log(estadoReserva);
 
      
 
