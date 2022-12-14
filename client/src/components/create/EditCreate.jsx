@@ -15,17 +15,18 @@ import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Loading } from "../Loading/Loading";
 const EditCreate = () => {
   const dispatch = useDispatch();
   //const navigate = useNavigate();
   const { user } = useAuth0();
-  const {id} = useParams()
+  const { id } = useParams();
   const history = useHistory();
   const { service } = useSelector((state) => state);
-  const {detail}= useSelector((state) => state);
+  const { detail } = useSelector((state) => state);
 
   const message = () => {
-    toast("🏠 Felicitaciones publicaste tu alojamiento!", {
+    toast("🏠 El hotel se modificó correctamente", {
       position: "top-center",
       autoClose: 3000,
       hideProgressBar: false,
@@ -50,12 +51,8 @@ const EditCreate = () => {
     });
   };
 
-
-
-
-
   const initialState = {
-    name: '',
+    name: "",
     description: "",
     stars: "",
     price: "$",
@@ -66,7 +63,7 @@ const EditCreate = () => {
     city: "",
     review: "",
     comments: [],
-    user: '',
+    user: "",
     room: {
       name: "",
       properties: [""],
@@ -76,15 +73,14 @@ const EditCreate = () => {
     },
   };
 
-
-
   useEffect(() => {
-    dispatch(getDetail(id))
+    dispatch(getDetail(id));
   }, []);
 
   useEffect(() => {
-    if(Object.keys(detail).length !== 0) {
-      setInput({...input,
+    if (Object.keys(detail).length !== 0) {
+      setInput({
+        ...input,
         name: detail?.name,
         description: detail?.description,
         stars: detail?.stars,
@@ -102,18 +98,17 @@ const EditCreate = () => {
           description: detail?.room?.description,
           photos: detail?.room?.photos,
         },
-      })
+      });
+      imagePreview(input.photos);
     }
   }, [detail]);
 
- 
-
   const [errors, setErrors] = useState({
-    allFields: "All fields are required",
+
   });
 
   const [input, setInput] = useState(initialState);
-  const [loading, setLoading] = useState("");
+  const [loading, setLoading] = useState("false");
 
   const submitImage = (files, name) => {
     const upLoader = files.map((file) => {
@@ -126,15 +121,25 @@ const EditCreate = () => {
         .then((res) => {
           let url = res.data.secure_url;
           if (name === "room") {
+            let selectPhotos = input.room.photos;
+            selectPhotos.push(url)
             setInput({
               ...input,
-              room: { ...input.room, photos: [...input.room.photos, url] },
+              room: { ...input.room, photos: selectPhotos },
             });
+
+            setErrors(validate(
+              {
+                ...input,
+                room: { ...input.room, photos: selectPhotos },
+              }
+            ))
           } else {
             let arrayImage = input.photos;
             arrayImage.push(url);
             const newObj = { ...input, arrayImage };
             setInput(newObj);
+            setErrors(validate(newObj))
           }
         })
         .catch((error) => console.log("CLOUDINARY ERROR:", error));
@@ -144,19 +149,27 @@ const EditCreate = () => {
     });
   };
 
-  const imagePreview = (value) => {
+  const imagePreview = (value, name) => {
     if (loading === "true") {
       return <h3>Cargando Imagenes...</h3>;
     }
     if (loading === "false") {
-      console.log(value);
       return (
         <div className="flex flex-wrap gap-5">
           {value?.map((image) => {
             return (
-              <div>
-                <p>Imagen:</p>
-                <img src={image} alt="img not found" className="w-[180px] " />
+              <div className=" bg-slate-400  rounded-xl relative mt-2">
+                <div
+                  onClick={() => handleDeletePhotos(value, image, name)}
+                  className="bg-red-500 hover:bg-red-700 text-white font-bold py px-2 rounded cursor-pointer w-[fit-content] absolute right-0"
+                >
+                  X
+                </div>
+                <img
+                  src={image}
+                  alt="img not found"
+                  className="w-[180px] h-[120px] "
+                />
               </div>
             );
           })}
@@ -166,11 +179,6 @@ const EditCreate = () => {
   };
 
   const handleChange = (e) => {
-    e.target.name === "photos" &&
-      setInput({
-        ...input,
-        [e.target.name]: [e.target.value],
-      });
 
     setInput({
       ...input,
@@ -216,11 +224,52 @@ const EditCreate = () => {
     }
   };
 
+
   const handleDelete = (e) => {
     setInput({
       ...input,
       services: input.services.filter((c) => c !== e.target.name),
     });
+
+    setErrors(
+      validate({
+        ...input,
+        services: input.services.filter((c) => c !== e.target.name),
+      })
+    );
+  };
+
+  const handleDeletePhotos = (inputP, image, name) => {
+
+    console.log(name);
+    let newArrPhotos= inputP.filter((c) => c !== image)
+    if (name === "hotel") {
+      console.log("dentro del if");
+
+
+      setInput({
+        ...input,
+        photos: newArrPhotos,
+      });
+      setErrors(
+        validate({
+          ...input,
+          photos: newArrPhotos
+        })
+      )
+    } else {
+      console.log('first')
+      setInput({
+        ...input,
+        room: { ...input.room, photos: newArrPhotos },
+      });
+      setErrors(
+        validate({
+          ...input,
+          room: { ...input.room, photos: newArrPhotos },
+        })
+      );
+    }
   };
 
   const handleSelect = (e) => {
@@ -271,6 +320,12 @@ const EditCreate = () => {
     });
   };
 
+
+if(Object.keys(detail).length === 0 ) {
+  return(
+    <Loading/>
+  )
+}
   return (
     <div>
       <ToastContainer />
@@ -278,7 +333,6 @@ const EditCreate = () => {
         <div className="text-lg font-medium text-gray-900  bg-[color:var(--primary-bg-opacity-color)] rounded-full border border-black-800 p-2">
           <Link to="/home">
             <button>Go Home</button>
-            <p>{detail.name}</p>
           </Link>
         </div>
       </div>
@@ -293,7 +347,7 @@ const EditCreate = () => {
 
             <form
               onSubmit={(e) => handleSubmit(e)}
-              className="p-6 grid grid-cols-3 mx-8 bg-slate-50 shadow-xl rounded-2xl text-start"
+              className="p-6 grid grid-cols-3 mx-8 bg-slate-50 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] rounded-2xl text-start"
             >
               <div className="col-span-3 ">
                 <p className=" text-lg font-semibold ">{"Nombre del Hotel:"}</p>
@@ -331,6 +385,26 @@ const EditCreate = () => {
                 </div>
               </div>
 
+              <div className="p-2.5 ">
+              <p className=" text-lg font-semibold ">{"Estrellas del hotel:"}</p>
+                <input
+                  className="bg-transparent border-b border-gray w-11/12"
+                  id="starsInput"
+                  type="text"
+                  value={input.stars}
+                  name="stars"
+                  autoComplete="off"
+                  placeholder="Enter stars.."
+                  onChange={(e) => handleChange(e)}
+                />
+                <div className=" text-sm text-red-500">
+                  {errors.stars && <p>{errors.stars}</p>}
+                  {errors.max && <p>{errors.max}</p>}
+                  {errors.negatives && <p>{errors.negatives}</p>}
+                  {errors.nan && <p>{errors.nan} </p>}
+                  {errors.zero && <p>{errors.zero} </p>}
+                </div>
+              </div>
               <div className="p-2.5">
                 <p className=" text-lg font-semibold">{"Continente:"}</p>
                 <select
@@ -443,8 +517,8 @@ const EditCreate = () => {
                 <Container id={input.photos}>
                   <Dropzone
                     onDrop={(e) => submitImage(e)}
-                    onChange={(e) => setInput(e.target.files[0])}
                     value={input.photos}
+
                   >
                     {({ getRootProps, getInputProps }) => (
                       <section>
@@ -460,7 +534,7 @@ const EditCreate = () => {
                       </section>
                     )}
                   </Dropzone>
-                  {imagePreview(input.photos)}
+                  {imagePreview(input.photos, "hotel")}
                 </Container>
                 <div className=" text-sm text-red-500">
                   {errors.photos && <p>{errors.photos}</p>}
@@ -514,10 +588,10 @@ const EditCreate = () => {
                       </section>
                     )}
                   </Dropzone>
-                  {imagePreview(input.room.photos)}
+                  {imagePreview(input.room.photos, '')}
                 </Container>
                 <div className=" text-sm text-red-500">
-                  {errors.photos && <p>{errors.photos}</p>}
+                  {errors?.room?.photos && <p>{errors?.room?.photos}</p>}
                 </div>
               </div>
 
@@ -631,7 +705,7 @@ const EditCreate = () => {
                     className="rounded-2xl"
                     src={
                       input.photos.length
-                        ? input.photos
+                        ? input.photos[0]
                         : "https://www.hmplayadelcarmen.com/wp-content/uploads/1739/1694/nggallery/home//02-HM-Playa-del-Carmen-mobile.jpg"
                     }
                     alt="Hotel"

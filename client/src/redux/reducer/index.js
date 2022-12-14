@@ -24,7 +24,6 @@ import {
   DELETE_REVIEW,
   DELETE_IMAGES,
   BANED,
-  baned,
   POST_ORDER
 } from "../action/index";
 
@@ -56,15 +55,23 @@ function rootReducer(state = initialState, action) {
     action.type // evalúa el tipo de acción // actions type
   ) {
     case GET_HOTELS: // en el caso de obtener los hoteles necesitamos que se llene el estado que nos devuelve los personajes nuestro payload
-      var setHasMore;
-      if (action.payload !== undefined) {
-        setHasMore = action.payload.length !== 0 ? true : false;
-      } else {
-        setHasMore = false;
-      }
+      // var setHasMore;
+      // if (action.payload !== undefined) {
+      //   setHasMore = action.payload.length !== 0 ? true : false;
+      // } else {
+      //   setHasMore = false;
+      // }
+      // return {
+      //   ...state, //una copia del estado
+      //   hotels: state.hasMore !== true ? state.hotels : state.hotels.concat(action.payload), // almacenar en este objeto lo que llega del backend
+      //   copyHotels: state.hasMore !== true ? state.hotels : state.hotels.concat(action.payload),
+      //   hotelFilter: state.hasMore !== true ? state.hotels : state.hotels.concat(action.payload)
+      // };
       return {
         ...state, //una copia del estado
-        hotels: action.payload // almacenar en este objeto lo que llega del backend
+        hotels: action.payload, // almacenar en este objeto lo que llega del backend
+        copyHotels: action.payload,
+        hotelFilter: action.payload
         // copyHotels: state.hasMore !== true ? state.hotels : state.hotels.concat(action.payload),
         // hotelFilter: state.hasMore !== true ? state.hotels : state.hotels.concat(action.payload)
       };
@@ -196,10 +203,10 @@ function rootReducer(state = initialState, action) {
         ...state,
       };
 
-     case POST_ORDER: 
-     return {
-      ...state
-     }
+    //  case POST_ORDER: 
+    //  return {
+    //   ...state
+    //  }
     default:
       return state;
   }

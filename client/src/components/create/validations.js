@@ -14,7 +14,7 @@ const validate = (input) => {
       location,
     } = input;
   
-    const numbers = [stars, price];
+    const numbers = [ price];
     const errors = {};
 
     //------> Funciones de checkeo <-----------
@@ -90,12 +90,19 @@ const checkUndefined = (input) => {
     if (services.length < 4) {
       errors.services = "Seleccione minimo 4 servicios";
     }
-    console.log(photos)
+
     if (photos.length === 0) {
       errors.photos = "Agregue al menos una imagen";
     }
+    if (room.photos.length === 0) {
+      errors.room = {
+        ...errors.room,
+        photos: "Agregue al menos una imagen"
+      }
+    }
   
     //Check size room
+    console.log(room.size)
     if (!room.size) {
       errors.room = { ...errors.room, size: "El tamaño es requerido" };
     } else if (room.size.length > 20) {
@@ -130,11 +137,22 @@ const checkUndefined = (input) => {
     }
   
     //Check properties room
+    console.log(room.properties)
     if (room.properties) {
       let condi = room?.properties?.some(el => el.length > 18 || el.length < 1)
       if(condi) {
-        errors.room.properties = "Alguna caracteristica es demasiado larga o solo tiene un caracter"
+        errors.room = {
+          ...errors.room,
+
+          properties : "Alguna caracteristica es demasiado larga o solo tiene un caracter"
+        }
       }
+    }
+
+    if(!stars){
+      errors.stars = "No debe estar vacio";
+    }else if (stars > 5  || stars < 1) {
+      errors.stars = "No puede ser mayor a 5 y menor a 1";
     }
   
     //check negatives
@@ -152,9 +170,7 @@ const checkUndefined = (input) => {
       errors.zero = "El valor igresado debe ser mayor a 0";
     }
   
-    if (stars > 5) {
-      errors.max = "No puede agregar más de 5";
-    }
+   
 
   
     return errors;

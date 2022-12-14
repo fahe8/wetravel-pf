@@ -12,8 +12,7 @@ import {
   getServices,
   submitImage,
   sendMailCreate,
-  getReservesByCart
- 
+  getReservesByCart,
 } from "../../redux/action";
 import { AiFillHeart } from "react-icons/ai";
 import Stars from "../stars/Stars";
@@ -42,7 +41,6 @@ const Create = () => {
       progress: undefined,
       theme: "light",
     });
-
   };
 
   const messageError = () => {
@@ -86,7 +84,6 @@ const Create = () => {
   const [input, setInput] = useState(initialState);
   const [loading, setLoading] = useState("");
 
-
   const submitImage = (files, name) => {
     const upLoader = files.map((file) => {
       const data = new FormData();
@@ -97,17 +94,26 @@ const Create = () => {
         .post("https://api.cloudinary.com/v1_1/dll9vsr6c/image/upload", data)
         .then((res) => {
           let url = res.data.secure_url;
-          if(name === "room") {
-           
+          if (name === "room") {
+            let selectPhotos = input.room.photos;
+            selectPhotos.push(url);
             setInput({
               ...input,
-              room: { ...input.room, photos: [...input.room.photos, url] },
+              room: { ...input.room, photos: selectPhotos },
             });
+
+            setErrors(
+              validate({
+                ...input,
+                room: { ...input.room, photos: selectPhotos },
+              })
+            );
           } else {
-            let arrayImage = input.photos ;
+            let arrayImage = input.photos;
             arrayImage.push(url);
             const newObj = { ...input, arrayImage };
             setInput(newObj);
+            setErrors(validate(newObj));
           }
         })
         .catch((error) => console.log("CLOUDINARY ERROR:", error));
@@ -117,21 +123,27 @@ const Create = () => {
     });
   };
 
-  const imagePreview = (value) => {
-    
+  const imagePreview = (value, name) => {
     if (loading === "true") {
       return <h3>Cargando Imagenes...</h3>;
     }
     if (loading === "false") {
-      console.log(value)
       return (
-        
         <div className="flex flex-wrap gap-5">
           {value?.map((image) => {
             return (
-              <div>
-                <p>Imagen:</p>
-                <img src={image} alt="img not found" className="w-[180px] " />
+              <div className=" bg-slate-400  rounded-xl relative mt-2">
+                <div
+                  onClick={() => handleDeletePhotos(value, image, name)}
+                  className="bg-red-500 hover:bg-red-700 text-white font-bold py px-2 rounded cursor-pointer w-[fit-content] absolute right-0"
+                >
+                  X
+                </div>
+                <img
+                  src={image}
+                  alt="img not found"
+                  className="w-[180px] h-[120px] "
+                />
               </div>
             );
           })}
@@ -171,7 +183,10 @@ const Create = () => {
       setErrors(
         validate({
           ...input,
-          room: { ...input.room, [e.target.name]: [...input.room.properties ,e.target.value] },
+          room: {
+            ...input.room,
+            [e.target.name]: [...input.room.properties, e.target.value],
+          },
         })
       );
     } else {
@@ -186,8 +201,6 @@ const Create = () => {
         })
       );
     }
-
-   
   };
 
   const handleDelete = (e) => {
@@ -195,8 +208,44 @@ const Create = () => {
       ...input,
       services: input.services.filter((c) => c !== e.target.name),
     });
+
+    setErrors(
+      validate({
+        ...input,
+        services: input.services.filter((c) => c !== e.target.name),
+      })
+    );
   };
 
+  const handleDeletePhotos = (inputP, image, name) => {
+    console.log(name);
+    let newArrPhotos = inputP.filter((c) => c !== image);
+    if (name === "hotel") {
+      console.log("dentro del if");
+
+      setInput({
+        ...input,
+        photos: newArrPhotos,
+      });
+      setErrors(
+        validate({
+          ...input,
+          photos: newArrPhotos,
+        })
+      );
+    } else {
+      setInput({
+        ...input,
+        room: { ...input.room, photos: newArrPhotos },
+      });
+      setErrors(
+        validate({
+          ...input,
+          room: { ...input.room, photos: newArrPhotos },
+        })
+      );
+    }
+  };
   const handleSelect = (e) => {
     const { value } = e.target;
     if (!input.services.includes(value))
@@ -225,7 +274,7 @@ const Create = () => {
       setTimeout(() => {
         setInput(initialState);
         history.push("/anfitrion");
-        history.go(0)
+        history.go(0);
       }, "3000");
     }
   };
@@ -245,30 +294,27 @@ const Create = () => {
     });
   };
 
-
   ///////////////////////////////
   useEffect(() => {
-    if(user){
-        
-        dispatch(getReservesByCart(user?.email));
+    if (user) {
+      dispatch(getReservesByCart(user?.email));
     }
- }, [dispatch, user])
-
+  }, [dispatch, user]);
 
   const sendInfo = () => {
     const info = {
       data: input,
-      email: user?.email
-    }
-    dispatch (sendMailCreate(info))
-  }
+      email: user?.email,
+    };
+    dispatch(sendMailCreate(info));
+  };
 
-//////////////////////////////////////////
+  //////////////////////////////////////////
   return (
     <div>
       <ToastContainer />
       <div className="flex justify-between items-center pl-2.5 m-3.5">
-        <div className="text-lg font-medium text-gray-900  bg-[color:var(--primary-bg-opacity-color)] rounded-full border border-black-800 p-2">
+        <div className="text-lg font-medium text-gray-900  bg-[color:var(--primary-bg-opacity-color)] rounded-full border border-black-800 p-2 ">
           <Link to="/home">
             <button>Go Home</button>
           </Link>
@@ -285,7 +331,7 @@ const Create = () => {
 
             <form
               onSubmit={(e) => handleSubmit(e)}
-              className="p-6 grid grid-cols-3 mx-8 bg-slate-50 shadow-xl rounded-2xl text-start"
+              className="p-6 grid grid-cols-3 mx-8 bg-slate-50 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] rounded-2xl text-start "
             >
               <div className="col-span-3 ">
                 <p className=" text-lg font-semibold ">{"Nombre del Hotel:"}</p>
@@ -324,10 +370,13 @@ const Create = () => {
               </div>
 
               <div className="p-2.5 ">
+                <p className=" text-lg font-semibold ">
+                  {"Estrellas del hotel:"}
+                </p>
                 <input
                   className="bg-transparent border-b border-gray w-11/12"
                   id="starsInput"
-                  type="text"
+                  type="number"
                   value={input.stars}
                   name="stars"
                   autoComplete="off"
@@ -335,14 +384,9 @@ const Create = () => {
                   onChange={(e) => handleChange(e)}
                 />
                 <div className=" text-sm text-red-500">
-                {errors.stars && <p>{errors.stars}</p>}
-                {errors.max && <p>{errors.max}</p>}
-                {errors.negatives && <p>{errors.negatives}</p>}
-                {errors.nan && <p>{errors.nan} </p>}
-                {errors.zero && <p>{errors.zero} </p>}
+                  {errors.stars && <p>{errors.stars}</p>}
                 </div>
-                
-              </div> 
+              </div>
               <div className="p-2.5">
                 <p className=" text-lg font-semibold">{"Continente:"}</p>
                 <select
@@ -453,11 +497,7 @@ const Create = () => {
                 </p>
 
                 <Container id={input.photos}>
-                  <Dropzone
-                    onDrop={e => submitImage(e)}
-                    onChange={(e) => setInput(e.target.files[0])}
-                    value={input.photos}
-                  >
+                  <Dropzone onDrop={(e) => submitImage(e)} value={input.photos}>
                     {({ getRootProps, getInputProps }) => (
                       <section>
                         <div {...getRootProps({ className: "dropzone" })}>
@@ -470,10 +510,9 @@ const Create = () => {
                           </div>
                         </div>
                       </section>
-                    )
-                  }
+                    )}
                   </Dropzone>
-                  {imagePreview(input.photos)}
+                  {imagePreview(input.photos, "hotel")}
                 </Container>
                 <div className=" text-sm text-red-500">
                   {errors.photos && <p>{errors.photos}</p>}
@@ -509,7 +548,7 @@ const Create = () => {
 
                 <Container>
                   <Dropzone
-                    onDrop={e => submitImage(e, "room")}
+                    onDrop={(e) => submitImage(e, "room")}
                     onChange={(e) => setInput(e.target.files[0])}
                     value={input?.room?.photos}
                   >
@@ -527,13 +566,12 @@ const Create = () => {
                       </section>
                     )}
                   </Dropzone>
-                  {imagePreview(input.room.photos)}
+                  {imagePreview(input.room.photos, "")}
                 </Container>
                 <div className=" text-sm text-red-500">
-                  {errors.photos && <p>{errors.photos}</p>}
+                  {errors?.room?.photos && <p>{errors?.room?.photos}</p>}
                 </div>
               </div>
-
 
               <div className="col-span-3 p-2.5">
                 <p className=" text-lg font-semibold">
@@ -582,7 +620,7 @@ const Create = () => {
                 </p>
 
                 {input.room.properties.map((propertie, idx) => (
-                  <div key={idx} className="flex flex-wrap mb-2" >
+                  <div key={idx} className="flex flex-wrap mb-2">
                     <input
                       className="bg-transparent border-b border-gray w-[80%] "
                       id="Input"
@@ -623,12 +661,9 @@ const Create = () => {
                 className=" cursor-pointer text-lg font-medium text-gray-900  bg-[color:var(--primary-bg-opacity-color)] rounded-full border border-black-800 p-2"
                 onClick={handleSubmit}
               >
-                <button onClick={sendInfo}  className=" w-full h-full" type="submit" form="form">
+                <button className=" w-full h-full" type="submit" form="form">
                   Agregar
                 </button>
-             
-              </div>
-              <div>
               </div>
             </form>
           </div>
@@ -648,7 +683,7 @@ const Create = () => {
                     className="rounded-2xl"
                     src={
                       input.photos.length
-                        ? input.photos
+                        ? input.photos[0]
                         : "https://www.hmplayadelcarmen.com/wp-content/uploads/1739/1694/nggallery/home//02-HM-Playa-del-Carmen-mobile.jpg"
                     }
                     alt="Hotel"
@@ -698,17 +733,24 @@ const Create = () => {
                     <h3 className="text-slate-300"> price for night</h3>
                   )}
                 </div>
-                <div >
+                <div>
                   {input.services.map((services) => (
-                   <div className=" flex items-center gap-4 mb-2 border-b-2">
-                     <p className=" w-[90%]" key={services}> {services} </p>
-                    <button name={services} onClick={handleDelete} className="bg-red-500 hover:bg-red-700 text-white font-bold py px-2 rounded cursor-pointer w-[fit-content]">
+                    <div className=" flex items-center gap-4 mb-2 border-b-2">
+                      <p className=" w-[90%]" key={services}>
+                        {" "}
+                        {services}{" "}
+                      </p>
+                      <button
+                        name={services}
+                        onClick={handleDelete}
+                        className="bg-red-500 hover:bg-red-700 text-white font-bold py px-2 rounded cursor-pointer w-[fit-content]"
+                      >
                         X
                       </button>
-                   </div>
+                    </div>
                   ))}
                 </div>
-              
+
                 <br />
               </div>
             </div>
@@ -721,7 +763,7 @@ const Create = () => {
                       X
                     </span>
                     <h1 className="font-semibold text-[16px]">
-                      {input?.room?.name || 'habitacion'}
+                      {input?.room?.name || "habitacion"}
                     </h1>
                   </div>
                   <div className="mt-7 flex flex-col text-[19px] font-light ml-3">
@@ -745,7 +787,9 @@ const Create = () => {
                     </div>
                     <div className="mb-3  mt-4 ">
                       <h2 className="font-semibold text-left ">Descripción</h2>
-                      <p className=" overflow-x-hidden mmax-w-[600px]">{input?.room?.description}</p>
+                      <p className=" overflow-x-hidden mmax-w-[600px]">
+                        {input?.room?.description}
+                      </p>
                     </div>
                     <div className="mb-3 flex flex-row">
                       <h2 className="mr-1 font-semibold ">Tamaño</h2>
@@ -755,8 +799,11 @@ const Create = () => {
                     <div className="mb-3">
                       <h2 className="font-semibold text-left">Cuenta con:</h2>
                       <div className="grid grid-cols-2 mb-3">
-                        {input?.room?.properties?.map((p,idx) => (
-                          <p className="mb-3 flex flex-row items-center " key={idx}>
+                        {input?.room?.properties?.map((p, idx) => (
+                          <p
+                            className="mb-3 flex flex-row items-center "
+                            key={idx}
+                          >
                             <i>
                               <FaCheck className="text-[13px]" />
                             </i>

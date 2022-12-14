@@ -8,12 +8,13 @@ const RangeCalendar = ({ range, setRange,getDaysArray, getAllDatesReserves }) =>
   let daylist = getAllDatesReserves.map(dates => getDaysArray(new Date(dates[1]), new Date(dates[0]))) 
   
   return (
-    <div className="w-auto">
+    <div className="w-auto drop-shadow-2xl">
       <DateRange
         onChange={(item) => setRange([item.selection])}
         editableDateInputs={true}
         moveRangeOnFirstSelection={false}
         disabledDates={daylist.flat()}
+        minDate={new Date()}
         ranges={range}
         months={2}
         direction="horizontal"

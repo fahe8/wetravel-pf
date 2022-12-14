@@ -17,7 +17,6 @@ server.post('/', async (req, res, next) => {
         let order =  await Order.findOne({
             where: {user_email: user, status: "created"}
          })
-         //console.log(order)
 
         if(!order) {
             const userFind = await User.findOne({
@@ -31,7 +30,7 @@ server.post('/', async (req, res, next) => {
             })
         }
          
-        //  !order && res.send("Si el usuario no existe no se puede encontrar una order")
+
 
 
          Promise.all(
@@ -39,18 +38,6 @@ server.post('/', async (req, res, next) => {
                 const producto = await Hotel.findByPk(elem.idHotel)
 
                 const orderId = order.dataValues.id
-
-                // const findReserve = await Reserves.findOne({
-                //     where: {
-                //         [Op.and]: [
-                //             Sequelize.where(Sequelize.fn('date', Sequelize.col('check_in')), '=', elem.check_in), 
-                //             Sequelize.where(Sequelize.fn('date', Sequelize.col('check_out')), '=', elem.check_out),
-                //         ]
-
-                // }
-                // })
-                // console.log(findReserve)
-                // if(findReserve){return []}
 
                 return Reserves.create({
                     orderId: orderId,
@@ -67,7 +54,7 @@ server.post('/', async (req, res, next) => {
          )
 
 
-         res.send("Todo salió bien")
+         res.status(200).send("Todo salió bien")
 
     }
 
@@ -92,6 +79,7 @@ server.get('/:user/cart', (req, res, next) => {
     .then(function(detail) {
         res.send(detail.reserves)
     }).catch(error => {
+        console.log(error)
         res.sendStatus(400)
     })
 }) 
