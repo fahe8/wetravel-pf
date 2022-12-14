@@ -234,7 +234,7 @@ const ModalFilter = ({
 
         <div className="w-full h-[60px] mb-3 relative">
           <p
-            className="  w-[auto] h-auto  border-b-2 font-bold border-black  cursor-pointer px-2 absolute top-[50%] ml-2"
+            className="  w-[auto] h-auto  border-b-2 font-bold border-black rounded-3xl border hover:bg-[#feefd0]   cursor-pointer px-2 absolute top-[50%] ml-2"
             onClick={restartFilters}
           >
             {"Reiniciar filtros"}

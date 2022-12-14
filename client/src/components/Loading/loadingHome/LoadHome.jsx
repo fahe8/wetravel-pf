@@ -5,7 +5,7 @@ import './LoadHome.css'
 
 function LoadHome() {
   return (
-      <div className="flex flex-wrap justify-center gap-4">
+      <div className="flex flex-wrap justify-center gap-4 mt-3">
           <div className='bg-white shadow-xl hover:shadow-none w-80 rounded-3xl  transition-all duration-500 ease-in-out px-2 cursor-wait'>
               <div className='loader-img'></div>
               <div className=" flex justify-between relative">
