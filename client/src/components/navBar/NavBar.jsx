@@ -37,7 +37,6 @@ const NavBar = () => {
     history.push("/home");
     history.go(0);
   };
-
   return (
     <header className=" h-20 flex justify-between text-center back z-10">
       <div className="cursor-pointer w-20 h-20 " onClick={handleReload}>
@@ -65,7 +64,7 @@ const NavBar = () => {
           </Link>
         )}
         {user && userDb?.status === "host" && (
-          <Link to={"/create"} className=" p-2  hover:bg-[#FEF9EF] rounded">
+          <Link to={"/createhotel"} className=" p-2 border-black border-r-2 hover:bg-[#FEF9EF] rounded">
             <button>Create New Hotel</button>
           </Link>
         )}
@@ -74,11 +73,14 @@ const NavBar = () => {
             <button>Dashboard</button>
           </Link>
         )}
+         <Link to="/login">
+                  
         <div className=" btn  text-black bg-gradient-to-r  focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 border-black border cursor-pointer">
           {!user && (
             <div className=" w-65 flex justify-between items-center text-xl gap-5">
               <div>
-                <Link to="/login">Iniciar sesion</Link>
+               
+                Iniciar sesion
               </div>
             </div>
           )}
@@ -87,17 +89,25 @@ const NavBar = () => {
               <Link to="/login">
                 <div className=" w-65 flex justify-between items-center text-xl gap-5">
                   <p>{user?.name}</p>
-                  <img
+                  {
+                    user?.email? <img
                     src={user?.picture}
                     alt="icon"
                     className="bg-center bg-cover bg-no-repeat w-10 h-10 rounded-full"
-                  />
+                  />: <img
+                  src={"f"}
+                  alt="icon"
+                  className="bg-center bg-cover bg-no-repeat w-10 h-10 rounded-full"
+                />
+                  }
+                  
                 </div>
               </Link>
             </div>
           )}
          
         </div>
+                  </Link>
       </nav>
     </header>
   );

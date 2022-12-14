@@ -13,6 +13,7 @@ import Reservation from "../reservation/Reservation";
 import Review from "../review/Review";
 import "swiper/css";
 import "swiper/css/navigation";
+import { FcApproval } from "react-icons/fc";
 
 const Detail = (props) => {
   const {
@@ -100,7 +101,12 @@ const Detail = (props) => {
                           </h2>
                           <div className="grid grid-cols-2">
                             {selectedHotel.services.map((service, idx) => (
-                              <p key={idx} className="m-4 ">{service}</p>
+                              <div key={idx} className=" flex items-center">
+                                <span> <FcApproval/></span>
+                                <p  className="m-4 ">
+                                {service}
+                              </p>
+                              </div>
                             ))}
                           </div>
                           
