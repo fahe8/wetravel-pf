@@ -34,7 +34,7 @@ function Card({
     size: size,
     name: name,
   };
-  console.log("addd",name)
+
 
   let isfavorite = favorites.some((s) => s.name === name);
   const toastId = React.useRef(null);
