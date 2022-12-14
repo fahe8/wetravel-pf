@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteImages, getImage } from "../../../redux/action";
 import NavBar from "../../navBar/NavBar";
 import { Link, useHistory } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper";
 
 export const UserImages = () => {
   const dispatch = useDispatch();
@@ -17,13 +19,14 @@ export const UserImages = () => {
   return (
     <div>
       <NavBar />
-      <div>
+      <br />
+      <div className="text-4xl transition-colors" >
         <Link to="/huesped">
           <button>Regresar a mi perfil</button>
         </Link>
       </div>
       <br />
-      <div>
+      <div className="text-4xl" >
         <h1>
           <strong>Mis fotos</strong>
         </h1>
@@ -31,40 +34,52 @@ export const UserImages = () => {
       <br />
       <div>
         <br />
-        <div className="flex flex-wrap d-flex justify-content-around border border-primary">
-          {images?.map((el) => {
-            return (
-              <div
-                key={el.id}
-                className="border border-success rounded justify-center items-center"
-              >
-                {el.images.length > 0 ? (
-                  el.images.map((el) => {
-                    return (
-                      <div className="d-flex align-items-center justify-content-around w-[350px] h-[250px]">
-                        <img src={el} alt="img not found" />
-                        <br />
-                      </div>
-                    );
-                  })
-                ) : (
-                  <h2>No has subido ninguna imagen</h2>
-                )}
-                <br />
-                <div className="p-1 d-flex align-items-center">
-                  <button
-                    className="bg-red-400 text-white text-xl  rounded-xl"
-                    onClick={() => {
-                      dispatch(deleteImages(el.id));
-                      history.go(0);
-                    }}
+        <div className="flex flex-wrap d-flex justify-content-around">
+          {images.length > 0 ? (
+            images.map((el) => {
+              return (
+                <div key={el.id} className="w-[400px] h-[auto]">
+                  <Swiper
+                    navigation={true}
+                    modules={[Navigation]}
+                    className="mySwiper h-[300px] "
                   >
-                    Delete This pic
-                  </button>
+                    {
+                      el.images.map((el) => (
+                        <div>
+                          <SwiperSlide>
+                            <div className="flex justify-center pt-2">
+                              <img
+                                src={el}
+                                alt="imagenes"
+                                className=" object-cover object-center h-[300px] "
+                              />
+                            </div>
+                          </SwiperSlide>
+                        </div>
+                      ))
+                    }
+                  </Swiper>
+                  <br />
+                  <div className="p-1 d-flex align-items-center">
+                    <button
+                      className="bg-red-400 text-white text-xl rounded-xl"
+                      onClick={() => {
+                        dispatch(deleteImages(el.id));
+                        history.go(0);
+                      }}
+                    >
+                      Delete This post
+                    </button>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })
+          ) : (
+            <div className="text-red-700 text-4xl" >
+              <h1><strong>No has subido ninguna imagen</strong></h1>
+            </div>
+          )}
         </div>
       </div>
     </div>
