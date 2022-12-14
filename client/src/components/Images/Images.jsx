@@ -33,36 +33,42 @@ export const Images = () => {
       </div>
 
       <div className="flex flex-wrap justify-center gap-5 w-[100vw] h-[auto] mt-5">
-        {images?.map((el, idx) => {
-          return (
-            <div className="w-[400px] h-[auto]" key={idx}>
-              <p>Imagen subida por <strong>{el.nameUser}</strong></p>
-              <Swiper
-                navigation={true}
-                modules={[Navigation]}
-                className="mySwiper h-[300px] "
-              >
-                {el.images.length > 0 ? (
-                  el.images.map((el, index) => (
+        {!images.length ? (
+          <div className="text-red-700 text-4xl">
+            <h1>
+              <strong>No hay imagenes disponibles</strong>
+            </h1>
+          </div>
+        ) : (
+          images.map((el, idx) => {
+            return (
+              <div className="w-[400px] h-[auto] text-2xl" key={idx}>
+                <p>
+                  Imagen subida por <strong>{el.nameUser}</strong>
+                </p>
+                <Swiper
+                  navigation={true}
+                  modules={[Navigation]}
+                  className="mySwiper h-[300px] "
+                >
+                  {el.images.map((el) => (
                     <div>
                       <SwiperSlide>
                         <div className="flex justify-center pt-2">
                           <img
                             src={el}
                             alt="imagenes"
-                            className=" object-cover object-center  h-[300px] "
-                          ></img>
+                            className=" object-cover object-center h-[300px] "
+                          />
                         </div>
                       </SwiperSlide>
                     </div>
-                  ))
-                ) : (
-                  <h2>"hola"</h2>
-                )}
-              </Swiper>
-            </div>
-          );
-        })}
+                  ))}
+                </Swiper>
+              </div>
+            );
+          })
+        )}
       </div>
     </div>
   );
