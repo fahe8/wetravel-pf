@@ -44,7 +44,7 @@ const Search = ({
 
   return (
     <div
-      className={` w-[70%] mx-auto relative"
+      className={` w-[95%] mx-auto relative"
         }`}
       ref={ref2}
     >
