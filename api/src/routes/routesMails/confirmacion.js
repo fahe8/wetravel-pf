@@ -11,7 +11,7 @@ routerMail.post("/", async (req, res) => {
     const userFind = await User.findOne({
         where:{email}
     })
-    console.log("Este es el" + email)
+    console.log("Este es el" + data)
 
     const transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",

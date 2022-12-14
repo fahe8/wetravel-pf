@@ -99,9 +99,9 @@ Order.findByPk(external_reference)
   //console.info('Salvando order')
   order.save()
   .then(() => {
-    //console.info('redirect success')
+    console.info('redirect success', order)
 
-    return res.redirect(`http://localhost:3000/confirmacion`)
+    return res.redirect(`http://localhost:3000/confirmacion/${external_reference}`)
   })
   .catch((err) =>{
     console.error('error al salvar', err)

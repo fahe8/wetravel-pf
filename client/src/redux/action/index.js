@@ -380,6 +380,7 @@ export const updateHotel = (hotel, id) => {
 
 export const sendMail = (email) => {
   return async function (dispatch) {
+    console.log(email)
     try {
       const response = (
         await axios.post(`http://localhost:3001/send-email`, email)
