@@ -44,17 +44,17 @@ const NavBar = () => {
       </div>
 
       <nav className=" w-65 flex items-center text-xl gap-4 ">
-        <Link to="/about" className=" p-2 border-black border-r-2 hover:bg-[#FEF9EF] rounded">
+        <Link to="/about" className=" p-2  hover:bg-[#FEF9EF] rounded link">
           <p className="px-2">About Us</p>
         </Link>
-        <Link to="/images" className=" p-2 border-black border-r-2 hover:bg-[#FEF9EF] rounded">
+        <Link to="/images" className=" p-2  hover:bg-[#FEF9EF] rounded">
           <p className="px-2">Imagenes</p>
         </Link>
-        <Link to="/favourites" className=" p-2 border-black border-r-2 hover:bg-[#FEF9EF] rounded">
+        <Link to="/favourites" className=" p-2  hover:bg-[#FEF9EF] rounded">
           <p className="px-2">Favorito</p>
         </Link>
         {user && userDb?.status === "guest" && (
-          <Link to={"/cart"} className=" p-2 border-black border-r-2 hover:bg-[#FEF9EF] rounded">
+          <Link to={"/cart"} className=" p-2  hover:bg-[#FEF9EF] rounded">
             <button className="flex relative text-black pr-2">
               <BsCart4 />
               <p className=" text-base absolute -right-1 -top-2">
@@ -64,12 +64,16 @@ const NavBar = () => {
           </Link>
         )}
         {user && userDb?.status === "host" && (
+<<<<<<< HEAD
           <Link to={"/createhotel"} className=" p-2 border-black border-r-2 hover:bg-[#FEF9EF] rounded">
+=======
+          <Link to={"/create"} className=" p-2  hover:bg-[#FEF9EF] rounded">
+>>>>>>> 5ca8534c1c08746b5ab768140a845e82dec9f986
             <button>Create New Hotel</button>
           </Link>
         )}
         {user && userDb?.status === "admin" && (
-          <Link to={"/Dashboard"} className=" p-2 border-black border-r-2 hover:bg-[#FEF9EF] rounded">
+          <Link to={"/Dashboard"} className=" p-2  hover:bg-[#FEF9EF] rounded">
             <button>Dashboard</button>
           </Link>
         )}
