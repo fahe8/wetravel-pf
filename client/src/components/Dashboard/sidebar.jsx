@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserById } from "../../redux/action";
 import { useAuth0 } from "@auth0/auth0-react";
+import "./dashboard.css"
 
 const Sidebar = () => {
   const { user } = useAuth0();
@@ -16,7 +17,7 @@ const Sidebar = () => {
   }, [dispatch, user]);
 
   return (
-    <div className="bg-sky-200">
+    <div className="background">
       <div className="text-center ">
         <div className=" text-4xl mt-8 font-medium">
           <h1>SuperAdmin</h1>

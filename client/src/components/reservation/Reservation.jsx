@@ -201,23 +201,6 @@ const Reservation = ({ selectedHotel, price }) => {
           </div>
         </div>
       </div>
-
-      {/* <div className=" bg-white  shadow-xl  rounded-3xl items-center m-11 ">
-        <div>
-          <img className="px-16" src={icon} alt="userImage" />
-        </div>
-        <div className="py-4 text-3xl">
-          <h1>Name of user</h1>
-          <p>{selectedHotel.name}</p>
-        </div>
-
-        <div className="text-xl py-5">Join in month XXXX</div>
-        <div>
-          <button className="py-2.5 px-5 mr-2 mb-2 text-lg font-medium text-gray-900  bg-[color:var(--primary-bg-opacity-color)] rounded-full border border-black-800 ">
-            Perfil
-          </button>
-        </div>
-      </div> */}
     </div>
   );
 };
