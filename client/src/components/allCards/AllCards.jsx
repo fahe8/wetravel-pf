@@ -26,7 +26,7 @@ const AllCards = () => {
    
     return filter
 }
-const filtered = hotels.filter(el=> el.name.toLowerCase().includes(search.toLowerCase()))
+const filtered = hotels.filter(el=> el.name.toLowerCase().includes(search.toLowerCase())||el.continent.toLowerCase().includes(search.toLowerCase()) )
 return filtered.slice(currentPage,currentPage + 12)
 }
 
