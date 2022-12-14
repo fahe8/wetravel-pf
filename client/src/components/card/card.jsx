@@ -8,10 +8,7 @@ import { getFavorites, deleteHotel, updateHotel } from "../../redux/action";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-//import Carousel from '../carousel/Carousel';
-
 function Card({
-  // recibir los datos que se ven en la card por propiedades
   id,
   photos,
   stars,
@@ -37,8 +34,6 @@ function Card({
     size: size,
     name: name,
   };
-
-  // *!FALTA HACERLO CON LOS USUARIO CREANDO UN MODELO EN EL BACK
 
   let isfavorite = favorites.some((s) => s.name === name);
   const toastId = React.useRef(null);
@@ -110,17 +105,13 @@ function Card({
     dispatch(getFavorites(copyFav));
   };
 
-  // Hide dropdown on outside click
   const hideOnClickOutside = (e) => {
-    // console.log(refOne.current)
-    // console.log(e.target)
     if (refOne.current && !refOne.current.contains(e.target)) {
       setPanel(false);
     }
   };
-
+  
   useEffect(() => {
-    // event listeners
     document.addEventListener("click", hideOnClickOutside, true);
   }, []);
 

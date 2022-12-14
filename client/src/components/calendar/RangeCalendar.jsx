@@ -1,20 +1,12 @@
 import React from "react";
-
 import { DateRange } from "react-date-range";
-
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 
 const RangeCalendar = ({ range, setRange,getDaysArray, getAllDatesReserves }) => {
-
-
-
-
-
-
-
-
+  
   let daylist = getAllDatesReserves.map(dates => getDaysArray(new Date(dates[1]), new Date(dates[0]))) 
+  
   return (
     <div className="w-auto">
       <DateRange
@@ -30,5 +22,4 @@ const RangeCalendar = ({ range, setRange,getDaysArray, getAllDatesReserves }) =>
     </div>
   );
 };
-
 export default RangeCalendar;

@@ -140,8 +140,8 @@ const Modal = ({
           </span>
           <h1 className="font-semibold text-[16px]">{name}</h1>
         </div>
-        <div className="mt-7 flex flex-col text-[19px] font-light ml-3">
-          <div className="mb-20">
+        <div className="mt-7 flex flex-col text-[19px] font-light">
+          <div className="">
           <Swiper
           navigation={true}
           modules={[Navigation]}
@@ -153,7 +153,7 @@ const Modal = ({
                   <SwiperSlide>
                     <div>
                       <img
-                        className=" w-[500px] h-[300px]"
+                        className=" w-100 h-[250px]"
                         src={elemento}
                         alt="hotel"
                       />
@@ -163,20 +163,20 @@ const Modal = ({
               })}
           </Swiper>
           </div>
-          <div className="mb-3  mt-4 ">
-            <h2 className="font-semibold">Descripción</h2>
-            <p>{description}</p>
+          <div className="m-4">
+            <h2 className="font-semibold text-3xl">Descripción:</h2>
+            <p className="p-3">{description}</p>
           </div>
-          <div className="mb-3 flex flex-row">
-            <h2 className="mr-1 font-semibold " >Tamaño</h2>
+          <div className=" flex flex-row ml-4">
+            <h2 className="1 font-semibold " >Tamaño</h2>
             <p>{size}</p>
           </div>
 
-          <div className="mb-3">
+          <div className="ml-4 mt-1">
             <h2 className="font-semibold" >Cuenta con:</h2>
-            <div className="grid grid-cols-2 mb-3">
+            <div className="grid grid-cols-2 p-3 ">
               {properties?.map((p) => (
-                <p className="mb-3 flex flex-row items-center "><i><FaCheck className="text-[13px]"/></i>{p}</p>
+                <p className=" flex flex-row items-center "><i><FaCheck className="text-[13px]"/></i>{p}</p>
               ))}
               
             </div>
