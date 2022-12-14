@@ -24,7 +24,9 @@ export const UserImages = () => {
       </div>
       <br />
       <div>
-        <h1><strong>Mis fotos</strong></h1>
+        <h1>
+          <strong>Mis fotos</strong>
+        </h1>
       </div>
       <br />
       <div>
@@ -42,17 +44,6 @@ export const UserImages = () => {
                       <div className="d-flex align-items-center justify-content-around w-[350px] h-[250px]">
                         <img src={el} alt="img not found" />
                         <br />
-                        <div className="p-1 d-flex align-items-center">
-                          <button
-                            className="bg-red-400 text-white text-xl  rounded-xl"
-                            onClick={() => {
-                              dispatch(deleteImages(el.id));
-                              history.go(0);
-                            }}
-                          >
-                            Delete This pic
-                          </button>
-                        </div>
                       </div>
                     );
                   })
@@ -60,6 +51,17 @@ export const UserImages = () => {
                   <h2>No has subido ninguna imagen</h2>
                 )}
                 <br />
+                <div className="p-1 d-flex align-items-center">
+                  <button
+                    className="bg-red-400 text-white text-xl  rounded-xl"
+                    onClick={() => {
+                      dispatch(deleteImages(el.id));
+                      history.go(0);
+                    }}
+                  >
+                    Delete This pic
+                  </button>
+                </div>
               </div>
             );
           })}
