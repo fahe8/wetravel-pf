@@ -72,8 +72,8 @@ console.log(userDB)
       <div className=" mb-14 ">
         <Link to="/home">
           {" "}
-          <button className="w-[200px] h-[80px] rounded-[44px] shadow-[inset_0_-2px_4px_rgba(0,0,0,0.6)] bg-gradient-to-r from-[#A3C7D6] to-[#00B4FF]  hover:shadow-[inset_0_4px_4px_rgba(0,0,0,0.25)]">
-            {"Have a look"}
+          <button className="w-[160px] h-[40px] rounded shadow-[inset_0_-2px_4px_rgba(0,0,0,0.6)] bg-gradient-to-r from-[#A3C7D6] to-[#00B4FF]  hover:shadow-[inset_0_4px_4px_rgba(0,0,0,0.25)]">
+            {"Empezar"}
           </button>
         </Link>
       </div>
