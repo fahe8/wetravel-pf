@@ -12,11 +12,8 @@ import "swiper/css/navigation";
 export const Images = () => {
   const dispatch = useDispatch();
   const { images } = useSelector((state) => state);
-  console.log("IMG:", images);
 
   useEffect(() => {
-    // if (images.length > 0) {
-    // }
     dispatch(getImage());
   }, [dispatch]);
 
