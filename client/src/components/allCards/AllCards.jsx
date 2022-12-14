@@ -26,6 +26,8 @@ const AllCards = ({filteredHotels,search, setCurrentPage, currentPage}) => {
     dispatch(getHotels())
   }, []);
 
+
+  console.log(filteredHotels);
   return (
     <div className=" h-full md:m-h-screen w-full">
       <div className="container mx-auto px-0 md:px-4 py-4">
@@ -39,7 +41,7 @@ const AllCards = ({filteredHotels,search, setCurrentPage, currentPage}) => {
        </div>
       <div className="flex justify-center flex-wrap gap-5">
       {
-        filteredHotels && filteredHotels().map((el)=>
+        filteredHotels().length !== 0? filteredHotels().map((el)=>
           <Card
           className="ml-3"
                   id={el.id}
@@ -54,7 +56,7 @@ const AllCards = ({filteredHotels,search, setCurrentPage, currentPage}) => {
                   favorites={favorites}
                   setFavorites={setFavorites}
                 />  
-        )
+        ): <LoadHome/>
       }
     </div>
                   
