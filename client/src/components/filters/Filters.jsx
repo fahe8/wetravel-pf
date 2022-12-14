@@ -71,8 +71,8 @@ const Filters = ({
   };
 
   return (
-    <div className="bg-slate-50 mx-20 mt-5 rounded-3xl shadow-md">
-      <div className="p-10">
+    <div className="bg-slate-50  mx-auto w-4/6 mt-5 rounded-3xl shadow-md grid grid-cols-3">
+      <div className="p-10 col-span-2">
         <Search
           search={search}
           setSearch={setSearch}
@@ -82,7 +82,7 @@ const Filters = ({
           currentPage={currentPage}
         />
       </div>
-      <div className="h-full  flex justify-center items-center pb-6">
+      <div className=" flex justify-center items-center pb-6">
         <button
           className="bg-[color:var(--second-bg-color)] py-3 px-3 shadow-[inset_0_-2px_4px_rgba(0,0,0,0.6)]  hover:shadow-[inset_0_4px_4px_rgba(0,0,0,0.25)] rounded-[10px] flex align-middle"
           onClick={pressButtonFilter}
@@ -91,7 +91,7 @@ const Filters = ({
           <p>Filters</p>
         </button>
         <div
-          className={` w-screen h-screen  fixed  left-0 top-0 z-30   ease-in-out duration-300  ${
+          className={` w-screen h-screen  fixed  left-0 top-0 z-30 ease-in-out duration-300  ${
             modalFilter ? " bg-[color:var(--bg-opacity-modal)] z-20 " : "-z-10"
           }`}
         >

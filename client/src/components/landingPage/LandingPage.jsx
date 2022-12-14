@@ -57,7 +57,7 @@ console.log(userDB)
   return (
     <div className=" land ">
       <NavBar />
-      <div>
+      {/* <div>
         <p className="font-bold	text-3xl mt-3">
           Encontrá lugares para alojarte en Airbnb
         </p>
@@ -65,10 +65,19 @@ console.log(userDB)
           Descubrí alojamientos enteros y habitaciones privadas que se adaptan a
           todo tipo de viajes.
         </p>
-      </div>
-      <div className="relative p-24 m-8">
+      </div> */}
+
+      
+      <div className="content backdrop-blur w-3/6">
+        <h1 className="title">We Travel</h1>
+        <h2 className="sub_title">Bienvenidos</h2>
+
+        </div>
+        
+        
+      {/* <div className="relative p-24 m-8">
         <Search></Search>
-      </div>
+      </div> */}
       <div className=" mb-14 ">
         <Link to="/home">
           {" "}
