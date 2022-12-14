@@ -136,7 +136,7 @@ const Detail = (props) => {
                     key={el.id} >
                     <div>
                       {(el.nameHotel === selectedHotel.name) && (
-                        <div className=" m-2 p-3 bg-slate-50  w-5/5 rounded shadow" >
+                        <div className=" m-2 p-3 bg-slate-200  w-5/5 rounded shadow" >
                           <p> <b>{!el.nameUser ? 'Anonymous' : el.nameUser} : </b> {el.comments[0]}  </p>
                         </div>
                       )

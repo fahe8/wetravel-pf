@@ -33,8 +33,7 @@ export const AdminImages = () => {
                 <div>
                   <div className=" text-2xl p-3 font-medium">
                     <h1>
-                      El usuario <strong>{el.nameUser}</strong> publicó la
-                      siguiente imagen:
+                      El usuario <strong>{el.nameUser}</strong> publicó lo siguiente:
                       <hr />
                     </h1>
                   </div>
@@ -66,19 +65,9 @@ export const AdminImages = () => {
                         );
                       })
                     ) : (
-                      <h2>"hola"</h2>
+                      <h2>"El usuario {el.nameUser} no tiene imágenes"</h2>
                     )}
 
-                    {/* {el.images?.map((el, index) => {
-                    
-                    return (
-                      <div className="bg-red-400"
-                        key={index} >
-                        <img src={el} alt="img not found" />
-                        <br />
-                      </div>
-                    );
-                  })} */}
                   </div>
                 </div>
               </div>
