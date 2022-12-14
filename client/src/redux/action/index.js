@@ -30,6 +30,7 @@ export const BANED = "BANED";
 export const SEND_MAIL_CREATE = "SEND_MAIL_CREATE";
 // 1 depachar los hoteles
 export function getHotels(page=0) {
+  if(page){
   return async function (dispatch) {
     const json = await axios.get(`http://localhost:3001/hotels?page=${page}`);
     return dispatch({
@@ -37,7 +38,18 @@ export function getHotels(page=0) {
       payload: json.data.rows,
     }); //segunda función que recibe dispatch y despacha una acción / el tipo y el payload: devuelve el backend
   };
+} else {
+  return async function (dispatch) {
+    const json = await axios.get("http://localhost:3001/hotels");
+    console.log("asd",json.data)
+    return dispatch({
+      type: GET_HOTELS,
+      payload: json.data,
+    }); 
+  };
 }
+}
+
 
 export function getDetail(id) {
   return async function (dispatch) {
