@@ -1,48 +1,44 @@
-import React, {  useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
-import {getSearchHotels} from "../../redux/action/index"
+import { getSearchHotels } from "../../redux/action/index";
 import { useHistory } from "react-router-dom";
 import Search from "../search/Search";
 
-
-function useQuery() {
-  const { search } = useLocation();
-
-  return React.useMemo(() => new URLSearchParams(search), [search]);
-}
-
-const Filters = ({parameterSearch}) => {
-  let query = useQuery()
+const Filters = ({
+  filteredHotels,
+  onSearch,
+  search,
+  setSearch,
+  setCurrentPage,
+  currentPage,
+}) => {
   // let parameterSearch = query.get('search')
 
-  let history = useHistory()
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const [modalFilter, setModalFilter] = useState(false);
 
-  const initialFilters={stars:'',priceMin:0, priceMax:100000000}
+  const initialFilters = { stars: "", priceMin: 0, priceMax: 100000000 };
 
   const [filters, setFilters] = useState(initialFilters);
 
-
-
-  const handleChange = (e)=>{
-      setFilters({...filters, [e.target.name]: e.target.value})
-  }
+  const handleChange = (e) => {
+    setFilters({ ...filters, [e.target.name]: e.target.value });
+  };
 
   const handleStar = (e) => {
-    setFilters({...filters, stars: e.target.id})
-
-  }
+    setFilters({ ...filters, stars: e.target.id });
+  };
 
   const restartFilters = () => {
-    setFilters(initialFilters)
-  }
+    setFilters(initialFilters);
+  };
 
-const DoFilters = () => {
-  dispatch(getSearchHotels(parameterSearch, filters))
-}
+  const DoFilters = () => {
+    dispatch(getSearchHotels("", filters));
+    setCurrentPage(0);
+  };
 
   const pressButtonFilter = () => {
     setModalFilter(true);
@@ -74,11 +70,17 @@ const DoFilters = () => {
     }
   };
 
-
   return (
     <div className="bg-slate-50 mx-20 mt-5 rounded-3xl shadow-md">
       <div className="p-10">
-      <Search/>
+        <Search
+          search={search}
+          setSearch={setSearch}
+          filteredHotels={filteredHotels}
+          onSearch={onSearch}
+          setCurrentPage={setCurrentPage}
+          currentPage={currentPage}
+        />
       </div>
       <div className="h-full  flex justify-center items-center pb-6">
         <button
@@ -88,11 +90,11 @@ const DoFilters = () => {
           <span className="bg-[url('/src/assets/icons/filter.svg')] bg-center bg-cover bg-no-repeat  w-[24px] h-[24px]"></span>
           <p>Filters</p>
         </button>
-        <div className={` w-screen h-screen  fixed  left-0 top-0 z-30   ease-in-out duration-300  ${
-              modalFilter
-                ? " bg-[color:var(--bg-opacity-modal)] z-20 "
-                :  "-z-10"
-            }`}>
+        <div
+          className={` w-screen h-screen  fixed  left-0 top-0 z-30   ease-in-out duration-300  ${
+            modalFilter ? " bg-[color:var(--bg-opacity-modal)] z-20 " : "-z-10"
+          }`}
+        >
           <div
             className={` w-screen  fixed  left-0 z-30   ease-in-out duration-300 ${
               modalFilter
@@ -105,10 +107,10 @@ const DoFilters = () => {
                 refOne={refOne}
                 setModalFilter={setModalFilter}
                 modalFilter={modalFilter}
-                filters= {filters}
+                filters={filters}
                 handleChange={handleChange}
                 DoFilters={DoFilters}
-                handleStar= {handleStar}
+                handleStar={handleStar}
                 restartFilters={restartFilters}
               />
             )}
@@ -119,10 +121,21 @@ const DoFilters = () => {
   );
 };
 
-const ModalFilter = ({ refOne, setModalFilter,handleStar,filters, handleChange, DoFilters , restartFilters}) => {
+const ModalFilter = ({
+  refOne,
+  setModalFilter,
+  handleStar,
+  filters,
+  handleChange,
+  DoFilters,
+  restartFilters,
+}) => {
   return (
     <div className="  w-screen h-screen  fixed top-0 left-0 z-30 flex justify-center items-center">
-      <div className="w-[600px] h-[auto] bg-white rounded-3xl relative" ref={refOne}>
+      <div
+        className="w-[600px] h-[auto] bg-white rounded-3xl relative"
+        ref={refOne}
+      >
         <div className="py-[10px] relative border-b ">
           <span
             className="absolute left-5 cursor-pointer px-2"
@@ -174,19 +187,64 @@ const ModalFilter = ({ refOne, setModalFilter,handleStar,filters, handleChange, 
         <div className=" w-full pt-5">
           <h2>{"Calificación por estrellas"}</h2>
           <div className="flex justify-around items-center my-3 mb-5">
-          <button className=" w-[70px] h-full rounded-3xl border hover:bg-[#feefd0]" id={''} onClick={handleStar}>{"Por defecto"}</button>
-          <button className=" w-[50px] h-full rounded-3xl border hover:bg-[#feefd0]" id={'1'} onClick={handleStar}>{"1"}</button>
-          <button className=" w-[50px] h-full rounded-3xl border hover:bg-[#feefd0]" id={'2'} onClick={handleStar} >{"2"}</button>
-          <button className=" w-[50px] h-full rounded-3xl border hover:bg-[#feefd0]" id={'3'} onClick={handleStar}>{"3"}</button>
-          <button className=" w-[50px] h-full rounded-3xl border hover:bg-[#feefd0]" id={'4'} onClick={handleStar}>{"4"}</button>
-          <button className=" w-[50px] h-full rounded-3xl border hover:bg-[#feefd0]" id={'5'} onClick={handleStar}>{"5"}</button>
+            <button
+              className=" w-[70px] h-full rounded-3xl border hover:bg-[#feefd0]"
+              id={""}
+              onClick={handleStar}
+            >
+              {"Por defecto"}
+            </button>
+            <button
+              className=" w-[50px] h-full rounded-3xl border hover:bg-[#feefd0]"
+              id={"1"}
+              onClick={handleStar}
+            >
+              {"1"}
+            </button>
+            <button
+              className=" w-[50px] h-full rounded-3xl border hover:bg-[#feefd0]"
+              id={"2"}
+              onClick={handleStar}
+            >
+              {"2"}
+            </button>
+            <button
+              className=" w-[50px] h-full rounded-3xl border hover:bg-[#feefd0]"
+              id={"3"}
+              onClick={handleStar}
+            >
+              {"3"}
+            </button>
+            <button
+              className=" w-[50px] h-full rounded-3xl border hover:bg-[#feefd0]"
+              id={"4"}
+              onClick={handleStar}
+            >
+              {"4"}
+            </button>
+            <button
+              className=" w-[50px] h-full rounded-3xl border hover:bg-[#feefd0]"
+              id={"5"}
+              onClick={handleStar}
+            >
+              {"5"}
+            </button>
           </div>
         </div>
 
         <div className="w-full h-[60px] mb-3 relative">
-          <p className="  w-[auto] h-auto  border-b-2 font-bold border-black  cursor-pointer px-2 absolute top-[50%] ml-2" onClick={restartFilters}>{"Reiniciar filtros"}</p>
-          <button className=" w-[100px] h-full rounded-3xl border hover:bg-[#feefd0]" onClick={DoFilters}>{"Filtrar"}</button>
-
+          <p
+            className="  w-[auto] h-auto  border-b-2 font-bold border-black  cursor-pointer px-2 absolute top-[50%] ml-2"
+            onClick={restartFilters}
+          >
+            {"Reiniciar filtros"}
+          </p>
+          <button
+            className=" w-[100px] h-full rounded-3xl border hover:bg-[#feefd0]"
+            onClick={DoFilters}
+          >
+            {"Filtrar"}
+          </button>
         </div>
       </div>
     </div>

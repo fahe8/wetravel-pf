@@ -1,34 +1,18 @@
 import { React, useState } from "react";
 import RangeCalendar from "../calendar/RangeCalendar";
 
-const useCounter = () => {
-  const [counter, setCounter] = useState(0)
-  const increase = () => {
-    setCounter(counter + 1)
-  }
-  const decrement = () => {
-    setCounter(counter - 1)
-  }
-  return {
-    counter,
-    increase,
-    decrement
-  }
-}
-
-const SearchPanel = ({ selected, active, range, setRange, setInputText, count, setCount }) => {
-const  counterAdult =useCounter()
-const  counterChild =useCounter()
-const  counterBaby =useCounter()
-const  counterPet =useCounter()
-
-setCount(counterAdult.counter + counterChild.counter + counterBaby.counter + counterPet.counter)
-
+const SearchPanel = ({ selected, setInputText, setCurrentPage }) => {
+  const handleContinent = (e) => {
+    setInputText(e.currentTarget.id);
+    setCurrentPage(0);
+  };
 
   if (selected === "location") {
     return (
       <div
-        className={ "transform  h-[400px] w-[800px] mx-auto bg-[color:var(--second-bg-color)] shadow-lg rounded-[30px] relative"}
+        className={
+          "transform  h-[400px] w-[800px] mx-auto bg-[color:var(--second-bg-color)] shadow-lg rounded-[30px] relative"
+        }
       >
         <h1 className=" text-4xl pb-2">Location</h1>
         <div className=" h-auto flex justify-between">
@@ -41,9 +25,7 @@ setCount(counterAdult.counter + counterChild.counter + counterBaby.counter + cou
               <div
                 className="w-full h-full"
                 id="america"
-                onClick={(e) =>
-                  setInputText( e.currentTarget.id)
-                }
+                onClick={handleContinent}
               >
                 <p>America</p>
                 <div className="w-[100px] h-[100px] border hover:border-[color:var(--primary-text-color)] cursor-pointer mx-auto bg-[url('/src/assets/img/america.png')] bg-center bg-cover bg-no-repeat rounded-[10px]"></div>
@@ -51,9 +33,7 @@ setCount(counterAdult.counter + counterChild.counter + counterBaby.counter + cou
               <div
                 className="w-full h-full"
                 id="europa"
-                onClick={(e) =>
-                  setInputText(e.currentTarget.id)
-                }
+                onClick={handleContinent}
               >
                 <p>Europa</p>
                 <div className="w-[100px] h-[100px] border hover:border-[color:var(--primary-text-color)] cursor-pointer mx-auto bg-[url('/src/assets/img/europa.png')] bg-center bg-cover bg-no-repeat rounded-[10px]"></div>
@@ -61,9 +41,7 @@ setCount(counterAdult.counter + counterChild.counter + counterBaby.counter + cou
               <div
                 className="w-full h-full"
                 id="asia"
-                onClick={(e) =>
-                  setInputText(e.currentTarget.id)
-                }
+                onClick={handleContinent}
               >
                 <p>Asia</p>
                 <div className="w-[100px] h-[100px] border hover:border-[color:var(--primary-text-color)] cursor-pointer mx-auto bg-[url('/src/assets/img/asia.png')] bg-center bg-cover bg-no-repeat rounded-[10px]"></div>
@@ -71,9 +49,7 @@ setCount(counterAdult.counter + counterChild.counter + counterBaby.counter + cou
               <div
                 className="w-full h-full"
                 id="africa"
-                onClick={(e) =>
-                  setInputText(e.currentTarget.id)
-                }
+                onClick={handleContinent}
               >
                 <p>Africa</p>
                 <div className="w-[100px] h-[100px] border hover:border-[color:var(--primary-text-color)] cursor-pointer mx-auto bg-[url('/src/assets/img/africa.png')] bg-center bg-cover bg-no-repeat rounded-[10px]"></div>
@@ -81,9 +57,7 @@ setCount(counterAdult.counter + counterChild.counter + counterBaby.counter + cou
               <div
                 className="w-full h-full"
                 id="australia"
-                onClick={(e) =>
-                  setInputText(e.currentTarget.id)
-                }
+                onClick={handleContinent}
               >
                 <p>Australia</p>
                 <div className="w-[100px] h-[100px] border hover:border-[color:var(--primary-text-color)] cursor-pointer mx-auto bg-[url('/src/assets/img/australia.png')] bg-center bg-cover bg-no-repeat rounded-[10px]"></div>
@@ -110,7 +84,6 @@ setCount(counterAdult.counter + counterChild.counter + counterBaby.counter + cou
   // }
 
   // if (selected === "guest") {
-
 
   //   return (
   //     <div
