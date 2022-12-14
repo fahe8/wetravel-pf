@@ -43,7 +43,7 @@ const initialState = {
   loading: false,
   favorites: [],
   images: [],
-  reservesUser: {},
+  reservesUser: [],
   hasMore:true,
 
 };

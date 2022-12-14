@@ -95,8 +95,8 @@ const Reservation = ({ selectedHotel, price }) => {
     .filter((f) => selectedHotel.name === f.nameHotel)
     .map((reserve) => {
       const newArr = [];
-      newArr.push(getOnlyDate(reserve.check_in));
       newArr.push(getOnlyDate(reserve.check_out));
+      newArr.push(getOnlyDate(reserve.check_in));
       return newArr;
     });
 
@@ -108,19 +108,20 @@ const Reservation = ({ selectedHotel, price }) => {
           {
             idHotel: selectedHotel.id,
             quantity: difDays,
-            check_out: format(range[0].startDate, "MM-dd-yyyy"),
-            check_in: format(range[0].endDate, "MM-dd-yyyy"),
+            check_in: format(range[0].startDate, "MM-dd-yyyy"),
+            check_out: format(range[0].endDate, "MM-dd-yyyy"),
           },
         ],
         user: user.email,
       };
+      console.log(info);
 
       const reserveFind = getAllDatesReserves
         .flat()
         .find(
           (f) =>
-            f === info.orderlines[0].check_in ||
-            f === info.orderlines[0].check_out
+            f === info.orderlines[0].check_out ||
+            f === info.orderlines[0].check_in
         );
       !reserveFind
         ? dispatch(cartReserves(info)).then((res) => {

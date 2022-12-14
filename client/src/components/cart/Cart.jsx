@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import {  getReservesByCart } from "../../redux/action/";
+import {  getReservesByCart, getReservesUser } from "../../redux/action/";
 import ScriptMercadoPago from "../scriptMercadoPago/ScriptMercadoPago";
 import { useAuth0 } from "@auth0/auth0-react";
 import NavBar from "../navBar/NavBar";
@@ -34,6 +34,7 @@ let history = useHistory()
   useEffect(() => {
     if(user?.email) {
       dispatch(getReservesByCart(user?.email));
+      dispatch(getReservesUser(user.email))
     }
   }, [user]);
 
