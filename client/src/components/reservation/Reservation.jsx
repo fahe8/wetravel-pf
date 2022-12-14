@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import icon from "../../assets/icons/user.svg";
+import {useHistory} from "react-router-dom"
 import DetailRoom from "../detailRoom/DetailRoom";
 import { addDays, format, differenceInDays, set } from "date-fns";
 import RangeCalendar from "../calendar/RangeCalendar";
@@ -10,9 +11,10 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Reservation = ({ selectedHotel, price }) => {
+
   let dispatch = useDispatch();
   const reserves = useSelector((state) => state.reserveByCart);
-
+  let history =  useHistory()
   const { user } = useAuth0();
   const prices = selectedHotel?.price;
   const [showCalendar, setShowCalendar] = useState(false);
@@ -93,10 +95,11 @@ const Reservation = ({ selectedHotel, price }) => {
     .filter((f) => selectedHotel.name === f.nameHotel)
     .map((reserve) => {
       const newArr = [];
-      newArr.push(getOnlyDate(reserve.check_in));
       newArr.push(getOnlyDate(reserve.check_out));
+      newArr.push(getOnlyDate(reserve.check_in));
       return newArr;
     });
+
 
   const fullInfo = () => {
     if (user) {
@@ -105,19 +108,20 @@ const Reservation = ({ selectedHotel, price }) => {
           {
             idHotel: selectedHotel.id,
             quantity: difDays,
-            check_out: format(range[0].startDate, "MM-dd-yyyy"),
-            check_in: format(range[0].endDate, "MM-dd-yyyy"),
+            check_in: format(range[0].startDate, "MM-dd-yyyy"),
+            check_out: format(range[0].endDate, "MM-dd-yyyy"),
           },
         ],
         user: user.email,
       };
+      console.log(info);
 
       const reserveFind = getAllDatesReserves
         .flat()
         .find(
           (f) =>
-            f === info.orderlines[0].check_in ||
-            f === info.orderlines[0].check_out
+            f === info.orderlines[0].check_out ||
+            f === info.orderlines[0].check_in
         );
       !reserveFind
         ? dispatch(cartReserves(info)).then((res) => {
@@ -127,6 +131,7 @@ const Reservation = ({ selectedHotel, price }) => {
               setTimeout(() =>{
                 dispatch(getReservesByCart(user.email));
                 setActive(false)
+                history.push("/cart")
               },200)
             }
             messageSuccesful()

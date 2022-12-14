@@ -5,7 +5,7 @@ import { getReservesByCart } from '../../../redux/action'
 import ConfirmacionCard from './ConfirmacionCard'
 
 
- const ConfirmacionCards = ({estadoReserva}) => {
+ const ConfirmacionCards = ({estadoReserva, id}) => {
 console.log(estadoReserva);
 
      
@@ -16,8 +16,8 @@ console.log(estadoReserva);
         <div>
             <div>
                 <div>
-                    {estadoReserva? (
-                        estadoReserva?.map((reserv,idx) => 
+                    {estadoReserva.length? (
+                        estadoReserva?.filter(f => f.orderId == id).map((reserv,idx) => 
                             <ConfirmacionCard
                                 reserve={reserv}
                                 key={idx}

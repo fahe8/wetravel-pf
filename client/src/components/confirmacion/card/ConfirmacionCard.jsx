@@ -1,7 +1,7 @@
 import React from 'react'
 
 const ConfirmacionCard = ({ reserve }) => {
-
+console.log(reserve);
     return (
         <div>
             <div>

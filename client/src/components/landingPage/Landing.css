@@ -12,12 +12,10 @@
   margin-left: auto;
   margin-right: auto;
   border-radius: 10px;
-  mix-blend-mode: screen ;
+
   padding: 10px;
 
   z-index: 1;
-   text-shadow: 2px 2px 0 rgb(94, 85, 85), 2px -2px 0 rgb(125, 103, 103), -2px 2px 0 rgb(112, 108, 108), -2px -2px 0 #fff, 2px 0px 0 #fff, 0px 2px 0 #fff, -2px 0px 0 #fff, 0px -2px 0 #fff;
- 
 }
 
 .title {
