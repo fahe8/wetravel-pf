@@ -41,22 +41,34 @@ const Confirmacion = () => {
         <NavBar/>
         
       </div>
-          <h1>Felicidades por tu compra</h1>
 
-          <div>
-              <button onClick={sendInfo}>
-                  Enviar información al correo
-              </button>
+      <div className='bg-slate-50 text-7xl font-semibold p-4'>
+          <h1>FELICIDADES POR TU COMPRA</h1>
       </div>
-      <div>
+      <div className='text-3xl font-medium'>
+        <h2>
+          Estos son los datos de tu ultima reservación:
+        </h2>
+      </div>
+
+      <div className='bg-yellow-50 my-3 p-4 rounded-lg mx-80 shadow-lg'>
         <ConfirmacionCards estadoReserva={estadoReserva} id={id}/>
       
       </div>
+          <div>
+        <button
+           className="w-[260px] h-[50px] pt-1 rounded shadow-[inset_0_-2px_4px_rgba(0,0,0,0.6)] bg-gradient-to-r from-[#A3C7D6] to-[#00B4FF]  hover:shadow-[inset_0_4px_4px_rgba(0,0,0,0.25)]"
+          onClick={sendInfo}>
+                  Enviar información al correo
+              </button>
+      </div>
 
-      <div>
+      <div className='m-3' >
         <Link to="/home">
         
-          <button> To Home</button>
+          <button
+            className="bg-[color:var(--second-bg-color)] shadow-[inset_0_-2px_4px_rgba(0,0,0,0.6)]  hover:shadow-[inset_0_4px_4px_rgba(0,0,0,0.25)] rounded-[10px] p-2 mx-2 "
+          >Ver todos los hoteles</button>
         </Link>
        
        
