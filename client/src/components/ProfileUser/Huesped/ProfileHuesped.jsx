@@ -8,7 +8,7 @@ import { postImage } from "../../../redux/action/index";
 import { useDispatch } from "react-redux";
 import { Container } from "react-bootstrap";
 import Dropzone from "react-dropzone";
-import { BiImageAdd } from "react-icons/bi";
+
 //import { AiOutlineCloudUpload } from "react-icons/ai";
 
 export const ProfileHuesped = () => {
@@ -55,11 +55,10 @@ export const ProfileHuesped = () => {
     }
     if (loading === "false") {
       return (
-        <div className="flex flex-wrap gap-5">
+        <div className="flex-wrap gap-5 flex justify-center items-center p-3 border">
           {input.images?.map((image) => {
             return (
-              <div>
-                <p>Imagen:</p>
+              <div className="bg-slate-100 w-52 h-52 flex justify-center items-center rounded-lg shadow border-4">
                 <img src={image} alt="img not found" className="w-[180px] " />
               </div>
             );
@@ -78,6 +77,8 @@ export const ProfileHuesped = () => {
       dispatch(postImage(input));
       setInput({ nameUser: user?.name, images: [] });
       history.push('/images')
+      history.go(0)
+
     }
   };
 
@@ -87,7 +88,7 @@ export const ProfileHuesped = () => {
         <NavBar />
       </div>
 
-      <div className="bg-slate-50 mx-44 mt-16 rounded-3xl shadow-md">
+      <div className="bg-slate-50 mx-44 mt-16 pb-3 rounded-3xl shadow-md">
         <div className="font-bold text-5xl pt-8">
           <h1>Hola {user?.name}</h1>
         </div>
@@ -121,15 +122,15 @@ export const ProfileHuesped = () => {
         <br />
         <div>
           <form>
-            <div>
-              <Container>
+            <div >
+              <Container >
                 <Dropzone onDrop={submitImage}>
                   {({ getRootProps, getInputProps }) => (
                     <section>
                       <div {...getRootProps({ className: "dropzone" })}>
-                        <div className=" flex justify-center items-center cursor-pointer">
+                        <div >
                           <input {...getInputProps()} />
-                          <BiImageAdd className="w-[40px] h-[40px]" />
+                         
                           <p className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                             Ingresar imagen
                           </p>
@@ -144,7 +145,7 @@ export const ProfileHuesped = () => {
             <br />
             
           </form>
-          <div className="text-xl">
+          <div className="text-xl mb-3">
               <button
                 onClick={handlerSubmit}
                 className="rounded-xl w-80 bg-slate-200 hover:bg-slate-300 p-2"
