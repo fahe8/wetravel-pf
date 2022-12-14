@@ -64,11 +64,7 @@ const NavBar = () => {
           </Link>
         )}
         {user && userDb?.status === "host" && (
-<<<<<<< HEAD
           <Link to={"/createhotel"} className=" p-2 border-black border-r-2 hover:bg-[#FEF9EF] rounded">
-=======
-          <Link to={"/create"} className=" p-2  hover:bg-[#FEF9EF] rounded">
->>>>>>> 5ca8534c1c08746b5ab768140a845e82dec9f986
             <button>Create New Hotel</button>
           </Link>
         )}
